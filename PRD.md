@@ -8,7 +8,7 @@
 | Phase | Name | Status |
 |-------|------|--------|
 | 1 | Foundation & Authentication | **Complete** |
-| 2 | Project Management | Pending |
+| 2 | Project Management | **Complete** |
 | 3 | Task Management Core | Pending |
 | 4 | Terminal Management | Pending |
 | 5 | Git Worktree Management | Pending |
@@ -18,7 +18,7 @@
 | 9 | GitHub Integration | Pending |
 | 10 | Polish & Additional Features | Pending |
 
-**Current Status:** Phase 1 complete. Development branch created. Ready to begin Phase 2 (Project Management).
+**Current Status:** Phase 2 complete. Ready to begin Phase 3 (Task Management Core).
 
 **Branches:**
 - `main` - Production-ready code
@@ -126,30 +126,32 @@
 ## Phase 2: Project Management
 
 ### 2.1 Database Models
-- [ ] Create Project model (id, name, description, targetPath, githubRepo)
-- [ ] Create ProjectMember model with roles (OWNER, ADMIN, MEMBER, VIEWER)
-- [ ] Add project relations to User model
-- [ ] Run migration
+- [x] Create Project model (id, name, description, targetPath, githubRepo)
+- [x] Create ProjectMember model with roles (OWNER, ADMIN, MEMBER, VIEWER)
+- [x] Add project relations to User model
+- [x] Run migration
 
 ### 2.2 Project CRUD
-- [ ] Create `/api/projects` route (GET, POST)
-- [ ] Create `/api/projects/[id]` route (GET, PUT, DELETE)
-- [ ] Create `/api/projects/[id]/members` route for team management
+- [x] Create `/api/projects` route (GET, POST)
+- [x] Create `/api/projects/[id]` route (GET, PUT, DELETE)
+- [x] Create `/api/projects/[id]/members` route for team management
 
 ### 2.3 Project UI
-- [ ] Build "Create Project" modal/page
-  - [ ] Local directory selector input
-  - [ ] GitHub repo URL input with clone option
-  - [ ] Project name and description fields
-- [ ] Create project dashboard/home page
-- [ ] Build project settings page
-  - [ ] Edit name/description
-  - [ ] Update paths
-  - [ ] Danger zone (delete)
-- [ ] Create team member management UI
-  - [ ] Invite by email
-  - [ ] Role assignment dropdown
-  - [ ] Remove member
+- [x] Build "Create Project" modal/page
+  - [x] Local directory selector input
+  - [x] GitHub repo URL input with clone option
+  - [x] Project name and description fields
+- [x] Create project dashboard/home page
+- [x] Build project settings page
+  - [x] Edit name/description
+  - [x] Update paths
+  - [x] Danger zone (delete)
+- [x] Create team member management UI
+  - [x] Invite by email
+  - [x] Role assignment dropdown
+  - [x] Remove member
+
+**Phase 2 Complete** - Project Management fully implemented.
 
 ---
 
@@ -857,11 +859,11 @@ model McpConfig {
 - [x] Protected routes redirect unauthenticated users
 
 ### Phase 2 - Projects
-- [ ] Can create project from local directory
-- [ ] Can create project by cloning GitHub repo
-- [ ] Project settings update correctly
-- [ ] Can invite team members
-- [ ] Project selector switches context
+- [x] Can create project from local directory
+- [x] Can create project by cloning GitHub repo
+- [x] Project settings update correctly
+- [x] Can invite team members
+- [x] Project selector switches context
 
 ### Phase 3 - Tasks
 - [ ] Kanban board displays all columns
