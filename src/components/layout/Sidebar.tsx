@@ -58,7 +58,7 @@ function Sidebar({ onNewTask, className }: SidebarProps) {
   return (
     <aside
       className={cn(
-        "flex h-screen flex-col border-r border-sidebar-border bg-sidebar transition-all duration-300",
+        "fixed left-0 top-0 z-40 flex h-screen flex-col border-r border-sidebar-border bg-sidebar transition-all duration-300",
         isCollapsed ? "w-16" : "w-60",
         className
       )}

@@ -16,23 +16,35 @@ interface TerminalMessage {
 }
 
 export function setupWebSocket(server: HTTPServer) {
+  // Create WebSocket server without attaching to HTTP server directly
+  // This prevents conflicts with Next.js HMR WebSocket
   const wss = new WebSocketServer({
-    server,
-    path: '/ws/terminal',
-    verifyClient: (info, callback) => {
-      // Extract session token from query params
-      const params = new URLSearchParams(parse(info.req.url || '').query || '');
+    noServer: true,
+  });
+
+  // Handle HTTP upgrade events manually
+  server.on('upgrade', (request, socket, head) => {
+    const { pathname } = parse(request.url || '');
+
+    // Only handle our terminal WebSocket path
+    if (pathname === '/ws/terminal') {
+      // Verify client before handling upgrade
+      const params = new URLSearchParams(parse(request.url || '').query || '');
       const sessionToken = params.get('token');
 
       // In production, verify the session token against your auth system
-      // For now, we'll accept all connections
+      // For now, we require a token to be present
       if (!sessionToken) {
-        callback(false, 401, 'Unauthorized');
+        socket.write('HTTP/1.1 401 Unauthorized\r\n\r\n');
+        socket.destroy();
         return;
       }
 
-      callback(true);
+      wss.handleUpgrade(request, socket, head, (ws) => {
+        wss.emit('connection', ws, request);
+      });
     }
+    // For all other paths (like /_next/webpack-hmr), let Next.js handle them
   });
 
   const terminalManager = new TerminalManager();
