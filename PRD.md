@@ -12,13 +12,13 @@
 | 3 | Task Management Core | **Complete** |
 | 4 | Terminal Management | **Complete** |
 | 5 | Git Worktree Management | **Complete** |
-| 6 | Roadmap & Planning | Pending |
+| 6 | Roadmap & Planning | **Complete** |
 | 7 | Context & Memory | Pending |
 | 8 | MCP Integration | Pending |
 | 9 | GitHub Integration | Pending |
 | 10 | Polish & Additional Features | Pending |
 
-**Current Status:** Phase 5 complete. Ready to begin Phase 6 (Roadmap & Planning).
+**Current Status:** Phase 6 complete. Ready to begin Phase 7 (Context & Memory).
 
 **Branches:**
 - `main` - Production-ready code
@@ -349,44 +349,46 @@
 ## Phase 6: Roadmap & Planning
 
 ### 6.1 Database Models
-- [ ] Create Phase model (id, name, description, order, status, projectId)
-- [ ] Create Feature model (id, title, description, priority, status)
-- [ ] Create MoscowPriority enum (MUST, SHOULD, COULD, WONT)
-- [ ] Create Milestone model (id, title, completed, phaseId)
-- [ ] Run migration
+- [x] Create Phase model (id, name, description, order, status, projectId)
+- [x] Create Feature model (id, title, description, priority, status)
+- [x] Create MoscowPriority enum (MUST, SHOULD, COULD, WONT)
+- [x] Create Milestone model (id, title, completed, phaseId)
+- [x] Run migration
 
 ### 6.2 Roadmap API
-- [ ] Create `/api/phases` route (GET, POST)
-- [ ] Create `/api/phases/[id]` route (GET, PUT, DELETE)
-- [ ] Create `/api/features` route (GET, POST)
-- [ ] Create `/api/features/[id]` route (GET, PUT, DELETE)
-- [ ] Create `/api/milestones` route
+- [x] Create `/api/phases` route (GET, POST)
+- [x] Create `/api/phases/[id]` route (GET, PUT, DELETE)
+- [x] Create `/api/features` route (GET, POST)
+- [x] Create `/api/features/[id]` route (GET, PUT, DELETE)
+- [x] Create `/api/milestones` route
 
 ### 6.3 Roadmap UI
-- [ ] Create `/roadmap` page
-- [ ] Build project header:
-  - [ ] Project name with status badge
-  - [ ] Competitor analysis link
-  - [ ] Description
-  - [ ] Target audience
-  - [ ] Stats (features, phases, priority breakdown)
-- [ ] Build view tabs:
-  - [ ] Kanban
-  - [ ] Phases (default)
-  - [ ] All Features
-  - [ ] By Priority
-- [ ] Build PhaseCard component:
-  - [ ] Phase number and name
-  - [ ] Description
-  - [ ] Status badge (planned, active, completed)
-  - [ ] Progress bar
-  - [ ] Milestones section with checkboxes
-  - [ ] Features list
-- [ ] Build FeatureItem component:
-  - [ ] MoSCoW priority badge (must, should, could, won't)
-  - [ ] Feature title
-  - [ ] "Build" button to create task
-- [ ] Add "+ Add Feature" button
+- [x] Create `/roadmap` page
+- [x] Build project header:
+  - [x] Project name with status badge
+  - [x] Competitor analysis link
+  - [x] Description
+  - [x] Target audience
+  - [x] Stats (features, phases, priority breakdown)
+- [x] Build view tabs:
+  - [x] Kanban
+  - [x] Phases (default)
+  - [x] All Features
+  - [x] By Priority
+- [x] Build PhaseCard component:
+  - [x] Phase number and name
+  - [x] Description
+  - [x] Status badge (planned, active, completed)
+  - [x] Progress bar
+  - [x] Milestones section with checkboxes
+  - [x] Features list
+- [x] Build FeatureItem component:
+  - [x] MoSCoW priority badge (must, should, could, won't)
+  - [x] Feature title
+  - [x] "Build" button to create task
+- [x] Add "+ Add Feature" button
+
+**Phase 6 Complete** - Roadmap & Planning fully implemented.
 
 ---
 
@@ -911,12 +913,12 @@ model McpConfig {
 - [x] Worktree selector in terminal works
 - [x] Can delete worktree with confirmation
 
-### Phase 6 - Roadmap
-- [ ] Phases display in order
-- [ ] Features show with priority badges
-- [ ] Milestones can be checked/unchecked
-- [ ] "Build" creates task from feature
-- [ ] View tabs switch correctly
+### Phase 6 - Roadmap (Complete)
+- [x] Phases display in order
+- [x] Features show with priority badges
+- [x] Milestones can be checked/unchecked
+- [x] "Build" creates task from feature
+- [x] View tabs switch correctly
 
 ### Phase 7 - Memory
 - [ ] Memory browser displays memories
