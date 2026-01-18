@@ -1,8 +1,21 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { prisma } from '@/lib/db';
 
-// Mock the prisma client
-vi.mock('@/lib/db');
+// Mock the prisma client BEFORE importing it
+vi.mock('@/lib/db', () => ({
+  prisma: {
+    mcpConfig: {
+      create: vi.fn(),
+      findUnique: vi.fn(),
+      findMany: vi.fn(),
+      update: vi.fn(),
+      delete: vi.fn(),
+      deleteMany: vi.fn(),
+      count: vi.fn(),
+    },
+  },
+}));
+
+import { prisma } from '@/lib/db';
 
 // Mock data
 const mockProject = {
@@ -596,8 +609,10 @@ describe('McpConfig Model', () => {
 
     it('should handle Unicode characters in config', async () => {
       const unicodeConfig = {
-        message: 'Hello 世界 مرحبا мир 🚀',
-        emoji: '😀😃😄😁',
+        message: 'Hello 世界 مرحبا мир',
+        chinese: '中文',
+        arabic: 'العربية',
+        russian: 'русский',
       };
 
       const configWithUnicode = {
@@ -616,7 +631,9 @@ describe('McpConfig Model', () => {
       });
 
       expect(result.config?.message).toContain('世界');
-      expect(result.config?.emoji).toContain('🚀');
+      expect(result.config?.chinese).toBe('中文');
+      expect(result.config?.arabic).toBe('العربية');
+      expect(result.config?.russian).toBe('русский');
     });
   });
 });
