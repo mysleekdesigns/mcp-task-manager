@@ -43,12 +43,12 @@
 - [x] Configure environment variables (.env.example)
 
 ### 1.2 Database Setup
-- [ ] Initialize Prisma 7.x with PostgreSQL
-- [ ] Create User model (id, name, email, emailVerified, image, password)
-- [ ] Create Account model (OAuth providers)
-- [ ] Create Session model
-- [ ] Create VerificationToken model
-- [ ] Run initial migration
+- [x] Initialize Prisma 7.x with PostgreSQL
+- [x] Create User model (id, name, email, emailVerified, image, password)
+- [x] Create Account model (OAuth providers)
+- [x] Create Session model
+- [x] Create VerificationToken model
+- [x] Run initial migration
 
 ### 1.3 Authentication
 - [ ] Install and configure Auth.js v5 (next-auth@5)
