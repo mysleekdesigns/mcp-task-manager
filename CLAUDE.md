@@ -128,3 +128,9 @@ GOOGLE_SECRET=<client-secret>
 - Zod for API validation
 - Server components by default
 - Tailwind for styling
+
+## File Organization
+
+- Documentation files (.md, .txt) go in `docs/` folder, not project root
+- Only CLAUDE.md, PRD.md, and README.md stay in root
+- Test reports, implementation guides, checklists → `docs/`

@@ -220,13 +220,18 @@ model Phase {
 }
 
 model Terminal {
-  id        String   @id @default(cuid())
-  name      String
-  projectId String
-  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  createdAt DateTime @default(now())
+  id         String    @id @default(cuid())
+  name       String
+  status     String    @default("idle")
+  pid        Int?
+  projectId  String
+  project    Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  worktreeId String?
+  worktree   Worktree? @relation(fields: [worktreeId], references: [id], onDelete: SetNull)
+  createdAt  DateTime  @default(now())
 
   @@index([projectId])
+  @@index([worktreeId])
 }
 
 model Memory {
@@ -254,14 +259,15 @@ model McpConfig {
 }
 
 model Worktree {
-  id        String   @id @default(cuid())
+  id        String     @id @default(cuid())
   name      String
   path      String
   branch    String
-  isMain    Boolean  @default(false)
+  isMain    Boolean    @default(false)
   projectId String
-  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  createdAt DateTime @default(now())
+  project   Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  terminals Terminal[]
+  createdAt DateTime   @default(now())
 
   @@index([projectId])
 }

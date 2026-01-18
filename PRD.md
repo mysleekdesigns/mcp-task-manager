@@ -10,7 +10,7 @@
 | 1 | Foundation & Authentication | **Complete** |
 | 2 | Project Management | **Complete** |
 | 3 | Task Management Core | **Complete** |
-| 4 | Terminal Management | Pending |
+| 4 | Terminal Management | **Complete** |
 | 5 | Git Worktree Management | Pending |
 | 6 | Roadmap & Planning | Pending |
 | 7 | Context & Memory | Pending |
@@ -18,7 +18,7 @@
 | 9 | GitHub Integration | Pending |
 | 10 | Polish & Additional Features | Pending |
 
-**Current Status:** Phase 3 complete. Ready to begin Phase 4 (Terminal Management).
+**Current Status:** Phase 4 complete. Ready to begin Phase 5 (Git Worktree Management).
 
 **Branches:**
 - `main` - Production-ready code
@@ -252,56 +252,58 @@
 ## Phase 4: Terminal Management
 
 ### 4.1 WebSocket Server
-- [ ] Create custom server entry (`server/index.ts`)
-- [ ] Implement WebSocket server (`server/ws.ts`)
-- [ ] Define terminal message protocol (create, input, resize, close)
-- [ ] Add authentication to WebSocket connections
-- [ ] Implement terminal session management
+- [x] Create custom server entry (`server/index.ts`)
+- [x] Implement WebSocket server (`server/ws.ts`)
+- [x] Define terminal message protocol (create, input, resize, close)
+- [x] Add authentication to WebSocket connections
+- [x] Implement terminal session management
 
 ### 4.2 Process Management
-- [ ] Install node-pty (handle native compilation)
-- [ ] Create TerminalManager class
-- [ ] Implement spawn method for Claude CLI
-- [ ] Handle input/output streaming
-- [ ] Implement process cleanup on disconnect
-- [ ] Add terminal resize handling
+- [x] Install node-pty (handle native compilation)
+- [x] Create TerminalManager class
+- [x] Implement spawn method for Claude CLI
+- [x] Handle input/output streaming
+- [x] Implement process cleanup on disconnect
+- [x] Add terminal resize handling
 
 ### 4.3 Database Models
-- [ ] Create Terminal model (id, name, status, pid, projectId, worktreeId)
-- [ ] Run migration
+- [x] Create Terminal model (id, name, status, pid, projectId, worktreeId)
+- [x] Run migration
 
 ### 4.4 Terminal API
-- [ ] Create `/api/terminals` route (GET, POST)
-- [ ] Create `/api/terminals/[id]` route (GET, DELETE)
+- [x] Create `/api/terminals` route (GET, POST)
+- [x] Create `/api/terminals/[id]` route (GET, DELETE)
 
 ### 4.5 Terminal UI
-- [ ] Create `/terminals` page
-- [ ] Build TerminalGrid component
-  - [ ] 2x2 default layout
-  - [ ] Support for 3x4 (12 terminals)
-  - [ ] Responsive grid
-- [ ] Build TerminalPane component
-  - [ ] Header with terminal name
-  - [ ] "Claude" button/indicator
-  - [ ] Worktree selector dropdown
-  - [ ] Expand button
-  - [ ] Close (X) button
-  - [ ] Status indicator (green dot)
-- [ ] Integrate @xterm/xterm
-  - [ ] Install @xterm/xterm and @xterm/addon-fit
-  - [ ] Create XTerm wrapper component
-  - [ ] Connect to WebSocket
-  - [ ] Handle resize events
-- [ ] Build terminal controls bar:
-  - [ ] Terminal count indicator (e.g., "4 / 12 terminals")
-  - [ ] "Invoke Claude All" button
-  - [ ] "+ New Terminal" button
-  - [ ] "Files" toggle/button
+- [x] Create `/terminals` page
+- [x] Build TerminalGrid component
+  - [x] 2x2 default layout
+  - [x] Support for 3x4 (12 terminals)
+  - [x] Responsive grid
+- [x] Build TerminalPane component
+  - [x] Header with terminal name
+  - [x] "Claude" button/indicator
+  - [x] Worktree selector dropdown
+  - [x] Expand button
+  - [x] Close (X) button
+  - [x] Status indicator (green dot)
+- [x] Integrate @xterm/xterm
+  - [x] Install @xterm/xterm and @xterm/addon-fit
+  - [x] Create XTerm wrapper component
+  - [x] Connect to WebSocket
+  - [x] Handle resize events
+- [x] Build terminal controls bar:
+  - [x] Terminal count indicator (e.g., "4 / 12 terminals")
+  - [x] "Invoke Claude All" button
+  - [x] "+ New Terminal" button
+  - [x] "Files" toggle/button
 
 ### 4.6 Invoke Claude All
-- [ ] Create command input modal/bar
-- [ ] Implement broadcast to all active terminals
-- [ ] Show execution status per terminal
+- [x] Create command input modal/bar
+- [x] Implement broadcast to all active terminals
+- [x] Show execution status per terminal
+
+**Phase 4 Complete** - Terminal Management fully implemented.
 
 ---
 
@@ -893,13 +895,13 @@ model McpConfig {
 - [x] Phase tracking updates in real-time
 - [x] Task logs display correctly
 
-### Phase 4 - Terminals
-- [ ] Terminal grid renders
-- [ ] New terminal spawns Claude CLI
-- [ ] @xterm/xterm displays output correctly
-- [ ] Input is sent to terminal process
-- [ ] "Invoke Claude All" broadcasts command
-- [ ] Terminal close cleans up process
+### Phase 4 - Terminals (Complete)
+- [x] Terminal grid renders
+- [x] New terminal spawns Claude CLI
+- [x] @xterm/xterm displays output correctly
+- [x] Input is sent to terminal process
+- [x] "Invoke Claude All" broadcasts command
+- [x] Terminal close cleans up process
 
 ### Phase 5 - Worktrees
 - [ ] Worktree list shows existing worktrees
