@@ -9,7 +9,7 @@
 |-------|------|--------|
 | 1 | Foundation & Authentication | **Complete** |
 | 2 | Project Management | **Complete** |
-| 3 | Task Management Core | Pending |
+| 3 | Task Management Core | **Complete** |
 | 4 | Terminal Management | Pending |
 | 5 | Git Worktree Management | Pending |
 | 6 | Roadmap & Planning | Pending |
@@ -18,7 +18,7 @@
 | 9 | GitHub Integration | Pending |
 | 10 | Polish & Additional Features | Pending |
 
-**Current Status:** Phase 2 complete. Ready to begin Phase 3 (Task Management Core).
+**Current Status:** Phase 3 complete. Ready to begin Phase 4 (Terminal Management).
 
 **Branches:**
 - `main` - Production-ready code
@@ -158,89 +158,94 @@
 ## Phase 3: Task Management Core
 
 ### 3.1 Database Models
-- [ ] Create Task model (id, title, description, branchName, status, priority, tags)
-- [ ] Create TaskStatus enum (PENDING, PLANNING, IN_PROGRESS, AI_REVIEW, HUMAN_REVIEW, COMPLETED, CANCELLED)
-- [ ] Create Priority enum (LOW, MEDIUM, HIGH, URGENT)
-- [ ] Create TaskPhase model (id, name, status, model, startedAt, endedAt)
-- [ ] Create PhaseStatus enum (PENDING, RUNNING, COMPLETED, FAILED)
-- [ ] Create TaskLog model (id, type, message, metadata, createdAt)
-- [ ] Create TaskFile model (id, path, action)
-- [ ] Add subtask self-relation on Task
-- [ ] Add assignee relation to User
-- [ ] Run migration
+- [x] Create Task model (id, title, description, branchName, status, priority, tags)
+- [x] Create TaskStatus enum (PENDING, PLANNING, IN_PROGRESS, AI_REVIEW, HUMAN_REVIEW, COMPLETED, CANCELLED)
+- [x] Create Priority enum (LOW, MEDIUM, HIGH, URGENT)
+- [x] Create TaskPhase model (id, name, status, model, startedAt, endedAt)
+- [x] Create PhaseStatus enum (PENDING, RUNNING, COMPLETED, FAILED)
+- [x] Create TaskLog model (id, type, message, metadata, createdAt)
+- [x] Create TaskFile model (id, path, action)
+- [x] Add subtask self-relation on Task
+- [x] Add assignee relation to User
+- [x] Run migration
 
 ### 3.2 Task API
-- [ ] Create `/api/tasks` route (GET with filters, POST)
-- [ ] Create `/api/tasks/[id]` route (GET, PUT, DELETE)
-- [ ] Create `/api/tasks/[id]/phases` route
-- [ ] Create `/api/tasks/[id]/logs` route
-- [ ] Create `/api/tasks/[id]/subtasks` route
+- [x] Create `/api/tasks` route (GET with filters, POST)
+- [x] Create `/api/tasks/[id]` route (GET, PUT, PATCH, DELETE)
+- [x] Create `/api/tasks/[id]/phases` route
+- [x] Create `/api/tasks/[id]/logs` route
+- [x] Create `/api/tasks/[id]/subtasks` route
+- [x] Create `/api/tasks/[id]/start` route
+- [x] Create `/api/tasks/[id]/stop` route
+- [x] Create `/api/projects/[id]/tasks` route
 
 ### 3.3 Kanban Board
-- [ ] Create `/kanban` page
-- [ ] Build KanbanBoard component with columns:
-  - [ ] Planning
-  - [ ] In Progress
-  - [ ] AI Review
-  - [ ] Human Review
-  - [ ] (Completed - optional/collapsible)
-- [ ] Implement drag-and-drop with @dnd-kit/core
-- [ ] Build KanbanColumn component
-  - [ ] Column header with count
-  - [ ] "+ Add" button
-  - [ ] Droppable area
-- [ ] Build TaskCard component
-  - [ ] Title and description preview
-  - [ ] Status badge (Pending, Running)
-  - [ ] Tag badges (Feature, Bug, Trivial)
-  - [ ] Phase progress indicator (Plan → Code → QA)
-  - [ ] Time ago indicator
-  - [ ] Start/Stop button
-  - [ ] Menu button (⋮)
-- [ ] Add "Refresh Tasks" button
+- [x] Create `/kanban` page
+- [x] Build KanbanBoard component with columns:
+  - [x] Planning
+  - [x] In Progress
+  - [x] AI Review
+  - [x] Human Review
+  - [x] (Completed - optional/collapsible)
+- [x] Implement drag-and-drop with @dnd-kit/core
+- [x] Build KanbanColumn component
+  - [x] Column header with count
+  - [x] "+ Add" button
+  - [x] Droppable area
+- [x] Build TaskCard component
+  - [x] Title and description preview
+  - [x] Status badge (Pending, Running)
+  - [x] Tag badges (Feature, Bug, Trivial)
+  - [x] Phase progress indicator (Plan → Code → QA)
+  - [x] Time ago indicator
+  - [x] Start/Stop button
+  - [x] Menu button (⋮)
+- [x] Add "Refresh Tasks" button
 
 ### 3.4 Task Detail Modal
-- [ ] Build TaskModal component
-- [ ] Create modal header:
-  - [ ] Editable title
-  - [ ] Branch name badge
-  - [ ] Status badge
-  - [ ] Edit (pencil) button
-  - [ ] Close (X) button
-- [ ] Create tab navigation:
-  - [ ] Overview tab
-  - [ ] Subtasks tab with count
-  - [ ] Logs tab
-  - [ ] Files tab
-- [ ] Build Overview tab content:
-  - [ ] Description editor
-  - [ ] Assignee selector
-  - [ ] Priority selector
-  - [ ] Tags input
-- [ ] Build Subtasks tab:
-  - [ ] Subtask list
-  - [ ] Add subtask form
-- [ ] Build Logs tab:
-  - [ ] Collapsible phase sections (Planning, Coding, Validation)
-  - [ ] Phase header with entry count, model badge, status
-  - [ ] Log entries with timestamps
-  - [ ] Log entry types (phase_start, file_read, ai_response, etc.)
-  - [ ] "Show output" expandable sections
-- [ ] Build Files tab:
-  - [ ] List of modified files
-  - [ ] File action indicators (created, modified, deleted)
-- [ ] Add action buttons:
-  - [ ] Delete Task
-  - [ ] Stop Task (when running)
-  - [ ] Close
+- [x] Build TaskModal component
+- [x] Create modal header:
+  - [x] Editable title
+  - [x] Branch name badge
+  - [x] Status badge
+  - [x] Edit (pencil) button
+  - [x] Close (X) button
+- [x] Create tab navigation:
+  - [x] Overview tab
+  - [x] Subtasks tab with count
+  - [x] Logs tab
+  - [x] Files tab
+- [x] Build Overview tab content:
+  - [x] Description editor
+  - [x] Assignee selector
+  - [x] Priority selector
+  - [x] Tags input
+- [x] Build Subtasks tab:
+  - [x] Subtask list
+  - [x] Add subtask form
+- [x] Build Logs tab:
+  - [x] Collapsible phase sections (Planning, Coding, Validation)
+  - [x] Phase header with entry count, model badge, status
+  - [x] Log entries with timestamps
+  - [x] Log entry types (phase_start, file_read, ai_response, etc.)
+  - [x] "Show output" expandable sections
+- [x] Build Files tab:
+  - [x] List of modified files
+  - [x] File action indicators (created, modified, deleted)
+- [x] Add action buttons:
+  - [x] Delete Task
+  - [x] Stop Task (when running)
+  - [x] Close
 
 ### 3.5 New Task Flow
-- [ ] Create "New Task" modal/drawer
-- [ ] Add title input
-- [ ] Add description textarea
-- [ ] Add priority selector
-- [ ] Add tags input
-- [ ] Add "Create and Start" vs "Create" options
+- [x] Create "New Task" modal/drawer
+- [x] Add title input
+- [x] Add description textarea
+- [x] Add priority selector
+- [x] Add tags input
+- [x] Add "Create and Start" vs "Create" options
+
+**Phase 3 Complete** - Task Management Core fully implemented.
 
 ---
 
@@ -577,8 +582,21 @@ mcp-task-manager/
 │   │   │       └── prs/page.tsx
 │   │   └── api/
 │   │       ├── auth/[...nextauth]/route.ts
-│   │       ├── tasks/route.ts
-│   │       ├── projects/route.ts
+│   │       ├── tasks/
+│   │       │   ├── route.ts
+│   │       │   └── [id]/
+│   │       │       ├── route.ts
+│   │       │       ├── phases/route.ts
+│   │       │       ├── logs/route.ts
+│   │       │       ├── subtasks/route.ts
+│   │       │       ├── start/route.ts
+│   │       │       └── stop/route.ts
+│   │       ├── projects/
+│   │       │   ├── route.ts
+│   │       │   └── [id]/
+│   │       │       ├── route.ts
+│   │       │       ├── members/route.ts
+│   │       │       └── tasks/route.ts
 │   │       ├── terminals/route.ts
 │   │       ├── worktrees/route.ts
 │   │       ├── phases/route.ts
@@ -588,6 +606,8 @@ mcp-task-manager/
 │   ├── components/
 │   │   ├── ui/                  # shadcn/ui components (button, card, dialog, etc.)
 │   │   ├── layout/              # Sidebar, Header, ProjectSelector, UserMenu
+│   │   ├── kanban/              # KanbanBoard, KanbanColumn, TaskCard
+│   │   ├── task/                # TaskModal, NewTaskModal, tabs/*
 │   │   └── providers/           # AuthProvider, ThemeProvider
 │   ├── lib/
 │   │   ├── auth.ts              # Auth.js configuration with providers
@@ -858,20 +878,20 @@ model McpConfig {
 - [x] Dashboard layout renders with Sidebar and Header
 - [x] Protected routes redirect unauthenticated users
 
-### Phase 2 - Projects
+### Phase 2 - Projects (Complete)
 - [x] Can create project from local directory
 - [x] Can create project by cloning GitHub repo
 - [x] Project settings update correctly
 - [x] Can invite team members
 - [x] Project selector switches context
 
-### Phase 3 - Tasks
-- [ ] Kanban board displays all columns
-- [ ] Tasks can be created via modal
-- [ ] Drag and drop updates task status
-- [ ] Task detail modal shows all tabs
-- [ ] Phase tracking updates in real-time
-- [ ] Task logs display correctly
+### Phase 3 - Tasks (Complete)
+- [x] Kanban board displays all columns
+- [x] Tasks can be created via modal
+- [x] Drag and drop updates task status
+- [x] Task detail modal shows all tabs
+- [x] Phase tracking updates in real-time
+- [x] Task logs display correctly
 
 ### Phase 4 - Terminals
 - [ ] Terminal grid renders
