@@ -279,6 +279,7 @@ model McpConfig {
   name      String
   type      String
   enabled   Boolean  @default(false)
+  config    Json?
   projectId String
   project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
