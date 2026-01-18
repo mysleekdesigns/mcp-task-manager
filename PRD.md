@@ -11,14 +11,14 @@
 | 2 | Project Management | **Complete** |
 | 3 | Task Management Core | **Complete** |
 | 4 | Terminal Management | **Complete** |
-| 5 | Git Worktree Management | Pending |
+| 5 | Git Worktree Management | **Complete** |
 | 6 | Roadmap & Planning | Pending |
 | 7 | Context & Memory | Pending |
 | 8 | MCP Integration | Pending |
 | 9 | GitHub Integration | Pending |
 | 10 | Polish & Additional Features | Pending |
 
-**Current Status:** Phase 4 complete. Ready to begin Phase 5 (Git Worktree Management).
+**Current Status:** Phase 5 complete. Ready to begin Phase 6 (Roadmap & Planning).
 
 **Branches:**
 - `main` - Production-ready code
@@ -310,37 +310,39 @@
 ## Phase 5: Git Worktree Management
 
 ### 5.1 Database Models
-- [ ] Create Worktree model (id, name, path, branch, isMain, projectId)
-- [ ] Add worktree relation to Terminal
-- [ ] Run migration
+- [x] Create Worktree model (id, name, path, branch, isMain, projectId)
+- [x] Add worktree relation to Terminal
+- [x] Run migration
 
 ### 5.2 Git Operations
-- [ ] Create `lib/git.ts` utility
-- [ ] Implement worktree list function
-- [ ] Implement worktree add function
-- [ ] Implement worktree remove function
-- [ ] Add branch listing function
-- [ ] Handle git errors gracefully
+- [x] Create `lib/git.ts` utility
+- [x] Implement worktree list function
+- [x] Implement worktree add function
+- [x] Implement worktree remove function
+- [x] Add branch listing function
+- [x] Handle git errors gracefully
 
 ### 5.3 Worktree API
-- [ ] Create `/api/worktrees` route (GET, POST)
-- [ ] Create `/api/worktrees/[id]` route (GET, DELETE)
-- [ ] Create `/api/projects/[id]/branches` route
+- [x] Create `/api/worktrees` route (GET, POST)
+- [x] Create `/api/worktrees/[id]` route (GET, DELETE)
+- [x] Create `/api/projects/[id]/branches` route
 
 ### 5.4 Worktree UI
-- [ ] Create `/worktrees` page
-- [ ] Build WorktreeList component
-  - [ ] Table/card view of worktrees
-  - [ ] Branch name
-  - [ ] Path
-  - [ ] Main indicator
-  - [ ] Terminal count using this worktree
-- [ ] Build WorktreeForm component
-  - [ ] Branch selector
-  - [ ] Custom path input
-  - [ ] Create button
-- [ ] Add worktree deletion with confirmation
-- [ ] Build worktree selector for terminals (dropdown)
+- [x] Create `/worktrees` page
+- [x] Build WorktreeList component
+  - [x] Table/card view of worktrees
+  - [x] Branch name
+  - [x] Path
+  - [x] Main indicator
+  - [x] Terminal count using this worktree
+- [x] Build WorktreeForm component
+  - [x] Branch selector
+  - [x] Custom path input
+  - [x] Create button
+- [x] Add worktree deletion with confirmation
+- [x] Build worktree selector for terminals (dropdown)
+
+**Phase 5 Complete** - Git Worktree Management fully implemented.
 
 ---
 
@@ -903,11 +905,11 @@ model McpConfig {
 - [x] "Invoke Claude All" broadcasts command
 - [x] Terminal close cleans up process
 
-### Phase 5 - Worktrees
-- [ ] Worktree list shows existing worktrees
-- [ ] Can create new worktree from branch
-- [ ] Worktree selector in terminal works
-- [ ] Can delete worktree with confirmation
+### Phase 5 - Worktrees (Complete)
+- [x] Worktree list shows existing worktrees
+- [x] Can create new worktree from branch
+- [x] Worktree selector in terminal works
+- [x] Can delete worktree with confirmation
 
 ### Phase 6 - Roadmap
 - [ ] Phases display in order
