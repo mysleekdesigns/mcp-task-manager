@@ -16,7 +16,7 @@ export function Providers({ children }: ProvidersProps) {
     <AuthProvider>
       <ThemeProvider
         attribute="class"
-        defaultTheme="system"
+        defaultTheme="dark"
         enableSystem
         disableTransitionOnChange
       >
