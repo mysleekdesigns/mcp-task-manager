@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { Prisma } from '@prisma/client';
 import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/db';
 
@@ -53,7 +54,7 @@ export async function GET(
   }
 
   // Build where clause
-  const where: any = { taskId };
+  const where: Prisma.TaskLogWhereInput = { taskId };
 
   if (phaseId) {
     where.phaseId = phaseId;

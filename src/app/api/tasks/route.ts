@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { Prisma, TaskStatus, Priority } from '@prisma/client';
 import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/db';
 
@@ -34,7 +35,7 @@ export async function GET(request: NextRequest) {
     const assigneeId = searchParams.get('assigneeId');
 
     // Build where clause
-    const where: any = {
+    const where: Prisma.TaskWhereInput = {
       project: {
         members: {
           some: {
@@ -48,12 +49,12 @@ export async function GET(request: NextRequest) {
       where.projectId = projectId;
     }
 
-    if (status) {
-      where.status = status;
+    if (status && Object.values(TaskStatus).includes(status as TaskStatus)) {
+      where.status = status as TaskStatus;
     }
 
-    if (priority) {
-      where.priority = priority;
+    if (priority && Object.values(Priority).includes(priority as Priority)) {
+      where.priority = priority as Priority;
     }
 
     if (assigneeId) {
