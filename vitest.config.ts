@@ -5,13 +5,21 @@ import path from 'path';
 export default defineConfig({
   plugins: [react()],
   test: {
-    environment: 'jsdom',
-    setupFiles: ['./src/__tests__/setup.ts'],
+    environment: 'node',
     globals: true,
+    setupFiles: ['./src/__tests__/setup.ts'],
     coverage: {
-      reporter: ['text', 'json', 'html'],
-      exclude: ['node_modules/', 'src/__tests__/'],
+      reporter: ['text', 'json', 'html', 'lcov'],
+      exclude: [
+        'node_modules/',
+        'src/test/',
+        '**/*.d.ts',
+        '**/node_modules/**',
+        '**/dist/**',
+      ],
     },
+    include: ['src/**/*.test.ts', 'src/**/*.test.tsx'],
+    exclude: ['node_modules', 'dist', '.idea', '.git', '.cache'],
   },
   resolve: {
     alias: {
