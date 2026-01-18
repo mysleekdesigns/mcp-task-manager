@@ -101,6 +101,19 @@
 - [x] Create ProjectSelector dropdown component
 - [x] Build Dashboard layout with protected routes
 - [x] Create UserMenu component with avatar
+- [x] Create placeholder pages for all dashboard routes:
+  - [x] /dashboard/kanban
+  - [x] /dashboard/terminals
+  - [x] /dashboard/insights
+  - [x] /dashboard/roadmap
+  - [x] /dashboard/ideation
+  - [x] /dashboard/changelog
+  - [x] /dashboard/context
+  - [x] /dashboard/mcp
+  - [x] /dashboard/worktrees
+  - [x] /dashboard/settings
+  - [x] /dashboard/github/issues
+  - [x] /dashboard/github/prs
 
 **Phase 1 Complete** - Foundation & Authentication fully implemented.
 
@@ -535,10 +548,12 @@ mcp-task-manager/
 │   │   ├── layout.tsx
 │   │   ├── page.tsx
 │   │   ├── (auth)/
+│   │   │   ├── layout.tsx
 │   │   │   ├── login/page.tsx
 │   │   │   ├── register/page.tsx
-│   │   │   └── verify/page.tsx
-│   │   ├── (dashboard)/
+│   │   │   ├── verify/page.tsx
+│   │   │   └── _actions/auth-actions.ts
+│   │   ├── dashboard/
 │   │   │   ├── layout.tsx
 │   │   │   ├── page.tsx
 │   │   │   ├── kanban/page.tsx
@@ -550,10 +565,10 @@ mcp-task-manager/
 │   │   │   ├── insights/page.tsx
 │   │   │   ├── ideation/page.tsx
 │   │   │   ├── changelog/page.tsx
-│   │   │   ├── github/
-│   │   │   │   ├── issues/page.tsx
-│   │   │   │   └── prs/page.tsx
-│   │   │   └── settings/page.tsx
+│   │   │   ├── settings/page.tsx
+│   │   │   └── github/
+│   │   │       ├── issues/page.tsx
+│   │   │       └── prs/page.tsx
 │   │   └── api/
 │   │       ├── auth/[...nextauth]/route.ts
 │   │       ├── tasks/route.ts
@@ -565,29 +580,24 @@ mcp-task-manager/
 │   │       ├── memories/route.ts
 │   │       └── mcp/route.ts
 │   ├── components/
-│   │   ├── ui/
-│   │   ├── auth/
-│   │   ├── layout/
-│   │   ├── kanban/
-│   │   ├── terminal/
-│   │   ├── roadmap/
-│   │   ├── task/
-│   │   ├── worktree/
-│   │   ├── memory/
-│   │   ├── mcp/
-│   │   └── github/
+│   │   ├── ui/                  # shadcn/ui components (button, card, dialog, etc.)
+│   │   ├── layout/              # Sidebar, Header, ProjectSelector, UserMenu
+│   │   └── providers/           # AuthProvider, ThemeProvider
 │   ├── lib/
-│   │   ├── auth.ts
-│   │   ├── db.ts
-│   │   ├── terminal-manager.ts
-│   │   ├── git.ts
-│   │   ├── github.ts
-│   │   └── utils.ts
+│   │   ├── auth.ts              # Auth.js configuration with providers
+│   │   ├── auth.config.ts       # Edge-compatible auth config
+│   │   ├── db.ts                # Prisma client instance
+│   │   └── utils.ts             # Utility functions (cn, etc.)
 │   ├── hooks/
+│   │   ├── index.ts
+│   │   └── use-auth.ts          # Auth hooks
 │   └── types/
-├── server/
-│   ├── index.ts
-│   └── ws.ts
+│       ├── index.ts
+│       └── next-auth.d.ts       # Auth.js type extensions
+├── prisma/
+│   ├── schema.prisma
+│   ├── prisma.config.ts
+│   └── migrations/
 ├── public/
 ├── .env.example
 ├── package.json
