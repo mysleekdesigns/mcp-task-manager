@@ -18,7 +18,11 @@
 | 9 | GitHub Integration | Pending |
 | 10 | Polish & Additional Features | Pending |
 
-**Current Status:** Phase 1 complete. Ready to begin Phase 2 (Project Management).
+**Current Status:** Phase 1 complete. Development branch created. Ready to begin Phase 2 (Project Management).
+
+**Branches:**
+- `main` - Production-ready code
+- `development` - Active development (current)
 
 ---
 
