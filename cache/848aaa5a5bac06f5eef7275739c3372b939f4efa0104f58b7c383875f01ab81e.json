@@ -1,0 +1,99 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "xtermjs/xterm.js: A terminal for the web - GitHub",
+        "link": "https://github.com/xtermjs/xterm.js",
+        "snippet": "VTerm: Extensible terminal emulator based on Electron and React. ... Go SSH Web Client: A simple SSH web client using Go, WebSocket and Xterm.js ...",
+        "displayLink": "github.com",
+        "formattedUrl": "https://github.com/xtermjs/xterm.js",
+        "htmlSnippet": "VTerm: Extensible <b>terminal</b> emulator based on Electron and <b>React</b>. ... Go SSH Web Client: A simple SSH web client using Go, <b>WebSocket</b> and <b>Xterm</b>.<b>js</b>&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "GitHub - xtermjs/xterm.js: A terminal for the web",
+            "description": "A terminal for the web. Contribute to xtermjs/xterm.js development by creating an account on GitHub.",
+            "image": "https://opengraph.githubassets.com/46ab90e417916d79dad1b0beff094ea25735069dd05c7d18715095ca22685bad/xtermjs/xterm.js",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "image": "https://opengraph.githubassets.com/46ab90e417916d79dad1b0beff094ea25735069dd05c7d18715095ca22685bad/xtermjs/xterm.js"
+        },
+        "metadata": {},
+        "originalIndex": 3,
+        "normalizedUrl": "https://github.com/xtermjs/xterm.js",
+        "contentHash": "0100011010011000000000000000000001000110100110000000000000000000",
+        "titleTokens": [
+          "xtermjs",
+          "xterm",
+          "js",
+          "terminal",
+          "for",
+          "the",
+          "web",
+          "github"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://github.com/xtermjs/xterm.js",
+          "duplicateOf": 0,
+          "duplicateReasons": [
+            "Content similarity: 87.5%"
+          ],
+          "merged": true,
+          "alternateSnippets": [
+            "I want to know how connect proxmox virtualmachine terminal to react xterm.js ... api console pty stty text tty websocket wrapping xterm xterm.js ...",
+            "I want to know how connect proxmox virtualmachine terminal to react xterm.js ... When using xtermjs library and javascript websocket the connection fails.",
+            "Jun 15, 2024 ... js for its integrated terminal. Xterm.js is a terminal emulator with ... This works similar to the LSP setup i.e, each keystroke in terminal ( ...",
+            "js integrating with React. How to Use the Library. Here is an example where I ... @xterm/addon-attach is for the web socket, which is necessary for ...",
+            "Jun 9, 2017 ... xtermjs is a library that expose an api, that allow us to build fully xterm based terminal emulator. But for every of the terminal ...",
+            "May 14, 2021 ... ... WebSockets connection to the browser terminal. Visually at the ... js integration to a backend. 1. Achille Lacoin · Dec 5 ...",
+            "Aug 28, 2017 ... js(easy because of WebSocket based communication) which connects to ... js locally? 0 · Integrate a terminal in the browser and be able to execute ...",
+            "Terminal front-end component written in JavaScript that works in the browser."
+          ],
+          "alternateTitles": [
+            "xterm.js | Proxmox Support Forum",
+            "termproxy | Proxmox Support Forum",
+            "vncwebsocket | Proxmox Support Forum",
+            "Build a web editor like codesandbox using react, nodejs, monaco ...",
+            "react-xtermjs - a React Library to Build Terminals",
+            "javascript - How to make xterm.js accept input? - Stack Overflow",
+            "Setting up a Go backend for Xterm.js to get a shell over the browser ...",
+            "linux - How to create web based terminal using xterm.js to ssh into a ...",
+            "Xterm.js"
+          ],
+          "alternateUrls": [
+            "https://forum.proxmox.com/tags/xtermjs/",
+            "https://forum.proxmox.com/tags/termproxy/",
+            "https://forum.proxmox.com/tags/vncwebsocket/",
+            "https://levelup.gitconnected.com/how-to-build-a-web-ide-ab2563f24647",
+            "https://www.qovery.com/blog/react-xtermjs-a-react-library-to-build-terminals",
+            "https://stackoverflow.com/questions/44447473/how-to-make-xterm-js-accept-input",
+            "https://codeburst.io/setting-up-a-go-backend-for-xterm-js-to-get-a-shell-over-the-browser-508e3be3fb4d",
+            "https://stackoverflow.com/questions/45924485/how-to-create-web-based-terminal-using-xterm-js-to-ssh-into-a-system-on-local-ne",
+            "http://xtermjs.org/"
+          ],
+          "mergedDuplicates": 9,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 9
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 10,
+      "finalCount": 1,
+      "duplicatesRemoved": 9,
+      "deduplicationRate": "90.0%"
+    }
+  },
+  "expiry": null
+}

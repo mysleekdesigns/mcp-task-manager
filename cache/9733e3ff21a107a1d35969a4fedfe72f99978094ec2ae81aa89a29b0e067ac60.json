@@ -1,0 +1,86 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "dnd kit – a modern drag and drop toolkit for React",
+        "link": "https://dndkit.com/",
+        "snippet": "There's a new kit on the block. A lightweight, performant, accessible and extensible drag & drop toolkit for React. Get Started. npm install @dnd-kit/core ...",
+        "displayLink": "dndkit.com",
+        "formattedUrl": "https://dndkit.com/",
+        "htmlSnippet": "There&#39;s a <b>new</b> kit on the block. A lightweight, performant, accessible and extensible drag &amp; drop toolkit for React. Get Started. <b>npm</b> install @<b>dnd</b>-<b>kit</b>/core&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "dnd kit – a modern drag and drop toolkit for React",
+            "description": "A modular, lightweight, performant, accessible and extensible drag & drop toolkit for React.",
+            "image": "https://dndkit.com/twitter-social-banner.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjE3nCylzhKtJPZRt0UEO6_XSq8KsVtAzTnMqfpM7pzj94Wtj9UjlK1f8&s",
+            "width": "318",
+            "height": "159"
+          },
+          "image": "https://dndkit.com/twitter-social-banner.png"
+        },
+        "metadata": {},
+        "originalIndex": 1,
+        "normalizedUrl": "https://dndkit.com/",
+        "contentHash": "1110111000010000100000000000000011101110000100001000000000000000",
+        "titleTokens": [
+          "dnd",
+          "kit",
+          "modern",
+          "drag",
+          "and",
+          "drop",
+          "toolkit",
+          "for",
+          "react"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://dndkit.com/",
+          "duplicateOf": 0,
+          "duplicateReasons": [
+            "Content similarity: 87.5%"
+          ],
+          "merged": true,
+          "alternateSnippets": [
+            "Dec 5, 2024 ... dnd kit – a lightweight React library for building performant and accessible drag and drop experiences. Latest version: 6.3.1, ...",
+            "Dec 15, 2025 ... [Stable release](https://img.shields.io/npm/v/@dnd-kit/react.svg)](https://npm.im/@dnd-kit/react). Latest version: 0.2.1, last published: a ...",
+            "May 22, 2022 ... To try a development release before the official release, install each @dnd-kit package you intend to use with the @next tag. Copy npm ...",
+            "Sep 7, 2025 ... 96 votes, 27 comments. @dnd-kit-svelte/svelte is a new package I shipped recently. It mirrors the \"experimental\" @dnd-kit/react but for ..."
+          ],
+          "alternateTitles": [
+            "@dnd-kit/core - npm",
+            "@dnd-kit/react - npm",
+            "Installation | @dnd-kit – Documentation",
+            "New Svelte Drag-and-Drop toolkit (dnd-kit-svelte) with a simpler API ..."
+          ],
+          "alternateUrls": [
+            "https://www.npmjs.com/package/@dnd-kit/core",
+            "https://www.npmjs.com/package/@dnd-kit/react",
+            "https://docs.dndkit.com/introduction/installation",
+            "https://www.reddit.com/r/sveltejs/comments/1nb8hgq/new_svelte_draganddrop_toolkit_dndkitsvelte_with/"
+          ],
+          "mergedDuplicates": 4,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 4
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 5,
+      "finalCount": 1,
+      "duplicatesRemoved": 4,
+      "deduplicationRate": "80.0%"
+    }
+  },
+  "expiry": null
+}

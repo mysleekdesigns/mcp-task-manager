@@ -1,0 +1,105 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "The Foundation for your Design System - shadcn/ui",
+        "link": "https://ui.shadcn.com/",
+        "snippet": "A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Source. Open Code.",
+        "displayLink": "ui.shadcn.com",
+        "formattedUrl": "https://ui.shadcn.com/",
+        "htmlSnippet": "A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Source. Open Code.",
+        "pagemap": {
+          "metatags": {
+            "title": "The Foundation for your Design System - shadcn/ui",
+            "description": "A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Source. Open Code.",
+            "image": "https://ui.shadcn.com/og?title=The%20Foundation%20for%20your%20Design%20System&description=A%20set%20of%20beautifully%20designed%20components%20that%20you%20can%20customize%2C%20extend%2C%20and%20build%20on.%20Start%20here%20then%20make%20it%20your%20own.%20Open%20Source.%20Open%20Code.",
+            "author": "shadcn",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlbKXPEIrCKTti2VG7vBLkwTAhlzY_sK5uo8Lz6i8P1Xyp7oBHxqlgWGbE&s",
+            "width": "311",
+            "height": "162"
+          },
+          "image": "https://ui.shadcn.com/og?title=The%20Foundation%20for%20your%20Design%20System&description=A%20set%20of%20beautifully%20designed%20components%20that%20you%20can%20customize%2C%20extend%2C%20and%20build%20on.%20Start%20here%20then%20make%20it%20your%20own.%20Open%20Source.%20Open%20Code."
+        },
+        "metadata": {},
+        "originalIndex": 3,
+        "normalizedUrl": "https://ui.shadcn.com/",
+        "contentHash": "1100101000110000000000000000000011001010001100000000000000000000",
+        "titleTokens": [
+          "the",
+          "foundation",
+          "for",
+          "your",
+          "design",
+          "system",
+          "shadcn",
+          "ui"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://ui.shadcn.com/",
+          "duplicateOf": 0,
+          "duplicateReasons": [
+            "Content similarity: 90.6%"
+          ],
+          "merged": true,
+          "alternateSnippets": [
+            "Jul 15, 2025 ... js 15. Hey folks, I'm using ShadCN UI in an Nx monorepo setup with: Tailwind CSS v4; Next.js 15.",
+            "Feb 22, 2025 ... Tailwind v4 works fine in other Next.js projects I've tested. Manual Installation (shadcn/ui Docs). Followed the guide: https://ui.shadcn.com/ ...",
+            "Tailwind v4. If you're already using Tailwind v4, you can upgrade to the ... After upgrading the Calendar component, you can install the new blocks by running the ...",
+            "Mar 17, 2025 ... css setup, the tailwind configuration, or something else entirely. Has anyone here integrated Shadcn UI with Tailwind v4 in a monorepo setup?",
+            "May 15, 2025 ... Use Shadcn UI with Tailwind CSS v4. It's minimal, fast to set up, and easy to customize. While it lacks some advanced inputs, you can build or extend those as ...",
+            "Feb 12, 2025 ... This article will walk you through integrating React 19, Tailwind CSS v4, and Shadcn/ui, all without TypeScript. Follow these steps for a smooth development ...",
+            "Jan 28, 2025 ... Update 2025-02-06. Migrate old Shadcn project. Now, Shadcn officially started supporting TailwindCSS v4. See: How to upgrade your Shadcn ...",
+            "Mar 19, 2025 ... ... Shadcn UI, and Tailwind CSS v4 can significantly streamline your workflow. This guide provides a detailed walkthrough for setting up an Nx ...",
+            "Dec 12, 2025 ... Modern UI: Clean, professional interface using Tailwind CSS v4 and shadcn/ui ... - [ ] Configure Tailwind CSS v4 - [ ] Install shadcn/ui ..."
+          ],
+          "alternateTitles": [
+            "ShadCN UI styles not working in Nx Monorepo with Tailwind v4 and ...",
+            "[bug]: Tailwind CSS IntelliSense Doesn't work with npx shadcn ...",
+            "Calendar - shadcn/ui",
+            "Need help with Shadcn UI styling in Tailwind v4 and Tanstack start ...",
+            "Choosing the Right UI Library for a Next.js Project with Tailwind CSS ...",
+            "Setting Up React 19 with Tailwind CSS v4 and Shadcn/ui (Without ...",
+            "javascript - Error Installing Shadcn UI and Tailwind CSS in React.js ...",
+            "Nx Workspace Guide(v20): Next.js + React Component Library + ...",
+            "Building a Document Signing System in Record Time with Claude ..."
+          ],
+          "alternateUrls": [
+            "https://github.com/shadcn-ui/ui/issues/7828",
+            "https://github.com/shadcn-ui/ui/issues/6740",
+            "https://ui.shadcn.com/docs/components/calendar",
+            "https://www.answeroverflow.com/m/1351161878847684618",
+            "https://www.reddit.com/r/nextjs/comments/1kn6ez4/choosing_the_right_ui_library_for_a_nextjs/",
+            "https://medium.com/@sumitnce1/setting-up-react-19-with-tailwind-css-v4-and-shadcn-ui-without-typescript-b47136d335da",
+            "https://stackoverflow.com/questions/79393879/error-installing-shadcn-ui-and-tailwind-css-in-react-js-project-with-vite",
+            "https://dgamer007.medium.com/nx-workspace-guide-v20-next-js-react-component-library-shadcn-integration-tailwindcss-v4-12f69a54b8c6",
+            "https://javascript.plainenglish.io/building-a-document-signing-system-in-record-time-with-claude-opus-4-5-and-antigravity-ide-7b43bc6bc03c"
+          ],
+          "mergedDuplicates": 9,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 9
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 10,
+      "finalCount": 1,
+      "duplicatesRemoved": 9,
+      "deduplicationRate": "90.0%"
+    }
+  },
+  "expiry": null
+}

@@ -1,0 +1,78 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "node-pty - npm",
+        "link": "https://www.npmjs.com/package/node-pty",
+        "snippet": "Dec 22, 2025 ... Fork pseudoterminals in Node.JS. Latest version: 1.1.0, last published: 25 days ago. Start using node-pty in your project by running `npm i ...",
+        "displayLink": "www.npmjs.com",
+        "formattedUrl": "https://www.npmjs.com/package/node-pty",
+        "htmlSnippet": "Dec 22, 2025 <b>...</b> Fork pseudoterminals in Node.JS. <b>Latest version</b>: 1.1.0, last published: 25 days ago. Start using <b>node</b>-<b>pty</b> in your project by running `<b>npm</b> i&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "node-pty",
+            "description": "Fork pseudoterminals in Node.JS. Latest version: 1.1.0, last published: 25 days ago. Start using node-pty in your project by running `npm i node-pty`. There are 568 other projects in the npm registry using node-pty.",
+            "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9_PIZpTqIpa0liCRRnQUmkhj2w3NCMbs2QR_X8Qe2cC-areLX1GkLYUF6&s",
+            "width": "310",
+            "height": "163"
+          },
+          "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png"
+        },
+        "metadata": {},
+        "originalIndex": 0,
+        "normalizedUrl": "https://npmjs.com/package/node-pty",
+        "contentHash": "1100011000000000000000000000000011000110000000000000000000000000",
+        "titleTokens": [
+          "node",
+          "pty",
+          "npm"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://www.npmjs.com/package/node-pty",
+          "duplicateOf": null,
+          "duplicateReasons": [],
+          "merged": true,
+          "alternateSnippets": [
+            "The current node-pty release supports only Node.js v16. In your case, you try to use it with Node.js v20. What can be done to use it with the latest versions ...",
+            "Nov 20, 2024 ... ... node-pty-prebuilt-multiarch/build/Release/pty.node. npm error sh ... find Python You need to install the latest version of Python. npm ...",
+            "Jul 22, 2025 ... Where does npm install packages? 1296 · How to install Java 8 on Mac · 7 .node is not a valid Win32 application · 827 · Node Version Manager ...",
+            "Oct 23, 2023 ... ... [node-pty] Failed to rebuild npm modules automatically. Manual ... npm notice New minor version of npm available! 10.1.0 -> 10.2.1. npm ..."
+          ],
+          "alternateTitles": [
+            "node-pty install is failed with gyp ERR · Issue #3077 · nodejs/node-gyp",
+            "Updating Node.js fail : r/homebridge",
+            "node.js - fail to install node-pty library - Stack Overflow",
+            "Latest UI Update - Broken!!! : r/homebridge"
+          ],
+          "alternateUrls": [
+            "https://github.com/nodejs/node-gyp/issues/3077",
+            "https://www.reddit.com/r/homebridge/comments/1gvtlnv/updating_nodejs_fail/",
+            "https://stackoverflow.com/questions/79710681/fail-to-install-node-pty-library",
+            "https://www.reddit.com/r/homebridge/comments/17ewwm2/latest_ui_update_broken/"
+          ],
+          "mergedDuplicates": 4,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 4
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 5,
+      "finalCount": 1,
+      "duplicatesRemoved": 4,
+      "deduplicationRate": "80.0%"
+    }
+  },
+  "expiry": null
+}

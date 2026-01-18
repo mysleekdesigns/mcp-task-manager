@@ -1,0 +1,110 @@
+{
+  "value": {
+    "query": "TypeScript latest version 2025 2026",
+    "expanded_queries": [
+      "TypeScript latest version 2025 2026",
+      "typescript lat version 2025 2026",
+      "\"TypeScript latest version 2025 2026\"",
+      "typescript latest",
+      "typescript latest version"
+    ],
+    "results": [
+      {
+        "title": "How to set up TypeScript - TypeScript",
+        "link": "https://www.typescriptlang.org/download/",
+        "snippet": "To do this, run npm install -g typescript . This will install the latest version (currently 5.9). via Visual Studio Marketplace. You can install TypeScript as a ...",
+        "displayLink": "www.typescriptlang.org",
+        "formattedUrl": "https://www.typescriptlang.org/download/",
+        "htmlSnippet": "To do this, run npm install -g <b>typescript</b> . This will install the <b>latest version</b> (currently 5.9). via Visual Studio Marketplace. You can install <b>TypeScript</b> as a&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "How to set up TypeScript",
+            "description": "Add TypeScript to your project, or install TypeScript globally",
+            "image": "",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          }
+        },
+        "metadata": {},
+        "originalIndex": 4,
+        "normalizedUrl": "https://typescriptlang.org/download",
+        "contentHash": "1100100100110000000000000000000011001001001100000000000000000000",
+        "titleTokens": [
+          "how",
+          "to",
+          "set",
+          "up",
+          "typescript",
+          "typescript"
+        ]
+      }
+    ],
+    "total_results": "15400000",
+    "search_time": 0.245934,
+    "offset": 0,
+    "limit": 5,
+    "cached": false,
+    "provider": {
+      "name": "crawlforge",
+      "backend": "Google Search",
+      "capabilities": {
+        "requiresApiKey": true,
+        "apiKeyType": "CrawlForge API key",
+        "supportsPagination": true,
+        "supportsLanguageFilter": true,
+        "supportsDateFilter": true,
+        "supportsSiteFilter": true,
+        "supportsFileTypeFilter": true,
+        "supportsSafeSearch": true,
+        "supportsLocalization": true,
+        "supportsCountryTargeting": true,
+        "maxResultsPerRequest": 100,
+        "rateLimit": "Based on your CrawlForge plan",
+        "creditCost": "2 credits per search",
+        "features": [
+          "Google Search results via CrawlForge proxy",
+          "No Google API credentials needed",
+          "Full text search",
+          "Image metadata",
+          "Exact phrase matching",
+          "Boolean operators",
+          "Site-specific search",
+          "File type filtering",
+          "Date range filtering",
+          "Language filtering",
+          "Country targeting",
+          "Safe search",
+          "Localization support",
+          "Related searches",
+          "Rich snippets"
+        ],
+        "benefits": [
+          "Simplified authentication (one API key)",
+          "Unified billing through CrawlForge",
+          "Enterprise-grade reliability",
+          "No Google API quota management",
+          "Built-in rate limiting",
+          "Credit-based pricing"
+        ]
+      }
+    },
+    "localization": null,
+    "processing": {
+      "ranking": null,
+      "deduplication": {
+        "originalCount": 5,
+        "finalCount": 1,
+        "duplicatesRemoved": 4,
+        "deduplicationRate": "80.0%"
+      },
+      "query_expansion": {
+        "original_query": "TypeScript latest version 2025 2026",
+        "expanded_count": 5,
+        "used_query": "TypeScript latest version 2025 2026"
+      },
+      "localization_applied": false
+    }
+  },
+  "expiry": null
+}

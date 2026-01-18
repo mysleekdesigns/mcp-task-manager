@@ -1,0 +1,114 @@
+{
+  "value": {
+    "query": "site:npmjs.com \"@xterm/xterm\"",
+    "expanded_queries": [
+      "site:npmjs.com \"@xterm/xterm\"",
+      "site npmj com xterm xterm",
+      "site AND npmjs AND com AND xterm AND xterm",
+      "site OR npmjs OR com OR xterm OR xterm",
+      "(site AND npmjs) OR (com OR xterm OR xterm)"
+    ],
+    "results": [
+      {
+        "title": "@xterm/addon-canvas - npm",
+        "link": "https://www.npmjs.com/package/@xterm/addon-canvas",
+        "snippet": "Apr 5, 2024 ... import { Terminal } from '@xterm/xterm'; import { CanvasAddon } from '@xterm/addon-canvas'; const terminal = new Terminal(); terminal.open ...",
+        "displayLink": "www.npmjs.com",
+        "formattedUrl": "https://www.npmjs.com/package/@xterm/addon-canvas",
+        "htmlSnippet": "Apr 5, 2024 <b>...</b> import { Terminal } from &#39;@<b>xterm/xterm</b>&#39;; import { CanvasAddon } from &#39;@xterm/addon-canvas&#39;; const terminal = new Terminal(); terminal.open&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "@xterm/addon-canvas",
+            "description": "An addon for [xterm.js](https://github.com/xtermjs/xterm.js) that enables a canvas-based renderer using a 2d context to draw. This addon requires xterm.js v5+.. Latest version: 0.7.0, last published: 2 years ago. Start using @xterm/addon-canvas in your project by running `npm i @xterm/addon-canvas`. There are 17 other projects in the npm registry using @xterm/addon-canvas.",
+            "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9_PIZpTqIpa0liCRRnQUmkhj2w3NCMbs2QR_X8Qe2cC-areLX1GkLYUF6&s",
+            "width": "310",
+            "height": "163"
+          },
+          "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png"
+        },
+        "metadata": {},
+        "originalIndex": 4,
+        "normalizedUrl": "https://npmjs.com/package/@xterm/addon-canvas",
+        "contentHash": "0000011001000000100010000000000000000110010000001000100000000000",
+        "titleTokens": [
+          "xterm",
+          "addon",
+          "canvas",
+          "npm"
+        ]
+      }
+    ],
+    "total_results": "23",
+    "search_time": 0.127845,
+    "offset": 0,
+    "limit": 5,
+    "cached": false,
+    "provider": {
+      "name": "crawlforge",
+      "backend": "Google Search",
+      "capabilities": {
+        "requiresApiKey": true,
+        "apiKeyType": "CrawlForge API key",
+        "supportsPagination": true,
+        "supportsLanguageFilter": true,
+        "supportsDateFilter": true,
+        "supportsSiteFilter": true,
+        "supportsFileTypeFilter": true,
+        "supportsSafeSearch": true,
+        "supportsLocalization": true,
+        "supportsCountryTargeting": true,
+        "maxResultsPerRequest": 100,
+        "rateLimit": "Based on your CrawlForge plan",
+        "creditCost": "2 credits per search",
+        "features": [
+          "Google Search results via CrawlForge proxy",
+          "No Google API credentials needed",
+          "Full text search",
+          "Image metadata",
+          "Exact phrase matching",
+          "Boolean operators",
+          "Site-specific search",
+          "File type filtering",
+          "Date range filtering",
+          "Language filtering",
+          "Country targeting",
+          "Safe search",
+          "Localization support",
+          "Related searches",
+          "Rich snippets"
+        ],
+        "benefits": [
+          "Simplified authentication (one API key)",
+          "Unified billing through CrawlForge",
+          "Enterprise-grade reliability",
+          "No Google API quota management",
+          "Built-in rate limiting",
+          "Credit-based pricing"
+        ]
+      }
+    },
+    "localization": null,
+    "processing": {
+      "ranking": null,
+      "deduplication": {
+        "originalCount": 5,
+        "finalCount": 1,
+        "duplicatesRemoved": 4,
+        "deduplicationRate": "80.0%"
+      },
+      "query_expansion": {
+        "original_query": "site:npmjs.com \"@xterm/xterm\"",
+        "expanded_count": 5,
+        "used_query": "site:npmjs.com \"@xterm/xterm\""
+      },
+      "localization_applied": false
+    }
+  },
+  "expiry": null
+}

@@ -1,0 +1,77 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "xterm - npm",
+        "link": "https://www.npmjs.com/package/xterm",
+        "snippet": "Sep 7, 2023 ... Full xterm terminal, in your browser. Latest version: 5.3 ... Move to @xterm/xterm instead. xterm. TypeScript icon, indicating that ...",
+        "displayLink": "www.npmjs.com",
+        "formattedUrl": "https://www.npmjs.com/package/xterm",
+        "htmlSnippet": "Sep 7, 2023 <b>...</b> Full xterm terminal, in your browser. <b>Latest version</b>: 5.3 ... Move to @<b>xterm/xterm</b> instead. xterm. TypeScript icon, indicating that&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "xterm",
+            "description": "Full xterm terminal, in your browser. Latest version: 5.3.0, last published: 2 years ago. Start using xterm in your project by running `npm i xterm`. There are 426 other projects in the npm registry using xterm.",
+            "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9_PIZpTqIpa0liCRRnQUmkhj2w3NCMbs2QR_X8Qe2cC-areLX1GkLYUF6&s",
+            "width": "310",
+            "height": "163"
+          },
+          "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png"
+        },
+        "metadata": {},
+        "originalIndex": 0,
+        "normalizedUrl": "https://npmjs.com/package/xterm",
+        "contentHash": "1110011000010000000010000000000011100110000100000000100000000000",
+        "titleTokens": [
+          "xterm",
+          "npm"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://www.npmjs.com/package/xterm",
+          "duplicateOf": null,
+          "duplicateReasons": [],
+          "merged": true,
+          "alternateSnippets": [
+            "#5143 Publish commit and set peerDependencies to @xterm/xterm beta when publishing ... Fix the addon in the latest version of Chrome (#3936) via @Tyriar ...",
+            "Sep 4, 2024 ... I do not often create new ... $ npm install @xterm/xterm npm ERR! code ETARGET npm ERR! notarget No matching version found for xterm@^5.5.0.",
+            "Aug 1, 2016 ... version-control; discord.js; doctrine-orm; package; f#; rubygems; get ... npm install express socket.io ssh2 xterm xterm-addon-fit. index.html ...",
+            "npm install @xterm/xterm. Copy. Try clicking italic text. Getting Started. First you need to install the module, we ship exclusively through npm so you need ..."
+          ],
+          "alternateTitles": [
+            "Releases · xtermjs/xterm.js",
+            "missing npm package @xterm/addon-unicode-graphemes · Issue ...",
+            "javascript - Connecting to remote SSH server (via Node.js/html5 ...",
+            "Xterm.js"
+          ],
+          "alternateUrls": [
+            "https://github.com/xtermjs/xterm.js/releases",
+            "https://github.com/xtermjs/xterm.js/issues/5147",
+            "https://stackoverflow.com/questions/38689707/connecting-to-remote-ssh-server-via-node-js-html5-console",
+            "http://xtermjs.org/"
+          ],
+          "mergedDuplicates": 4,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 4
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 5,
+      "finalCount": 1,
+      "duplicatesRemoved": 4,
+      "deduplicationRate": "80.0%"
+    }
+  },
+  "expiry": null
+}

@@ -1,0 +1,113 @@
+{
+  "value": {
+    "query": "Auth.js v5 NextAuth configuration Next.js 2026",
+    "expanded_queries": [
+      "Auth.js v5 NextAuth configuration Next.js 2026",
+      "auth js v5 nextauth configuration next js 2026",
+      "\"Auth.js v5 NextAuth configuration Next.js 2026\"",
+      "auth js",
+      "auth js v5"
+    ],
+    "results": [
+      {
+        "title": "Installation - Auth.js",
+        "link": "https://authjs.dev/getting-started/installation",
+        "snippet": "Oct 9, 2025 ... Next, create the Auth.js config file and object. This is where you can control the behaviour of the library and specify custom authentication ...",
+        "displayLink": "authjs.dev",
+        "formattedUrl": "https://authjs.dev/getting-started/installation",
+        "htmlSnippet": "Oct 9, 2025 <b>...</b> <b>Next</b>, create the <b>Auth</b>.<b>js config</b> file and object. This is where you can control the behaviour of the library and specify custom authentication&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "Auth.js | Installation",
+            "description": "Authentication for the Web",
+            "image": "https://authjs.dev/api/og?title=Auth.js%20%7C%20Installation",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcTU033X637ypTNgUvTVVXkfYh1RPkxSMaHSlTM-C38XDFZCozFlYqupf-&s",
+            "width": "310",
+            "height": "163"
+          },
+          "image": "https://authjs.dev/api/og?title=Auth.js%20%7C%20Installation"
+        },
+        "metadata": {},
+        "originalIndex": 2,
+        "normalizedUrl": "https://authjs.dev/getting-started/installation",
+        "contentHash": "1000111000000000100000000000000010001110000000001000000000000000",
+        "titleTokens": [
+          "installation",
+          "auth",
+          "js"
+        ]
+      }
+    ],
+    "total_results": "3740",
+    "search_time": 0.248858,
+    "offset": 0,
+    "limit": 10,
+    "cached": false,
+    "provider": {
+      "name": "crawlforge",
+      "backend": "Google Search",
+      "capabilities": {
+        "requiresApiKey": true,
+        "apiKeyType": "CrawlForge API key",
+        "supportsPagination": true,
+        "supportsLanguageFilter": true,
+        "supportsDateFilter": true,
+        "supportsSiteFilter": true,
+        "supportsFileTypeFilter": true,
+        "supportsSafeSearch": true,
+        "supportsLocalization": true,
+        "supportsCountryTargeting": true,
+        "maxResultsPerRequest": 100,
+        "rateLimit": "Based on your CrawlForge plan",
+        "creditCost": "2 credits per search",
+        "features": [
+          "Google Search results via CrawlForge proxy",
+          "No Google API credentials needed",
+          "Full text search",
+          "Image metadata",
+          "Exact phrase matching",
+          "Boolean operators",
+          "Site-specific search",
+          "File type filtering",
+          "Date range filtering",
+          "Language filtering",
+          "Country targeting",
+          "Safe search",
+          "Localization support",
+          "Related searches",
+          "Rich snippets"
+        ],
+        "benefits": [
+          "Simplified authentication (one API key)",
+          "Unified billing through CrawlForge",
+          "Enterprise-grade reliability",
+          "No Google API quota management",
+          "Built-in rate limiting",
+          "Credit-based pricing"
+        ]
+      }
+    },
+    "localization": null,
+    "processing": {
+      "ranking": null,
+      "deduplication": {
+        "originalCount": 10,
+        "finalCount": 1,
+        "duplicatesRemoved": 9,
+        "deduplicationRate": "90.0%"
+      },
+      "query_expansion": {
+        "original_query": "Auth.js v5 NextAuth configuration Next.js 2026",
+        "expanded_count": 5,
+        "used_query": "Auth.js v5 NextAuth configuration Next.js 2026"
+      },
+      "localization_applied": false
+    }
+  },
+  "expiry": null
+}

@@ -1,0 +1,82 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "@xterm/addon-canvas - npm",
+        "link": "https://www.npmjs.com/package/@xterm/addon-canvas",
+        "snippet": "Apr 5, 2024 ... import { Terminal } from '@xterm/xterm'; import { CanvasAddon } from '@xterm/addon-canvas'; const terminal = new Terminal(); terminal.open ...",
+        "displayLink": "www.npmjs.com",
+        "formattedUrl": "https://www.npmjs.com/package/@xterm/addon-canvas",
+        "htmlSnippet": "Apr 5, 2024 <b>...</b> import { Terminal } from &#39;@<b>xterm/xterm</b>&#39;; import { CanvasAddon } from &#39;@xterm/addon-canvas&#39;; const terminal = new Terminal(); terminal.open&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "@xterm/addon-canvas",
+            "description": "An addon for [xterm.js](https://github.com/xtermjs/xterm.js) that enables a canvas-based renderer using a 2d context to draw. This addon requires xterm.js v5+.. Latest version: 0.7.0, last published: 2 years ago. Start using @xterm/addon-canvas in your project by running `npm i @xterm/addon-canvas`. There are 17 other projects in the npm registry using @xterm/addon-canvas.",
+            "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9_PIZpTqIpa0liCRRnQUmkhj2w3NCMbs2QR_X8Qe2cC-areLX1GkLYUF6&s",
+            "width": "310",
+            "height": "163"
+          },
+          "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png"
+        },
+        "metadata": {},
+        "originalIndex": 4,
+        "normalizedUrl": "https://npmjs.com/package/@xterm/addon-canvas",
+        "contentHash": "0000011001000000100010000000000000000110010000001000100000000000",
+        "titleTokens": [
+          "xterm",
+          "addon",
+          "canvas",
+          "npm"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://www.npmjs.com/package/@xterm/addon-canvas",
+          "duplicateOf": 0,
+          "duplicateReasons": [
+            "Content similarity: 81.3%",
+            "Combined similarity: 64.2%"
+          ],
+          "merged": true,
+          "alternateSnippets": [
+            "Apr 5, 2024 ... import { Terminal } from '@xterm/xterm'; import { WebLinksAddon } from '@xterm/addon-web-links'; const terminal = new Terminal(); terminal.",
+            "Apr 5, 2024 ... Full xterm terminal, in your browser. Latest version: 5.5.0, last published: 2 years ago. Start using @xterm/xterm in your project by ...",
+            "Dec 22, 2025 ... import { Terminal } from '@xterm/xterm'; import { FitAddon } from '@xterm/addon-fit'; const terminal = new Terminal(); const fitAddon = new ...",
+            "Apr 5, 2024 ... import { Terminal } from '@xterm/xterm'; import { WebglAddon } from '@xterm/addon-webgl'; const terminal = new Terminal(); terminal.open ..."
+          ],
+          "alternateTitles": [
+            "@xterm/addon-web-links - npm",
+            "@xterm/xterm - npm",
+            "@xterm/addon-fit - npm",
+            "@xterm/addon-webgl - npm"
+          ],
+          "alternateUrls": [
+            "https://www.npmjs.com/package/@xterm/addon-web-links",
+            "https://www.npmjs.com/package/@xterm/xterm?activeTab=readme",
+            "https://www.npmjs.com/package/@xterm/addon-fit?activeTab=readme",
+            "https://www.npmjs.com/package/@xterm/addon-webgl?activeTab=dependents"
+          ],
+          "mergedDuplicates": 4,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 4
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 5,
+      "finalCount": 1,
+      "duplicatesRemoved": 4,
+      "deduplicationRate": "80.0%"
+    }
+  },
+  "expiry": null
+}

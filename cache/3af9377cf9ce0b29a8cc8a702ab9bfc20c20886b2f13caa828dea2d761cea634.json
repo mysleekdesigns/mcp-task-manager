@@ -1,0 +1,86 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "dnd kit – a modern drag and drop toolkit for React",
+        "link": "https://dndkit.com/",
+        "snippet": "extensible drag & drop toolkit for React. Get Started. npm install @dnd-kit/core ... 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30",
+        "displayLink": "dndkit.com",
+        "formattedUrl": "https://dndkit.com/",
+        "htmlSnippet": "extensible drag &amp; drop toolkit for React. Get Started. <b>npm</b> install @<b>dnd-kit/core</b> ... <b>6 7</b> 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30",
+        "pagemap": {
+          "metatags": {
+            "title": "dnd kit – a modern drag and drop toolkit for React",
+            "description": "A modular, lightweight, performant, accessible and extensible drag & drop toolkit for React.",
+            "image": "https://dndkit.com/twitter-social-banner.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjE3nCylzhKtJPZRt0UEO6_XSq8KsVtAzTnMqfpM7pzj94Wtj9UjlK1f8&s",
+            "width": "318",
+            "height": "159"
+          },
+          "image": "https://dndkit.com/twitter-social-banner.png"
+        },
+        "metadata": {},
+        "originalIndex": 1,
+        "normalizedUrl": "https://dndkit.com/",
+        "contentHash": "1110010001100000000000000000000011100100011000000000000000000000",
+        "titleTokens": [
+          "dnd",
+          "kit",
+          "modern",
+          "drag",
+          "and",
+          "drop",
+          "toolkit",
+          "for",
+          "react"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://dndkit.com/",
+          "duplicateOf": 0,
+          "duplicateReasons": [
+            "Content similarity: 78.1%"
+          ],
+          "merged": true,
+          "alternateSnippets": [
+            "Mar 11, 2021 ... ... 6 +10,7 @@ import { import {Sortable, Props as SortableProps} from ... dnd-kit/core'; +import { + arrayMove, + useSortable, + ...",
+            "Aug 31, 2023 ... 7 , though, I don't think it'd be a good solution to install one ... Everything works smoothly on npm@6 . The versions: Copy. node-gyp ...",
+            "Aug 6, 2024 ... For me @dnd-kit/core is the best and well supported. I had to ... 70 upvotes · 6 comments. Best way to organize React Query for a team ...",
+            "Nov 28, 2025 ... I've been writing React for 6 years. I know its quirks, its ... Round 7: Real-Time Features (WebSockets). Both used Supabase real ..."
+          ],
+          "alternateTitles": [
+            "Provide mouse position to collision detection algorithm · Issue #127 ...",
+            "reactjs - node-gyp node-sass problem with using `npm install ...",
+            "Since react-beautiful-dnd is now abandoned. Which library is your ...",
+            "Svelte vs React: I Built the Same App in Both — Here's What I ..."
+          ],
+          "alternateUrls": [
+            "https://github.com/clauderic/dnd-kit/issues/127",
+            "https://stackoverflow.com/questions/77017237/node-gyp-node-sass-problem-with-using-npm-install",
+            "https://www.reddit.com/r/reactjs/comments/1eln18p/since_reactbeautifuldnd_is_now_abandoned_which/",
+            "https://navanathjadhav.medium.com/svelte-vs-react-i-built-the-same-app-in-both-heres-what-i-learned-57f64cc0e9ca"
+          ],
+          "mergedDuplicates": 4,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 4
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 5,
+      "finalCount": 1,
+      "duplicatesRemoved": 4,
+      "deduplicationRate": "80.0%"
+    }
+  },
+  "expiry": null
+}

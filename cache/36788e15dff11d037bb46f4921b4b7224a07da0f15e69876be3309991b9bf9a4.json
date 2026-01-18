@@ -1,0 +1,113 @@
+{
+  "value": {
+    "query": "simple-git npm latest version",
+    "expanded_queries": [
+      "simple-git npm latest version",
+      "simple git npm lat version",
+      "\"simple-git npm latest version\"",
+      "simple git",
+      "simple git npm"
+    ],
+    "results": [
+      {
+        "title": "simple-git - npm",
+        "link": "https://www.npmjs.com/package/simple-git",
+        "snippet": "Nov 2, 2025 ... Simple GIT interface for node.js. Latest version: 3.30.0, last published: 2 months ago. Start using simple-git in your project by running ...",
+        "displayLink": "www.npmjs.com",
+        "formattedUrl": "https://www.npmjs.com/package/simple-git",
+        "htmlSnippet": "Nov 2, 2025 <b>...</b> <b>Simple GIT</b> interface for <b>node</b>.js. <b>Latest version</b>: 3.30.0, last published: 2 months ago. Start using <b>simple</b>-<b>git</b> in your project by running&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "simple-git",
+            "description": "Simple GIT interface for node.js. Latest version: 3.30.0, last published: 2 months ago. Start using simple-git in your project by running `npm i simple-git`. There are 6560 other projects in the npm registry using simple-git.",
+            "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9_PIZpTqIpa0liCRRnQUmkhj2w3NCMbs2QR_X8Qe2cC-areLX1GkLYUF6&s",
+            "width": "310",
+            "height": "163"
+          },
+          "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png"
+        },
+        "metadata": {},
+        "originalIndex": 0,
+        "normalizedUrl": "https://npmjs.com/package/simple-git",
+        "contentHash": "0100110000000000000000000000000001001100000000000000000000000000",
+        "titleTokens": [
+          "simple",
+          "git",
+          "npm"
+        ]
+      }
+    ],
+    "total_results": "59700000",
+    "search_time": 0.376624,
+    "offset": 0,
+    "limit": 5,
+    "cached": false,
+    "provider": {
+      "name": "crawlforge",
+      "backend": "Google Search",
+      "capabilities": {
+        "requiresApiKey": true,
+        "apiKeyType": "CrawlForge API key",
+        "supportsPagination": true,
+        "supportsLanguageFilter": true,
+        "supportsDateFilter": true,
+        "supportsSiteFilter": true,
+        "supportsFileTypeFilter": true,
+        "supportsSafeSearch": true,
+        "supportsLocalization": true,
+        "supportsCountryTargeting": true,
+        "maxResultsPerRequest": 100,
+        "rateLimit": "Based on your CrawlForge plan",
+        "creditCost": "2 credits per search",
+        "features": [
+          "Google Search results via CrawlForge proxy",
+          "No Google API credentials needed",
+          "Full text search",
+          "Image metadata",
+          "Exact phrase matching",
+          "Boolean operators",
+          "Site-specific search",
+          "File type filtering",
+          "Date range filtering",
+          "Language filtering",
+          "Country targeting",
+          "Safe search",
+          "Localization support",
+          "Related searches",
+          "Rich snippets"
+        ],
+        "benefits": [
+          "Simplified authentication (one API key)",
+          "Unified billing through CrawlForge",
+          "Enterprise-grade reliability",
+          "No Google API quota management",
+          "Built-in rate limiting",
+          "Credit-based pricing"
+        ]
+      }
+    },
+    "localization": null,
+    "processing": {
+      "ranking": null,
+      "deduplication": {
+        "originalCount": 5,
+        "finalCount": 1,
+        "duplicatesRemoved": 4,
+        "deduplicationRate": "80.0%"
+      },
+      "query_expansion": {
+        "original_query": "simple-git npm latest version",
+        "expanded_count": 5,
+        "used_query": "simple-git npm latest version"
+      },
+      "localization_applied": false
+    }
+  },
+  "expiry": null
+}

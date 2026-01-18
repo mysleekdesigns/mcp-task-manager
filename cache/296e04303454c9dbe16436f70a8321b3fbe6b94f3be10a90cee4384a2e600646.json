@@ -1,0 +1,86 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "missing npm package @xterm/addon-unicode-graphemes · Issue ...",
+        "link": "https://github.com/xtermjs/xterm.js/issues/5147",
+        "snippet": "Sep 4, 2024 ... Pull requests 6 ... $ npm install @xterm/xterm npm ERR! code ETARGET npm ERR! notarget No matching version found for xterm@^5.5.0.",
+        "displayLink": "github.com",
+        "formattedUrl": "https://github.com/xtermjs/xterm.js/issues/5147",
+        "htmlSnippet": "Sep 4, 2024 <b>...</b> Pull requests <b>6</b> ... $ <b>npm</b> install @<b>xterm/xterm npm</b> ERR! code ETARGET <b>npm</b> ERR! notarget No matching <b>version</b> found for xterm@^<b>5.5</b>.0.",
+        "pagemap": {
+          "metatags": {
+            "title": "missing npm package @xterm/addon-unicode-graphemes · Issue #5147 · xtermjs/xterm.js",
+            "description": "There is no package for @xterm/addon-unicode-graphemes on npmjs.com. Therefore, the Releases page has a bad link. I have never uploaded anything to npmjs.com but I can certainly help with whatever ...",
+            "image": "https://opengraph.githubassets.com/75c953da58fa28bb28c23f23253150162f4008db140f977d5eefc820a67b3be4/xtermjs/xterm.js/issues/5147",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBLdwMjJKKVE9Vszz6ofr7CXi1Z62VmQlNHuOXjI1D-bowLPnJqreTt5s&s",
+            "width": "225",
+            "height": "225"
+          },
+          "image": "https://avatars.githubusercontent.com/u/6193135?v=4&size=80"
+        },
+        "metadata": {},
+        "originalIndex": 2,
+        "normalizedUrl": "https://github.com/xtermjs/xterm.js/issues/5147",
+        "contentHash": "0000011000010000100000000000000000000110000100001000000000000000",
+        "titleTokens": [
+          "missing",
+          "npm",
+          "package",
+          "xterm",
+          "addon",
+          "unicode",
+          "graphemes",
+          "issue"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://github.com/xtermjs/xterm.js/issues/5147",
+          "duplicateOf": 0,
+          "duplicateReasons": [
+            "URL similarity: 82.7%",
+            "Content similarity: 93.8%"
+          ],
+          "merged": true,
+          "alternateSnippets": [
+            "npm list @xterm/xterm # shows └── @xterm/xterm@5.5.0 in my shell npm install @xterm/xterm@5.6.0-beta.66. which is then able to import into my js and run ...",
+            "Apr 5, 2024 ... Full xterm terminal, in your browser. Latest version: 5.5.0, last published: 2 years ago. Start using @xterm/xterm in your project by ...",
+            "npm · @xterm/xterm; @xterm/xterm@5.5.0-beta.2. @xterm/xterm@5.5.0-beta.2 vulnerabilities. Full xterm terminal, in your browser. latest version. 6.0.0. latest ...",
+            "Apr 3, 2012 ... Usually you'll want to use xterm , xterm-16color or xterm-256color . In particular, xterm-256color is the default for Terminal starting with Mac ..."
+          ],
+          "alternateTitles": [
+            "does \"import { Terminal } from '@xterm/xterm';\" work? #5183",
+            "@xterm/xterm - npm",
+            "@xterm/xterm 5.5.0-beta.2 vulnerabilities | Snyk",
+            "linux - What is the difference between xterm-color & xterm-256color ..."
+          ],
+          "alternateUrls": [
+            "https://github.com/xtermjs/xterm.js/discussions/5183",
+            "https://www.npmjs.com/package/@xterm/xterm?activeTab=readme",
+            "https://security.snyk.io/package/npm/%40xterm%2Fxterm/5.5.0-beta.2",
+            "https://stackoverflow.com/questions/10003136/what-is-the-difference-between-xterm-color-xterm-256color"
+          ],
+          "mergedDuplicates": 4,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 4
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 5,
+      "finalCount": 1,
+      "duplicatesRemoved": 4,
+      "deduplicationRate": "80.0%"
+    }
+  },
+  "expiry": null
+}

@@ -1,0 +1,181 @@
+{
+  "value": [
+    {
+      "title": "dnd kit – a modern drag and drop toolkit for React",
+      "link": "https://dndkit.com/",
+      "snippet": "A modern, lightweight, performant, accessible and extensible drag & drop toolkit for React.",
+      "displayLink": "dndkit.com",
+      "formattedUrl": "https://dndkit.com/",
+      "htmlSnippet": "A modern, lightweight, performant, accessible and extensible <b>drag</b> &amp; <b>drop</b> toolkit for <b>React</b>.",
+      "pagemap": {
+        "metatags": {
+          "title": "dnd kit – a modern drag and drop toolkit for React",
+          "description": "A modular, lightweight, performant, accessible and extensible drag & drop toolkit for React.",
+          "image": "https://dndkit.com/twitter-social-banner.png",
+          "author": "",
+          "publishedTime": "",
+          "modifiedTime": ""
+        },
+        "thumbnail": {
+          "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjE3nCylzhKtJPZRt0UEO6_XSq8KsVtAzTnMqfpM7pzj94Wtj9UjlK1f8&s",
+          "width": "318",
+          "height": "159"
+        },
+        "image": "https://dndkit.com/twitter-social-banner.png"
+      },
+      "metadata": {},
+      "originalIndex": 0,
+      "normalizedUrl": "https://dndkit.com/",
+      "contentHash": "0110111000010000100000000000000001101110000100001000000000000000",
+      "titleTokens": [
+        "dnd",
+        "kit",
+        "modern",
+        "drag",
+        "and",
+        "drop",
+        "toolkit",
+        "for",
+        "react"
+      ],
+      "deduplicationInfo": {
+        "originalUrl": "https://dndkit.com/",
+        "duplicateOf": 0,
+        "duplicateReasons": [
+          "Content similarity: 84.4%"
+        ],
+        "merged": true,
+        "alternateSnippets": [
+          "Oct 20, 2024 ... In this post, we'll walk through how to build a Kanban board using the dnd-kit library, one of the most flexible and powerful drag-and-drop libraries for React.",
+          "May 4, 2025 ... So my main problem is described in title. i can not detect exact column where i can add new task and re-render my board ... clauderic / dnd-kit ...",
+          "Dec 6, 2022 ... dnd kit is a lightweight drag-and-drop toolkit for React projects and could serve as an alternative to react-beautiful-dnd.",
+          "Drag and drop Accessible kanban board implementing using React, @dnd-kit, tailwind and shadcn/ui - Georgegriff/react-dnd-kit-tailwind-shadcn-ui.",
+          "Experience the power of organization and task management with our Kanban Board developed using React, Typescript, Tailwind CSS, and DnD-kit.",
+          "Oct 21, 2024 ... A video showing how to create a flexible and efficient Kanban board using the dnd-kit library for React. We go step-by-step through the core components.",
+          "Nov 11, 2023 ... ... (kanban board).. dnd kit does it beautifully with we'll understandable code. I tried other tools but it was for the web one.. and dnd kit was ...",
+          "Dec 11, 2022 ... I have Kanban board consisting of four repeating column components. ... drag and drop library dnd-kit not working in my React example · 0 · Drag ..."
+        ],
+        "alternateTitles": [
+          "Building a Drag-and-Drop Kanban Board with React and dnd-kit",
+          "When i drag sortable items over empty column sortable element ...",
+          "Build a Kanban board with dnd kit and React - LogRocket Blog",
+          "Georgegriff/react-dnd-kit-tailwind-shadcn-ui: Drag and drop ... - GitHub",
+          "Muhammad-Faizan-Tariq/kanban-board-react-dnd-kit ... - GitHub",
+          "Building a Drag-and-Drop Kanban Board with React and dnd-kit : r ...",
+          "[Need Suggestion] What's the best library for Drag & Drop ? : r/reactjs",
+          "dnd kit - DnD-Kit Incorrect behavior while trying to move item to ..."
+        ],
+        "alternateUrls": [
+          "https://radzion.com/blog/kanban",
+          "https://github.com/clauderic/dnd-kit/issues/1680",
+          "https://blog.logrocket.com/build-kanban-board-dnd-kit-react/",
+          "https://github.com/Georgegriff/react-dnd-kit-tailwind-shadcn-ui",
+          "https://github.com/Muhammad-Faizan-Tariq/kanban-board-react-dnd-kit",
+          "https://www.reddit.com/r/reactjs/comments/1g8h3c2/building_a_draganddrop_kanban_board_with_react/",
+          "https://www.reddit.com/r/reactjs/comments/17t704s/need_suggestion_whats_the_best_library_for_drag/",
+          "https://stackoverflow.com/questions/74764468/dnd-kit-incorrect-behavior-while-trying-to-move-item-to-another-container-in-rea"
+        ],
+        "mergedDuplicates": 8,
+        "duplicateUrls": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "totalDuplicatesFound": 8
+      },
+      "scores": {
+        "bm25": 1,
+        "semantic": 0.45913112912132514,
+        "authority": 0.43999999999999995,
+        "freshness": 0.5
+      },
+      "finalScore": 0.6757393387363976,
+      "rankingDetails": {
+        "scores": {
+          "bm25": 1,
+          "semantic": 0.45913112912132514,
+          "authority": 0.43999999999999995,
+          "freshness": 0.5
+        },
+        "weights": {
+          "bm25": 0.4,
+          "semantic": 0.3,
+          "authority": 0.2,
+          "freshness": 0.1
+        },
+        "originalIndex": 0,
+        "newRank": 1,
+        "rankChange": 0
+      }
+    },
+    {
+      "title": "React + dnd-kit + tailwind + shadcn/ui - Kanban Board",
+      "link": "https://georgegriff.github.io/react-dnd-kit-tailwind-shadcn-ui/",
+      "snippet": "@griffadev. Toggle theme. Drag and Drop Kanban Board. Move column: Todo Todo. Move task. Task. Implement user authentication. Move task. Task.",
+      "displayLink": "georgegriff.github.io",
+      "formattedUrl": "https://georgegriff.github.io/react-dnd-kit-tailwind-shadcn-ui/",
+      "htmlSnippet": "@griffadev. Toggle theme. <b>Drag</b> and <b>Drop Kanban Board</b>. Move column: Todo Todo. Move task. Task. Implement user authentication. Move task. Task.",
+      "pagemap": {
+        "metatags": {
+          "title": "",
+          "description": "",
+          "image": "",
+          "author": "",
+          "publishedTime": "",
+          "modifiedTime": ""
+        }
+      },
+      "metadata": {},
+      "originalIndex": 1,
+      "normalizedUrl": "https://georgegriff.github.io/react-dnd-kit-tailwind-shadcn-ui",
+      "contentHash": "1110001110111100010011000000000011100011101111000100110000000000",
+      "titleTokens": [
+        "react",
+        "dnd",
+        "kit",
+        "tailwind",
+        "shadcn",
+        "ui",
+        "kanban",
+        "board"
+      ],
+      "deduplicationInfo": {
+        "originalUrl": "https://georgegriff.github.io/react-dnd-kit-tailwind-shadcn-ui/",
+        "duplicateOf": null,
+        "duplicateReasons": [],
+        "merged": false,
+        "totalDuplicatesFound": 0
+      },
+      "scores": {
+        "bm25": 1,
+        "semantic": 0.3662335103823572,
+        "authority": 0.26,
+        "freshness": 0.5
+      },
+      "finalScore": 0.6118700531147072,
+      "rankingDetails": {
+        "scores": {
+          "bm25": 1,
+          "semantic": 0.3662335103823572,
+          "authority": 0.26,
+          "freshness": 0.5
+        },
+        "weights": {
+          "bm25": 0.4,
+          "semantic": 0.3,
+          "authority": 0.2,
+          "freshness": 0.1
+        },
+        "originalIndex": 1,
+        "newRank": 2,
+        "rankChange": 0
+      }
+    }
+  ],
+  "expiry": null
+}

@@ -1,0 +1,77 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "How to set up TypeScript - TypeScript",
+        "link": "https://www.typescriptlang.org/download/",
+        "snippet": "To do this, run npm install -g typescript . This will install the latest version (currently 5.9). via Visual Studio Marketplace. You can install TypeScript as a ...",
+        "displayLink": "www.typescriptlang.org",
+        "formattedUrl": "https://www.typescriptlang.org/download/",
+        "htmlSnippet": "To do this, run npm install -g <b>typescript</b> . This will install the <b>latest version</b> (currently 5.9). via Visual Studio Marketplace. You can install <b>TypeScript</b> as a&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "How to set up TypeScript",
+            "description": "Add TypeScript to your project, or install TypeScript globally",
+            "image": "",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          }
+        },
+        "metadata": {},
+        "originalIndex": 4,
+        "normalizedUrl": "https://typescriptlang.org/download",
+        "contentHash": "1100100100110000000000000000000011001001001100000000000000000000",
+        "titleTokens": [
+          "how",
+          "to",
+          "set",
+          "up",
+          "typescript",
+          "typescript"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://www.typescriptlang.org/download/",
+          "duplicateOf": 0,
+          "duplicateReasons": [
+            "Content similarity: 93.8%"
+          ],
+          "merged": true,
+          "alternateSnippets": [
+            "Dec 19, 2025 ... ... new direction that sets the stage for big fireworks in 2026. The two big announcements in 2025 were: Microsoft is rewriting the TypeScript ...",
+            "Jun 18, 2025 ... For me, 2023.2 was great, but now that I've updated my monorepo to latest Typescript version, random things are shown as errors in that version, ...",
+            "Sep 30, 2025 ... ... new version of TypeScript. Below are the significant known issues ... October 9, 2025. Complete Beginner's Guide to Vibe Coding an App ...",
+            "Dec 2, 2025 ... What's the current best guess for when typescript 7.0 gets released as a stable version? 2026 Q1 or Q2 or Q3 or Q4 ?? DanielRosenwasser. OP ..."
+          ],
+          "alternateTitles": [
+            "A Small Year for tsc, a Giant Year for TypeScript",
+            "Rider 2023 > Rider 2025 : r/Jetbrains",
+            "TypeScript 7 native preview in Visual Studio 2026 - Microsoft for ...",
+            "Progress on TypeScript 7 - December 2025 : r/programming"
+          ],
+          "alternateUrls": [
+            "https://effectivetypescript.com/2025/12/19/ts-2025/",
+            "https://www.reddit.com/r/Jetbrains/comments/1len5ma/rider_2023_rider_2025/",
+            "https://developer.microsoft.com/blog/typescript-7-native-preview-in-visual-studio-2026",
+            "https://www.reddit.com/r/programming/comments/1pceq95/progress_on_typescript_7_december_2025/"
+          ],
+          "mergedDuplicates": 4,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 4
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 5,
+      "finalCount": 1,
+      "duplicatesRemoved": 4,
+      "deduplicationRate": "80.0%"
+    }
+  },
+  "expiry": null
+}

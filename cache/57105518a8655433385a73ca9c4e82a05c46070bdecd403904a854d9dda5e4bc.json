@@ -1,0 +1,80 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "Versions · React Native",
+        "link": "https://reactnative.dev/versions",
+        "snippet": "React Native versions ; 0.84.x, 2026-01-05, 2026-02-09, Future ; 0.83.x, 2025-11-03, 2025-12-10, Active, Details.",
+        "displayLink": "reactnative.dev",
+        "formattedUrl": "https://reactnative.dev/versions",
+        "htmlSnippet": "<b>React</b> Native <b>versions</b> ; 0.84.x, <b>2026</b>-01-05, <b>2026</b>-02-09, Future ; 0.83.x, <b>2025</b>-11-03, <b>2025</b>-12-10, Active, Details.",
+        "pagemap": {
+          "metatags": {
+            "title": "Versions · React Native",
+            "description": "",
+            "image": "https://reactnative.dev/img/logo-share.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRroqN28MJtGrW_hMuerjil8di0vJsRkEawoIGKLi2SDD5FmUzILwRvejU&s",
+            "width": "310",
+            "height": "163"
+          },
+          "image": "https://reactnative.dev/img/logo-share.png"
+        },
+        "metadata": {},
+        "originalIndex": 3,
+        "normalizedUrl": "https://reactnative.dev/versions",
+        "contentHash": "0100000000100000000000000000000001000000001000000000000000000000",
+        "titleTokens": [
+          "versions",
+          "react",
+          "native"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://reactnative.dev/versions",
+          "duplicateOf": 0,
+          "duplicateReasons": [
+            "Content similarity: 93.8%"
+          ],
+          "merged": true,
+          "alternateSnippets": [
+            "Sep 25, 2025 ... x version and no major version rewrites every 6 months. My ... That means it should be updated to the latest React, survive in SSR ...",
+            "Jan 7, 2025 ... ... new framework version is released? Migration from one library to another brings lots of headaches, and, again, as mentioned in your post ...",
+            "Mar 27, 2025 ... Regarding the language, I guess Flutter requires me to learn a new language in Dart (maybe straightforward?), whereas React Native might be a ...",
+            "May 9, 2025 ... ... version leaving you with a very mystifying problem if you hadn't ... new ReactJS projects as we enter 2026? 18 comments. React Bootstrap ..."
+          ],
+          "alternateTitles": [
+            "React State Management in 2025: What You Actually Need",
+            "Why I Decided to Stop Working with React.js in 2025 - DEV ...",
+            "React Native vs Flutter in 2025? : r/reactnative",
+            "Is the future of React still as bright in 2025 as it was before? : r/reactjs"
+          ],
+          "alternateUrls": [
+            "https://www.developerway.com/posts/react-state-management-2025",
+            "https://dev.to/holasoymalva/why-i-decided-to-stop-working-with-reactjs-in-2025-4d1l",
+            "https://www.reddit.com/r/reactnative/comments/1jl47nt/react_native_vs_flutter_in_2025/",
+            "https://www.reddit.com/r/reactjs/comments/1kir0pi/is_the_future_of_react_still_as_bright_in_2025_as/"
+          ],
+          "mergedDuplicates": 4,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 4
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 5,
+      "finalCount": 1,
+      "duplicatesRemoved": 4,
+      "deduplicationRate": "80.0%"
+    }
+  },
+  "expiry": null
+}

@@ -1,0 +1,112 @@
+{
+  "value": {
+    "query": "Auth.js v5 NextAuth latest version npm",
+    "expanded_queries": [
+      "Auth.js v5 NextAuth latest version npm",
+      "auth js v5 nextauth lat version npm",
+      "\"Auth.js v5 NextAuth latest version npm\"",
+      "auth js",
+      "auth js v5"
+    ],
+    "results": [
+      {
+        "title": "NextAuth.js",
+        "link": "https://next-auth.js.org/",
+        "snippet": "Versions; npm · GitHub. ← Back to main menu. Shield with key icon. NextAuth.js ... Doesn't rely on client side JavaScript. npm install next-auth. Add ...",
+        "displayLink": "next-auth.js.org",
+        "formattedUrl": "https://next-auth.js.org/",
+        "htmlSnippet": "<b>Versions</b>; <b>npm</b> &middot; GitHub. ← Back to main menu. Shield with key icon. <b>NextAuth</b>.<b>js</b> ... Doesn&#39;t rely on client side JavaScript. <b>npm</b> install <b>next-auth</b>. Add&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "NextAuth.js",
+            "description": "Authentication for Next.js",
+            "image": "https://next-auth.js.org/img/social-media-card.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA1BzK6f0WoC5-YKgPPlVQVdrkiF3faD3CPpNGpS8LCSsax3sZhf1FqJY&s",
+            "width": "311",
+            "height": "162"
+          },
+          "image": "https://next-auth.js.org/img/social-media-card.png"
+        },
+        "metadata": {},
+        "originalIndex": 2,
+        "normalizedUrl": "https://next-auth.js.org/",
+        "contentHash": "1101011000110000000000000000000011010110001100000000000000000000",
+        "titleTokens": [
+          "nextauth",
+          "js"
+        ]
+      }
+    ],
+    "total_results": "8510",
+    "search_time": 0.20478,
+    "offset": 0,
+    "limit": 5,
+    "cached": false,
+    "provider": {
+      "name": "crawlforge",
+      "backend": "Google Search",
+      "capabilities": {
+        "requiresApiKey": true,
+        "apiKeyType": "CrawlForge API key",
+        "supportsPagination": true,
+        "supportsLanguageFilter": true,
+        "supportsDateFilter": true,
+        "supportsSiteFilter": true,
+        "supportsFileTypeFilter": true,
+        "supportsSafeSearch": true,
+        "supportsLocalization": true,
+        "supportsCountryTargeting": true,
+        "maxResultsPerRequest": 100,
+        "rateLimit": "Based on your CrawlForge plan",
+        "creditCost": "2 credits per search",
+        "features": [
+          "Google Search results via CrawlForge proxy",
+          "No Google API credentials needed",
+          "Full text search",
+          "Image metadata",
+          "Exact phrase matching",
+          "Boolean operators",
+          "Site-specific search",
+          "File type filtering",
+          "Date range filtering",
+          "Language filtering",
+          "Country targeting",
+          "Safe search",
+          "Localization support",
+          "Related searches",
+          "Rich snippets"
+        ],
+        "benefits": [
+          "Simplified authentication (one API key)",
+          "Unified billing through CrawlForge",
+          "Enterprise-grade reliability",
+          "No Google API quota management",
+          "Built-in rate limiting",
+          "Credit-based pricing"
+        ]
+      }
+    },
+    "localization": null,
+    "processing": {
+      "ranking": null,
+      "deduplication": {
+        "originalCount": 5,
+        "finalCount": 1,
+        "duplicatesRemoved": 4,
+        "deduplicationRate": "80.0%"
+      },
+      "query_expansion": {
+        "original_query": "Auth.js v5 NextAuth latest version npm",
+        "expanded_count": 5,
+        "used_query": "Auth.js v5 NextAuth latest version npm"
+      },
+      "localization_applied": false
+    }
+  },
+  "expiry": null
+}

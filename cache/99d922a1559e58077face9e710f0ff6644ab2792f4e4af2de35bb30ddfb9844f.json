@@ -1,0 +1,77 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "prisma - npm",
+        "link": "https://www.npmjs.com/package/prisma",
+        "snippet": "Dec 17, 2025 ... ... Latest version: 7.2.0, last published: a month ago. Start using ... TypeScript icon, indicating that this package has built-in type declarations.",
+        "displayLink": "www.npmjs.com",
+        "formattedUrl": "https://www.npmjs.com/package/prisma",
+        "htmlSnippet": "Dec 17, 2025 <b>...</b> ... <b>Latest version</b>: 7.2.0, <b>last</b> published: a month ago. Start using ... TypeScript icon, indicating that this <b>package</b> has built-in type declarations.",
+        "pagemap": {
+          "metatags": {
+            "title": "prisma",
+            "description": "Prisma is an open-source database toolkit. It includes a JavaScript/TypeScript ORM for Node.js, migrations and a modern GUI to view and edit the data in your database. You can use Prisma in new projects or add it to an existing one.. Latest version: 7.2.0, last published: a month ago. Start using prisma in your project by running `npm i prisma`. There are 846 other projects in the npm registry using prisma.",
+            "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9_PIZpTqIpa0liCRRnQUmkhj2w3NCMbs2QR_X8Qe2cC-areLX1GkLYUF6&s",
+            "width": "310",
+            "height": "163"
+          },
+          "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png"
+        },
+        "metadata": {},
+        "originalIndex": 0,
+        "normalizedUrl": "https://npmjs.com/package/prisma",
+        "contentHash": "0100010000100000000000000000000001000100001000000000000000000000",
+        "titleTokens": [
+          "prisma",
+          "npm"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://www.npmjs.com/package/prisma",
+          "duplicateOf": null,
+          "duplicateReasons": [],
+          "merged": true,
+          "alternateSnippets": [
+            "Dec 17, 2025 ... ... Latest version: 7.2.0, last published: a month ago. Start using @prisma/client in your project by running `npm i @prisma/client`. There are ...",
+            "May 23, 2021 ... Node.js version: 12.18.3. Prisma Version. prisma : 2.23.0 @prisma ... npm cache clean --force cd packages/db npm uninstall prisma @prisma ...",
+            "To upgrade to the latest version of Prisma ORM: Review ... The dev npm distribution tag points to the most recent development version of the package ...",
+            "... new project. 1 ... npm install prisma @types/node @types/pg --save-dev npm install @prisma/client @prisma/adapter-pg pg dotenv. Here's what each package does:."
+          ],
+          "alternateTitles": [
+            "@prisma/client - npm",
+            "Could not resolve @prisma/client despite the installation that we just ...",
+            "Upgrading versions (Guides) | Prisma Documentation",
+            "Quickstart: Prisma ORM with PostgreSQL (10 min) | Prisma ..."
+          ],
+          "alternateUrls": [
+            "https://www.npmjs.com/package/@prisma/client",
+            "https://github.com/prisma/prisma/issues/7234",
+            "https://www.prisma.io/docs/orm/more/upgrade-guides/upgrading-versions",
+            "https://www.prisma.io/docs/getting-started/prisma-orm/quickstart/postgresql"
+          ],
+          "mergedDuplicates": 4,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 4
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 5,
+      "finalCount": 1,
+      "duplicatesRemoved": 4,
+      "deduplicationRate": "80.0%"
+    }
+  },
+  "expiry": null
+}

@@ -1,0 +1,119 @@
+{
+  "value": {
+    "query": "node-pty spawn terminal process management",
+    "expanded_queries": [
+      "node-pty spawn terminal process management",
+      "node pty spawn terminal proces management",
+      "\"node-pty spawn terminal process management\"",
+      "node pty",
+      "node pty spawn"
+    ],
+    "results": [
+      {
+        "title": "microsoft/node-pty: Fork pseudoterminals in Node.JS - GitHub",
+        "link": "https://github.com/microsoft/node-pty",
+        "snippet": "This allows you to fork processes with pseudoterminal file descriptors. It returns a terminal object which allows reads and writes.",
+        "displayLink": "github.com",
+        "formattedUrl": "https://github.com/microsoft/node-pty",
+        "htmlSnippet": "This allows you to fork <b>processes</b> with <b>pseudoterminal</b> file descriptors. It returns a <b>terminal</b> object which allows reads and writes.",
+        "pagemap": {
+          "metatags": {
+            "title": "GitHub - microsoft/node-pty: Fork pseudoterminals in Node.JS",
+            "description": "Fork pseudoterminals in Node.JS. Contribute to microsoft/node-pty development by creating an account on GitHub.",
+            "image": "https://opengraph.githubassets.com/71f7fe25a8d46b9f36f0d901a1000ffa7136888829e10d6fa8d2fb4484d76b5f/microsoft/node-pty",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqqdtVCetbLNZNzggCJjFfN3U5Nrq9xtY1wX9tvVm4fjz_BRFL52uXUbE&s",
+            "width": "225",
+            "height": "225"
+          },
+          "image": "https://avatars.githubusercontent.com/u/247558815?s=64&v=4"
+        },
+        "metadata": {},
+        "originalIndex": 1,
+        "normalizedUrl": "https://github.com/microsoft/node-pty",
+        "contentHash": "0101011000000001000000000000000001010110000000010000000000000000",
+        "titleTokens": [
+          "microsoft",
+          "node",
+          "pty",
+          "fork",
+          "pseudoterminals",
+          "in",
+          "node",
+          "js",
+          "github"
+        ]
+      }
+    ],
+    "total_results": "115000",
+    "search_time": 0.260958,
+    "offset": 0,
+    "limit": 10,
+    "cached": false,
+    "provider": {
+      "name": "crawlforge",
+      "backend": "Google Search",
+      "capabilities": {
+        "requiresApiKey": true,
+        "apiKeyType": "CrawlForge API key",
+        "supportsPagination": true,
+        "supportsLanguageFilter": true,
+        "supportsDateFilter": true,
+        "supportsSiteFilter": true,
+        "supportsFileTypeFilter": true,
+        "supportsSafeSearch": true,
+        "supportsLocalization": true,
+        "supportsCountryTargeting": true,
+        "maxResultsPerRequest": 100,
+        "rateLimit": "Based on your CrawlForge plan",
+        "creditCost": "2 credits per search",
+        "features": [
+          "Google Search results via CrawlForge proxy",
+          "No Google API credentials needed",
+          "Full text search",
+          "Image metadata",
+          "Exact phrase matching",
+          "Boolean operators",
+          "Site-specific search",
+          "File type filtering",
+          "Date range filtering",
+          "Language filtering",
+          "Country targeting",
+          "Safe search",
+          "Localization support",
+          "Related searches",
+          "Rich snippets"
+        ],
+        "benefits": [
+          "Simplified authentication (one API key)",
+          "Unified billing through CrawlForge",
+          "Enterprise-grade reliability",
+          "No Google API quota management",
+          "Built-in rate limiting",
+          "Credit-based pricing"
+        ]
+      }
+    },
+    "localization": null,
+    "processing": {
+      "ranking": null,
+      "deduplication": {
+        "originalCount": 10,
+        "finalCount": 1,
+        "duplicatesRemoved": 9,
+        "deduplicationRate": "90.0%"
+      },
+      "query_expansion": {
+        "original_query": "node-pty spawn terminal process management",
+        "expanded_count": 5,
+        "used_query": "node-pty spawn terminal process management"
+      },
+      "localization_applied": false
+    }
+  },
+  "expiry": null
+}

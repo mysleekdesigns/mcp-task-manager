@@ -1,0 +1,119 @@
+{
+  "value": {
+    "query": "@dnd-kit npm latest version",
+    "expanded_queries": [
+      "@dnd-kit npm latest version",
+      "dnd kit npm lat version",
+      "\"@dnd-kit npm latest version\"",
+      "dnd kit",
+      "dnd kit npm"
+    ],
+    "results": [
+      {
+        "title": "dnd kit – a modern drag and drop toolkit for React",
+        "link": "https://dndkit.com/",
+        "snippet": "There's a new kit on the block. A lightweight, performant, accessible and extensible drag & drop toolkit for React. Get Started. npm install @dnd-kit/core ...",
+        "displayLink": "dndkit.com",
+        "formattedUrl": "https://dndkit.com/",
+        "htmlSnippet": "There&#39;s a <b>new</b> kit on the block. A lightweight, performant, accessible and extensible drag &amp; drop toolkit for React. Get Started. <b>npm</b> install @<b>dnd</b>-<b>kit</b>/core&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "dnd kit – a modern drag and drop toolkit for React",
+            "description": "A modular, lightweight, performant, accessible and extensible drag & drop toolkit for React.",
+            "image": "https://dndkit.com/twitter-social-banner.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjE3nCylzhKtJPZRt0UEO6_XSq8KsVtAzTnMqfpM7pzj94Wtj9UjlK1f8&s",
+            "width": "318",
+            "height": "159"
+          },
+          "image": "https://dndkit.com/twitter-social-banner.png"
+        },
+        "metadata": {},
+        "originalIndex": 1,
+        "normalizedUrl": "https://dndkit.com/",
+        "contentHash": "1110111000010000100000000000000011101110000100001000000000000000",
+        "titleTokens": [
+          "dnd",
+          "kit",
+          "modern",
+          "drag",
+          "and",
+          "drop",
+          "toolkit",
+          "for",
+          "react"
+        ]
+      }
+    ],
+    "total_results": "48800",
+    "search_time": 0.2029,
+    "offset": 0,
+    "limit": 5,
+    "cached": false,
+    "provider": {
+      "name": "crawlforge",
+      "backend": "Google Search",
+      "capabilities": {
+        "requiresApiKey": true,
+        "apiKeyType": "CrawlForge API key",
+        "supportsPagination": true,
+        "supportsLanguageFilter": true,
+        "supportsDateFilter": true,
+        "supportsSiteFilter": true,
+        "supportsFileTypeFilter": true,
+        "supportsSafeSearch": true,
+        "supportsLocalization": true,
+        "supportsCountryTargeting": true,
+        "maxResultsPerRequest": 100,
+        "rateLimit": "Based on your CrawlForge plan",
+        "creditCost": "2 credits per search",
+        "features": [
+          "Google Search results via CrawlForge proxy",
+          "No Google API credentials needed",
+          "Full text search",
+          "Image metadata",
+          "Exact phrase matching",
+          "Boolean operators",
+          "Site-specific search",
+          "File type filtering",
+          "Date range filtering",
+          "Language filtering",
+          "Country targeting",
+          "Safe search",
+          "Localization support",
+          "Related searches",
+          "Rich snippets"
+        ],
+        "benefits": [
+          "Simplified authentication (one API key)",
+          "Unified billing through CrawlForge",
+          "Enterprise-grade reliability",
+          "No Google API quota management",
+          "Built-in rate limiting",
+          "Credit-based pricing"
+        ]
+      }
+    },
+    "localization": null,
+    "processing": {
+      "ranking": null,
+      "deduplication": {
+        "originalCount": 5,
+        "finalCount": 1,
+        "duplicatesRemoved": 4,
+        "deduplicationRate": "80.0%"
+      },
+      "query_expansion": {
+        "original_query": "@dnd-kit npm latest version",
+        "expanded_count": 5,
+        "used_query": "@dnd-kit npm latest version"
+      },
+      "localization_applied": false
+    }
+  },
+  "expiry": null
+}

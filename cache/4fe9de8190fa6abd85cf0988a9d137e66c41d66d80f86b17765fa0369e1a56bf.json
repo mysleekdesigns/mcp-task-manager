@@ -1,0 +1,103 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "Prisma | NestJS - A progressive Node.js framework",
+        "link": "https://docs.nestjs.com/recipes/prisma",
+        "snippet": "Note that you can still follow this guide, even if you're using PostgreSQL or MySQL – you'll get extra instructions for using these databases at the right ...",
+        "displayLink": "docs.nestjs.com",
+        "formattedUrl": "https://docs.nestjs.com/recipes/prisma",
+        "htmlSnippet": "Note that you can still follow this <b>guide</b>, even if you&#39;re using <b>PostgreSQL</b> or MySQL – you&#39;ll get extra <b>instructions</b> for using these databases at the right&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "Documentation | NestJS - A progressive Node.js framework",
+            "description": "Nest is a framework for building efficient, scalable Node.js server-side applications. It uses progressive JavaScript, is built with TypeScript and combines elements of OOP (Object Oriented Programming), FP (Functional Programming), and FRP (Functional Reactive Programming).",
+            "image": "https://nestjs.com/img/nest-og.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwcp3C8s-x4jQfIS91v5GGkJWoubtyaZF2iKYOzp9yJgSuwySWuTSxQqll&s",
+            "width": "311",
+            "height": "162"
+          },
+          "image": "https://nestjs.com/img/nest-og.png"
+        },
+        "metadata": {},
+        "originalIndex": 8,
+        "normalizedUrl": "https://docs.nestjs.com/recipes/prisma",
+        "contentHash": "0100100000100000000000000000000001001000001000000000000000000000",
+        "titleTokens": [
+          "prisma",
+          "nestjs",
+          "progressive",
+          "node",
+          "js",
+          "framework"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://docs.nestjs.com/recipes/prisma",
+          "duplicateOf": 0,
+          "duplicateReasons": [
+            "Content similarity: 87.5%"
+          ],
+          "merged": true,
+          "alternateSnippets": [
+            "This guide shows you how to use Prisma with Next.js, a fullstack React framework. You'll learn how to create a Prisma Postgres instance, set up Prisma ORM ...",
+            "Dec 21, 2025 ... ... Prisma 7, here's the related configuration files (based on the migration guide): ... postgresql-supabase, prisma-postgres exam… [merged].",
+            "In this guide, you will learn how to set up a new TypeScript project from scratch, connect it to PostgreSQL using Prisma ORM, and generate a Prisma Client ...",
+            "Nov 22, 2025 ... Quick and easy tutorial about using Deno 2.5 to build a NestJS project with Prisma ORM 7, with step-by-step instructions and a fully running ...",
+            "If you experience timeout issues after upgrading, configure your driver adapter to match v6 behavior. See the connection pool guide for detailed configuration ...",
+            "Jan 25, 2025 ... Our setup: ~60 database Tables. Fairly standard relational database structure. Nothing extremely complex. The Problems:.",
+            "Dec 4, 2025 ... 4. Update the Schema ( schema.prisma ) ; \"prisma-client-js\" · \"../generated/client\" ; \"postgresql\" // logic is handled in prisma.config.mjs ; Int @ ...",
+            "Nov 25, 2025 ... Install Prisma v7. Now install the latest Prisma packages: npm install -D prisma@7 ... For Postgres, we must install and use the adapter:",
+            "Jan 5, 2026 ... Update (January 14, 2026): This article has been updated to reflect the correct Prisma 7 configuration patterns. The [correct `prisma.config.ts`] ..."
+          ],
+          "alternateTitles": [
+            "How to use Prisma ORM and Prisma Postgres with Next.js and Vercel",
+            "Migrating to Prisma v7 fails when connecting to a local database ...",
+            "Quickstart: Prisma ORM with PostgreSQL (10 min) | Prisma ...",
+            "NestJS & Prisma 7 w/ Deno 2.5 | by Serban Marti | Stackademic",
+            "Upgrade to Prisma ORM 7 | Prisma Documentation",
+            "Warning: Think twice before using Prisma in large projects : r/nextjs",
+            "Guide to Prisma 7 with Next.js 16 (JavaScript Edition) | by Gaurav ...",
+            "Using Prisma ORM v7 in a Next.js App (Simple Beginner Guide) | by ...",
+            "Prisma 7 Upgrade: The Driver Adapter Path That Isn't in the Spotlight ..."
+          ],
+          "alternateUrls": [
+            "https://www.prisma.io/docs/guides/nextjs",
+            "https://github.com/prisma/prisma/issues/28950",
+            "https://www.prisma.io/docs/getting-started/prisma-orm/quickstart/postgresql",
+            "https://blog.stackademic.com/revisiting-nestjs-prisma-7-w-deno-2-5-c905aea1fee5",
+            "https://www.prisma.io/docs/orm/more/upgrade-guides/upgrading-versions/upgrading-to-prisma-7",
+            "https://www.reddit.com/r/nextjs/comments/1i9zvyy/warning_think_twice_before_using_prisma_in_large/",
+            "https://medium.com/@gauravkmaurya09/guide-to-prisma-7-with-next-js-16-javascript-edition-99c8c4ca10be",
+            "https://ckriswinarto.medium.com/using-prisma-orm-v7-in-a-next-js-app-simple-beginner-guide-fe3a65ed727a",
+            "https://medium.com/@stawils/prisma-7-upgrade-the-driver-adapter-path-that-isnt-in-the-spotlight-8b9b78ccecf3"
+          ],
+          "mergedDuplicates": 9,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 9
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 10,
+      "finalCount": 1,
+      "duplicatesRemoved": 9,
+      "deduplicationRate": "90.0%"
+    }
+  },
+  "expiry": null
+}

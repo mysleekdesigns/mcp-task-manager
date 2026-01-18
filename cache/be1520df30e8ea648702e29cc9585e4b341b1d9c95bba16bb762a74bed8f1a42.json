@@ -1,0 +1,106 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "microsoft/node-pty: Fork pseudoterminals in Node.JS - GitHub",
+        "link": "https://github.com/microsoft/node-pty",
+        "snippet": "This allows you to fork processes with pseudoterminal file descriptors. It returns a terminal object which allows reads and writes.",
+        "displayLink": "github.com",
+        "formattedUrl": "https://github.com/microsoft/node-pty",
+        "htmlSnippet": "This allows you to fork <b>processes</b> with <b>pseudoterminal</b> file descriptors. It returns a <b>terminal</b> object which allows reads and writes.",
+        "pagemap": {
+          "metatags": {
+            "title": "GitHub - microsoft/node-pty: Fork pseudoterminals in Node.JS",
+            "description": "Fork pseudoterminals in Node.JS. Contribute to microsoft/node-pty development by creating an account on GitHub.",
+            "image": "https://opengraph.githubassets.com/71f7fe25a8d46b9f36f0d901a1000ffa7136888829e10d6fa8d2fb4484d76b5f/microsoft/node-pty",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqqdtVCetbLNZNzggCJjFfN3U5Nrq9xtY1wX9tvVm4fjz_BRFL52uXUbE&s",
+            "width": "225",
+            "height": "225"
+          },
+          "image": "https://avatars.githubusercontent.com/u/247558815?s=64&v=4"
+        },
+        "metadata": {},
+        "originalIndex": 1,
+        "normalizedUrl": "https://github.com/microsoft/node-pty",
+        "contentHash": "0101011000000001000000000000000001010110000000010000000000000000",
+        "titleTokens": [
+          "microsoft",
+          "node",
+          "pty",
+          "fork",
+          "pseudoterminals",
+          "in",
+          "node",
+          "js",
+          "github"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://github.com/microsoft/node-pty",
+          "duplicateOf": 0,
+          "duplicateReasons": [
+            "Content similarity: 87.5%"
+          ],
+          "merged": true,
+          "alternateSnippets": [
+            "... winpty/conpty components from creating the terminal process. To work around ... node-pty\\build\\Release\\conpty_console_list.node. Reporting this issue to ...",
+            "Jun 4, 2009 ... If you're disconnected, the screen process keeps the terminal alive ... new ). The current connection uses pty/1 pseudo-terminal: $ tty ...",
+            "Mar 23, 2009 ... The process itself can decide whether to close its stdout/stderr/stdin or not, but you can't use your shell to force it to do so. To manage a ...",
+            "Feb 14, 2018 ... ... node-pty that forks processes with pseudoterminal file descriptors. The rest was just wiring: // opening a spawned terminal let term = pty.spawn ...",
+            "Sep 26, 2025 ... js and node-pty. I was surprised how much this simple layout improved my workflow, so I'm sharing in case it helps anyone else. Website ...",
+            "Jun 26, 2025 ... Discussing the core forem open source software project — features, bugs, performance, self-hosting. ... Terminal Emulation: node-pty for spawning ...",
+            "Nov 21, 2023 ... Spawn a bash shell into the PTY. Write the command dir to ... processes exits, the output end of the pseudo terminal pipe is still open.",
+            "Apr 29, 2022 ... Notably, if I launch the electron app from a terminal on mac using open -a MyElectronApp everything works as expected. I suspect my app needs to ...",
+            "Mar 27, 2025 ... which helps us to create a PTY process ... It sets up a WebSocket server using Socket.io to manage real-time pseudo-terminal (PTY) sessions for ..."
+          ],
+          "alternateTitles": [
+            "Troubleshoot Terminal launch failures",
+            "linux - How to reconnect to a disconnected ssh session - Server Fault",
+            "linux - How do I detach a process from Terminal, entirely? - Super User",
+            "Meet Evala - your terminal in the browser",
+            "I made an open-source terminal app with infinite horizontal scrolling ...",
+            "Why I Built a Web UI for Amazon Q Developer CLI (And How I Vibe ...",
+            "Rust PTY Output Hangs When Trying to Read Command Output in ...",
+            "How do I correctly launch a shell environment with node-pty in ...",
+            "Efficient and Scalable Usage of Node.js PTY with Socket.io for ..."
+          ],
+          "alternateUrls": [
+            "https://code.visualstudio.com/docs/supporting/troubleshoot-terminal-launch",
+            "https://serverfault.com/questions/19634/how-to-reconnect-to-a-disconnected-ssh-session",
+            "https://superuser.com/questions/178587/how-do-i-detach-a-process-from-terminal-entirely",
+            "https://krasimirtsonev.com/blog/article/meet-evala-your-terminal-in-the-browser-extension",
+            "https://www.reddit.com/r/commandline/comments/1nrfuns/i_made_an_opensource_terminal_app_with_infinite/",
+            "https://dev.to/aws-builders/why-i-built-a-web-ui-for-amazon-q-developer-cli-and-how-i-vibe-coded-it-54d6",
+            "https://users.rust-lang.org/t/rust-pty-output-hangs-when-trying-to-read-command-output-in-terminal-emulator/102873",
+            "https://stackoverflow.com/questions/72051509/how-do-i-correctly-launch-a-shell-environment-with-node-pty-in-electron",
+            "https://medium.com/@deysouvik700/efficient-and-scalable-usage-of-node-js-pty-with-socket-io-for-multiple-users-402851075c4a"
+          ],
+          "mergedDuplicates": 9,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 9
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 10,
+      "finalCount": 1,
+      "duplicatesRemoved": 9,
+      "deduplicationRate": "90.0%"
+    }
+  },
+  "expiry": null
+}

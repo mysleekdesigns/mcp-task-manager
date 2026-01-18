@@ -1,0 +1,79 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "Profile - npm",
+        "link": "https://www.npmjs.com/~zizigy",
+        "snippet": "Packages 6 · frequency-visualizer. Audio frequency visualizer library · @vue-dnd-kit/core. Core functionality for Vue DnD Kit - a lightweight Vue 3 library for ...",
+        "displayLink": "www.npmjs.com",
+        "formattedUrl": "https://www.npmjs.com/~zizigy",
+        "htmlSnippet": "Packages 6 &middot; frequency-visualizer. Audio frequency visualizer library &middot; @vue-<b>dnd-kit/core</b>. Core functionality for Vue DnD Kit - a lightweight Vue 3 library for&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "",
+            "description": "",
+            "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9_PIZpTqIpa0liCRRnQUmkhj2w3NCMbs2QR_X8Qe2cC-areLX1GkLYUF6&s",
+            "width": "310",
+            "height": "163"
+          },
+          "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png"
+        },
+        "metadata": {},
+        "originalIndex": 4,
+        "normalizedUrl": "https://npmjs.com/~zizigy",
+        "contentHash": "0111100100110001100000000000000001111001001100011000000000000000",
+        "titleTokens": [
+          "profile",
+          "npm"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://www.npmjs.com/~zizigy",
+          "duplicateOf": 0,
+          "duplicateReasons": [
+            "Content similarity: 90.6%"
+          ],
+          "merged": true,
+          "alternateSnippets": [
+            "Dec 5, 2024 ... @dnd-kit/core ... @dnd-kit – a lightweight React library for building performant and accessible drag and drop experiences. Installation. To get ...",
+            "Jul 30, 2025 ... @vue-dnd-kit/core. TypeScript icon, indicating that this package has built-in type declarations. 1.7.0 • Public • Published ...",
+            "Dec 4, 2024 ... The sortable preset builds on top of the primitives exposed by @dnd-kit/core to help building sortable interfaces.",
+            "Nov 23, 2024 ... This package is used internally by @dnd-kit/core . Readme. Keywords. none. Package Sidebar. Install. npm i @dnd-kit/accessibility. Repository."
+          ],
+          "alternateTitles": [
+            "@dnd-kit/core - npm",
+            "@vue-dnd-kit/core - npm",
+            "@dnd-kit/sortable - npm",
+            "@dnd-kit/accessibility - npm"
+          ],
+          "alternateUrls": [
+            "https://www.npmjs.com/package/@dnd-kit/core",
+            "https://www.npmjs.com/package/@vue-dnd-kit/core",
+            "https://www.npmjs.com/package/@dnd-kit/sortable",
+            "https://www.npmjs.com/package/@dnd-kit/accessibility"
+          ],
+          "mergedDuplicates": 4,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 4
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 5,
+      "finalCount": 1,
+      "duplicatesRemoved": 4,
+      "deduplicationRate": "80.0%"
+    }
+  },
+  "expiry": null
+}

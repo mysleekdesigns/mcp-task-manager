@@ -1,0 +1,79 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "Radix UI",
+        "link": "https://www.radix-ui.com/",
+        "snippet": "Just import and go—no configuration required. import \"@radix-ui/themes/styles.css\";. import { Theme, Button } from \"@radix-ui/themes\"; ... NPM0.0%. 9.1 ...",
+        "displayLink": "www.radix-ui.com",
+        "formattedUrl": "https://www.radix-ui.com/",
+        "htmlSnippet": "Just import and go—no configuration required. import &quot;@<b>radix</b>-<b>ui</b>/<b>themes</b>/styles.css&quot;;. import { Theme, Button } from &quot;@<b>radix</b>-<b>ui</b>/<b>themes</b>&quot;; ... <b>NPM</b>0.0%. 9.1&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "Radix UI",
+            "description": "Components, icons, and colors for building high‑quality, accessible UI. Free and open-source.",
+            "image": "https://radix-ui.com/social/themes.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIoXCTIDw4G66yykOgMTfnhPrqXBY7CEiTRpA24tQareNFLjY59pCO3qVz&s",
+            "width": "300",
+            "height": "168"
+          },
+          "image": "https://radix-ui.com/social/themes.png"
+        },
+        "metadata": {},
+        "originalIndex": 3,
+        "normalizedUrl": "https://radix-ui.com/",
+        "contentHash": "0000010100000000000000000000000000000101000000000000000000000000",
+        "titleTokens": [
+          "radix",
+          "ui"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://www.radix-ui.com/",
+          "duplicateOf": 0,
+          "duplicateReasons": [
+            "Content similarity: 93.8%"
+          ],
+          "merged": true,
+          "alternateSnippets": [
+            "Sep 11, 2023 ... 4 it will work as those versions have the same version of @radix-ui/react-focus-scope . ... npm ls @radix-ui/react-focus-scope npm ERR! code ...",
+            "1\" version instead. ... hslawnagem on Dec 4, 2024. Original comment in English - Translate to English. I ran into this too on a fresh npm install @radix-ui/themes ...",
+            "Feb 27, 2025 ... [Radix Themes Logo](https://radix-ui.com/social/themes.png)](https://radix-ui.com/themes). Latest version: 3.2.1, last published: a year ago ...",
+            "npm install @radix-ui/themes. 2. Import the CSS file. Import the global CSS file at the root of your application. import \"@radix-ui/themes/styles.css\";. 3. Add ..."
+          ],
+          "alternateTitles": [
+            "\"Uncaught InternalError: too much recursion\" Firefox Dropdown ...",
+            "Cannot find name RadioCards with NextJS · radix-ui themes ...",
+            "@radix-ui/themes - npm",
+            "Getting started – Radix Themes"
+          ],
+          "alternateUrls": [
+            "https://github.com/radix-ui/primitives/issues/2390",
+            "https://github.com/radix-ui/themes/discussions/550",
+            "https://www.npmjs.com/package/@radix-ui/themes?activeTab=code",
+            "https://www.radix-ui.com/themes/docs/overview/getting-started"
+          ],
+          "mergedDuplicates": 4,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 4
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 5,
+      "finalCount": 1,
+      "duplicatesRemoved": 4,
+      "deduplicationRate": "80.0%"
+    }
+  },
+  "expiry": null
+}

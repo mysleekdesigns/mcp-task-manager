@@ -1,0 +1,86 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "Tailwind CSS - Rapidly build modern websites without ever leaving ...",
+        "link": "https://tailwindcss.com/",
+        "snippet": "Tailwind CSS is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML.",
+        "displayLink": "tailwindcss.com",
+        "formattedUrl": "https://tailwindcss.com/",
+        "htmlSnippet": "<b>Tailwind CSS</b> is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML.",
+        "pagemap": {
+          "metatags": {
+            "title": "Tailwind CSS - Rapidly build modern websites without ever leaving your HTML.",
+            "description": "Tailwind CSS is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML.",
+            "image": "https://tailwindcss.com/opengraph-image.jpg?opengraph-image.c1dec83c.jpg",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrqkf_ptb6IktO0qf1TMD7-p-DTDZRjBVvoDcpsnuX3LKd4t24XSzSTWU&s",
+            "width": "310",
+            "height": "163"
+          },
+          "image": "https://tailwindcss.com/opengraph-image.jpg?opengraph-image.c1dec83c.jpg"
+        },
+        "metadata": {},
+        "originalIndex": 1,
+        "normalizedUrl": "https://tailwindcss.com/",
+        "contentHash": "0001010000001001100000000000000000010100000010011000000000000000",
+        "titleTokens": [
+          "tailwind",
+          "css",
+          "rapidly",
+          "build",
+          "modern",
+          "websites",
+          "without",
+          "ever",
+          "leaving"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://tailwindcss.com/",
+          "duplicateOf": 0,
+          "duplicateReasons": [
+            "Content similarity: 81.3%"
+          ],
+          "merged": true,
+          "alternateSnippets": [
+            "Jan 22, 2025 ... Tailwind CSS v4.0 is an all-new version of the framework optimized for performance and flexibility, with a reimagined configuration and customization ...",
+            "Feb 13, 2025 ... ... tailwind css are much more popular these days. it's worth becoming acquainted with these. also op if you think ai and no code tools will ...",
+            "Jul 9, 2025 ... ... TailwindCSS with React + Vite (July 2025). ⚙️ Step-by-Step Guide: React + Vite + TailwindCSS (v4.1+). ✓ Step 1: Create a New Vite + React Project.",
+            "Mar 6, 2025 ... ... latest version of tailwindcss in your devDependencies in the package.json file. ... 2025) and Tailwind CSS v4: more packages and new Vite support."
+          ],
+          "alternateTitles": [
+            "Tailwind CSS v4.0 - Tailwind CSS",
+            "What's the Current State of Web Development in 2025? : r/webdev",
+            "How to Set Up TailwindCSS in a React + Vite Project (2026 Edition ...",
+            "javascript - While installing tailwind CSS I am having this error 'npm ..."
+          ],
+          "alternateUrls": [
+            "https://tailwindcss.com/blog/tailwindcss-v4",
+            "https://www.reddit.com/r/webdev/comments/1ioekud/whats_the_current_state_of_web_development_in_2025/",
+            "https://medium.com/@fasihuddin102/how-to-set-up-tailwindcss-in-a-react-vite-project-2025-edition-999e0541a493",
+            "https://stackoverflow.com/questions/79489946/while-installing-tailwind-css-i-am-having-this-error-npm-error-could-not-determ"
+          ],
+          "mergedDuplicates": 4,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 4
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 5,
+      "finalCount": 1,
+      "duplicatesRemoved": 4,
+      "deduplicationRate": "80.0%"
+    }
+  },
+  "expiry": null
+}

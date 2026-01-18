@@ -1,0 +1,82 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "Next.js 16 | Next.js",
+        "link": "https://nextjs.org/blog/next-16",
+        "snippet": "Oct 21, 2025 ... js Conf 2025 , Next.js 16 is now available. This release provides the latest improvements to Turbopack, caching, and the Next.js architecture.",
+        "displayLink": "nextjs.org",
+        "formattedUrl": "https://nextjs.org/blog/next-16",
+        "htmlSnippet": "Oct 21, 2025 <b>...</b> js Conf <b>2025</b> , <b>Next</b>.<b>js</b> 16 is now available. This <b>release</b> provides the <b>latest</b> improvements to Turbopack, caching, and the <b>Next</b>.<b>js</b> architecture.",
+        "pagemap": {
+          "metatags": {
+            "title": "Next.js 16",
+            "description": "Next.js 16 includes Cache Components, stable Turbopack, file system caching, React Compiler support, smarter routing, new caching APIs, and React 19.2 features.",
+            "image": "https://h8dxkfmaphn8o0p3.public.blob.vercel-storage.com/static/blog/next-16/twitter-card.png",
+            "author": "",
+            "publishedTime": "2025-10-21T20:00:00.000Z",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwSnM0HHw3vv2dWrzVecEYTInX1TTuhnpBicgRwzLbUB9cPpm6n_UwmUE&s",
+            "width": "311",
+            "height": "162"
+          },
+          "image": "https://h8dxkfmaphn8o0p3.public.blob.vercel-storage.com/static/blog/next-16/twitter-card.png"
+        },
+        "metadata": {},
+        "originalIndex": 2,
+        "normalizedUrl": "https://nextjs.org/blog/next-16",
+        "contentHash": "1100011000010000000000000000000011000110000100000000000000000000",
+        "titleTokens": [
+          "next",
+          "js",
+          "16",
+          "next",
+          "js"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://nextjs.org/blog/next-16",
+          "duplicateOf": 0,
+          "duplicateReasons": [
+            "Content similarity: 90.6%"
+          ],
+          "merged": true,
+          "alternateSnippets": [
+            "Dec 3, 2025 ... Required Action. All users should upgrade to the latest patched version in their release line: ... © 2026 Vercel, Inc.",
+            "Dec 11, 2025 ... Two additional vulnerabilities have been identified in React Server Components. Users should upgrade to patched versions immediately.",
+            "Jul 11, 2025 ... Remix will still exist, but not for React. What is known as Remix (as of the last few months) will be rebranded (back) to React Router. I haven' ...",
+            "May 9, 2025 ... ... Next.js ... Next time anyone wants to start a new React app, I'd suggest scrolling past the frame BS ..."
+          ],
+          "alternateTitles": [
+            "Security Advisory: CVE-2025-66478 | Next.js",
+            "Next.js Security Update: December 11, 2025 | Next.js",
+            "2025: Remix or Next.js – Which One Should I Choose? : r/reactjs",
+            "Is the future of React still as bright in 2025 as it was before? : r/reactjs"
+          ],
+          "alternateUrls": [
+            "https://nextjs.org/blog/CVE-2025-66478",
+            "https://nextjs.org/blog/security-update-2025-12-11",
+            "https://www.reddit.com/r/reactjs/comments/1lwwpnm/2025_remix_or_nextjs_which_one_should_i_choose/",
+            "https://www.reddit.com/r/reactjs/comments/1kir0pi/is_the_future_of_react_still_as_bright_in_2025_as/"
+          ],
+          "mergedDuplicates": 4,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 4
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 5,
+      "finalCount": 1,
+      "duplicatesRemoved": 4,
+      "deduplicationRate": "80.0%"
+    }
+  },
+  "expiry": null
+}

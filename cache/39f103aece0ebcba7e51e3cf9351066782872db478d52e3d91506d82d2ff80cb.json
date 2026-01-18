@@ -1,0 +1,112 @@
+{
+  "value": {
+    "query": "Radix UI latest version 2025",
+    "expanded_queries": [
+      "Radix UI latest version 2025",
+      "radix ui lat version 2025",
+      "\"Radix UI latest version 2025\"",
+      "radix ui",
+      "radix ui latest"
+    ],
+    "results": [
+      {
+        "title": "Radix UI",
+        "link": "https://www.radix-ui.com/",
+        "snippet": "An open source component library optimized for fast development, easy maintenance, and accessibility. Just import and go—no configuration required ...",
+        "displayLink": "www.radix-ui.com",
+        "formattedUrl": "https://www.radix-ui.com/",
+        "htmlSnippet": "An open source component library optimized for fast development, easy maintenance, and accessibility. Just import and go—no configuration required&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "Radix UI",
+            "description": "Components, icons, and colors for building high‑quality, accessible UI. Free and open-source.",
+            "image": "https://radix-ui.com/social/themes.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIoXCTIDw4G66yykOgMTfnhPrqXBY7CEiTRpA24tQareNFLjY59pCO3qVz&s",
+            "width": "300",
+            "height": "168"
+          },
+          "image": "https://radix-ui.com/social/themes.png"
+        },
+        "metadata": {},
+        "originalIndex": 2,
+        "normalizedUrl": "https://radix-ui.com/",
+        "contentHash": "1111100100110000100000000000000011111001001100001000000000000000",
+        "titleTokens": [
+          "radix",
+          "ui"
+        ]
+      }
+    ],
+    "total_results": "129000",
+    "search_time": 0.229388,
+    "offset": 0,
+    "limit": 5,
+    "cached": false,
+    "provider": {
+      "name": "crawlforge",
+      "backend": "Google Search",
+      "capabilities": {
+        "requiresApiKey": true,
+        "apiKeyType": "CrawlForge API key",
+        "supportsPagination": true,
+        "supportsLanguageFilter": true,
+        "supportsDateFilter": true,
+        "supportsSiteFilter": true,
+        "supportsFileTypeFilter": true,
+        "supportsSafeSearch": true,
+        "supportsLocalization": true,
+        "supportsCountryTargeting": true,
+        "maxResultsPerRequest": 100,
+        "rateLimit": "Based on your CrawlForge plan",
+        "creditCost": "2 credits per search",
+        "features": [
+          "Google Search results via CrawlForge proxy",
+          "No Google API credentials needed",
+          "Full text search",
+          "Image metadata",
+          "Exact phrase matching",
+          "Boolean operators",
+          "Site-specific search",
+          "File type filtering",
+          "Date range filtering",
+          "Language filtering",
+          "Country targeting",
+          "Safe search",
+          "Localization support",
+          "Related searches",
+          "Rich snippets"
+        ],
+        "benefits": [
+          "Simplified authentication (one API key)",
+          "Unified billing through CrawlForge",
+          "Enterprise-grade reliability",
+          "No Google API quota management",
+          "Built-in rate limiting",
+          "Credit-based pricing"
+        ]
+      }
+    },
+    "localization": null,
+    "processing": {
+      "ranking": null,
+      "deduplication": {
+        "originalCount": 5,
+        "finalCount": 1,
+        "duplicatesRemoved": 4,
+        "deduplicationRate": "80.0%"
+      },
+      "query_expansion": {
+        "original_query": "Radix UI latest version 2025",
+        "expanded_count": 5,
+        "used_query": "Radix UI latest version 2025"
+      },
+      "localization_applied": false
+    }
+  },
+  "expiry": null
+}

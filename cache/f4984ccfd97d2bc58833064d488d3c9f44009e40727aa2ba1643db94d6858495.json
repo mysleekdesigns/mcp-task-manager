@@ -1,0 +1,112 @@
+{
+  "value": {
+    "query": "@radix-ui/themes npm version",
+    "expanded_queries": [
+      "@radix-ui/themes npm version",
+      "radix ui theme npm version",
+      "\"@radix-ui/themes npm version\"",
+      "radix AND ui AND themes AND npm AND version",
+      "radix OR ui OR themes OR npm OR version"
+    ],
+    "results": [
+      {
+        "title": "Radix UI",
+        "link": "https://www.radix-ui.com/",
+        "snippet": "Just import and go—no configuration required. import \"@radix-ui/themes/styles.css\";. import { Theme, Button } from \"@radix-ui/themes\"; ... NPM0.0%. 9.1 ...",
+        "displayLink": "www.radix-ui.com",
+        "formattedUrl": "https://www.radix-ui.com/",
+        "htmlSnippet": "Just import and go—no configuration required. import &quot;@<b>radix</b>-<b>ui</b>/<b>themes</b>/styles.css&quot;;. import { Theme, Button } from &quot;@<b>radix</b>-<b>ui</b>/<b>themes</b>&quot;; ... <b>NPM</b>0.0%. 9.1&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "Radix UI",
+            "description": "Components, icons, and colors for building high‑quality, accessible UI. Free and open-source.",
+            "image": "https://radix-ui.com/social/themes.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIoXCTIDw4G66yykOgMTfnhPrqXBY7CEiTRpA24tQareNFLjY59pCO3qVz&s",
+            "width": "300",
+            "height": "168"
+          },
+          "image": "https://radix-ui.com/social/themes.png"
+        },
+        "metadata": {},
+        "originalIndex": 3,
+        "normalizedUrl": "https://radix-ui.com/",
+        "contentHash": "0000010100000000000000000000000000000101000000000000000000000000",
+        "titleTokens": [
+          "radix",
+          "ui"
+        ]
+      }
+    ],
+    "total_results": "72400",
+    "search_time": 0.321213,
+    "offset": 0,
+    "limit": 5,
+    "cached": false,
+    "provider": {
+      "name": "crawlforge",
+      "backend": "Google Search",
+      "capabilities": {
+        "requiresApiKey": true,
+        "apiKeyType": "CrawlForge API key",
+        "supportsPagination": true,
+        "supportsLanguageFilter": true,
+        "supportsDateFilter": true,
+        "supportsSiteFilter": true,
+        "supportsFileTypeFilter": true,
+        "supportsSafeSearch": true,
+        "supportsLocalization": true,
+        "supportsCountryTargeting": true,
+        "maxResultsPerRequest": 100,
+        "rateLimit": "Based on your CrawlForge plan",
+        "creditCost": "2 credits per search",
+        "features": [
+          "Google Search results via CrawlForge proxy",
+          "No Google API credentials needed",
+          "Full text search",
+          "Image metadata",
+          "Exact phrase matching",
+          "Boolean operators",
+          "Site-specific search",
+          "File type filtering",
+          "Date range filtering",
+          "Language filtering",
+          "Country targeting",
+          "Safe search",
+          "Localization support",
+          "Related searches",
+          "Rich snippets"
+        ],
+        "benefits": [
+          "Simplified authentication (one API key)",
+          "Unified billing through CrawlForge",
+          "Enterprise-grade reliability",
+          "No Google API quota management",
+          "Built-in rate limiting",
+          "Credit-based pricing"
+        ]
+      }
+    },
+    "localization": null,
+    "processing": {
+      "ranking": null,
+      "deduplication": {
+        "originalCount": 5,
+        "finalCount": 1,
+        "duplicatesRemoved": 4,
+        "deduplicationRate": "80.0%"
+      },
+      "query_expansion": {
+        "original_query": "@radix-ui/themes npm version",
+        "expanded_count": 5,
+        "used_query": "@radix-ui/themes npm version"
+      },
+      "localization_applied": false
+    }
+  },
+  "expiry": null
+}

@@ -1,0 +1,116 @@
+{
+  "value": {
+    "query": "Prisma ORM latest version 2025 2026",
+    "expanded_queries": [
+      "Prisma ORM latest version 2025 2026",
+      "prisma orm lat version 2025 2026",
+      "\"Prisma ORM latest version 2025 2026\"",
+      "prisma orm",
+      "prisma orm latest"
+    ],
+    "results": [
+      {
+        "title": "Error: Prisma Client could not locate the Query Engine for runtime ...",
+        "link": "https://github.com/prisma/prisma/discussions/22519",
+        "snippet": "... latest version, and make sure you have the binaryTargets you need. generator client { provider = 'prisma-client-js' binaryTargets = ['native', 'linux-arm64 ...",
+        "displayLink": "github.com",
+        "formattedUrl": "https://github.com/prisma/prisma/discussions/22519",
+        "htmlSnippet": "... <b>latest version</b>, and make sure you have the binaryTargets you need. generator client { provider = &#39;<b>prisma</b>-client-js&#39; binaryTargets = [&#39;native&#39;, &#39;linux-arm64&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "Error: Prisma Client could not locate the Query Engine for runtime \"linux-musl-arm64-openssl-3.0.x\". · prisma prisma · Discussion #22519",
+            "description": "Question Hi, I'm facing the PrismaClientInitializationError: Prisma Client could not locate the Query Engine for runtime \"linux-musl-arm64-openssl-3.0.x\". issue and I saw it was already fixed some ...",
+            "image": "https://opengraph.githubassets.com/04d5079f67f77fab2ad506550f6fbbc38198eaa7ce28ed90cb4f3dfc3d35b4a3/prisma/prisma/discussions/22519",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "image": "https://opengraph.githubassets.com/04d5079f67f77fab2ad506550f6fbbc38198eaa7ce28ed90cb4f3dfc3d35b4a3/prisma/prisma/discussions/22519"
+        },
+        "metadata": {},
+        "originalIndex": 4,
+        "normalizedUrl": "https://github.com/prisma/prisma/discussions/22519",
+        "contentHash": "1100001000000000000000000000000011000010000000000000000000000000",
+        "titleTokens": [
+          "error",
+          "prisma",
+          "client",
+          "could",
+          "not",
+          "locate",
+          "the",
+          "query",
+          "engine",
+          "for",
+          "runtime"
+        ]
+      }
+    ],
+    "total_results": "75700",
+    "search_time": 0.253702,
+    "offset": 0,
+    "limit": 5,
+    "cached": false,
+    "provider": {
+      "name": "crawlforge",
+      "backend": "Google Search",
+      "capabilities": {
+        "requiresApiKey": true,
+        "apiKeyType": "CrawlForge API key",
+        "supportsPagination": true,
+        "supportsLanguageFilter": true,
+        "supportsDateFilter": true,
+        "supportsSiteFilter": true,
+        "supportsFileTypeFilter": true,
+        "supportsSafeSearch": true,
+        "supportsLocalization": true,
+        "supportsCountryTargeting": true,
+        "maxResultsPerRequest": 100,
+        "rateLimit": "Based on your CrawlForge plan",
+        "creditCost": "2 credits per search",
+        "features": [
+          "Google Search results via CrawlForge proxy",
+          "No Google API credentials needed",
+          "Full text search",
+          "Image metadata",
+          "Exact phrase matching",
+          "Boolean operators",
+          "Site-specific search",
+          "File type filtering",
+          "Date range filtering",
+          "Language filtering",
+          "Country targeting",
+          "Safe search",
+          "Localization support",
+          "Related searches",
+          "Rich snippets"
+        ],
+        "benefits": [
+          "Simplified authentication (one API key)",
+          "Unified billing through CrawlForge",
+          "Enterprise-grade reliability",
+          "No Google API quota management",
+          "Built-in rate limiting",
+          "Credit-based pricing"
+        ]
+      }
+    },
+    "localization": null,
+    "processing": {
+      "ranking": null,
+      "deduplication": {
+        "originalCount": 5,
+        "finalCount": 1,
+        "duplicatesRemoved": 4,
+        "deduplicationRate": "80.0%"
+      },
+      "query_expansion": {
+        "original_query": "Prisma ORM latest version 2025 2026",
+        "expanded_count": 5,
+        "used_query": "Prisma ORM latest version 2025 2026"
+      },
+      "localization_applied": false
+    }
+  },
+  "expiry": null
+}

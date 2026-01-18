@@ -1,0 +1,77 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "xterm - npm",
+        "link": "https://www.npmjs.com/package/xterm",
+        "snippet": "Sep 7, 2023 ... Full xterm terminal, in your browser. Latest version: 5.3.0, last ... js follows a monthly release cycle roughly. All current and past ...",
+        "displayLink": "www.npmjs.com",
+        "formattedUrl": "https://www.npmjs.com/package/xterm",
+        "htmlSnippet": "Sep 7, 2023 <b>...</b> Full <b>xterm</b> terminal, in your browser. <b>Latest version</b>: 5.3.0, last ... <b>js</b> follows a monthly <b>release</b> cycle roughly. All <b>current</b> and past&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "xterm",
+            "description": "Full xterm terminal, in your browser. Latest version: 5.3.0, last published: 2 years ago. Start using xterm in your project by running `npm i xterm`. There are 426 other projects in the npm registry using xterm.",
+            "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9_PIZpTqIpa0liCRRnQUmkhj2w3NCMbs2QR_X8Qe2cC-areLX1GkLYUF6&s",
+            "width": "310",
+            "height": "163"
+          },
+          "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png"
+        },
+        "metadata": {},
+        "originalIndex": 0,
+        "normalizedUrl": "https://npmjs.com/package/xterm",
+        "contentHash": "0100011000000000000000000000000001000110000000000000000000000000",
+        "titleTokens": [
+          "xterm",
+          "npm"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://www.npmjs.com/package/xterm",
+          "duplicateOf": null,
+          "duplicateReasons": [],
+          "merged": true,
+          "alternateSnippets": [
+            "This is a breaking change in a minor release as it could improve security of embedders. // before 5.1.0 const term = new Terminal({ ...",
+            "Sep 3, 2019 ... ... js.git xterm-local cd xterm-local npm install npm run package. (Note ... installing and starting a new project with js · Hot Network ...",
+            "Dec 29, 2019 ... Would be nice if anybody else could install the latest version from Github and test it. ... js version: v12.14.0; Served over SSH ...",
+            "... xterm.js as a dependency by running: npm install @xterm/xterm. To start using xterm.js on your browser, add the xterm.js and xterm.css to the head of your ..."
+          ],
+          "alternateTitles": [
+            "Releases · xtermjs/xterm.js",
+            "javascript - How to build and use xterm.js locally? - Stack Overflow",
+            "[ANNOUNCE]node-red-contrib-xterm : second beta (sidebar) - Page 6",
+            "Xterm.js"
+          ],
+          "alternateUrls": [
+            "https://github.com/xtermjs/xterm.js/releases",
+            "https://stackoverflow.com/questions/57776633/how-to-build-and-use-xterm-js-locally",
+            "https://discourse.nodered.org/t/announce-node-red-contrib-xterm-second-beta-sidebar/19718?page=6",
+            "http://xtermjs.org/"
+          ],
+          "mergedDuplicates": 4,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 4
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 5,
+      "finalCount": 1,
+      "duplicatesRemoved": 4,
+      "deduplicationRate": "80.0%"
+    }
+  },
+  "expiry": null
+}

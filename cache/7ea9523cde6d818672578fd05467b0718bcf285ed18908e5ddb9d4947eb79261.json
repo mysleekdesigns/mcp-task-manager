@@ -1,0 +1,78 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "next-auth - npm",
+        "link": "https://www.npmjs.com/package/next-auth",
+        "snippet": "Oct 29, 2025 ... Authentication for Next.js. Latest version: 4.24.13, last published: 3 months ago. Start using next-auth in your project by running `npm i ...",
+        "displayLink": "www.npmjs.com",
+        "formattedUrl": "https://www.npmjs.com/package/next-auth",
+        "htmlSnippet": "Oct 29, 2025 <b>...</b> Authentication for Next.js. <b>Latest version</b>: 4.24.13, <b>last</b> published: 3 months ago. Start using <b>next-auth</b> in your project by running `npm i&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "next-auth",
+            "description": "Authentication for Next.js. Latest version: 4.24.13, last published: 3 months ago. Start using next-auth in your project by running `npm i next-auth`. There are 545 other projects in the npm registry using next-auth.",
+            "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9_PIZpTqIpa0liCRRnQUmkhj2w3NCMbs2QR_X8Qe2cC-areLX1GkLYUF6&s",
+            "width": "310",
+            "height": "163"
+          },
+          "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png"
+        },
+        "metadata": {},
+        "originalIndex": 0,
+        "normalizedUrl": "https://npmjs.com/package/next-auth",
+        "contentHash": "1100011000010000000000000000000011000110000100000000000000000000",
+        "titleTokens": [
+          "next",
+          "auth",
+          "npm"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://www.npmjs.com/package/next-auth",
+          "duplicateOf": null,
+          "duplicateReasons": [],
+          "merged": true,
+          "alternateSnippets": [
+            "next-auth-adapter-filemaker. next-auth Adapter for FileMaker Server. eluce3. • 2.0.0 • a year ago • 0 dependents • MITpublished version 2.0.0, a year ago0 ...",
+            "Jun 1, 2023 ... Prisma adapter for next-auth.. Latest version: 1.0.7, last published: 3 years ago. Start using @next-auth/prisma-adapter in your project by ...",
+            "Dec 24, 2022 ... Supabase adapter for next-auth.. Latest version: 0.2.1, last published: 3 years ago. Start using @next-auth/supabase-adapter in your project ...",
+            "Oct 15, 2024 ... Latest version: 0.5.0, last published: a year ago. Start using @rainbow-me/rainbowkit-siwe-next-auth ... Version History. Version, Downloads ..."
+          ],
+          "alternateTitles": [
+            "next-auth adapter - npm search",
+            "@next-auth/prisma-adapter - npm",
+            "@next-auth/supabase-adapter - npm",
+            "@rainbow-me/rainbowkit-siwe-next-auth - npm"
+          ],
+          "alternateUrls": [
+            "https://www.npmjs.com/search?q=next-auth%20adapter",
+            "https://www.npmjs.com/package/@next-auth/prisma-adapter",
+            "https://www.npmjs.com/package/%40next-auth%2Fsupabase-adapter",
+            "https://www.npmjs.com/package/@rainbow-me/rainbowkit-siwe-next-auth?activeTab=versions"
+          ],
+          "mergedDuplicates": 4,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 4
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 5,
+      "finalCount": 1,
+      "duplicatesRemoved": 4,
+      "deduplicationRate": "80.0%"
+    }
+  },
+  "expiry": null
+}

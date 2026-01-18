@@ -1,0 +1,100 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "Installation - Auth.js",
+        "link": "https://authjs.dev/getting-started/installation",
+        "snippet": "Oct 9, 2025 ... Next, create the Auth.js config file and object. This is where you can control the behaviour of the library and specify custom authentication ...",
+        "displayLink": "authjs.dev",
+        "formattedUrl": "https://authjs.dev/getting-started/installation",
+        "htmlSnippet": "Oct 9, 2025 <b>...</b> <b>Next</b>, create the <b>Auth</b>.<b>js config</b> file and object. This is where you can control the behaviour of the library and specify custom authentication&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "Auth.js | Installation",
+            "description": "Authentication for the Web",
+            "image": "https://authjs.dev/api/og?title=Auth.js%20%7C%20Installation",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcTU033X637ypTNgUvTVVXkfYh1RPkxSMaHSlTM-C38XDFZCozFlYqupf-&s",
+            "width": "310",
+            "height": "163"
+          },
+          "image": "https://authjs.dev/api/og?title=Auth.js%20%7C%20Installation"
+        },
+        "metadata": {},
+        "originalIndex": 2,
+        "normalizedUrl": "https://authjs.dev/getting-started/installation",
+        "contentHash": "1000111000000000100000000000000010001110000000001000000000000000",
+        "titleTokens": [
+          "installation",
+          "auth",
+          "js"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://authjs.dev/getting-started/installation",
+          "duplicateOf": 0,
+          "duplicateReasons": [
+            "Content similarity: 84.4%"
+          ],
+          "merged": true,
+          "alternateSnippets": [
+            "Oct 9, 2025 ... Upgrade Guide (NextAuth.js v5). This guide only applies to next-auth upgrades for users of Next.js ...",
+            "Feb 1, 2024 ... I am working on a Next.js 14 + Auth.js v5 project where I need to handle the login via a custom external REST API server built in Nest.js.",
+            "js basePath configuration #10797. More discussions here: Custom Base Path not ... Footer. © 2026 GitHub, Inc. Footer navigation. Terms · Privacy · Security ...",
+            "I am trying to migrate from using Next.js 13.4 and MSAL to using next-auth. I have an auth.ts, auth.config.ts, my nextauth api and a middleware.",
+            "Mar 20, 2024 ... 60 votes, 106 comments. Given the state of NextAuth, everyone recommends using lucia auth, which has a good DX. After trying, i found that ...",
+            "Feb 14, 2022 ... Be sure to add NEXTAUTH_URL to your env variable config on your cloud server.",
+            "Dec 19, 2024 ... Installing and configuring NextAuth.js v5. 3. Approach 1: Handling authentication using Server Components with Server Actions. 4. Approach 2: ...",
+            "Feb 28, 2024 ... Setting up Next-Auth. NextAuth.js is an open-source authentication library for Next.js applications which tries to simplify the process of ...",
+            "Dec 10, 2025 ... The Setup: “npm install” Therapy. Let's get straight to the point: the elephant in the room is that NextAuth is transforming into Auth.js. For ..."
+          ],
+          "alternateTitles": [
+            "Migrating to v5",
+            "Auth.js v5 issue with UntrustedHost - Theo's Typesafe Cult",
+            "Why is the basePath in Next Auth v5 still not working? · nextauthjs ...",
+            "Getting Module Not Found Error for next/server · nextauthjs next ...",
+            "Why everyone recommends Lucia Auth? : r/nextjs",
+            "next.js - Next Auth: Deployed code redirecting me to localhost on ...",
+            "Setting Up Authentication in Next.js 15 Using NextAuth.js v5 | by ...",
+            "Complete Authentication Guide Using Next-Auth v5 in Next.js 14 | by ...",
+            "Stop Crying Over Auth: A Senior Dev's Guide to Next.js 16 & Auth.js v5"
+          ],
+          "alternateUrls": [
+            "https://authjs.dev/getting-started/migrating-to-v5",
+            "https://www.answeroverflow.com/m/1202493350372966410",
+            "https://github.com/nextauthjs/next-auth/discussions/11169",
+            "https://github.com/nextauthjs/next-auth/discussions/10058",
+            "https://www.reddit.com/r/nextjs/comments/1bjamiu/why_everyone_recommends_lucia_auth/",
+            "https://stackoverflow.com/questions/71109710/next-auth-deployed-code-redirecting-me-to-localhost-on-login",
+            "https://medium.com/front-end-weekly/setting-up-authentication-in-next-js-15-using-nextauth-js-v5-264f54d5471f",
+            "https://javascript.plainenglish.io/complete-authentication-guide-using-next-auth-v5-in-next-js-14-70e7630ab1c2",
+            "https://javascript.plainenglish.io/stop-crying-over-auth-a-senior-devs-guide-to-next-js-15-auth-js-v5-42a57bc5b4ce"
+          ],
+          "mergedDuplicates": 9,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 9
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 10,
+      "finalCount": 1,
+      "duplicatesRemoved": 9,
+      "deduplicationRate": "90.0%"
+    }
+  },
+  "expiry": null
+}

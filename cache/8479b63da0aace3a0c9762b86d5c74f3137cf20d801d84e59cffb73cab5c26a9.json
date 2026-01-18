@@ -1,0 +1,107 @@
+{
+  "value": {
+    "query": "NextAuth.js Auth.js latest version 2025 2026",
+    "expanded_queries": [
+      "NextAuth.js Auth.js latest version 2025 2026",
+      "nextauth js auth js lat version 2025 2026",
+      "\"NextAuth.js Auth.js latest version 2025 2026\"",
+      "nextauth js",
+      "nextauth js auth"
+    ],
+    "results": [
+      {
+        "title": "Errors | NextAuth.js",
+        "link": "https://next-auth.js.org/errors",
+        "snippet": "Jun 3, 2025 ... ... version mismatch. For instance, openid-client requires >=14.2.0 for lts/fermium and has similar ... NextAuth.js © Better Auth Inc. 2025.",
+        "displayLink": "next-auth.js.org",
+        "formattedUrl": "https://next-auth.js.org/errors",
+        "htmlSnippet": "Jun 3, 2025 <b>...</b> ... <b>version</b> mismatch. For instance, openid-client requires &gt;=14.2.0 for lts/fermium and has similar ... <b>NextAuth</b>.<b>js</b> © Better Auth Inc. <b>2025</b>.",
+        "pagemap": {
+          "metatags": {
+            "title": "Errors | NextAuth.js",
+            "description": "This is a list of errors output from NextAuth.js.",
+            "image": "",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          }
+        },
+        "metadata": {},
+        "originalIndex": 3,
+        "normalizedUrl": "https://next-auth.js.org/errors",
+        "contentHash": "1100011100100000000000000000000011000111001000000000000000000000",
+        "titleTokens": [
+          "errors",
+          "nextauth",
+          "js"
+        ]
+      }
+    ],
+    "total_results": "20900",
+    "search_time": 0.231091,
+    "offset": 0,
+    "limit": 5,
+    "cached": false,
+    "provider": {
+      "name": "crawlforge",
+      "backend": "Google Search",
+      "capabilities": {
+        "requiresApiKey": true,
+        "apiKeyType": "CrawlForge API key",
+        "supportsPagination": true,
+        "supportsLanguageFilter": true,
+        "supportsDateFilter": true,
+        "supportsSiteFilter": true,
+        "supportsFileTypeFilter": true,
+        "supportsSafeSearch": true,
+        "supportsLocalization": true,
+        "supportsCountryTargeting": true,
+        "maxResultsPerRequest": 100,
+        "rateLimit": "Based on your CrawlForge plan",
+        "creditCost": "2 credits per search",
+        "features": [
+          "Google Search results via CrawlForge proxy",
+          "No Google API credentials needed",
+          "Full text search",
+          "Image metadata",
+          "Exact phrase matching",
+          "Boolean operators",
+          "Site-specific search",
+          "File type filtering",
+          "Date range filtering",
+          "Language filtering",
+          "Country targeting",
+          "Safe search",
+          "Localization support",
+          "Related searches",
+          "Rich snippets"
+        ],
+        "benefits": [
+          "Simplified authentication (one API key)",
+          "Unified billing through CrawlForge",
+          "Enterprise-grade reliability",
+          "No Google API quota management",
+          "Built-in rate limiting",
+          "Credit-based pricing"
+        ]
+      }
+    },
+    "localization": null,
+    "processing": {
+      "ranking": null,
+      "deduplication": {
+        "originalCount": 5,
+        "finalCount": 1,
+        "duplicatesRemoved": 4,
+        "deduplicationRate": "80.0%"
+      },
+      "query_expansion": {
+        "original_query": "NextAuth.js Auth.js latest version 2025 2026",
+        "expanded_count": 5,
+        "used_query": "NextAuth.js Auth.js latest version 2025 2026"
+      },
+      "localization_applied": false
+    }
+  },
+  "expiry": null
+}

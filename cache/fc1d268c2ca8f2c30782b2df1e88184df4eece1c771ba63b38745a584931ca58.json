@@ -1,0 +1,115 @@
+{
+  "value": {
+    "query": "Next.js 16 App Router best practices 2026",
+    "expanded_queries": [
+      "Next.js 16 App Router best practices 2026",
+      "next js 16 application router best practices 2026",
+      "next js 16 software router best practices 2026",
+      "next js 16 program router best practices 2026",
+      "next js 16 app router best practices 2026"
+    ],
+    "results": [
+      {
+        "title": "Next.js Docs | Next.js",
+        "link": "https://nextjs.org/docs",
+        "snippet": "At the top of the sidebar, you'll notice a dropdown menu that allows you to switch between the App Router and the Pages Router docs. React version handling. The ...",
+        "displayLink": "nextjs.org",
+        "formattedUrl": "https://nextjs.org/docs",
+        "htmlSnippet": "At the <b>top</b> of the sidebar, you&#39;ll notice a dropdown menu that allows you to switch between the <b>App Router</b> and the Pages <b>Router</b> docs. React version handling. The&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "Next.js Docs | Next.js",
+            "description": "Welcome to the Next.js Documentation.",
+            "image": "https://nextjs.org/api/docs-og?title=Next.js%20Docs",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVVkzVhUCl0FAaWB2zZuCLQ2Gl_t-v9xtc4RFq-AwfzlpT_QXUantH7u57&s",
+            "width": "311",
+            "height": "162"
+          },
+          "image": "https://nextjs.org/api/docs-og?title=Next.js%20Docs"
+        },
+        "metadata": {},
+        "originalIndex": 3,
+        "normalizedUrl": "https://nextjs.org/docs",
+        "contentHash": "1000111000100000100000000000000010001110001000001000000000000000",
+        "titleTokens": [
+          "next",
+          "js",
+          "docs",
+          "next",
+          "js"
+        ]
+      }
+    ],
+    "total_results": "21000000",
+    "search_time": 0.376739,
+    "offset": 0,
+    "limit": 10,
+    "cached": false,
+    "provider": {
+      "name": "crawlforge",
+      "backend": "Google Search",
+      "capabilities": {
+        "requiresApiKey": true,
+        "apiKeyType": "CrawlForge API key",
+        "supportsPagination": true,
+        "supportsLanguageFilter": true,
+        "supportsDateFilter": true,
+        "supportsSiteFilter": true,
+        "supportsFileTypeFilter": true,
+        "supportsSafeSearch": true,
+        "supportsLocalization": true,
+        "supportsCountryTargeting": true,
+        "maxResultsPerRequest": 100,
+        "rateLimit": "Based on your CrawlForge plan",
+        "creditCost": "2 credits per search",
+        "features": [
+          "Google Search results via CrawlForge proxy",
+          "No Google API credentials needed",
+          "Full text search",
+          "Image metadata",
+          "Exact phrase matching",
+          "Boolean operators",
+          "Site-specific search",
+          "File type filtering",
+          "Date range filtering",
+          "Language filtering",
+          "Country targeting",
+          "Safe search",
+          "Localization support",
+          "Related searches",
+          "Rich snippets"
+        ],
+        "benefits": [
+          "Simplified authentication (one API key)",
+          "Unified billing through CrawlForge",
+          "Enterprise-grade reliability",
+          "No Google API quota management",
+          "Built-in rate limiting",
+          "Credit-based pricing"
+        ]
+      }
+    },
+    "localization": null,
+    "processing": {
+      "ranking": null,
+      "deduplication": {
+        "originalCount": 10,
+        "finalCount": 1,
+        "duplicatesRemoved": 9,
+        "deduplicationRate": "90.0%"
+      },
+      "query_expansion": {
+        "original_query": "Next.js 16 App Router best practices 2026",
+        "expanded_count": 5,
+        "used_query": "Next.js 16 App Router best practices 2026"
+      },
+      "localization_applied": false
+    }
+  },
+  "expiry": null
+}

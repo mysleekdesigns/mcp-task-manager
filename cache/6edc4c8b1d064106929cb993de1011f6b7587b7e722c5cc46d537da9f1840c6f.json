@@ -1,0 +1,113 @@
+{
+  "value": {
+    "query": "xterm.js terminal React integration WebSocket",
+    "expanded_queries": [
+      "xterm.js terminal React integration WebSocket",
+      "xterm js terminal react integration websocket",
+      "\"xterm.js terminal React integration WebSocket\"",
+      "xterm js",
+      "xterm js terminal"
+    ],
+    "results": [
+      {
+        "title": "xtermjs/xterm.js: A terminal for the web - GitHub",
+        "link": "https://github.com/xtermjs/xterm.js",
+        "snippet": "VTerm: Extensible terminal emulator based on Electron and React. ... Go SSH Web Client: A simple SSH web client using Go, WebSocket and Xterm.js ...",
+        "displayLink": "github.com",
+        "formattedUrl": "https://github.com/xtermjs/xterm.js",
+        "htmlSnippet": "VTerm: Extensible <b>terminal</b> emulator based on Electron and <b>React</b>. ... Go SSH Web Client: A simple SSH web client using Go, <b>WebSocket</b> and <b>Xterm</b>.<b>js</b>&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "GitHub - xtermjs/xterm.js: A terminal for the web",
+            "description": "A terminal for the web. Contribute to xtermjs/xterm.js development by creating an account on GitHub.",
+            "image": "https://opengraph.githubassets.com/46ab90e417916d79dad1b0beff094ea25735069dd05c7d18715095ca22685bad/xtermjs/xterm.js",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "image": "https://opengraph.githubassets.com/46ab90e417916d79dad1b0beff094ea25735069dd05c7d18715095ca22685bad/xtermjs/xterm.js"
+        },
+        "metadata": {},
+        "originalIndex": 3,
+        "normalizedUrl": "https://github.com/xtermjs/xterm.js",
+        "contentHash": "0100011010011000000000000000000001000110100110000000000000000000",
+        "titleTokens": [
+          "xtermjs",
+          "xterm",
+          "js",
+          "terminal",
+          "for",
+          "the",
+          "web",
+          "github"
+        ]
+      }
+    ],
+    "total_results": "5980",
+    "search_time": 0.198853,
+    "offset": 0,
+    "limit": 10,
+    "cached": false,
+    "provider": {
+      "name": "crawlforge",
+      "backend": "Google Search",
+      "capabilities": {
+        "requiresApiKey": true,
+        "apiKeyType": "CrawlForge API key",
+        "supportsPagination": true,
+        "supportsLanguageFilter": true,
+        "supportsDateFilter": true,
+        "supportsSiteFilter": true,
+        "supportsFileTypeFilter": true,
+        "supportsSafeSearch": true,
+        "supportsLocalization": true,
+        "supportsCountryTargeting": true,
+        "maxResultsPerRequest": 100,
+        "rateLimit": "Based on your CrawlForge plan",
+        "creditCost": "2 credits per search",
+        "features": [
+          "Google Search results via CrawlForge proxy",
+          "No Google API credentials needed",
+          "Full text search",
+          "Image metadata",
+          "Exact phrase matching",
+          "Boolean operators",
+          "Site-specific search",
+          "File type filtering",
+          "Date range filtering",
+          "Language filtering",
+          "Country targeting",
+          "Safe search",
+          "Localization support",
+          "Related searches",
+          "Rich snippets"
+        ],
+        "benefits": [
+          "Simplified authentication (one API key)",
+          "Unified billing through CrawlForge",
+          "Enterprise-grade reliability",
+          "No Google API quota management",
+          "Built-in rate limiting",
+          "Credit-based pricing"
+        ]
+      }
+    },
+    "localization": null,
+    "processing": {
+      "ranking": null,
+      "deduplication": {
+        "originalCount": 10,
+        "finalCount": 1,
+        "duplicatesRemoved": 9,
+        "deduplicationRate": "90.0%"
+      },
+      "query_expansion": {
+        "original_query": "xterm.js terminal React integration WebSocket",
+        "expanded_count": 5,
+        "used_query": "xterm.js terminal React integration WebSocket"
+      },
+      "localization_applied": false
+    }
+  },
+  "expiry": null
+}

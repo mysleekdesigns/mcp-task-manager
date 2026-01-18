@@ -1,0 +1,83 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "Error: Prisma Client could not locate the Query Engine for runtime ...",
+        "link": "https://github.com/prisma/prisma/discussions/22519",
+        "snippet": "... latest version, and make sure you have the binaryTargets you need. generator client { provider = 'prisma-client-js' binaryTargets = ['native', 'linux-arm64 ...",
+        "displayLink": "github.com",
+        "formattedUrl": "https://github.com/prisma/prisma/discussions/22519",
+        "htmlSnippet": "... <b>latest version</b>, and make sure you have the binaryTargets you need. generator client { provider = &#39;<b>prisma</b>-client-js&#39; binaryTargets = [&#39;native&#39;, &#39;linux-arm64&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "Error: Prisma Client could not locate the Query Engine for runtime \"linux-musl-arm64-openssl-3.0.x\". · prisma prisma · Discussion #22519",
+            "description": "Question Hi, I'm facing the PrismaClientInitializationError: Prisma Client could not locate the Query Engine for runtime \"linux-musl-arm64-openssl-3.0.x\". issue and I saw it was already fixed some ...",
+            "image": "https://opengraph.githubassets.com/04d5079f67f77fab2ad506550f6fbbc38198eaa7ce28ed90cb4f3dfc3d35b4a3/prisma/prisma/discussions/22519",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "image": "https://opengraph.githubassets.com/04d5079f67f77fab2ad506550f6fbbc38198eaa7ce28ed90cb4f3dfc3d35b4a3/prisma/prisma/discussions/22519"
+        },
+        "metadata": {},
+        "originalIndex": 4,
+        "normalizedUrl": "https://github.com/prisma/prisma/discussions/22519",
+        "contentHash": "1100001000000000000000000000000011000010000000000000000000000000",
+        "titleTokens": [
+          "error",
+          "prisma",
+          "client",
+          "could",
+          "not",
+          "locate",
+          "the",
+          "query",
+          "engine",
+          "for",
+          "runtime"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://github.com/prisma/prisma/discussions/22519",
+          "duplicateOf": 0,
+          "duplicateReasons": [
+            "Content similarity: 87.5%"
+          ],
+          "merged": true,
+          "alternateSnippets": [
+            "November 18, 2025. Announcing Prisma 7. user. Mike Hartington. @mhartington ... Today, we're thrilled to announce the latest release of Prisma ORM and ...",
+            "The new minimum supported TypeScript version for Prisma ORM v6 is: 5.1.0 ... PrismaClientKnownRequestError with error code P2025 in findUniqueOrThrow ...",
+            "May 27, 2025 ... Prisma ORM performance is improving significantly with the new Rust-free version: ... r/gnome - Goodbye 2025, Welcome 2026. 96 upvotes · 18 ...",
+            "Jan 25, 2025 ... I mean at least they are beyond a v1.0 release, and they won't cause much breaking changes, unlike my experiences with Drizzle ORM."
+          ],
+          "alternateTitles": [
+            "Prisma 7 Release: Rust-Free, Faster, and More Compatible",
+            "Upgrade to Prisma ORM 6 | Prisma Documentation",
+            "Why is Drizzle so popular over keysly in 2025? : r/node",
+            "Warning: Think twice before using Prisma in large projects : r/nextjs"
+          ],
+          "alternateUrls": [
+            "https://www.prisma.io/blog/announcing-prisma-orm-7-0-0",
+            "https://www.prisma.io/docs/orm/more/upgrade-guides/upgrading-versions/upgrading-to-prisma-6",
+            "https://www.reddit.com/r/node/comments/1kw352t/why_is_drizzle_so_popular_over_keysly_in_2025/",
+            "https://www.reddit.com/r/nextjs/comments/1i9zvyy/warning_think_twice_before_using_prisma_in_large/"
+          ],
+          "mergedDuplicates": 4,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 4
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 5,
+      "finalCount": 1,
+      "duplicatesRemoved": 4,
+      "deduplicationRate": "80.0%"
+    }
+  },
+  "expiry": null
+}

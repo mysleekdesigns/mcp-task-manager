@@ -1,0 +1,76 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "tailwindcss - npm",
+        "link": "https://www.npmjs.com/package/tailwindcss",
+        "snippet": "Dec 11, 2025 ... A utility-first CSS framework for rapidly building custom user interfaces.. Latest version: 4.1.18, last published: a month ago.",
+        "displayLink": "www.npmjs.com",
+        "formattedUrl": "https://www.npmjs.com/package/tailwindcss",
+        "htmlSnippet": "Dec 11, 2025 <b>...</b> A utility-first CSS framework for rapidly building custom user interfaces.. <b>Latest version</b>: 4.1.18, <b>last</b> published: a month ago.",
+        "pagemap": {
+          "metatags": {
+            "title": "tailwindcss",
+            "description": "A utility-first CSS framework for rapidly building custom user interfaces.. Latest version: 4.1.18, last published: a month ago. Start using tailwindcss in your project by running `npm i tailwindcss`. There are 8882 other projects in the npm registry using tailwindcss.",
+            "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9_PIZpTqIpa0liCRRnQUmkhj2w3NCMbs2QR_X8Qe2cC-areLX1GkLYUF6&s",
+            "width": "310",
+            "height": "163"
+          },
+          "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png"
+        },
+        "metadata": {},
+        "originalIndex": 0,
+        "normalizedUrl": "https://npmjs.com/package/tailwindcss",
+        "contentHash": "0000010000000000000000000000000000000100000000000000000000000000",
+        "titleTokens": [
+          "tailwindcss",
+          "npm"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://www.npmjs.com/package/tailwindcss",
+          "duplicateOf": null,
+          "duplicateReasons": [],
+          "merged": true,
+          "alternateSnippets": [
+            "Apr 27, 2025 ... Tailwind CSS module for Nuxt. Latest version: 6.14.0, last published: 9 months ago. Start using @nuxtjs/tailwindcss in your project by ...",
+            "Dec 11, 2025 ... PostCSS plugin for Tailwind CSS, a utility-first CSS framework for rapidly building custom user interfaces. Latest version: 4.1.18, ...",
+            "Jul 16, 2025 ... Rules enforcing best practices while using Tailwind CSS. Latest version: 3.18.2, last published: 6 months ago."
+          ],
+          "alternateTitles": [
+            "@tailwindcss/vite - npm",
+            "@nuxtjs/tailwindcss - npm",
+            "@tailwindcss/postcss - npm",
+            "eslint-plugin-tailwindcss - npm"
+          ],
+          "alternateUrls": [
+            "https://www.npmjs.com/package/@tailwindcss/vite",
+            "https://www.npmjs.com/package/@nuxtjs/tailwindcss",
+            "https://www.npmjs.com/package/%40tailwindcss%2Fpostcss",
+            "https://www.npmjs.com/package/eslint-plugin-tailwindcss"
+          ],
+          "mergedDuplicates": 4,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 4
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 5,
+      "finalCount": 1,
+      "duplicatesRemoved": 4,
+      "deduplicationRate": "80.0%"
+    }
+  },
+  "expiry": null
+}

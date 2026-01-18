@@ -1,0 +1,179 @@
+{
+  "value": {
+    "query": "dnd-kit React drag drop kanban board",
+    "expanded_queries": [
+      "dnd-kit React drag drop kanban board",
+      "dnd kit react drag drop kanban board",
+      "\"dnd-kit React drag drop kanban board\"",
+      "dnd kit",
+      "dnd kit react"
+    ],
+    "results": [
+      {
+        "title": "dnd kit – a modern drag and drop toolkit for React",
+        "link": "https://dndkit.com/",
+        "snippet": "A modern, lightweight, performant, accessible and extensible drag & drop toolkit for React.",
+        "displayLink": "dndkit.com",
+        "formattedUrl": "https://dndkit.com/",
+        "htmlSnippet": "A modern, lightweight, performant, accessible and extensible <b>drag</b> &amp; <b>drop</b> toolkit for <b>React</b>.",
+        "pagemap": {
+          "metatags": {
+            "title": "dnd kit – a modern drag and drop toolkit for React",
+            "description": "A modular, lightweight, performant, accessible and extensible drag & drop toolkit for React.",
+            "image": "https://dndkit.com/twitter-social-banner.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjE3nCylzhKtJPZRt0UEO6_XSq8KsVtAzTnMqfpM7pzj94Wtj9UjlK1f8&s",
+            "width": "318",
+            "height": "159"
+          },
+          "image": "https://dndkit.com/twitter-social-banner.png"
+        },
+        "metadata": {},
+        "originalIndex": 0,
+        "normalizedUrl": "https://dndkit.com/",
+        "contentHash": "0110111000010000100000000000000001101110000100001000000000000000",
+        "titleTokens": [
+          "dnd",
+          "kit",
+          "modern",
+          "drag",
+          "and",
+          "drop",
+          "toolkit",
+          "for",
+          "react"
+        ],
+        "scores": {
+          "bm25": 1,
+          "semantic": 0.45913112912132514,
+          "authority": 0.43999999999999995,
+          "freshness": 0.5
+        },
+        "finalScore": 0.6757393387363976
+      },
+      {
+        "title": "React + dnd-kit + tailwind + shadcn/ui - Kanban Board",
+        "link": "https://georgegriff.github.io/react-dnd-kit-tailwind-shadcn-ui/",
+        "snippet": "@griffadev. Toggle theme. Drag and Drop Kanban Board. Move column: Todo Todo. Move task. Task. Implement user authentication. Move task. Task.",
+        "displayLink": "georgegriff.github.io",
+        "formattedUrl": "https://georgegriff.github.io/react-dnd-kit-tailwind-shadcn-ui/",
+        "htmlSnippet": "@griffadev. Toggle theme. <b>Drag</b> and <b>Drop Kanban Board</b>. Move column: Todo Todo. Move task. Task. Implement user authentication. Move task. Task.",
+        "pagemap": {
+          "metatags": {
+            "title": "",
+            "description": "",
+            "image": "",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          }
+        },
+        "metadata": {},
+        "originalIndex": 1,
+        "normalizedUrl": "https://georgegriff.github.io/react-dnd-kit-tailwind-shadcn-ui",
+        "contentHash": "1110001110111100010011000000000011100011101111000100110000000000",
+        "titleTokens": [
+          "react",
+          "dnd",
+          "kit",
+          "tailwind",
+          "shadcn",
+          "ui",
+          "kanban",
+          "board"
+        ],
+        "scores": {
+          "bm25": 1,
+          "semantic": 0.3662335103823572,
+          "authority": 0.26,
+          "freshness": 0.5
+        },
+        "finalScore": 0.6118700531147072
+      }
+    ],
+    "total_results": "2340",
+    "search_time": 0.216101,
+    "offset": 0,
+    "limit": 10,
+    "cached": false,
+    "provider": {
+      "name": "crawlforge",
+      "backend": "Google Search",
+      "capabilities": {
+        "requiresApiKey": true,
+        "apiKeyType": "CrawlForge API key",
+        "supportsPagination": true,
+        "supportsLanguageFilter": true,
+        "supportsDateFilter": true,
+        "supportsSiteFilter": true,
+        "supportsFileTypeFilter": true,
+        "supportsSafeSearch": true,
+        "supportsLocalization": true,
+        "supportsCountryTargeting": true,
+        "maxResultsPerRequest": 100,
+        "rateLimit": "Based on your CrawlForge plan",
+        "creditCost": "2 credits per search",
+        "features": [
+          "Google Search results via CrawlForge proxy",
+          "No Google API credentials needed",
+          "Full text search",
+          "Image metadata",
+          "Exact phrase matching",
+          "Boolean operators",
+          "Site-specific search",
+          "File type filtering",
+          "Date range filtering",
+          "Language filtering",
+          "Country targeting",
+          "Safe search",
+          "Localization support",
+          "Related searches",
+          "Rich snippets"
+        ],
+        "benefits": [
+          "Simplified authentication (one API key)",
+          "Unified billing through CrawlForge",
+          "Enterprise-grade reliability",
+          "No Google API quota management",
+          "Built-in rate limiting",
+          "Credit-based pricing"
+        ]
+      }
+    },
+    "localization": null,
+    "processing": {
+      "ranking": {
+        "algorithmsUsed": [
+          "bm25",
+          "semantic",
+          "authority",
+          "freshness"
+        ],
+        "weightsApplied": {
+          "bm25": 0.4,
+          "semantic": 0.3,
+          "authority": 0.2,
+          "freshness": 0.1
+        },
+        "totalResults": 2
+      },
+      "deduplication": {
+        "originalCount": 10,
+        "finalCount": 2,
+        "duplicatesRemoved": 8,
+        "deduplicationRate": "80.0%"
+      },
+      "query_expansion": {
+        "original_query": "dnd-kit React drag drop kanban board",
+        "expanded_count": 5,
+        "used_query": "dnd-kit React drag drop kanban board"
+      },
+      "localization_applied": false
+    }
+  },
+  "expiry": null
+}

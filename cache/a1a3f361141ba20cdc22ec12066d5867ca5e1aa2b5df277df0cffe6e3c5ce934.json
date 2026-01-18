@@ -1,0 +1,118 @@
+{
+  "value": {
+    "query": "shadcn/ui Tailwind CSS v4 setup 2026",
+    "expanded_queries": [
+      "shadcn/ui Tailwind CSS v4 setup 2026",
+      "shadcn ui tailwind cs v4 setup 2026",
+      "\"shadcn/ui Tailwind CSS v4 setup 2026\"",
+      "shadcn ui",
+      "shadcn ui tailwind"
+    ],
+    "results": [
+      {
+        "title": "The Foundation for your Design System - shadcn/ui",
+        "link": "https://ui.shadcn.com/",
+        "snippet": "A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Source. Open Code.",
+        "displayLink": "ui.shadcn.com",
+        "formattedUrl": "https://ui.shadcn.com/",
+        "htmlSnippet": "A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Source. Open Code.",
+        "pagemap": {
+          "metatags": {
+            "title": "The Foundation for your Design System - shadcn/ui",
+            "description": "A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Source. Open Code.",
+            "image": "https://ui.shadcn.com/og?title=The%20Foundation%20for%20your%20Design%20System&description=A%20set%20of%20beautifully%20designed%20components%20that%20you%20can%20customize%2C%20extend%2C%20and%20build%20on.%20Start%20here%20then%20make%20it%20your%20own.%20Open%20Source.%20Open%20Code.",
+            "author": "shadcn",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlbKXPEIrCKTti2VG7vBLkwTAhlzY_sK5uo8Lz6i8P1Xyp7oBHxqlgWGbE&s",
+            "width": "311",
+            "height": "162"
+          },
+          "image": "https://ui.shadcn.com/og?title=The%20Foundation%20for%20your%20Design%20System&description=A%20set%20of%20beautifully%20designed%20components%20that%20you%20can%20customize%2C%20extend%2C%20and%20build%20on.%20Start%20here%20then%20make%20it%20your%20own.%20Open%20Source.%20Open%20Code."
+        },
+        "metadata": {},
+        "originalIndex": 3,
+        "normalizedUrl": "https://ui.shadcn.com/",
+        "contentHash": "1100101000110000000000000000000011001010001100000000000000000000",
+        "titleTokens": [
+          "the",
+          "foundation",
+          "for",
+          "your",
+          "design",
+          "system",
+          "shadcn",
+          "ui"
+        ]
+      }
+    ],
+    "total_results": "46800",
+    "search_time": 0.256874,
+    "offset": 0,
+    "limit": 10,
+    "cached": false,
+    "provider": {
+      "name": "crawlforge",
+      "backend": "Google Search",
+      "capabilities": {
+        "requiresApiKey": true,
+        "apiKeyType": "CrawlForge API key",
+        "supportsPagination": true,
+        "supportsLanguageFilter": true,
+        "supportsDateFilter": true,
+        "supportsSiteFilter": true,
+        "supportsFileTypeFilter": true,
+        "supportsSafeSearch": true,
+        "supportsLocalization": true,
+        "supportsCountryTargeting": true,
+        "maxResultsPerRequest": 100,
+        "rateLimit": "Based on your CrawlForge plan",
+        "creditCost": "2 credits per search",
+        "features": [
+          "Google Search results via CrawlForge proxy",
+          "No Google API credentials needed",
+          "Full text search",
+          "Image metadata",
+          "Exact phrase matching",
+          "Boolean operators",
+          "Site-specific search",
+          "File type filtering",
+          "Date range filtering",
+          "Language filtering",
+          "Country targeting",
+          "Safe search",
+          "Localization support",
+          "Related searches",
+          "Rich snippets"
+        ],
+        "benefits": [
+          "Simplified authentication (one API key)",
+          "Unified billing through CrawlForge",
+          "Enterprise-grade reliability",
+          "No Google API quota management",
+          "Built-in rate limiting",
+          "Credit-based pricing"
+        ]
+      }
+    },
+    "localization": null,
+    "processing": {
+      "ranking": null,
+      "deduplication": {
+        "originalCount": 10,
+        "finalCount": 1,
+        "duplicatesRemoved": 9,
+        "deduplicationRate": "90.0%"
+      },
+      "query_expansion": {
+        "original_query": "shadcn/ui Tailwind CSS v4 setup 2026",
+        "expanded_count": 5,
+        "used_query": "shadcn/ui Tailwind CSS v4 setup 2026"
+      },
+      "localization_applied": false
+    }
+  },
+  "expiry": null
+}

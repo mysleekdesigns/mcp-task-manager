@@ -1,0 +1,85 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "The Foundation for your Design System - shadcn/ui",
+        "link": "https://ui.shadcn.com/",
+        "snippet": "A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Source. Open Code.",
+        "displayLink": "ui.shadcn.com",
+        "formattedUrl": "https://ui.shadcn.com/",
+        "htmlSnippet": "A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Source. Open Code.",
+        "pagemap": {
+          "metatags": {
+            "title": "The Foundation for your Design System - shadcn/ui",
+            "description": "A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Source. Open Code.",
+            "image": "https://ui.shadcn.com/og?title=The%20Foundation%20for%20your%20Design%20System&description=A%20set%20of%20beautifully%20designed%20components%20that%20you%20can%20customize%2C%20extend%2C%20and%20build%20on.%20Start%20here%20then%20make%20it%20your%20own.%20Open%20Source.%20Open%20Code.",
+            "author": "shadcn",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlbKXPEIrCKTti2VG7vBLkwTAhlzY_sK5uo8Lz6i8P1Xyp7oBHxqlgWGbE&s",
+            "width": "311",
+            "height": "162"
+          },
+          "image": "https://ui.shadcn.com/og?title=The%20Foundation%20for%20your%20Design%20System&description=A%20set%20of%20beautifully%20designed%20components%20that%20you%20can%20customize%2C%20extend%2C%20and%20build%20on.%20Start%20here%20then%20make%20it%20your%20own.%20Open%20Source.%20Open%20Code."
+        },
+        "metadata": {},
+        "originalIndex": 2,
+        "normalizedUrl": "https://ui.shadcn.com/",
+        "contentHash": "1100101000110000000000000000000011001010001100000000000000000000",
+        "titleTokens": [
+          "the",
+          "foundation",
+          "for",
+          "your",
+          "design",
+          "system",
+          "shadcn",
+          "ui"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://ui.shadcn.com/",
+          "duplicateOf": 0,
+          "duplicateReasons": [
+            "Content similarity: 96.9%"
+          ],
+          "merged": true,
+          "alternateSnippets": [
+            "June 2025 - Calendar Component. We've upgraded the Calendar component to the latest version of React DayPicker. This is a major upgrade and includes a lot of ...",
+            "FatumaA April 16, 2025, 11:43am 1. Hi all, I'm working on a Penpot version of Shadcn/ui using the new Design Tokens and wanted to share the work-in-progress ...",
+            "Jan 7, 2025 ... ... UI libraries (from shadcn, MUI, ...) ... I'd say that PrimeNG (that in the latest versions is very simillar to shadcn) may be a interesting choice ...",
+            "Nov 12, 2024 ... To be honest, I think companies just go with whatever new influx of devs are using. And since these major JS/CSS frameworks are currently highly ..."
+          ],
+          "alternateTitles": [
+            "Changelog - shadcn/ui",
+            "Shadcn UI Penpot Version - Libraries & Templates - Penpot ...",
+            "Which UI Library to use with Angular in 2025 : r/angular",
+            "Daisy UI vs Shadcn UI?? Which one to choose in 2025 : r/reactjs"
+          ],
+          "alternateUrls": [
+            "https://ui.shadcn.com/docs/changelog",
+            "https://community.penpot.app/t/shadcn-ui-penpot-version/8479",
+            "https://www.reddit.com/r/angular/comments/1hvnrvk/which_ui_library_to_use_with_angular_in_2025/",
+            "https://www.reddit.com/r/reactjs/comments/1gpaj3b/daisy_ui_vs_shadcn_ui_which_one_to_choose_in_2025/"
+          ],
+          "mergedDuplicates": 4,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 4
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 5,
+      "finalCount": 1,
+      "duplicatesRemoved": 4,
+      "deduplicationRate": "80.0%"
+    }
+  },
+  "expiry": null
+}

@@ -1,0 +1,74 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "Errors | NextAuth.js",
+        "link": "https://next-auth.js.org/errors",
+        "snippet": "Jun 3, 2025 ... ... version mismatch. For instance, openid-client requires >=14.2.0 for lts/fermium and has similar ... NextAuth.js © Better Auth Inc. 2025.",
+        "displayLink": "next-auth.js.org",
+        "formattedUrl": "https://next-auth.js.org/errors",
+        "htmlSnippet": "Jun 3, 2025 <b>...</b> ... <b>version</b> mismatch. For instance, openid-client requires &gt;=14.2.0 for lts/fermium and has similar ... <b>NextAuth</b>.<b>js</b> © Better Auth Inc. <b>2025</b>.",
+        "pagemap": {
+          "metatags": {
+            "title": "Errors | NextAuth.js",
+            "description": "This is a list of errors output from NextAuth.js.",
+            "image": "",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          }
+        },
+        "metadata": {},
+        "originalIndex": 3,
+        "normalizedUrl": "https://next-auth.js.org/errors",
+        "contentHash": "1100011100100000000000000000000011000111001000000000000000000000",
+        "titleTokens": [
+          "errors",
+          "nextauth",
+          "js"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://next-auth.js.org/errors",
+          "duplicateOf": 0,
+          "duplicateReasons": [
+            "Content similarity: 90.6%"
+          ],
+          "merged": true,
+          "alternateSnippets": [
+            "Oct 9, 2025 ... Feel free to skip to the next section, Installation, if you are not upgrading to next-auth@5 . NextAuth.js version 5 is a major rewrite of the ...",
+            "Feb 15, 2023 ... This is my first blog post. I'm building a new web app and a browser extension. My previous app used server-side sessions with password login, ...",
+            "I am trying to migrate from using Next.js 13.4 and MSAL to using next-auth. ... 1) and reinstalling them to the latest version (19.0.0). It worked ...",
+            "Jul 1, 2024 ... Getting Started With Next-Auth: One thing to keep in mind is that if you using the latest version of Next js / app router you need to go to the ..."
+          ],
+          "alternateTitles": [
+            "Migrating to v5",
+            "Comparing Auth from Supabase, Firebase, Auth.js, Ory, Clerk and ...",
+            "Getting Module Not Found Error for next/server · nextauthjs next ...",
+            "Exploring the Depths of Next-Auth Hell! !! Part — 1 | by Saad ..."
+          ],
+          "alternateUrls": [
+            "https://authjs.dev/getting-started/migrating-to-v5",
+            "https://blog.hyperknot.com/p/comparing-auth-providers",
+            "https://github.com/nextauthjs/next-auth/discussions/10058",
+            "https://medium.com/@mrsaadmasood1/exploring-the-depths-of-next-auth-hell-part-1-17e9b86399ce"
+          ],
+          "mergedDuplicates": 4,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 4
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 5,
+      "finalCount": 1,
+      "duplicatesRemoved": 4,
+      "deduplicationRate": "80.0%"
+    }
+  },
+  "expiry": null
+}

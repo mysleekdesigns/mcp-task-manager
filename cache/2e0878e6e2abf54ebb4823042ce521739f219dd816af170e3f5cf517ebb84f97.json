@@ -1,0 +1,113 @@
+{
+  "value": {
+    "query": "React latest version 2025 2026",
+    "expanded_queries": [
+      "React latest version 2025 2026",
+      "react lat version 2025 2026",
+      "\"React latest version 2025 2026\"",
+      "react latest",
+      "react latest version"
+    ],
+    "results": [
+      {
+        "title": "Versions · React Native",
+        "link": "https://reactnative.dev/versions",
+        "snippet": "React Native versions ; 0.84.x, 2026-01-05, 2026-02-09, Future ; 0.83.x, 2025-11-03, 2025-12-10, Active, Details.",
+        "displayLink": "reactnative.dev",
+        "formattedUrl": "https://reactnative.dev/versions",
+        "htmlSnippet": "<b>React</b> Native <b>versions</b> ; 0.84.x, <b>2026</b>-01-05, <b>2026</b>-02-09, Future ; 0.83.x, <b>2025</b>-11-03, <b>2025</b>-12-10, Active, Details.",
+        "pagemap": {
+          "metatags": {
+            "title": "Versions · React Native",
+            "description": "",
+            "image": "https://reactnative.dev/img/logo-share.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRroqN28MJtGrW_hMuerjil8di0vJsRkEawoIGKLi2SDD5FmUzILwRvejU&s",
+            "width": "310",
+            "height": "163"
+          },
+          "image": "https://reactnative.dev/img/logo-share.png"
+        },
+        "metadata": {},
+        "originalIndex": 3,
+        "normalizedUrl": "https://reactnative.dev/versions",
+        "contentHash": "0100000000100000000000000000000001000000001000000000000000000000",
+        "titleTokens": [
+          "versions",
+          "react",
+          "native"
+        ]
+      }
+    ],
+    "total_results": "398000000",
+    "search_time": 0.290293,
+    "offset": 0,
+    "limit": 5,
+    "cached": false,
+    "provider": {
+      "name": "crawlforge",
+      "backend": "Google Search",
+      "capabilities": {
+        "requiresApiKey": true,
+        "apiKeyType": "CrawlForge API key",
+        "supportsPagination": true,
+        "supportsLanguageFilter": true,
+        "supportsDateFilter": true,
+        "supportsSiteFilter": true,
+        "supportsFileTypeFilter": true,
+        "supportsSafeSearch": true,
+        "supportsLocalization": true,
+        "supportsCountryTargeting": true,
+        "maxResultsPerRequest": 100,
+        "rateLimit": "Based on your CrawlForge plan",
+        "creditCost": "2 credits per search",
+        "features": [
+          "Google Search results via CrawlForge proxy",
+          "No Google API credentials needed",
+          "Full text search",
+          "Image metadata",
+          "Exact phrase matching",
+          "Boolean operators",
+          "Site-specific search",
+          "File type filtering",
+          "Date range filtering",
+          "Language filtering",
+          "Country targeting",
+          "Safe search",
+          "Localization support",
+          "Related searches",
+          "Rich snippets"
+        ],
+        "benefits": [
+          "Simplified authentication (one API key)",
+          "Unified billing through CrawlForge",
+          "Enterprise-grade reliability",
+          "No Google API quota management",
+          "Built-in rate limiting",
+          "Credit-based pricing"
+        ]
+      }
+    },
+    "localization": null,
+    "processing": {
+      "ranking": null,
+      "deduplication": {
+        "originalCount": 5,
+        "finalCount": 1,
+        "duplicatesRemoved": 4,
+        "deduplicationRate": "80.0%"
+      },
+      "query_expansion": {
+        "original_query": "React latest version 2025 2026",
+        "expanded_count": 5,
+        "used_query": "React latest version 2025 2026"
+      },
+      "localization_applied": false
+    }
+  },
+  "expiry": null
+}

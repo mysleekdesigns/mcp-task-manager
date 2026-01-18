@@ -1,0 +1,112 @@
+{
+  "value": {
+    "query": "site:npmjs.com tailwindcss latest version",
+    "expanded_queries": [
+      "site:npmjs.com tailwindcss latest version",
+      "site npmj com tailwindcs lat version",
+      "site npmj com tailwindcss latest version",
+      "site npmjs com tailwindcs latest version",
+      "site npmjs com tailwindcss lat version"
+    ],
+    "results": [
+      {
+        "title": "tailwindcss - npm",
+        "link": "https://www.npmjs.com/package/tailwindcss",
+        "snippet": "Dec 11, 2025 ... A utility-first CSS framework for rapidly building custom user interfaces.. Latest version: 4.1.18, last published: a month ago.",
+        "displayLink": "www.npmjs.com",
+        "formattedUrl": "https://www.npmjs.com/package/tailwindcss",
+        "htmlSnippet": "Dec 11, 2025 <b>...</b> A utility-first CSS framework for rapidly building custom user interfaces.. <b>Latest version</b>: 4.1.18, <b>last</b> published: a month ago.",
+        "pagemap": {
+          "metatags": {
+            "title": "tailwindcss",
+            "description": "A utility-first CSS framework for rapidly building custom user interfaces.. Latest version: 4.1.18, last published: a month ago. Start using tailwindcss in your project by running `npm i tailwindcss`. There are 8882 other projects in the npm registry using tailwindcss.",
+            "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9_PIZpTqIpa0liCRRnQUmkhj2w3NCMbs2QR_X8Qe2cC-areLX1GkLYUF6&s",
+            "width": "310",
+            "height": "163"
+          },
+          "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png"
+        },
+        "metadata": {},
+        "originalIndex": 0,
+        "normalizedUrl": "https://npmjs.com/package/tailwindcss",
+        "contentHash": "0000010000000000000000000000000000000100000000000000000000000000",
+        "titleTokens": [
+          "tailwindcss",
+          "npm"
+        ]
+      }
+    ],
+    "total_results": "2770",
+    "search_time": 0.163206,
+    "offset": 0,
+    "limit": 5,
+    "cached": false,
+    "provider": {
+      "name": "crawlforge",
+      "backend": "Google Search",
+      "capabilities": {
+        "requiresApiKey": true,
+        "apiKeyType": "CrawlForge API key",
+        "supportsPagination": true,
+        "supportsLanguageFilter": true,
+        "supportsDateFilter": true,
+        "supportsSiteFilter": true,
+        "supportsFileTypeFilter": true,
+        "supportsSafeSearch": true,
+        "supportsLocalization": true,
+        "supportsCountryTargeting": true,
+        "maxResultsPerRequest": 100,
+        "rateLimit": "Based on your CrawlForge plan",
+        "creditCost": "2 credits per search",
+        "features": [
+          "Google Search results via CrawlForge proxy",
+          "No Google API credentials needed",
+          "Full text search",
+          "Image metadata",
+          "Exact phrase matching",
+          "Boolean operators",
+          "Site-specific search",
+          "File type filtering",
+          "Date range filtering",
+          "Language filtering",
+          "Country targeting",
+          "Safe search",
+          "Localization support",
+          "Related searches",
+          "Rich snippets"
+        ],
+        "benefits": [
+          "Simplified authentication (one API key)",
+          "Unified billing through CrawlForge",
+          "Enterprise-grade reliability",
+          "No Google API quota management",
+          "Built-in rate limiting",
+          "Credit-based pricing"
+        ]
+      }
+    },
+    "localization": null,
+    "processing": {
+      "ranking": null,
+      "deduplication": {
+        "originalCount": 5,
+        "finalCount": 1,
+        "duplicatesRemoved": 4,
+        "deduplicationRate": "80.0%"
+      },
+      "query_expansion": {
+        "original_query": "site:npmjs.com tailwindcss latest version",
+        "expanded_count": 5,
+        "used_query": "site:npmjs.com tailwindcss latest version"
+      },
+      "localization_applied": false
+    }
+  },
+  "expiry": null
+}

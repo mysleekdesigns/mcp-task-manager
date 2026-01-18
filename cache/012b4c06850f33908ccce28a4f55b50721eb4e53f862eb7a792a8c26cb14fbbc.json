@@ -1,0 +1,102 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "Next.js Docs | Next.js",
+        "link": "https://nextjs.org/docs",
+        "snippet": "At the top of the sidebar, you'll notice a dropdown menu that allows you to switch between the App Router and the Pages Router docs. React version handling. The ...",
+        "displayLink": "nextjs.org",
+        "formattedUrl": "https://nextjs.org/docs",
+        "htmlSnippet": "At the <b>top</b> of the sidebar, you&#39;ll notice a dropdown menu that allows you to switch between the <b>App Router</b> and the Pages <b>Router</b> docs. React version handling. The&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "Next.js Docs | Next.js",
+            "description": "Welcome to the Next.js Documentation.",
+            "image": "https://nextjs.org/api/docs-og?title=Next.js%20Docs",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVVkzVhUCl0FAaWB2zZuCLQ2Gl_t-v9xtc4RFq-AwfzlpT_QXUantH7u57&s",
+            "width": "311",
+            "height": "162"
+          },
+          "image": "https://nextjs.org/api/docs-og?title=Next.js%20Docs"
+        },
+        "metadata": {},
+        "originalIndex": 3,
+        "normalizedUrl": "https://nextjs.org/docs",
+        "contentHash": "1000111000100000100000000000000010001110001000001000000000000000",
+        "titleTokens": [
+          "next",
+          "js",
+          "docs",
+          "next",
+          "js"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://nextjs.org/docs",
+          "duplicateOf": 0,
+          "duplicateReasons": [
+            "Content similarity: 84.4%"
+          ],
+          "merged": true,
+          "alternateSnippets": [
+            "Oct 21, 2025 ... The new template includes the App Router by default, TypeScript-first configuration, Tailwind CSS, and ESLint. ... The App Router in Next.js 16 ...",
+            "Jan 6, 2026 ... Query live application state: Check current configuration, routes, and middleware during development; Understand your app router pages layout: ...",
+            "Good that this is being discussed at least. I used NextJS in one application last year and now again using it. Unfortunately, I picked up the App router. And ...",
+            "Nov 10, 2025 ... Learn how to use and configure the ESLint plugin to catch common issues and problems in a Next.js application.",
+            "Dec 9, 2025 ... app, App Router. pages, Pages Router. public, Static assets to be served. src, Optional application source folder. Top-level files. Top-level ...",
+            "May 10, 2023 ... I'm learning to use NextJS and I'm using the latest version with App Router, I'm currently stuck on how to do routing, such as where to put the ...",
+            "May 28, 2019 ... Next.js Best Practices in 2025 — Build Faster, Cleaner, Scalable Apps ... App Router, server components, and… Jul 16, 2025. A clap icon 53.",
+            "Jan 21, 2024 ... js with App Router support, Tailwind CSS and TypeScript ⚡️ Made with developer experience first: Next.js, TypeScript, ESLint, Prettier, Husky, ...",
+            "Nov 3, 2025 ... js. The Big Shift: From Implicit to Explicit Caching. If you've used the App Router in Next.js 15 or earlier, you' ..."
+          ],
+          "alternateTitles": [
+            "Next.js 16 | Next.js",
+            "Guides: Next.js MCP Server | Next.js",
+            "Better support for runtime environment variables. · vercel next.js ...",
+            "Configuration: ESLint | Next.js",
+            "Getting Started: Project Structure | Next.js",
+            "reactjs - NextJS 13 folder structure best practice - Stack Overflow",
+            "How to alias root url to a specific page in next.js | by Shan Dou ...",
+            "Best/Pro scalable next js project folder structure or architecture : r ...",
+            "I Tried Next.js 16's use cache Directive: Here's What I Learned | by ..."
+          ],
+          "alternateUrls": [
+            "https://nextjs.org/blog/next-16",
+            "https://nextjs.org/docs/app/guides/mcp",
+            "https://github.com/vercel/next.js/discussions/44628",
+            "https://nextjs.org/docs/app/api-reference/config/eslint",
+            "https://nextjs.org/docs/app/getting-started/project-structure",
+            "https://stackoverflow.com/questions/76214501/nextjs-13-folder-structure-best-practice",
+            "https://shandou.medium.com/how-to-alias-root-url-to-a-specific-page-in-next-js-9711c5368ffe",
+            "https://www.reddit.com/r/nextjs/comments/19c3kb9/bestpro_scalable_next_js_project_folder_structure/",
+            "https://javascript.plainenglish.io/i-tried-next-js-16s-use-cache-directive-here-s-what-i-learned-497f4fe43213"
+          ],
+          "mergedDuplicates": 9,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 9
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 10,
+      "finalCount": 1,
+      "duplicatesRemoved": 9,
+      "deduplicationRate": "90.0%"
+    }
+  },
+  "expiry": null
+}

@@ -1,0 +1,79 @@
+{
+  "value": {
+    "results": [
+      {
+        "title": "NextAuth.js",
+        "link": "https://next-auth.js.org/",
+        "snippet": "Versions; npm · GitHub. ← Back to main menu. Shield with key icon. NextAuth.js ... Doesn't rely on client side JavaScript. npm install next-auth. Add ...",
+        "displayLink": "next-auth.js.org",
+        "formattedUrl": "https://next-auth.js.org/",
+        "htmlSnippet": "<b>Versions</b>; <b>npm</b> &middot; GitHub. ← Back to main menu. Shield with key icon. <b>NextAuth</b>.<b>js</b> ... Doesn&#39;t rely on client side JavaScript. <b>npm</b> install <b>next-auth</b>. Add&nbsp;...",
+        "pagemap": {
+          "metatags": {
+            "title": "NextAuth.js",
+            "description": "Authentication for Next.js",
+            "image": "https://next-auth.js.org/img/social-media-card.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA1BzK6f0WoC5-YKgPPlVQVdrkiF3faD3CPpNGpS8LCSsax3sZhf1FqJY&s",
+            "width": "311",
+            "height": "162"
+          },
+          "image": "https://next-auth.js.org/img/social-media-card.png"
+        },
+        "metadata": {},
+        "originalIndex": 2,
+        "normalizedUrl": "https://next-auth.js.org/",
+        "contentHash": "1101011000110000000000000000000011010110001100000000000000000000",
+        "titleTokens": [
+          "nextauth",
+          "js"
+        ],
+        "deduplicationInfo": {
+          "originalUrl": "https://next-auth.js.org/",
+          "duplicateOf": 0,
+          "duplicateReasons": [
+            "Content similarity: 87.5%"
+          ],
+          "merged": true,
+          "alternateSnippets": [
+            "Oct 29, 2025 ... Authentication for Next.js. Latest version: 4.24.13, last published: 3 months ago. Start using next-auth in your project by running `npm i ...",
+            "Oct 9, 2025 ... Feel free to skip to the next section, Installation, if you are not upgrading to next-auth@5 . NextAuth.js version 5 is a major rewrite of the ...",
+            "I have been trying to use the new auth.js so I have \"next\": \"^14.1.0\", \"next-auth\": \"^5.0.0-beta.11\", I am still using pages though as well.",
+            "May 14, 2024 ... But in the past few weeks I have tried to build a new website with auth, and my experience with Auth.js (v5) was nothing short of a disaster."
+          ],
+          "alternateTitles": [
+            "next-auth - npm",
+            "Migrating to v5",
+            "Getting Module Not Found Error for next/server · nextauthjs next ...",
+            "Why is next-auth (or Auth.js) so popular? : r/nextjs"
+          ],
+          "alternateUrls": [
+            "https://www.npmjs.com/package/next-auth",
+            "https://authjs.dev/getting-started/migrating-to-v5",
+            "https://github.com/nextauthjs/next-auth/discussions/10058",
+            "https://www.reddit.com/r/nextjs/comments/1crn50l/why_is_nextauth_or_authjs_so_popular/"
+          ],
+          "mergedDuplicates": 4,
+          "duplicateUrls": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "totalDuplicatesFound": 4
+        }
+      }
+    ],
+    "stats": {
+      "originalCount": 5,
+      "finalCount": 1,
+      "duplicatesRemoved": 4,
+      "deduplicationRate": "80.0%"
+    }
+  },
+  "expiry": null
+}

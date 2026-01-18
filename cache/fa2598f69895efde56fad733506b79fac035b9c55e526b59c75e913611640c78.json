@@ -1,0 +1,112 @@
+{
+  "value": {
+    "query": "Prisma npm package latest version",
+    "expanded_queries": [
+      "Prisma npm package latest version",
+      "prisma npm package lat version",
+      "\"Prisma npm package latest version\"",
+      "prisma npm",
+      "prisma npm package"
+    ],
+    "results": [
+      {
+        "title": "prisma - npm",
+        "link": "https://www.npmjs.com/package/prisma",
+        "snippet": "Dec 17, 2025 ... ... Latest version: 7.2.0, last published: a month ago. Start using ... TypeScript icon, indicating that this package has built-in type declarations.",
+        "displayLink": "www.npmjs.com",
+        "formattedUrl": "https://www.npmjs.com/package/prisma",
+        "htmlSnippet": "Dec 17, 2025 <b>...</b> ... <b>Latest version</b>: 7.2.0, <b>last</b> published: a month ago. Start using ... TypeScript icon, indicating that this <b>package</b> has built-in type declarations.",
+        "pagemap": {
+          "metatags": {
+            "title": "prisma",
+            "description": "Prisma is an open-source database toolkit. It includes a JavaScript/TypeScript ORM for Node.js, migrations and a modern GUI to view and edit the data in your database. You can use Prisma in new projects or add it to an existing one.. Latest version: 7.2.0, last published: a month ago. Start using prisma in your project by running `npm i prisma`. There are 846 other projects in the npm registry using prisma.",
+            "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9_PIZpTqIpa0liCRRnQUmkhj2w3NCMbs2QR_X8Qe2cC-areLX1GkLYUF6&s",
+            "width": "310",
+            "height": "163"
+          },
+          "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png"
+        },
+        "metadata": {},
+        "originalIndex": 0,
+        "normalizedUrl": "https://npmjs.com/package/prisma",
+        "contentHash": "0100010000100000000000000000000001000100001000000000000000000000",
+        "titleTokens": [
+          "prisma",
+          "npm"
+        ]
+      }
+    ],
+    "total_results": "157000",
+    "search_time": 0.207773,
+    "offset": 0,
+    "limit": 5,
+    "cached": false,
+    "provider": {
+      "name": "crawlforge",
+      "backend": "Google Search",
+      "capabilities": {
+        "requiresApiKey": true,
+        "apiKeyType": "CrawlForge API key",
+        "supportsPagination": true,
+        "supportsLanguageFilter": true,
+        "supportsDateFilter": true,
+        "supportsSiteFilter": true,
+        "supportsFileTypeFilter": true,
+        "supportsSafeSearch": true,
+        "supportsLocalization": true,
+        "supportsCountryTargeting": true,
+        "maxResultsPerRequest": 100,
+        "rateLimit": "Based on your CrawlForge plan",
+        "creditCost": "2 credits per search",
+        "features": [
+          "Google Search results via CrawlForge proxy",
+          "No Google API credentials needed",
+          "Full text search",
+          "Image metadata",
+          "Exact phrase matching",
+          "Boolean operators",
+          "Site-specific search",
+          "File type filtering",
+          "Date range filtering",
+          "Language filtering",
+          "Country targeting",
+          "Safe search",
+          "Localization support",
+          "Related searches",
+          "Rich snippets"
+        ],
+        "benefits": [
+          "Simplified authentication (one API key)",
+          "Unified billing through CrawlForge",
+          "Enterprise-grade reliability",
+          "No Google API quota management",
+          "Built-in rate limiting",
+          "Credit-based pricing"
+        ]
+      }
+    },
+    "localization": null,
+    "processing": {
+      "ranking": null,
+      "deduplication": {
+        "originalCount": 5,
+        "finalCount": 1,
+        "duplicatesRemoved": 4,
+        "deduplicationRate": "80.0%"
+      },
+      "query_expansion": {
+        "original_query": "Prisma npm package latest version",
+        "expanded_count": 5,
+        "used_query": "Prisma npm package latest version"
+      },
+      "localization_applied": false
+    }
+  },
+  "expiry": null
+}

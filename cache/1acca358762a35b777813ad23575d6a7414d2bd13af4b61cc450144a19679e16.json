@@ -1,0 +1,118 @@
+{
+  "value": {
+    "query": "\"@xterm/xterm\" \"5.5\" OR \"5.6\" OR \"6.\" npm version",
+    "expanded_queries": [
+      "\"@xterm/xterm\" \"5.5\" OR \"5.6\" OR \"6.\" npm version",
+      "xterm xterm 5 5 or 5 6 or 6 npm version",
+      "\"\"@xterm/xterm\" \"5.5\" OR \"5.6\" OR \"6.\"\"",
+      "xterm xterm",
+      "xterm xterm 5"
+    ],
+    "results": [
+      {
+        "title": "missing npm package @xterm/addon-unicode-graphemes · Issue ...",
+        "link": "https://github.com/xtermjs/xterm.js/issues/5147",
+        "snippet": "Sep 4, 2024 ... Pull requests 6 ... $ npm install @xterm/xterm npm ERR! code ETARGET npm ERR! notarget No matching version found for xterm@^5.5.0.",
+        "displayLink": "github.com",
+        "formattedUrl": "https://github.com/xtermjs/xterm.js/issues/5147",
+        "htmlSnippet": "Sep 4, 2024 <b>...</b> Pull requests <b>6</b> ... $ <b>npm</b> install @<b>xterm/xterm npm</b> ERR! code ETARGET <b>npm</b> ERR! notarget No matching <b>version</b> found for xterm@^<b>5.5</b>.0.",
+        "pagemap": {
+          "metatags": {
+            "title": "missing npm package @xterm/addon-unicode-graphemes · Issue #5147 · xtermjs/xterm.js",
+            "description": "There is no package for @xterm/addon-unicode-graphemes on npmjs.com. Therefore, the Releases page has a bad link. I have never uploaded anything to npmjs.com but I can certainly help with whatever ...",
+            "image": "https://opengraph.githubassets.com/75c953da58fa28bb28c23f23253150162f4008db140f977d5eefc820a67b3be4/xtermjs/xterm.js/issues/5147",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBLdwMjJKKVE9Vszz6ofr7CXi1Z62VmQlNHuOXjI1D-bowLPnJqreTt5s&s",
+            "width": "225",
+            "height": "225"
+          },
+          "image": "https://avatars.githubusercontent.com/u/6193135?v=4&size=80"
+        },
+        "metadata": {},
+        "originalIndex": 2,
+        "normalizedUrl": "https://github.com/xtermjs/xterm.js/issues/5147",
+        "contentHash": "0000011000010000100000000000000000000110000100001000000000000000",
+        "titleTokens": [
+          "missing",
+          "npm",
+          "package",
+          "xterm",
+          "addon",
+          "unicode",
+          "graphemes",
+          "issue"
+        ]
+      }
+    ],
+    "total_results": "275",
+    "search_time": 0.154099,
+    "offset": 0,
+    "limit": 5,
+    "cached": false,
+    "provider": {
+      "name": "crawlforge",
+      "backend": "Google Search",
+      "capabilities": {
+        "requiresApiKey": true,
+        "apiKeyType": "CrawlForge API key",
+        "supportsPagination": true,
+        "supportsLanguageFilter": true,
+        "supportsDateFilter": true,
+        "supportsSiteFilter": true,
+        "supportsFileTypeFilter": true,
+        "supportsSafeSearch": true,
+        "supportsLocalization": true,
+        "supportsCountryTargeting": true,
+        "maxResultsPerRequest": 100,
+        "rateLimit": "Based on your CrawlForge plan",
+        "creditCost": "2 credits per search",
+        "features": [
+          "Google Search results via CrawlForge proxy",
+          "No Google API credentials needed",
+          "Full text search",
+          "Image metadata",
+          "Exact phrase matching",
+          "Boolean operators",
+          "Site-specific search",
+          "File type filtering",
+          "Date range filtering",
+          "Language filtering",
+          "Country targeting",
+          "Safe search",
+          "Localization support",
+          "Related searches",
+          "Rich snippets"
+        ],
+        "benefits": [
+          "Simplified authentication (one API key)",
+          "Unified billing through CrawlForge",
+          "Enterprise-grade reliability",
+          "No Google API quota management",
+          "Built-in rate limiting",
+          "Credit-based pricing"
+        ]
+      }
+    },
+    "localization": null,
+    "processing": {
+      "ranking": null,
+      "deduplication": {
+        "originalCount": 5,
+        "finalCount": 1,
+        "duplicatesRemoved": 4,
+        "deduplicationRate": "80.0%"
+      },
+      "query_expansion": {
+        "original_query": "\"@xterm/xterm\" \"5.5\" OR \"5.6\" OR \"6.\" npm version",
+        "expanded_count": 5,
+        "used_query": "\"@xterm/xterm\" \"5.5\" OR \"5.6\" OR \"6.\" npm version"
+      },
+      "localization_applied": false
+    }
+  },
+  "expiry": null
+}

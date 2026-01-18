@@ -1,0 +1,119 @@
+{
+  "value": {
+    "query": "Tailwind CSS v4 release",
+    "expanded_queries": [
+      "Tailwind CSS v4 release",
+      "tailwind cs v4 release",
+      "\"Tailwind CSS v4 release\"",
+      "\"Tailwind CSS\"",
+      "tailwind css"
+    ],
+    "results": [
+      {
+        "title": "Tailwind CSS - Rapidly build modern websites without ever leaving ...",
+        "link": "https://tailwindcss.com/",
+        "snippet": "A utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.",
+        "displayLink": "tailwindcss.com",
+        "formattedUrl": "https://tailwindcss.com/",
+        "htmlSnippet": "A utility-first <b>CSS</b> framework packed with classes like flex, pt-<b>4</b>, text-center and rotate-90 that can be composed to build any design, directly in your markup.",
+        "pagemap": {
+          "metatags": {
+            "title": "Tailwind CSS - Rapidly build modern websites without ever leaving your HTML.",
+            "description": "Tailwind CSS is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML.",
+            "image": "https://tailwindcss.com/opengraph-image.jpg?opengraph-image.c1dec83c.jpg",
+            "author": "",
+            "publishedTime": "",
+            "modifiedTime": ""
+          },
+          "thumbnail": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrqkf_ptb6IktO0qf1TMD7-p-DTDZRjBVvoDcpsnuX3LKd4t24XSzSTWU&s",
+            "width": "310",
+            "height": "163"
+          },
+          "image": "https://tailwindcss.com/opengraph-image.jpg?opengraph-image.c1dec83c.jpg"
+        },
+        "metadata": {},
+        "originalIndex": 4,
+        "normalizedUrl": "https://tailwindcss.com/",
+        "contentHash": "0110110000000000000000000000000001101100000000000000000000000000",
+        "titleTokens": [
+          "tailwind",
+          "css",
+          "rapidly",
+          "build",
+          "modern",
+          "websites",
+          "without",
+          "ever",
+          "leaving"
+        ]
+      }
+    ],
+    "total_results": "228000",
+    "search_time": 0.223026,
+    "offset": 0,
+    "limit": 5,
+    "cached": false,
+    "provider": {
+      "name": "crawlforge",
+      "backend": "Google Search",
+      "capabilities": {
+        "requiresApiKey": true,
+        "apiKeyType": "CrawlForge API key",
+        "supportsPagination": true,
+        "supportsLanguageFilter": true,
+        "supportsDateFilter": true,
+        "supportsSiteFilter": true,
+        "supportsFileTypeFilter": true,
+        "supportsSafeSearch": true,
+        "supportsLocalization": true,
+        "supportsCountryTargeting": true,
+        "maxResultsPerRequest": 100,
+        "rateLimit": "Based on your CrawlForge plan",
+        "creditCost": "2 credits per search",
+        "features": [
+          "Google Search results via CrawlForge proxy",
+          "No Google API credentials needed",
+          "Full text search",
+          "Image metadata",
+          "Exact phrase matching",
+          "Boolean operators",
+          "Site-specific search",
+          "File type filtering",
+          "Date range filtering",
+          "Language filtering",
+          "Country targeting",
+          "Safe search",
+          "Localization support",
+          "Related searches",
+          "Rich snippets"
+        ],
+        "benefits": [
+          "Simplified authentication (one API key)",
+          "Unified billing through CrawlForge",
+          "Enterprise-grade reliability",
+          "No Google API quota management",
+          "Built-in rate limiting",
+          "Credit-based pricing"
+        ]
+      }
+    },
+    "localization": null,
+    "processing": {
+      "ranking": null,
+      "deduplication": {
+        "originalCount": 5,
+        "finalCount": 1,
+        "duplicatesRemoved": 4,
+        "deduplicationRate": "80.0%"
+      },
+      "query_expansion": {
+        "original_query": "Tailwind CSS v4 release",
+        "expanded_count": 5,
+        "used_query": "Tailwind CSS v4 release"
+      },
+      "localization_applied": false
+    }
+  },
+  "expiry": null
+}
