@@ -1,169 +1,130 @@
-# CLAUDE.md
+# Auto Claude
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Next.js app for managing AI-driven development tasks with Claude Code. Manages terminal sessions, tracks tasks through AI workflows, and maintains project context.
 
-## Project Overview
+**Status:** Pre-implementation. See `PRD.md` for full specification and 10-phase implementation plan.
 
-**Auto Claude** is a Next.js web application for managing AI-driven development tasks with Claude Code. It enables managing multiple Claude Code terminal sessions, tracking tasks through AI-assisted workflows, and maintaining project context across sessions.
+## Stack
 
-**Status:** Pre-implementation. The PRD.md contains the complete specification. Follow the 10-phase implementation plan in order.
+| Layer | Technology |
+|-------|------------|
+| Frontend | Next.js 16 (App Router), React 19, TypeScript |
+| Backend | Next.js API Routes, WebSocket Server |
+| Database | PostgreSQL, Prisma ORM |
+| Auth | Auth.js v5 |
+| UI | Tailwind CSS 4, shadcn/ui, Radix UI |
+| Terminal | @xterm/xterm, node-pty |
+| Git | simple-git |
+| DnD | @dnd-kit/core |
 
-## Technology Stack
+## Commands
 
-- **Frontend:** Next.js 16 (App Router), React 19.2, TypeScript 5.9
-- **Backend:** Next.js API Routes, WebSocket Server
-- **Database:** PostgreSQL with Prisma ORM 7.2
-- **Auth:** Auth.js (NextAuth) v5
-- **Styling:** Tailwind CSS 4.1, shadcn/ui, Radix UI
-- **Terminal:** @xterm/xterm 5.5+, node-pty 1.1.0
-- **Git:** simple-git 3.30.0
-- **Drag & Drop:** @dnd-kit/core 6.x
-
-## Build Commands
-
-Once initialized, the expected commands are:
 ```bash
-npm run dev              # Start development server
+npm run dev              # Dev server
 npm run build            # Production build
-npx prisma migrate dev   # Run database migrations
-npx prisma generate      # Generate Prisma client
-npx prisma studio        # Open Prisma Studio
+npm test                 # Tests
+npm run lint             # Linting
+npx prisma migrate dev   # Migrations
+npx prisma studio        # DB browser
 docker compose up -d     # Start PostgreSQL
-npm test                 # Run tests
-npm run lint             # Run ESLint
 ```
 
 ## Architecture
 
-### Route Structure (Next.js 16 App Router)
-- `src/app/(auth)/` - Authentication routes (login, register, verify)
-- `src/app/(dashboard)/` - Main app routes (kanban, terminals, roadmap, context, mcp, worktrees, github, settings)
-- `src/app/api/` - RESTful API endpoints
-- `server/` - Custom WebSocket server for terminal I/O
+```
+src/app/
+├── (auth)/           # Login, register, verify
+├── (dashboard)/      # Kanban, terminals, roadmap, context, mcp, worktrees, github, settings
+└── api/              # REST endpoints
 
-### Key Database Models (see PRD.md for full schema)
-- **User/Account/Session** - Auth.js authentication
-- **Project/ProjectMember** - Project management with roles (OWNER, ADMIN, MEMBER, VIEWER)
-- **Task/TaskPhase/TaskLog/TaskFile** - Task tracking with phase workflow (Plan → Code → QA)
-- **Terminal/Worktree** - Terminal sessions and git worktree management
-- **Phase/Feature/Milestone** - Roadmap planning with MoSCoW priorities
-- **Memory** - Context storage for sessions, PR reviews, patterns, gotchas
-- **McpConfig** - MCP server configurations
+src/components/
+├── ui/               # shadcn/ui base
+├── kanban/           # Board, columns, cards
+├── terminal/         # Grid, pane, xterm wrapper
+└── [feature]/        # Feature-specific components
 
-### Task Status Flow
-PENDING → PLANNING → IN_PROGRESS → AI_REVIEW → HUMAN_REVIEW → COMPLETED/CANCELLED
+server/               # WebSocket server for terminal I/O
+```
 
-### Component Organization
-Components are organized by feature area under `src/components/`:
-- `ui/` - shadcn/ui base components
-- `kanban/` - Kanban board components (KanbanBoard, KanbanColumn, TaskCard)
-- `terminal/` - Terminal and xterm components (TerminalGrid, TerminalPane, XTermWrapper)
-- `task/` - Task modal and card components
-- Each feature area (roadmap, memory, mcp, github, worktree) has its own directory
+### Task Flow
 
-## Implementation Phases
+```
+PENDING → PLANNING → IN_PROGRESS → AI_REVIEW → HUMAN_REVIEW → COMPLETED
+                                                            ↘ CANCELLED
+```
 
-1. **Foundation & Authentication** - Next.js setup, Auth.js, base layout with sidebar
-2. **Project Management** - Project CRUD, team members
-3. **Task Management Core** - Kanban board, task modal with tabs, drag-and-drop
-4. **Terminal Management** - WebSocket server, node-pty, xterm integration, "Invoke Claude All"
-5. **Git Worktree Management** - simple-git operations, worktree CRUD
-6. **Roadmap & Planning** - Phases, features, milestones with MoSCoW priorities
-7. **Context & Memory** - Session insights, memory browser
-8. **MCP Integration** - MCP server configuration UI
-9. **GitHub Integration** - Issues and PRs sync
-10. **Polish** - Insights dashboard, ideation, changelog, settings, themes
+### Key Models
 
-## Available Subagents
+See `PRD.md` for full schema. Core models: User, Project, Task (with phases: Plan→Code→QA), Terminal, Worktree, Memory, McpConfig.
 
-Specialized agents for specific development tasks (see `.claude/agents/`):
+## Agents
 
-| Agent | Description | Use When |
-|-------|-------------|----------|
-| `nextjs-setup` | Next.js 16 project initialization | Setting up project, configuring routing |
-| `prisma-database` | Prisma schema and migrations | Creating models, running migrations |
-| `auth-setup` | Auth.js v5 authentication | Implementing login, OAuth, sessions |
-| `ui-components` | shadcn/ui with Tailwind CSS v4 | Building UI components, layouts |
-| `kanban-dnd` | @dnd-kit drag-and-drop | Kanban board, task sorting |
-| `terminal-manager` | xterm.js and node-pty | Terminal UI, WebSocket, processes |
-| `git-worktree` | simple-git worktree ops | Git operations, branch management |
-| `api-routes` | Next.js API routes | REST endpoints, validation |
-| `testing` | Vitest and Testing Library | Writing and running tests |
+Specialized agents in `.claude/agents/`:
 
-## Available Skills
+| Agent | Purpose |
+|-------|---------|
+| `nextjs-setup` | Project initialization, routing |
+| `prisma-database` | Schema, migrations |
+| `auth-setup` | Auth.js, OAuth, sessions |
+| `ui-components` | shadcn/ui, Tailwind |
+| `kanban-dnd` | Drag-and-drop board |
+| `terminal-manager` | xterm, WebSocket, pty |
+| `git-worktree` | Git operations |
+| `api-routes` | REST endpoints, Zod |
+| `testing` | Vitest, Testing Library |
 
-Quick commands for common operations (see `.claude/skills/`):
+## Skills
 
-| Skill | Description | Command |
-|-------|-------------|---------|
-| `prisma-migrate` | Run database migrations | `/prisma-migrate add_user_model` |
-| `shadcn-add` | Add shadcn/ui components | `/shadcn-add button card dialog` |
-| `git-commit` | Conventional commits | `/git-commit` |
-| `run-dev` | Start dev environment | `/run-dev` |
-| `db-seed` | Seed database | `/db-seed` |
-| `lint-fix` | Fix linting issues | `/lint-fix` |
+Quick commands in `.claude/skills/`:
 
-## Key Patterns
+| Command | Purpose |
+|---------|---------|
+| `/prisma-migrate <name>` | Run migration |
+| `/shadcn-add <components>` | Add UI components |
+| `/git-commit` | Conventional commit |
+| `/run-dev` | Start dev environment |
+| `/db-seed` | Seed database |
+| `/lint-fix` | Fix lint issues |
 
-### API Route Pattern
+## Patterns
+
+### API Routes
 ```typescript
-// Always validate with Zod, check auth, return consistent errors
 export async function POST(request: NextRequest) {
   const session = await auth();
   if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  const body = await request.json();
-  const data = schema.parse(body);
-  // ... implementation
+  const data = schema.parse(await request.json());
+  // implementation
 }
 ```
 
-### Component Pattern
-```tsx
-// Use shadcn/ui components, server components by default
-import { Card, CardHeader, CardContent } from "@/components/ui/card"
-
-export function FeatureCard({ data }) {
-  return (
-    <Card>
-      <CardHeader>{data.title}</CardHeader>
-      <CardContent>{data.content}</CardContent>
-    </Card>
-  )
-}
-```
-
-### Database Pattern
+### Prisma Queries
 ```typescript
-// Use Prisma with includes for relations
 const task = await prisma.task.findUnique({
   where: { id },
-  include: {
-    assignee: { select: { id: true, name: true, image: true } },
-    phases: true,
-    _count: { select: { subtasks: true } },
-  },
+  include: { assignee: true, phases: true, _count: { select: { subtasks: true } } },
 });
 ```
 
-## Environment Variables
+## Environment
 
-Required in `.env`:
+Required `.env`:
 ```
-DATABASE_URL="postgresql://postgres:postgres@localhost:5432/auto_claude?schema=public"
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/auto_claude"
 NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=<generate-with-openssl-rand-base64-32>
-GITHUB_ID=<github-oauth-client-id>
-GITHUB_SECRET=<github-oauth-client-secret>
-GOOGLE_ID=<google-oauth-client-id>
-GOOGLE_SECRET=<google-oauth-client-secret>
+NEXTAUTH_SECRET=<openssl rand -base64 32>
+GITHUB_ID=<client-id>
+GITHUB_SECRET=<client-secret>
+GOOGLE_ID=<client-id>
+GOOGLE_SECRET=<client-secret>
 ```
 
-## Coding Standards
+## Standards
 
-- Use TypeScript strict mode, avoid `any`
-- Use path aliases (`@/` for `src/`)
-- Follow conventional commits (feat, fix, docs, etc.)
-- Use Zod for API validation
-- Use server components by default
-- Colocate styles with Tailwind classes
+- TypeScript strict mode, no `any`
+- Path alias: `@/` → `src/`
+- Conventional commits
+- Zod for API validation
+- Server components by default
+- Tailwind for styling
