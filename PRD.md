@@ -51,15 +51,15 @@
 - [x] Run initial migration
 
 ### 1.3 Authentication
-- [ ] Install and configure Auth.js v5 (next-auth@5)
-- [ ] Set up Email provider (magic link or credentials)
-- [ ] Configure GitHub OAuth provider
-- [ ] Configure Google OAuth provider
-- [ ] Create `/login` page with provider buttons
-- [ ] Create `/register` page for email signup
-- [ ] Create `/verify` page for email verification
-- [ ] Add protected route middleware
-- [ ] Create auth context/hooks
+- [x] Install and configure Auth.js v5 (next-auth@5)
+- [x] Set up Email provider (magic link or credentials)
+- [x] Configure GitHub OAuth provider
+- [x] Configure Google OAuth provider
+- [x] Create `/login` page with provider buttons
+- [x] Create `/register` page for email signup
+- [x] Create `/verify` page for email verification
+- [x] Add protected route middleware
+- [x] Create auth context/hooks
 
 ### 1.4 Base Layout
 - [ ] Create root layout with theme provider
