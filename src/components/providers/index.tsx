@@ -2,6 +2,7 @@
 
 import { AuthProvider } from './auth-provider'
 import { ThemeProvider } from 'next-themes'
+import { Toaster } from '@/components/ui/sonner'
 
 interface ProvidersProps {
   children: React.ReactNode
@@ -9,7 +10,7 @@ interface ProvidersProps {
 
 /**
  * Combined providers wrapper for the application
- * Includes: Auth, Theme
+ * Includes: Auth, Theme, Toast
  */
 export function Providers({ children }: ProvidersProps) {
   return (
@@ -21,6 +22,7 @@ export function Providers({ children }: ProvidersProps) {
         disableTransitionOnChange
       >
         {children}
+        <Toaster />
       </ThemeProvider>
     </AuthProvider>
   )

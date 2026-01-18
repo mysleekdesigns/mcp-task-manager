@@ -1,0 +1,6 @@
+export { TaskModal } from "./TaskModal"
+export { NewTaskModal } from "./NewTaskModal"
+export { OverviewTab } from "./tabs/OverviewTab"
+export { SubtasksTab } from "./tabs/SubtasksTab"
+export { LogsTab } from "./tabs/LogsTab"
+export { FilesTab } from "./tabs/FilesTab"
