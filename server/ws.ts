@@ -2,6 +2,7 @@ import { WebSocketServer, WebSocket } from 'ws';
 import { Server as HTTPServer } from 'http';
 import { TerminalManager } from './terminal-manager';
 import { parse } from 'url';
+import fetch from 'node-fetch';
 
 interface TerminalMessage {
   type: 'create' | 'input' | 'resize' | 'close' | 'broadcast';
@@ -13,6 +14,70 @@ interface TerminalMessage {
   cols?: number;
   rows?: number;
   sessionToken?: string;
+  name?: string;
+}
+
+/**
+ * Capture session insights when a terminal is closed
+ */
+async function captureSessionInsights(
+  terminalManager: TerminalManager,
+  terminalId: string,
+  terminalName: string,
+  sessionToken: string
+): Promise<void> {
+  try {
+    const metadata = terminalManager.getSessionMetadata(terminalId);
+    if (!metadata) {
+      console.log(`No session metadata found for terminal ${terminalId}`);
+      return;
+    }
+
+    // Skip if session was very short (less than 30 seconds)
+    const duration = metadata.endTime.getTime() - metadata.startTime.getTime();
+    if (duration < 30000) {
+      console.log(`Skipping insight capture for short session (${duration}ms)`);
+      return;
+    }
+
+    // Call the API to capture insights
+    const response = await fetch('http://localhost:3000/api/memories/capture-session', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': `authjs.session-token=${sessionToken}`,
+      },
+      body: JSON.stringify({
+        terminalId,
+        terminalName,
+        projectId: metadata.projectId,
+        outputBuffer: metadata.outputBuffer,
+        startTime: metadata.startTime.toISOString(),
+        endTime: metadata.endTime.toISOString(),
+        commandCount: metadata.commandCount,
+        worktreeId: metadata.worktreeId,
+        cwd: metadata.cwd,
+      }),
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      if (result.skipped) {
+        console.log(`Session insights skipped: ${result.message}`);
+      } else {
+        console.log(`Session insights captured for terminal ${terminalId}:`, {
+          memoryId: result.memory.id,
+          insightCount: result.summary.insightCount,
+          keyTopics: result.summary.keyTopics,
+        });
+      }
+    } else {
+      const error = await response.text();
+      console.error(`Failed to capture session insights: ${response.status} ${error}`);
+    }
+  } catch (error) {
+    console.error('Error capturing session insights:', error);
+  }
 }
 
 export function setupWebSocket(server: HTTPServer) {
@@ -49,8 +114,24 @@ export function setupWebSocket(server: HTTPServer) {
 
   const terminalManager = new TerminalManager();
 
-  wss.on('connection', (ws: WebSocket) => {
+  // Track session tokens and terminal names per WebSocket connection
+  const connectionData = new WeakMap<WebSocket, {
+    sessionToken: string;
+    terminals: Map<string, string>; // terminalId -> terminalName
+  }>();
+
+  wss.on('connection', (ws: WebSocket, req) => {
     console.log('WebSocket client connected');
+
+    // Extract session token from query params
+    const params = new URLSearchParams(parse(req.url || '').query || '');
+    const sessionToken = params.get('token') || '';
+
+    // Initialize connection data
+    connectionData.set(ws, {
+      sessionToken,
+      terminals: new Map(),
+    });
 
     ws.on('message', (data: Buffer) => {
       try {
@@ -58,7 +139,7 @@ export function setupWebSocket(server: HTTPServer) {
 
         switch (message.type) {
           case 'create':
-            if (!message.id || !message.cwd || !message.projectId) {
+            if (!message.id || !message.cwd || !message.projectId || !message.name) {
               ws.send(JSON.stringify({
                 type: 'error',
                 message: 'Missing required fields for create'
@@ -68,9 +149,16 @@ export function setupWebSocket(server: HTTPServer) {
 
             // Store values to narrow TypeScript types
             const terminalId = message.id;
+            const terminalName = message.name;
             const cwd = message.cwd;
             const projectId = message.projectId;
             const worktreeId = message.worktreeId;
+
+            // Track terminal name for this connection
+            const connData = connectionData.get(ws);
+            if (connData) {
+              connData.terminals.set(terminalId, terminalName);
+            }
 
             try {
               const pty = terminalManager.spawn(
@@ -95,6 +183,19 @@ export function setupWebSocket(server: HTTPServer) {
                   exitCode,
                   signal
                 }));
+
+                // Capture session insights before killing the terminal
+                const connData = connectionData.get(ws);
+                if (connData) {
+                  const name = connData.terminals.get(terminalId) || 'Terminal';
+                  captureSessionInsights(
+                    terminalManager,
+                    terminalId,
+                    name,
+                    connData.sessionToken
+                  ).catch(err => console.error('Failed to capture insights on exit:', err));
+                }
+
                 terminalManager.kill(terminalId);
               });
 
@@ -149,6 +250,22 @@ export function setupWebSocket(server: HTTPServer) {
             }
             // Store value to narrow TypeScript type
             const closeTerminalId = message.id;
+
+            // Capture session insights before killing the terminal
+            const closeConnData = connectionData.get(ws);
+            if (closeConnData) {
+              const terminalName = closeConnData.terminals.get(closeTerminalId) || 'Terminal';
+              captureSessionInsights(
+                terminalManager,
+                closeTerminalId,
+                terminalName,
+                closeConnData.sessionToken
+              ).catch(err => console.error('Failed to capture insights on close:', err));
+
+              // Remove terminal from tracking
+              closeConnData.terminals.delete(closeTerminalId);
+            }
+
             terminalManager.kill(closeTerminalId);
             ws.send(JSON.stringify({
               type: 'closed',

@@ -6,10 +6,14 @@ interface TerminalSession {
   projectId: string;
   worktreeId?: string;
   cwd: string;
+  outputBuffer: string[];
+  startTime: Date;
+  commandCount: number;
 }
 
 export class TerminalManager {
   private sessions = new Map<string, TerminalSession>();
+  private readonly MAX_BUFFER_SIZE = 10000; // Max lines to store
 
   spawn(
     id: string,
@@ -26,8 +30,45 @@ export class TerminalManager {
       env: process.env as { [key: string]: string },
     });
 
-    this.sessions.set(id, { id, pty: ptyProcess, projectId, worktreeId, cwd });
+    const session: TerminalSession = {
+      id,
+      pty: ptyProcess,
+      projectId,
+      worktreeId,
+      cwd,
+      outputBuffer: [],
+      startTime: new Date(),
+      commandCount: 0,
+    };
+
+    // Capture output for session insights
+    ptyProcess.onData((data) => {
+      this.captureOutput(id, data);
+    });
+
+    this.sessions.set(id, session);
     return ptyProcess;
+  }
+
+  /**
+   * Capture terminal output to buffer for session insights
+   */
+  private captureOutput(id: string, data: string): void {
+    const session = this.sessions.get(id);
+    if (!session) return;
+
+    // Add to buffer
+    session.outputBuffer.push(data);
+
+    // Detect command execution (lines ending with newline after prompt)
+    if (data.includes('\n') && !data.match(/^[\s\r\n]*$/)) {
+      session.commandCount++;
+    }
+
+    // Prevent buffer from growing too large
+    if (session.outputBuffer.length > this.MAX_BUFFER_SIZE) {
+      session.outputBuffer = session.outputBuffer.slice(-this.MAX_BUFFER_SIZE);
+    }
   }
 
   write(id: string, data: string): void {
@@ -65,5 +106,31 @@ export class TerminalManager {
       session.pty.kill();
     }
     this.sessions.clear();
+  }
+
+  /**
+   * Get session metadata for insight capture
+   */
+  getSessionMetadata(id: string): {
+    outputBuffer: string;
+    startTime: Date;
+    endTime: Date;
+    commandCount: number;
+    projectId: string;
+    worktreeId?: string;
+    cwd: string;
+  } | null {
+    const session = this.sessions.get(id);
+    if (!session) return null;
+
+    return {
+      outputBuffer: session.outputBuffer.join(''),
+      startTime: session.startTime,
+      endTime: new Date(),
+      commandCount: session.commandCount,
+      projectId: session.projectId,
+      worktreeId: session.worktreeId,
+      cwd: session.cwd,
+    };
   }
 }
