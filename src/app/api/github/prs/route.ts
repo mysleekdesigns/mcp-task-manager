@@ -30,14 +30,15 @@ export async function GET(request: NextRequest) {
 
     // Validate query parameters
     const { searchParams } = new URL(request.url);
+    // Convert null to undefined for Zod optional fields
     const queryParams = {
-      owner: searchParams.get('owner'),
-      repo: searchParams.get('repo'),
-      state: searchParams.get('state'),
-      per_page: searchParams.get('per_page'),
-      page: searchParams.get('page'),
-      sort: searchParams.get('sort'),
-      direction: searchParams.get('direction'),
+      owner: searchParams.get('owner') ?? undefined,
+      repo: searchParams.get('repo') ?? undefined,
+      state: searchParams.get('state') ?? undefined,
+      per_page: searchParams.get('per_page') ?? undefined,
+      page: searchParams.get('page') ?? undefined,
+      sort: searchParams.get('sort') ?? undefined,
+      direction: searchParams.get('direction') ?? undefined,
     };
 
     const validatedParams = prsQuerySchema.parse(queryParams);

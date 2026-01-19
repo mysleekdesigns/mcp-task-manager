@@ -14,6 +14,7 @@ export default function GitHubPRsPage() {
   const [error, setError] = useState<string | null>(null);
   const [owner, setOwner] = useState<string>('');
   const [repo, setRepo] = useState<string>('');
+  const [projectName, setProjectName] = useState<string>('');
 
   const fetchPRs = async (ownerParam: string, repoParam: string) => {
     if (!ownerParam || !repoParam) {
@@ -56,33 +57,56 @@ export default function GitHubPRsPage() {
         }
 
         const data = await response.json();
-        const projects = data.projects || [];
+        // API returns array directly, not { projects: [...] }
+        const projects = Array.isArray(data) ? data : [];
 
-        if (projects.length > 0 && projects[0].githubRepo) {
-          // Parse GitHub repo (format: owner/repo or https://github.com/owner/repo)
-          const repoUrl = projects[0].githubRepo;
-          const match = repoUrl.match(/github\.com[/:]([^/]+)\/([^/.]+)/);
-
-          if (match) {
-            const [, ownerName, repoName] = match;
-            setOwner(ownerName);
-            setRepo(repoName);
-            fetchPRs(ownerName, repoName);
-          } else {
-            // Try simple owner/repo format
-            const parts = repoUrl.split('/');
-            if (parts.length === 2) {
-              setOwner(parts[0]);
-              setRepo(parts[1]);
-              fetchPRs(parts[0], parts[1]);
-            } else {
-              setError('Invalid GitHub repository format');
-              setLoading(false);
-            }
-          }
-        } else {
-          setError('No GitHub repository linked to this project');
+        if (projects.length === 0) {
+          setError('No projects found. Create a project first.');
           setLoading(false);
+          return;
+        }
+
+        // Get the selected project from localStorage (set by ProjectSelector)
+        const currentProjectId = localStorage.getItem('currentProjectId');
+
+        // Find the selected project, or fall back to first project
+        let selectedProject = projects.find(
+          (p: { id: string; githubRepo?: string; name: string }) => p.id === currentProjectId
+        );
+
+        // If no matching project found, use the first one
+        if (!selectedProject) {
+          selectedProject = projects[0];
+        }
+
+        setProjectName(selectedProject.name);
+
+        if (!selectedProject.githubRepo) {
+          setError(`No GitHub repository linked to project "${selectedProject.name}"`);
+          setLoading(false);
+          return;
+        }
+
+        // Parse GitHub repo (format: owner/repo or https://github.com/owner/repo)
+        const repoUrl = selectedProject.githubRepo;
+        const match = repoUrl.match(/github\.com[/:]([^/]+)\/([^/.]+)/);
+
+        if (match) {
+          const [, ownerName, repoName] = match;
+          setOwner(ownerName);
+          setRepo(repoName);
+          fetchPRs(ownerName, repoName);
+        } else {
+          // Try simple owner/repo format
+          const parts = repoUrl.split('/');
+          if (parts.length === 2) {
+            setOwner(parts[0]);
+            setRepo(parts[1]);
+            fetchPRs(parts[0], parts[1]);
+          } else {
+            setError('Invalid GitHub repository format');
+            setLoading(false);
+          }
         }
       } catch (err) {
         console.error('Error fetching project info:', err);
@@ -105,6 +129,11 @@ export default function GitHubPRsPage() {
           </h1>
           <p className="text-muted-foreground mt-2">
             Manage and review GitHub pull requests
+            {projectName && owner && repo && (
+              <span className="block text-sm mt-1">
+                Showing PRs from <span className="font-medium text-foreground">{owner}/{repo}</span> (Project: {projectName})
+              </span>
+            )}
           </p>
         </div>
 
