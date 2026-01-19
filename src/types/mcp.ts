@@ -28,6 +28,30 @@ export interface McpServerTemplate {
 
 export const MCP_SERVER_TEMPLATES: McpServerTemplate[] = [
   {
+    id: 'electron',
+    name: 'Electron Browser',
+    description: 'Browser automation with Electron',
+    type: 'browser',
+    category: 'Browser Automation',
+    icon: 'Globe',
+  },
+  {
+    id: 'puppeteer',
+    name: 'Puppeteer',
+    description: 'Headless browser automation',
+    type: 'browser',
+    category: 'Browser Automation',
+    icon: 'Chrome',
+  },
+  {
+    id: 'crawlforge',
+    name: 'CrawlForge',
+    description: 'Web scraping, crawling, and content extraction',
+    type: 'browser',
+    category: 'Browser Automation',
+    icon: 'Spider',
+  },
+  {
     id: 'context7',
     name: 'Context7',
     description: 'AI-powered documentation search and indexing',
@@ -66,22 +90,6 @@ export const MCP_SERVER_TEMPLATES: McpServerTemplate[] = [
     type: 'integration',
     category: 'Integrations',
     icon: 'Github',
-  },
-  {
-    id: 'electron',
-    name: 'Electron Browser',
-    description: 'Browser automation with Electron',
-    type: 'browser',
-    category: 'Browser Automation',
-    icon: 'Globe',
-  },
-  {
-    id: 'puppeteer',
-    name: 'Puppeteer',
-    description: 'Headless browser automation',
-    type: 'browser',
-    category: 'Browser Automation',
-    icon: 'Chrome',
   },
   {
     id: 'claude-tasks-tools',

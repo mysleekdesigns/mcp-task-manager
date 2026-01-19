@@ -11,6 +11,7 @@ import {
   Globe,
   Chrome,
   Wrench,
+  Bug,
   LucideIcon,
 } from 'lucide-react';
 import type { McpServerTemplate } from '@/types/mcp';
@@ -30,10 +31,11 @@ const iconMap: Record<string, LucideIcon> = {
   Globe,
   Chrome,
   Wrench,
+  Spider: Bug,
 };
 
 export function McpServerItem({ server, enabled, onToggle }: McpServerItemProps) {
-  const Icon = server.icon ? iconMap[server.icon] : Box;
+  const Icon = (server.icon && iconMap[server.icon]) || Box;
 
   return (
     <Card className="p-4 hover:bg-accent/50 transition-colors">
