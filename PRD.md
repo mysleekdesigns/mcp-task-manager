@@ -20,8 +20,9 @@
 | 11 | Interactive Terminals & Claude Code | **Complete** |
 | 12 | GitHub OAuth & Authentication Improvements | **Complete** |
 | 13 | UI/UX Polish & Mobile Responsiveness | **Complete** |
+| 14 | Enhanced Task Creation Modal | **Planned** |
 
-**Current Status:** Phase 13 complete. All planned phases implemented.
+**Current Status:** Phase 13 complete. Phase 14 planned.
 
 **Recent Updates:**
 - Completed Phase 13: Mobile responsiveness, task modals, drag-and-drop fixes, and UI polish
@@ -733,6 +734,122 @@
 
 ---
 
+## Phase 14: Enhanced Task Creation Modal
+
+### 14.1 Agent Profile System
+- [ ] Create agent profile type definitions
+  - [ ] ThinkingLevel enum (low, medium, high, ultrathink)
+  - [ ] ModelName enum (opus-4-5, sonnet-4-5, haiku-4-5)
+  - [ ] AgentProfile interface with icon, model, thinking level
+  - [ ] PhaseConfig interface for per-phase model settings
+- [ ] Implement 5 preset profiles
+  - [ ] Auto (Optimized) - Opus 4.5 + high
+  - [ ] Complex Tasks - Opus 4.5 + ultrathink
+  - [ ] Balanced - Sonnet 4.5 + medium
+  - [ ] Quick Edits - Haiku 4.5 + low
+  - [ ] Custom - User configurable
+- [ ] Create AgentProfileSelect dropdown component
+  - [ ] Icon + name + description display
+  - [ ] Checkmark for selected item
+  - [ ] Olive/green highlight for selected
+
+### 14.2 Phase Configuration Panel
+- [ ] Create PhaseConfigPanel component
+  - [ ] Collapsible section (default closed)
+  - [ ] "Click to customize" header with edit icon
+  - [ ] Grid layout for phase → model mapping
+- [ ] Implement phase model selectors
+  - [ ] Spec Creation phase
+  - [ ] Planning phase
+  - [ ] Coding phase
+  - [ ] QA Review phase
+- [ ] Auto-populate from selected Agent Profile
+- [ ] Enable editing only for Custom profile
+
+### 14.3 Modal Form Redesign
+- [ ] Update modal header and subtitle
+  - [ ] Title: "Create New Task"
+  - [ ] Subtitle: "Describe what you want to build. The AI will analyze your request and create a detailed specification."
+- [ ] Make Description the primary field (required)
+  - [ ] Large textarea (8+ rows)
+  - [ ] @ file reference hint in placeholder
+  - [ ] Screenshot paste tip below field
+- [ ] Make Title optional with auto-generation
+  - [ ] "Leave empty to auto-generate" placeholder
+  - [ ] Helper text explaining auto-generation
+- [ ] Add Agent Profile selector after Title
+- [ ] Add Phase Configuration panel (collapsible)
+- [ ] Redesign footer layout
+  - [ ] Left: Draft status, Start Fresh, Browse Files
+  - [ ] Right: Cancel, Create Task
+
+### 14.4 Draft Auto-Save
+- [ ] Create useTaskDraft hook
+  - [ ] Save to localStorage on change (debounced)
+  - [ ] Restore draft when modal opens
+  - [ ] Clear draft on successful submit
+- [ ] Add "Draft restored" indicator
+- [ ] Add "Start Fresh" button to clear draft
+- [ ] Persist: description, title, profile, config, attachments
+
+### 14.5 Database & API Updates
+- [ ] Add agentProfile field to Task model
+- [ ] Add phaseConfig JSON field to Task model
+- [ ] Create TaskAttachment model
+  - [ ] id, taskId, type, content (base64), name
+- [ ] Run Prisma migration
+- [ ] Update POST /api/tasks endpoint
+  - [ ] Accept optional title
+  - [ ] Accept agentProfile
+  - [ ] Accept phaseConfig
+  - [ ] Accept attachments array
+- [ ] Implement title auto-generation
+  - [ ] Use user's Claude API key from settings
+  - [ ] Fallback: require title if no API key
+
+### 14.6 Image & File Attachments
+- [ ] Create AttachmentPreview component
+  - [ ] Grid of thumbnail previews
+  - [ ] Remove button on each item
+  - [ ] File type indicator for non-images
+- [ ] Create FileUploadButton component
+  - [ ] Native file picker trigger
+  - [ ] Accept images and common file types
+- [ ] Implement clipboard paste handler
+  - [ ] Detect image data on paste
+  - [ ] Convert to base64 attachment
+  - [ ] Show instant preview
+- [ ] Integrate with form submission
+  - [ ] Include attachments in API payload
+  - [ ] Store in TaskAttachment table
+
+### 14.7 New Files to Create
+- `src/types/agent-profiles.ts` - Type definitions
+- `src/lib/agent-profiles.ts` - Profile presets and utilities
+- `src/components/task/AgentProfileSelect.tsx` - Dropdown selector
+- `src/components/task/PhaseConfigPanel.tsx` - Collapsible config panel
+- `src/components/task/AttachmentPreview.tsx` - Attachment thumbnail grid
+- `src/components/task/FileUploadButton.tsx` - File picker trigger
+- `src/hooks/useTaskDraft.ts` - Draft persistence hook
+- `src/lib/ai/generate-title.ts` - Title auto-generation
+
+### 14.8 Verification
+- [ ] Modal opens with new layout
+- [ ] Agent Profile dropdown shows 5 options
+- [ ] Phase Configuration expands/collapses
+- [ ] Custom profile enables phase editing
+- [ ] Draft saves and restores correctly
+- [ ] "Start Fresh" clears form and draft
+- [ ] Empty title auto-generates on submit (if API key set)
+- [ ] Task creates with agent profile saved
+- [ ] Image paste (⌘V) shows preview thumbnail
+- [ ] Browse Files uploads and previews attachments
+- [ ] Attachments saved to TaskAttachment table
+
+**Phase 14 Planned** - Enhanced Task Creation Modal with agent profiles, attachments, and AI-powered specification.
+
+---
+
 ## File Structure
 
 ```
@@ -1248,6 +1365,20 @@ model Idea {
 - [x] Selected project persists in localStorage
 - [x] Cyan hover states visible on buttons
 - [x] Terminal uses website color theme
+
+### Phase 14 - Enhanced Task Creation Modal (Planned)
+- [ ] Modal opens with redesigned layout (description first)
+- [ ] Agent Profile dropdown shows 5 options with icons
+- [ ] Phase Configuration panel expands/collapses
+- [ ] Custom profile enables per-phase model editing
+- [ ] Draft auto-saves to localStorage on change
+- [ ] "Draft restored" indicator shows when draft loaded
+- [ ] "Start Fresh" button clears draft and form
+- [ ] Empty title auto-generates on submit (requires API key)
+- [ ] Image paste (⌘V) shows thumbnail preview
+- [ ] Browse Files opens file picker for attachments
+- [ ] Attachments saved to TaskAttachment table
+- [ ] Task creates with agentProfile and phaseConfig saved
 
 ### End-to-End
 - [x] Full workflow: Login → Project → Task → Terminal → Claude → Complete → Review
