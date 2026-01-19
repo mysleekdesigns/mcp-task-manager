@@ -423,12 +423,69 @@ export async function fetchPullRequest(
 }
 
 /**
- * Get GitHub access token from NextAuth session
+ * Refresh GitHub access token using the refresh token
+ */
+async function refreshGitHubToken(
+  accountId: string,
+  refreshToken: string
+): Promise<string | null> {
+  try {
+    const response = await fetch('https://github.com/login/oauth/access_token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        client_id: process.env.GITHUB_ID,
+        client_secret: process.env.GITHUB_SECRET,
+        grant_type: 'refresh_token',
+        refresh_token: refreshToken,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (data.error) {
+      console.error('GitHub token refresh error:', data.error_description || data.error);
+      return null;
+    }
+
+    if (data.access_token) {
+      const { prisma } = await import('@/lib/db');
+
+      // Update the account with new tokens
+      await prisma.account.update({
+        where: { id: accountId },
+        data: {
+          access_token: data.access_token,
+          refresh_token: data.refresh_token || refreshToken,
+          expires_at: data.expires_in
+            ? Math.floor(Date.now() / 1000) + data.expires_in
+            : null,
+        },
+      });
+
+      return data.access_token;
+    }
+
+    return null;
+  } catch (error) {
+    console.error('Failed to refresh GitHub token:', error);
+    return null;
+  }
+}
+
+/**
+ * Get GitHub access token from NextAuth session or UserSettings
+ * Checks OAuth Account first, then falls back to manually-added token in UserSettings
+ * Automatically refreshes expired OAuth tokens if a refresh_token is available
  * Helper function for API routes
  */
 export async function getGitHubAccessToken(userId: string): Promise<string | null> {
   const { prisma } = await import('@/lib/db');
 
+  // First, check for OAuth token from GitHub login
   const account = await prisma.account.findFirst({
     where: {
       userId,
@@ -436,7 +493,35 @@ export async function getGitHubAccessToken(userId: string): Promise<string | nul
     },
   });
 
-  return account?.access_token || null;
+  if (account?.access_token) {
+    // Check if token is expired
+    const now = Math.floor(Date.now() / 1000);
+    const isExpired = account.expires_at && account.expires_at < now;
+
+    if (isExpired && account.refresh_token) {
+      console.log('GitHub access token expired, attempting refresh...');
+      const newToken = await refreshGitHubToken(account.id, account.refresh_token);
+      if (newToken) {
+        return newToken;
+      }
+      // If refresh failed, fall through to try manual token
+      console.warn('GitHub token refresh failed, falling back to manual token if available');
+    } else if (!isExpired) {
+      return account.access_token;
+    }
+  }
+
+  // Fall back to manually-added token in UserSettings
+  const userSettings = await prisma.userSettings.findUnique({
+    where: {
+      userId,
+    },
+    select: {
+      githubToken: true,
+    },
+  });
+
+  return userSettings?.githubToken || null;
 }
 
 /**

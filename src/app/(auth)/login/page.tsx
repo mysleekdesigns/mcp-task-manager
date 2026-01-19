@@ -55,7 +55,11 @@ export default function LoginPage() {
     setIsOAuthLoading(provider)
     try {
       await signInWithProvider(provider)
-    } catch {
+    } catch (error) {
+      // Ignore NEXT_REDIRECT errors - these are expected during OAuth flow
+      if (error instanceof Error && error.message?.includes('NEXT_REDIRECT')) {
+        return
+      }
       setError(`${provider} authentication failed`)
     } finally {
       setIsOAuthLoading(null)
@@ -127,6 +131,7 @@ export default function LoginPage() {
             variant="outline"
             onClick={() => handleOAuthSignIn('github')}
             disabled={isOAuthLoading !== null}
+            className="hover:text-cyan-400 hover:border-cyan-400 active:text-cyan-400"
           >
             {isOAuthLoading === 'github' ? (
               <Loader2 className="animate-spin" />
@@ -139,6 +144,7 @@ export default function LoginPage() {
             variant="outline"
             onClick={() => handleOAuthSignIn('google')}
             disabled={isOAuthLoading !== null}
+            className="hover:text-cyan-400 hover:border-cyan-400 active:text-cyan-400"
           >
             {isOAuthLoading === 'google' ? (
               <Loader2 className="animate-spin" />
