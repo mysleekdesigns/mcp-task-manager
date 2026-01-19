@@ -337,6 +337,7 @@ export function NewTaskModal({
                 variant="outline"
                 onClick={() => onOpenChange(false)}
                 disabled={isLoading}
+                className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
               >
                 Cancel
               </Button>
@@ -345,6 +346,7 @@ export function NewTaskModal({
                 variant="outline"
                 onClick={form.handleSubmit((data) => onSubmit(data, false))}
                 disabled={isLoading}
+                className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
               >
                 {isCreating && (
                   <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />

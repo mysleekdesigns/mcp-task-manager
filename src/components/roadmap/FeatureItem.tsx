@@ -62,7 +62,7 @@ export function FeatureItem({ feature, onBuild }: FeatureItemProps) {
         variant="outline"
         size="sm"
         onClick={() => onBuild?.(feature)}
-        className="opacity-0 group-hover:opacity-100 transition-opacity"
+        className="opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
       >
         Build
       </Button>

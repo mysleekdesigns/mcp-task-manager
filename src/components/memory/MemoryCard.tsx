@@ -87,7 +87,7 @@ export function MemoryCard({ memory }: MemoryCardProps) {
               variant="ghost"
               size="sm"
               onClick={() => setIsExpanded(!isExpanded)}
-              className="h-8 px-2 text-xs"
+              className="h-8 px-2 text-xs text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
             >
               {isExpanded ? (
                 <>

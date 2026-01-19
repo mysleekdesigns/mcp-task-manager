@@ -97,6 +97,7 @@ export function InvokeClaudeModal({
             variant="outline"
             onClick={() => onOpenChange(false)}
             disabled={isInvoking}
+            className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
           >
             Cancel
           </Button>

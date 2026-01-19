@@ -147,7 +147,7 @@ export function AddChangelogEntryDialog({ projectId }: AddChangelogEntryDialogPr
             </div>
           </div>
           <DialogFooter>
-            <Button type="button" variant="outline" onClick={() => setOpen(false)}>
+            <Button type="button" variant="outline" onClick={() => setOpen(false)} className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400">
               Cancel
             </Button>
             <Button type="submit" disabled={loading}>

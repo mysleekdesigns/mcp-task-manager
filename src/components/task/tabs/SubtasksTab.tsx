@@ -110,8 +110,9 @@ export function SubtasksTab({
                   size="icon-sm"
                   onClick={() => handleDeleteSubtask(subtask.id)}
                   aria-label="Delete subtask"
+                  className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
                 >
-                  <TrashIcon className="size-4 text-destructive" />
+                  <TrashIcon className="size-4" />
                 </Button>
               )}
             </div>

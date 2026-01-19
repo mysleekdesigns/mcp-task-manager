@@ -46,7 +46,7 @@ export async function Header() {
         <Button
           variant="ghost"
           size="icon"
-          className="text-muted-foreground hover:text-foreground"
+          className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
           aria-label="Quick actions"
         >
           <PlusIcon className="size-5" />
@@ -59,7 +59,7 @@ export async function Header() {
         <Button
           variant="ghost"
           size="icon"
-          className="text-muted-foreground hover:text-foreground"
+          className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
           aria-label="Settings"
         >
           <SettingsIcon className="size-4" />

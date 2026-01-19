@@ -253,6 +253,7 @@ export function TaskModal({
                       variant="outline"
                       onClick={handleCancel}
                       disabled={isSaving}
+                      className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
                     >
                       <XIcon className="size-4" />
                     </Button>
@@ -262,6 +263,7 @@ export function TaskModal({
                     size="icon-sm"
                     variant="outline"
                     onClick={() => setIsEditing(true)}
+                    className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
                   >
                     <PencilIcon className="size-4" />
                   </Button>
@@ -334,12 +336,12 @@ export function TaskModal({
 
             <div className="flex gap-2">
               {task.isRunning && (
-                <Button variant="outline" onClick={handleStop}>
+                <Button variant="outline" onClick={handleStop} className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400">
                   <StopCircleIcon className="size-4 mr-2" />
                   Stop Task
                 </Button>
               )}
-              <Button variant="outline" onClick={() => onOpenChange(false)}>
+              <Button variant="outline" onClick={() => onOpenChange(false)} className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400">
                 Close
               </Button>
             </div>

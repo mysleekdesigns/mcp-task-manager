@@ -84,6 +84,7 @@ export function IssueDetailModal({ issue, open, onOpenChange, onCreateTask }: Is
                 size="sm"
                 variant="outline"
                 onClick={() => window.open(issue.html_url, '_blank')}
+                className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
               >
                 <ExternalLink className="h-4 w-4 mr-1" />
                 GitHub

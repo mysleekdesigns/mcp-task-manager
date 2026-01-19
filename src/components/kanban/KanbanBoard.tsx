@@ -225,6 +225,7 @@ export function KanbanBoard({ initialTasks, projectId }: KanbanBoardProps) {
           size="sm"
           onClick={handleRefresh}
           disabled={isRefreshing}
+          className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
         >
           <RefreshCw className={`h-4 w-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
           Refresh

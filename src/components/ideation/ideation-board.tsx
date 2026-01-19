@@ -225,6 +225,7 @@ export function IdeationBoard({ projectId, userRole, userId }: IdeationBoardProp
             size="icon"
             onClick={toggleSortDirection}
             title={`Sort ${sortDirection === 'asc' ? 'ascending' : 'descending'}`}
+            className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
           >
             <ArrowUpDown className="h-4 w-4" />
           </Button>
@@ -282,6 +283,7 @@ export function IdeationBoard({ projectId, userRole, userId }: IdeationBoardProp
               variant="outline"
               onClick={() => setConvertDialogOpen(false)}
               disabled={isConverting}
+              className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
             >
               Cancel
             </Button>

@@ -72,7 +72,7 @@ export function TaskCard({ task, onStart, onStop, onEdit, onDelete }: TaskCardPr
           <h4 className="font-medium text-sm line-clamp-2">{task.title}</h4>
           <DropdownMenu>
             <DropdownMenuTrigger asChild onClick={(e) => e.stopPropagation()}>
-              <Button variant="ghost" size="icon" className="h-6 w-6 flex-shrink-0">
+              <Button variant="ghost" size="icon" className="h-6 w-6 flex-shrink-0 text-muted-foreground hover:text-cyan-400 active:text-cyan-400">
                 <MoreVertical className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>

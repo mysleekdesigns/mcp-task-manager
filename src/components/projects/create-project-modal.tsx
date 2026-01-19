@@ -216,6 +216,7 @@ export function CreateProjectModal({
                 variant="outline"
                 onClick={() => onOpenChange(false)}
                 disabled={isLoading}
+                className="hover:text-cyan-400 active:text-cyan-400"
               >
                 Cancel
               </Button>

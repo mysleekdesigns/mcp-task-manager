@@ -131,7 +131,7 @@ export function TerminalPane({
             <Button
               size="icon"
               variant="ghost"
-              className="h-7 w-7"
+              className="h-7 w-7 text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
               onClick={isExpanded ? onCollapse : onExpand}
             >
               {isExpanded ? (
@@ -146,7 +146,7 @@ export function TerminalPane({
           <Button
             size="icon"
             variant="ghost"
-            className="h-7 w-7 text-muted-foreground hover:text-destructive"
+            className="h-7 w-7 text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
             onClick={onClose}
           >
             <X className="h-4 w-4" />

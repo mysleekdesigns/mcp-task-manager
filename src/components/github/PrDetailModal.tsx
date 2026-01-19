@@ -64,6 +64,7 @@ export function PrDetailModal({ pr, open, onOpenChange }: PrDetailModalProps) {
                 size="sm"
                 variant="outline"
                 onClick={() => window.open(pr.html_url, '_blank')}
+                className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
               >
                 <ExternalLink className="h-4 w-4 mr-1" />
                 View on GitHub
@@ -281,7 +282,7 @@ export function PrDetailModal({ pr, open, onOpenChange }: PrDetailModalProps) {
         </div>
 
         <div className="flex justify-end pt-4 border-t">
-          <Button variant="outline" onClick={() => onOpenChange(false)}>
+          <Button variant="outline" onClick={() => onOpenChange(false)} className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400">
             Close
           </Button>
         </div>

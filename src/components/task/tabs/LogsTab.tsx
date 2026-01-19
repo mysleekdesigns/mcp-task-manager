@@ -179,7 +179,7 @@ export function LogsTab({ phaseLogs }: LogsTabProps) {
                                 variant="ghost"
                                 size="sm"
                                 onClick={() => toggleOutput(log.id)}
-                                className="h-auto py-1 px-2 text-xs"
+                                className="h-auto py-1 px-2 text-xs text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
                               >
                                 {expandedOutputs.has(log.id) ? (
                                   <>

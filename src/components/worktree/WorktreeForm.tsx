@@ -200,6 +200,7 @@ export function WorktreeForm({
               variant="outline"
               onClick={() => setOpen(false)}
               disabled={loading}
+              className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
             >
               Cancel
             </Button>

@@ -102,7 +102,7 @@ export function WorktreeList({ worktrees, onWorktreeDeleted }: WorktreeListProps
                     <Button
                       size="icon"
                       variant="ghost"
-                      className="h-8 w-8 text-muted-foreground hover:text-destructive"
+                      className="h-8 w-8 text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
                       disabled={deletingId === worktree.id}
                     >
                       <Trash2 className="h-4 w-4" />

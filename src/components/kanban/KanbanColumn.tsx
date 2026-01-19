@@ -80,7 +80,7 @@ export function KanbanColumn({
                 variant="ghost"
                 size="sm"
                 onClick={onToggleCollapse}
-                className="h-7 px-2"
+                className="h-7 px-2 text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
               >
                 {isCollapsed ? 'Expand' : 'Collapse'}
               </Button>
@@ -90,7 +90,7 @@ export function KanbanColumn({
                 variant="ghost"
                 size="sm"
                 onClick={() => onAddTask(column.status)}
-                className="h-7 px-2"
+                className="h-7 px-2 text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
               >
                 <Plus className="h-4 w-4" />
               </Button>

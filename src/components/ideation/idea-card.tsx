@@ -118,7 +118,7 @@ export function IdeaCard({ idea, onVote, onConvert, onDelete, canConvert, canDel
               size="sm"
               onClick={() => handleVote('upvote')}
               disabled={isVoting || idea.status === 'CONVERTED'}
-              className="h-6 w-6 p-0"
+              className="h-6 w-6 p-0 text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
             >
               <ChevronUp className="h-4 w-4" />
             </Button>
@@ -128,7 +128,7 @@ export function IdeaCard({ idea, onVote, onConvert, onDelete, canConvert, canDel
               size="sm"
               onClick={() => handleVote('downvote')}
               disabled={isVoting || idea.votes <= 0 || idea.status === 'CONVERTED'}
-              className="h-6 w-6 p-0"
+              className="h-6 w-6 p-0 text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
             >
               <ChevronDown className="h-4 w-4" />
             </Button>
@@ -153,6 +153,7 @@ export function IdeaCard({ idea, onVote, onConvert, onDelete, canConvert, canDel
                   variant="ghost"
                   size="sm"
                   disabled={isDeleting}
+                  className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
                 >
                   <Trash2 className="h-4 w-4 text-destructive" />
                 </Button>

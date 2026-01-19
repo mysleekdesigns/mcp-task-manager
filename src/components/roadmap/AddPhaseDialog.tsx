@@ -56,7 +56,7 @@ export function AddPhaseDialog({ onAdd, trigger }: AddPhaseDialogProps) {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         {trigger || (
-          <Button variant="outline">
+          <Button variant="outline" className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400">
             + Add Phase
           </Button>
         )}
@@ -97,6 +97,7 @@ export function AddPhaseDialog({ onAdd, trigger }: AddPhaseDialogProps) {
               variant="outline"
               onClick={() => setOpen(false)}
               disabled={isSubmitting}
+              className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
             >
               Cancel
             </Button>

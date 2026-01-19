@@ -69,7 +69,7 @@ export function IssuesList({ projectId, githubRepo, onViewDetails, onCreateTask 
           <p className="text-sm text-muted-foreground mb-4">
             Go to project settings to configure your GitHub repository URL.
           </p>
-          <Button variant="outline" onClick={() => window.location.href = '/dashboard/settings'}>
+          <Button variant="outline" onClick={() => window.location.href = '/dashboard/settings'} className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400">
             Go to Settings
           </Button>
         </CardContent>
@@ -85,7 +85,7 @@ export function IssuesList({ projectId, githubRepo, onViewDetails, onCreateTask 
           <CardDescription>{error}</CardDescription>
         </CardHeader>
         <CardContent>
-          <Button variant="outline" onClick={() => window.location.reload()}>
+          <Button variant="outline" onClick={() => window.location.reload()} className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400">
             Retry
           </Button>
         </CardContent>

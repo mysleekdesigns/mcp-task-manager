@@ -37,7 +37,7 @@ export function IssueCard({ issue, onViewDetails, onCreateTask }: IssueCardProps
               e.stopPropagation();
               onCreateTask(issue);
             }}
-            className="flex-shrink-0"
+            className="flex-shrink-0 text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
           >
             <GitBranch className="h-4 w-4 mr-1" />
             Create Task

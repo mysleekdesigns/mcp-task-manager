@@ -44,7 +44,7 @@ export function UserMenu({ user }: UserMenuProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+        <Button variant="ghost" className="relative h-10 w-10 rounded-full text-muted-foreground hover:text-cyan-400 active:text-cyan-400">
           <Avatar className="h-10 w-10">
             <AvatarImage src={user.image || undefined} alt={user.name || ''} />
             <AvatarFallback>{initials}</AvatarFallback>

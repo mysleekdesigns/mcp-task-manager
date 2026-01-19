@@ -314,6 +314,7 @@ export function EditTaskModal({
                 variant="outline"
                 onClick={() => onOpenChange(false)}
                 disabled={isLoading}
+                className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
               >
                 Cancel
               </Button>

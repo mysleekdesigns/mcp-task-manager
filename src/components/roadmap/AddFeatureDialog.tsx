@@ -73,7 +73,7 @@ export function AddFeatureDialog({ phases, onAdd, trigger }: AddFeatureDialogPro
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         {trigger || (
-          <Button variant="outline">
+          <Button variant="outline" className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400">
             + Add Feature
           </Button>
         )}
@@ -146,6 +146,7 @@ export function AddFeatureDialog({ phases, onAdd, trigger }: AddFeatureDialogPro
               variant="outline"
               onClick={() => setOpen(false)}
               disabled={isSubmitting}
+              className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
             >
               Cancel
             </Button>

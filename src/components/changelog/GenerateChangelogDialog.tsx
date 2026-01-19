@@ -68,7 +68,7 @@ export function GenerateChangelogDialog({ projectId }: GenerateChangelogDialogPr
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline">
+        <Button variant="outline" className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400">
           <Wand2 className="h-4 w-4 mr-2" />
           Generate from Tasks
         </Button>
@@ -103,7 +103,7 @@ export function GenerateChangelogDialog({ projectId }: GenerateChangelogDialogPr
           </div>
         </div>
         <DialogFooter>
-          <Button type="button" variant="outline" onClick={() => setOpen(false)}>
+          <Button type="button" variant="outline" onClick={() => setOpen(false)} className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400">
             Cancel
           </Button>
           <Button onClick={handleGenerate} disabled={loading}>

@@ -307,11 +307,12 @@ export function TeamMembers({
                     size="icon"
                     onClick={() => setMemberToRemove(member)}
                     disabled={removingMemberId === member.id}
+                    className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
                   >
                     {removingMemberId === member.id ? (
                       <Loader2Icon className="h-4 w-4 animate-spin" />
                     ) : (
-                      <TrashIcon className="h-4 w-4 text-muted-foreground hover:text-destructive" />
+                      <TrashIcon className="h-4 w-4" />
                     )}
                   </Button>
                 )}

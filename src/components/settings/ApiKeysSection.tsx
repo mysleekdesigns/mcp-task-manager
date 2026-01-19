@@ -184,6 +184,7 @@ export function ApiKeysSection() {
                 size="sm"
                 onClick={() => handleRemoveKey('claude')}
                 disabled={isSaving}
+                className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
               >
                 <X className="h-4 w-4" />
               </Button>
@@ -207,7 +208,7 @@ export function ApiKeysSection() {
                   type="button"
                   variant="ghost"
                   size="sm"
-                  className="absolute right-0 top-0 h-full px-3"
+                  className="absolute right-0 top-0 h-full px-3 text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
                   onClick={() => setShowClaudeKey(!showClaudeKey)}
                 >
                   {showClaudeKey ? (
@@ -251,6 +252,7 @@ export function ApiKeysSection() {
                 size="sm"
                 onClick={() => handleRemoveKey('github')}
                 disabled={isSaving}
+                className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
               >
                 <X className="h-4 w-4" />
               </Button>
@@ -274,7 +276,7 @@ export function ApiKeysSection() {
                   type="button"
                   variant="ghost"
                   size="sm"
-                  className="absolute right-0 top-0 h-full px-3"
+                  className="absolute right-0 top-0 h-full px-3 text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
                   onClick={() => setShowGithubToken(!showGithubToken)}
                 >
                   {showGithubToken ? (

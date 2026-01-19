@@ -26,7 +26,7 @@ export function ThemeToggle() {
       <Button
         variant="ghost"
         size="icon"
-        className="text-muted-foreground"
+        className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
         aria-label="Toggle theme"
         disabled
       >
@@ -41,7 +41,7 @@ export function ThemeToggle() {
         <Button
           variant="ghost"
           size="icon"
-          className="text-muted-foreground hover:text-foreground transition-colors"
+          className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400 transition-colors"
           aria-label="Toggle theme"
         >
           {theme === 'light' && <Sun className="size-4" />}

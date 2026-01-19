@@ -119,12 +119,12 @@ function ProjectSelector({ className }: ProjectSelectorProps) {
           variant="outline"
           onClick={() => setShowCreateModal(true)}
           className={cn(
-            "h-10 justify-start gap-2 border-border/50 bg-card/50 hover:bg-card hover:border-border transition-colors",
+            "group h-10 justify-start gap-2 border-border/50 bg-card/50 hover:bg-card hover:border-border transition-colors",
             className
           )}
         >
-          <PlusIcon className="size-4 text-muted-foreground" />
-          <span className="font-medium">Create Project</span>
+          <PlusIcon className="size-4 text-muted-foreground transition-colors group-hover:text-cyan-400 group-active:text-cyan-400" />
+          <span className="font-medium transition-colors group-hover:text-cyan-400 group-active:text-cyan-400">Create Project</span>
         </Button>
 
         <CreateProjectModal
@@ -174,14 +174,14 @@ function ProjectSelector({ className }: ProjectSelectorProps) {
           ))}
           <DropdownMenuSeparator />
           <DropdownMenuItem
-            className="gap-2 text-primary"
+            className="group gap-2 text-muted-foreground hover:text-cyan-400 focus:text-cyan-400"
             onClick={() => {
               setIsOpen(false)
               setShowCreateModal(true)
             }}
           >
-            <PlusIcon className="size-4" />
-            <span>Create New Project</span>
+            <PlusIcon className="size-4 transition-colors group-hover:text-cyan-400 group-focus:text-cyan-400" />
+            <span className="transition-colors group-hover:text-cyan-400 group-focus:text-cyan-400">Create New Project</span>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

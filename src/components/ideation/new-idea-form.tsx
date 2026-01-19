@@ -136,6 +136,7 @@ export function NewIdeaForm({ projectId, onIdeaCreated }: NewIdeaFormProps) {
               variant="outline"
               onClick={() => setOpen(false)}
               disabled={isSubmitting}
+              className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
             >
               Cancel
             </Button>
