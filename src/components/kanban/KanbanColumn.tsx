@@ -38,7 +38,7 @@ interface KanbanColumnProps {
   onAddTask?: (status: string) => void;
   onStartTask?: (taskId: string) => void;
   onStopTask?: (taskId: string) => void;
-  onEditTask?: (taskId: string) => void;
+  onEditTask?: (task: Task) => void;
   onDeleteTask?: (taskId: string) => void;
 }
 

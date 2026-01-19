@@ -15,6 +15,8 @@ import {
 import { sortableKeyboardCoordinates } from '@dnd-kit/sortable';
 import { KanbanColumn } from './KanbanColumn';
 import { TaskCard } from './TaskCard';
+import { CreateTaskModal } from './CreateTaskModal';
+import { EditTaskModal } from './EditTaskModal';
 import { Button } from '@/components/ui/button';
 import { RefreshCw } from 'lucide-react';
 import { toast } from 'sonner';
@@ -54,6 +56,12 @@ export function KanbanBoard({ initialTasks, projectId }: KanbanBoardProps) {
   const [activeTask, setActiveTask] = useState<Task | null>(null);
   const [isCompletedCollapsed, setIsCompletedCollapsed] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
+
+  // Modal state
+  const [createModalOpen, setCreateModalOpen] = useState(false);
+  const [createModalDefaultStatus, setCreateModalDefaultStatus] = useState<string | undefined>();
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [editingTask, setEditingTask] = useState<Task | null>(null);
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -133,9 +141,9 @@ export function KanbanBoard({ initialTasks, projectId }: KanbanBoardProps) {
     }
   };
 
-  const handleAddTask = () => {
-    toast.info('Add task modal coming soon');
-    // TODO: Open add task modal/dialog
+  const handleAddTask = (status?: string) => {
+    setCreateModalDefaultStatus(status);
+    setCreateModalOpen(true);
   };
 
   const handleStartTask = async (taskId: string) => {
@@ -174,9 +182,9 @@ export function KanbanBoard({ initialTasks, projectId }: KanbanBoardProps) {
     }
   };
 
-  const handleEditTask = () => {
-    toast.info('Edit task modal coming soon');
-    // TODO: Open edit task modal/dialog
+  const handleEditTask = (task: Task) => {
+    setEditingTask(task);
+    setEditModalOpen(true);
   };
 
   const handleDeleteTask = async (taskId: string) => {
@@ -258,6 +266,23 @@ export function KanbanBoard({ initialTasks, projectId }: KanbanBoardProps) {
           )}
         </DragOverlay>
       </DndContext>
+
+      {/* Modals */}
+      <CreateTaskModal
+        open={createModalOpen}
+        onOpenChange={setCreateModalOpen}
+        projectId={projectId}
+        defaultStatus={createModalDefaultStatus as any}
+        onSuccess={handleRefresh}
+      />
+      {editingTask && (
+        <EditTaskModal
+          open={editModalOpen}
+          onOpenChange={setEditModalOpen}
+          task={editingTask as any}
+          onSuccess={handleRefresh}
+        />
+      )}
     </div>
   );
 }

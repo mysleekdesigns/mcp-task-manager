@@ -35,7 +35,7 @@ interface TaskCardProps {
   task: Task;
   onStart?: (taskId: string) => void;
   onStop?: (taskId: string) => void;
-  onEdit?: (taskId: string) => void;
+  onEdit?: (task: Task) => void;
   onDelete?: (taskId: string) => void;
 }
 
@@ -78,7 +78,7 @@ export function TaskCard({ task, onStart, onStop, onEdit, onDelete }: TaskCardPr
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               {onEdit && (
-                <DropdownMenuItem onClick={() => onEdit(task.id)}>
+                <DropdownMenuItem onClick={() => onEdit(task)}>
                   Edit
                 </DropdownMenuItem>
               )}
