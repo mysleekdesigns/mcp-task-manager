@@ -1,6 +1,6 @@
 # Task Components Implementation
 
-Implementation of Phase 3.4 (Task Detail Modal) and Phase 3.5 (New Task Flow) for the Auto Claude project.
+Implementation of Phase 3.4 (Task Detail Modal) and Phase 3.5 (New Task Flow) for the Claude Tasks project.
 
 ## Completed Components
 

@@ -1,6 +1,6 @@
 # Task Components
 
-Task modal and new task flow components for Phase 3.4 and 3.5 of the Auto Claude project.
+Task modal and new task flow components for Phase 3.4 and 3.5 of the Claude Tasks project.
 
 ## Components
 

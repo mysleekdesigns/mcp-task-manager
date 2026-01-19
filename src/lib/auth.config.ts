@@ -1,7 +1,7 @@
 import type { NextAuthConfig } from 'next-auth'
 
 /**
- * Auth.js v5 configuration for Auto Claude
+ * Auth.js v5 configuration for Claude Tasks
  * This file contains edge-compatible configuration without database adapter
  * Use this in middleware for route protection
  */

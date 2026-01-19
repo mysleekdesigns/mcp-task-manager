@@ -71,7 +71,7 @@ function Sidebar({ className }: SidebarProps) {
               <Sparkles className="h-4 w-4 text-primary" />
             </div>
             <h1 className="text-lg font-semibold tracking-tight text-sidebar-foreground">
-              Auto Claude
+              Claude Tasks
             </h1>
           </Link>
         )}

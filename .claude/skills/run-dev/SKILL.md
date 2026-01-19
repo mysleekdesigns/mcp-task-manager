@@ -6,7 +6,7 @@ allowed-tools: Bash
 
 # Run Development Server
 
-Start the development environment for the Auto Claude MCP Task Manager.
+Start the development environment for the Claude Tasks MCP Task Manager.
 
 ## Instructions
 

@@ -1,6 +1,6 @@
 # Git Operations Guide
 
-This guide demonstrates how to use the Git operations utility library (`src/lib/git.ts`) for managing worktrees and branches in the Auto Claude project.
+This guide demonstrates how to use the Git operations utility library (`src/lib/git.ts`) for managing worktrees and branches in the Claude Tasks project.
 
 ## Overview
 

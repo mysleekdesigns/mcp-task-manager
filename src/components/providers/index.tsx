@@ -19,7 +19,7 @@ export function Providers({ children }: ProvidersProps) {
         attribute="class"
         defaultTheme="system"
         enableSystem
-        storageKey="auto-claude-theme"
+        storageKey="claude-tasks-theme"
       >
         {children}
         <Toaster />

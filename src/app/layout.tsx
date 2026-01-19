@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Auto Claude',
+  title: 'Claude Tasks',
   description: 'AI-driven development task management with Claude Code',
 }
 

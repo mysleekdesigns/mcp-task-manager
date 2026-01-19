@@ -1,4 +1,4 @@
-# Auto Claude - MCP Task Manager
+# Claude Tasks - MCP Task Manager
 ## Product Requirements Document
 
 ---
@@ -40,7 +40,7 @@
 
 ## Overview
 
-**Product Name:** Auto Claude
+**Product Name:** Claude Tasks
 **Description:** A comprehensive MCP task manager web application for managing AI-driven development tasks with Claude Code. Enables teams to manage multiple Claude Code terminal sessions, track tasks through AI-assisted workflows, and maintain project context across sessions.
 
 **Target Users:** Developers and teams using Claude Code for AI-assisted development

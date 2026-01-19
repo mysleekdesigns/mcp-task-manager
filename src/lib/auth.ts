@@ -10,7 +10,7 @@ import { authConfig } from '@/lib/auth.config'
 import type { NextAuthConfig } from 'next-auth'
 
 /**
- * Full Auth.js v5 configuration for Auto Claude
+ * Full Auth.js v5 configuration for Claude Tasks
  * Supports GitHub OAuth, Google OAuth, and email/password authentication
  * This file includes the database adapter and should only be used on the server
  */

@@ -37,7 +37,7 @@ Added ThemeToggle component to the header:
 
 Updated ThemeProvider settings:
 - Changed `defaultTheme` from "dark" to "system" (respects OS preference)
-- Added `storageKey="auto-claude-theme"` for localStorage persistence
+- Added `storageKey="claude-tasks-theme"` for localStorage persistence
 - Removed `disableTransitionOnChange` for smooth theme transitions
 - Maintains `enableSystem` for system theme detection
 
@@ -107,7 +107,7 @@ All shadcn/ui components automatically support dark mode through these CSS varia
 ## Theme Persistence
 
 Theme preference is persisted using:
-- **Storage Key**: `auto-claude-theme`
+- **Storage Key**: `claude-tasks-theme`
 - **Storage Method**: localStorage
 - **Default**: System preference
 - **Options**: light, dark, system

@@ -238,7 +238,7 @@ const project = await response.json()
 console.log(project)
 // {
 //   id: "...",
-//   name: "Auto Claude",
+//   name: "Claude Tasks",
 //   description: "...",
 //   targetPath: "/path/to/project",
 //   githubRepo: "https://github.com/...",

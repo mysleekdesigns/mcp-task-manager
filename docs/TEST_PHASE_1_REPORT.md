@@ -216,7 +216,7 @@ All components are properly installed and configured in `/src/components/ui/`
 11. ✅ GitHub PRs (`/dashboard/github/prs`)
 
 **Additional Features:**
-- ✅ Auto Claude branding with icon
+- ✅ Claude Tasks branding with icon
 - ✅ Settings link (`/dashboard/settings`)
 - ✅ Claude Code external link (to claude.ai/claude-code)
 - ✅ New Task button with callback handler

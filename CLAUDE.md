@@ -1,4 +1,4 @@
-# Auto Claude
+# Claude Tasks
 
 Next.js app for managing AI-driven development tasks with Claude Code. Manages terminal sessions, tracks tasks through AI workflows, and maintains project context.
 

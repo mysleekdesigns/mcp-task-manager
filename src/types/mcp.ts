@@ -84,8 +84,8 @@ export const MCP_SERVER_TEMPLATES: McpServerTemplate[] = [
     icon: 'Chrome',
   },
   {
-    id: 'auto-claude-tools',
-    name: 'Auto-Claude Tools',
+    id: 'claude-tasks-tools',
+    name: 'Claude Tasks Tools',
     description: 'Built-in tools for task management and workflows',
     type: 'builtin',
     category: 'Built-in',

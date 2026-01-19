@@ -114,7 +114,7 @@ Complete authentication system with multiple options:
 Complete sidebar and dashboard structure:
 
 **Sidebar Features:**
-- App branding (Auto Claude)
+- App branding (Claude Tasks)
 - 11 navigation items
 - Keyboard shortcuts for each nav item
 - Active state indication

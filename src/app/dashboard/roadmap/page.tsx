@@ -15,7 +15,7 @@ export default function RoadmapPage() {
   const [phases, setPhases] = useState<Phase[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [projectId] = useState('default-project'); // TODO: Get from context/params
-  const [projectName] = useState('Auto Claude'); // TODO: Get from API
+  const [projectName] = useState('Claude Tasks'); // TODO: Get from API
   const [projectDescription] = useState('Next.js app for managing AI-driven development tasks'); // TODO: Get from API
   const [projectStatus] = useState('active'); // TODO: Get from API
 

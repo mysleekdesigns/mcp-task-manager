@@ -25,7 +25,7 @@ export default function McpPage() {
   const [configs, setConfigs] = useState<McpConfig[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [projectId] = useState('default-project'); // TODO: Get from context/params
-  const [projectName] = useState('Auto Claude'); // TODO: Get from API
+  const [projectName] = useState('Claude Tasks'); // TODO: Get from API
   const [projectDescription] = useState('Next.js app for managing AI-driven development tasks'); // TODO: Get from API
   const [editConfig, setEditConfig] = useState<McpConfig | null>(null);
   const [deleteConfig, setDeleteConfig] = useState<McpConfig | null>(null);

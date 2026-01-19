@@ -1,5 +1,5 @@
 /**
- * Type definitions for Auto Claude MCP Task Manager
+ * Type definitions for Claude Tasks MCP Task Manager
  * Add shared types and interfaces here
  */
 

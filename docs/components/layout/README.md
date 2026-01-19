@@ -1,14 +1,14 @@
 # Layout Components
 
-Layout components for the Auto Claude dashboard interface.
+Layout components for the Claude Tasks dashboard interface.
 
 ## Sidebar
 
-The main navigation sidebar for the Auto Claude application.
+The main navigation sidebar for the Claude Tasks application.
 
 ### Features
 
-- **App Branding**: Displays "Auto Claude" logo with Sparkles icon
+- **App Branding**: Displays "Claude Tasks" logo with Sparkles icon
 - **Navigation Items**: 11 project-related navigation links with icons and keyboard shortcuts
 - **Active State**: Visual indication with glow effect and left border indicator
 - **Hover States**: Smooth transitions and background changes on hover

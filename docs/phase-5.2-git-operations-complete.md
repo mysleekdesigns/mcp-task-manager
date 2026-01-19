@@ -6,7 +6,7 @@
 
 ## Overview
 
-Successfully implemented comprehensive Git operations utility library for managing worktrees and branches in the Auto Claude project.
+Successfully implemented comprehensive Git operations utility library for managing worktrees and branches in the Claude Tasks project.
 
 ## Implementation Summary
 
