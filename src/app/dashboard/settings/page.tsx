@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { ProfileSection } from '@/components/settings/ProfileSection'
 import { ApiKeysSection } from '@/components/settings/ApiKeysSection'
 import { PreferencesSection } from '@/components/settings/PreferencesSection'
+import { ProjectsSection } from '@/components/settings/ProjectsSection'
 import { Skeleton } from '@/components/ui/skeleton'
 
 export default function SettingsPage() {
@@ -49,6 +50,7 @@ export default function SettingsPage() {
           <TabsTrigger value="profile">Profile</TabsTrigger>
           <TabsTrigger value="api-keys">API Keys</TabsTrigger>
           <TabsTrigger value="preferences">Preferences</TabsTrigger>
+          <TabsTrigger value="projects">Projects</TabsTrigger>
         </TabsList>
 
         <TabsContent value="profile" className="space-y-4">
@@ -68,6 +70,10 @@ export default function SettingsPage() {
 
         <TabsContent value="preferences" className="space-y-4">
           <PreferencesSection />
+        </TabsContent>
+
+        <TabsContent value="projects" className="space-y-4">
+          <ProjectsSection />
         </TabsContent>
       </Tabs>
     </div>
