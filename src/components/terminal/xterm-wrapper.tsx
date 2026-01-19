@@ -28,50 +28,70 @@ interface ErrorInfo {
 
 const getTerminalTheme = (isDark: boolean) => {
   if (isDark) {
-    // Dark theme
+    // Dark theme - matching website's OKLch dark mode palette with hue 260 (blue-tinted)
     return {
-      background: '#1a1a1a',
-      foreground: '#d4d4d4',
-      cursor: '#d4d4d4',
-      black: '#000000',
-      red: '#cd3131',
-      green: '#0dbc79',
-      yellow: '#e5e510',
-      blue: '#2472c8',
-      magenta: '#bc3fbc',
-      cyan: '#11a8cd',
-      white: '#e5e5e5',
-      brightBlack: '#666666',
-      brightRed: '#f14c4c',
-      brightGreen: '#23d18b',
-      brightYellow: '#f5f543',
-      brightBlue: '#3b8eea',
-      brightMagenta: '#d670d6',
-      brightCyan: '#29b8db',
-      brightWhite: '#e5e5e5',
+      // Base colors - blue-tinted neutrals matching --background and --foreground
+      background: '#1a1a26', // oklch(0.13 0.02 260) - main background (blue-tinted dark)
+      foreground: '#f3f3f5', // oklch(0.95 0.01 260) - foreground color (near white with blue tint)
+      cursor: '#3fb9ff', // oklch(0.78 0.18 195) - primary cyan
+      cursorAccent: '#1a1a26', // background color for cursor text (blue-tinted)
+
+      // Selection colors - using primary with opacity
+      selection: 'rgba(63, 185, 255, 0.3)', // primary cyan with 30% opacity
+      selectionForeground: '#f3f3f5', // foreground color (blue-tinted)
+
+      // Standard ANSI colors
+      black: '#1a1a26', // oklch(0.13 0.02 260) - main background (blue-tinted)
+      red: '#ff5c5c', // oklch(0.65 0.25 25) - destructive color
+      green: '#10b981', // complementary green that works with the palette
+      yellow: '#fbbf24', // complementary amber/yellow
+      blue: '#3fb9ff', // oklch(0.78 0.18 195) - primary cyan
+      magenta: '#d34fff', // oklch(0.65 0.22 300) - secondary magenta
+      cyan: '#3fb9ff', // oklch(0.78 0.18 195) - primary cyan
+      white: '#9999a8', // oklch(0.65 0.02 260) - muted foreground (gray with blue tint)
+
+      // Bright ANSI colors - all with blue undertones
+      brightBlack: '#4a4a5c', // slightly brighter than muted (blue-tinted)
+      brightRed: '#ff7a7a', // brighter red
+      brightGreen: '#34d399', // brighter green
+      brightYellow: '#fcd34d', // brighter yellow
+      brightBlue: '#60c5ff', // brighter cyan-blue
+      brightMagenta: '#e879ff', // brighter magenta
+      brightCyan: '#60c5ff', // brighter cyan
+      brightWhite: '#f3f3f5', // foreground color (blue-tinted)
     };
   } else {
-    // Light theme
+    // Light theme - matching website's OKLch light mode palette with subtle blue undertones
     return {
-      background: '#ffffff',
-      foreground: '#383a42',
-      cursor: '#383a42',
-      black: '#000000',
-      red: '#e45649',
-      green: '#50a14f',
-      yellow: '#c18401',
-      blue: '#0184bc',
-      magenta: '#a626a4',
-      cyan: '#0997b3',
-      white: '#fafafa',
-      brightBlack: '#4f525e',
-      brightRed: '#e06c75',
-      brightGreen: '#98c379',
-      brightYellow: '#e5c07b',
-      brightBlue: '#61afef',
-      brightMagenta: '#c678dd',
-      brightCyan: '#56b6c2',
-      brightWhite: '#ffffff',
+      // Base colors - subtle blue undertones
+      background: '#fafafc', // oklch(0.98 0.002 260) - off-white with slight blue
+      foreground: '#1e1e28', // oklch(0.15 0.01 260) - dark with blue tint
+      cursor: '#00a3e0', // oklch(0.7 0.15 195) - primary cyan
+      cursorAccent: '#fafafc', // background color for cursor text
+
+      // Selection colors - using primary with opacity
+      selection: 'rgba(0, 163, 224, 0.25)', // primary cyan with 25% opacity
+      selectionForeground: '#1e1e28', // foreground color (blue-tinted)
+
+      // Standard ANSI colors
+      black: '#1e1e28', // oklch(0.15 0.01 260) - foreground color (blue-tinted)
+      red: '#dc2626', // oklch(0.577 0.245 27.325) - destructive color
+      green: '#059669', // complementary green that works with the palette
+      yellow: '#d97706', // complementary amber/yellow
+      blue: '#00a3e0', // oklch(0.7 0.15 195) - primary cyan
+      magenta: '#b733e0', // oklch(0.6 0.2 300) - secondary magenta
+      cyan: '#00a3e0', // oklch(0.7 0.15 195) - primary cyan
+      white: '#6b6b78', // oklch(0.5 0.01 260) - muted foreground (blue-tinted)
+
+      // Bright ANSI colors
+      brightBlack: '#4a4a5c', // slightly darker than muted (blue-tinted)
+      brightRed: '#ef4444', // brighter red
+      brightGreen: '#10b981', // brighter green
+      brightYellow: '#f59e0b', // brighter yellow
+      brightBlue: '#3fb9ff', // brighter cyan-blue
+      brightMagenta: '#d34fff', // brighter magenta
+      brightCyan: '#3fb9ff', // brighter cyan
+      brightWhite: '#1e1e28', // foreground color (blue-tinted)
     };
   }
 };
@@ -593,7 +613,7 @@ export function XTermWrapper({
     }
 
     return (
-      <div className="absolute inset-0 flex items-center justify-center bg-background/80 backdrop-blur-sm">
+      <div className="glass absolute inset-0 flex items-center justify-center">
         <div className={`flex flex-col items-center ${overlayColor}`}>{overlayContent}</div>
       </div>
     );
