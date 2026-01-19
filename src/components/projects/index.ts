@@ -1,2 +1,5 @@
 export { CreateProjectModal } from "./create-project-modal"
 export { TeamMembers } from "./team-members"
+export { ProjectCard } from "./project-card"
+export { ProjectsGrid } from "./projects-grid"
+export { EmptyProjectsState } from "./empty-projects-state"

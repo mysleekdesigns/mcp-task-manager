@@ -1,30 +1,24 @@
 import { auth } from '@/lib/auth';
+import { WelcomePage } from '@/components/dashboard/welcome-page';
 
 export default async function DashboardPage() {
   const session = await auth();
 
   return (
-    <div className="container mx-auto p-8">
-      <div className="flex flex-col items-center justify-center min-h-[calc(100vh-14rem)] text-center">
-        <div className="space-y-4 max-w-2xl">
+    <div className="p-6">
+      <div className="space-y-8">
+        {/* Welcome header */}
+        <div className="space-y-2">
           <h1 className="text-4xl font-bold tracking-tight text-foreground">
-            Welcome to Claude Tasks
+            Welcome back{session?.user?.name ? `, ${session.user.name}` : ''}
           </h1>
-
-          <p className="text-lg text-muted-foreground">
-            Hello, {session?.user?.name || session?.user?.email}
-          </p>
-
-          <p className="text-base text-muted-foreground/80">
+          <p className="text-lg text-muted-foreground max-w-3xl">
             AI-driven development task management with Claude Code. Manage terminal sessions, track tasks through AI workflows, and maintain project context.
           </p>
-
-          <div className="pt-6 space-y-2">
-            <p className="text-sm text-muted-foreground">
-              Select a page from the sidebar to get started.
-            </p>
-          </div>
         </div>
+
+        {/* Welcome page with project cards */}
+        <WelcomePage currentUserId={session?.user?.id} />
       </div>
     </div>
   );
