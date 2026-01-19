@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { Terminal } from '@xterm/xterm';
 import { FitAddon } from '@xterm/addon-fit';
-import { AttachAddon } from '@xterm/addon-attach';
 import { useTheme } from 'next-themes';
 import '@xterm/xterm/css/xterm.css';
 
@@ -95,7 +94,6 @@ export function XTermWrapper({
   const terminalRef = useRef<HTMLDivElement>(null);
   const xtermRef = useRef<Terminal | null>(null);
   const wsRef = useRef<WebSocket | null>(null);
-  const attachAddonRef = useRef<AttachAddon | null>(null);
   const fitAddonRef = useRef<FitAddon | null>(null);
   const inputQueueRef = useRef<string[]>([]);
   const reconnectTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -175,10 +173,6 @@ export function XTermWrapper({
 
     try {
       // Clean up existing connection
-      if (attachAddonRef.current) {
-        attachAddonRef.current.dispose();
-        attachAddonRef.current = null;
-      }
       if (wsRef.current) {
         // Remove event listeners before closing to prevent reconnection
         wsRef.current.onclose = null;
@@ -239,17 +233,13 @@ export function XTermWrapper({
         try {
           const message = JSON.parse(event.data);
 
+          // Route messages based on type - only write actual terminal output to the display
           switch (message.type) {
             case 'created':
-              console.log('[Terminal] Terminal created, attaching...');
+              console.log('[Terminal] Terminal created successfully');
               clearTimeouts();
               setConnectionState('ready');
               setReconnectAttempts(0); // Reset reconnect counter on success
-
-              // Attach the terminal to WebSocket for bidirectional communication
-              const attachAddon = new AttachAddon(ws, { bidirectional: false });
-              attachAddonRef.current = attachAddon;
-              xtermRef.current?.loadAddon(attachAddon);
 
               // Process any queued input
               processInputQueue();
@@ -259,13 +249,22 @@ export function XTermWrapper({
               break;
 
             case 'output':
-              // Handled by AttachAddon after 'created'
-              if (message.id === terminalId && message.data && connectionState !== 'ready') {
+              // Write actual terminal output to the display
+              // This is the only message type that should appear in the terminal
+              if (message.id === terminalId && message.data) {
                 xtermRef.current?.write(message.data);
               }
               break;
 
+            case 'claude_status':
+              // Claude Code status updates - handle silently
+              // These are informational messages for the UI, not terminal output
+              // The use-claude-integration hook already handles these
+              console.log('[Terminal] Claude status:', message.status);
+              break;
+
             case 'exit':
+              // Terminal process exited
               if (message.id === terminalId) {
                 console.log('[Terminal] Process exited');
                 xtermRef.current?.write('\r\n[Process exited]\r\n');
@@ -275,6 +274,7 @@ export function XTermWrapper({
               break;
 
             case 'error':
+              // Server-side error occurred
               console.error('[Terminal] Server error:', message.message);
               xtermRef.current?.write(`\r\n[Error: ${message.message}]\r\n`);
               setConnectionState('error');
@@ -286,7 +286,8 @@ export function XTermWrapper({
               break;
 
             default:
-              console.warn('[Terminal] Unknown message type:', message.type);
+              // Unknown message type - log but don't write to terminal
+              console.warn('[Terminal] Unknown message type:', message.type, message);
           }
         } catch (err) {
           console.error('[Terminal] Error processing message:', err);
@@ -470,11 +471,6 @@ export function XTermWrapper({
       disposable.dispose();
       resizeObserver.disconnect();
       clearTimeouts();
-
-      if (attachAddonRef.current) {
-        attachAddonRef.current.dispose();
-        attachAddonRef.current = null;
-      }
 
       if (wsRef.current) {
         // Remove event listeners before cleanup to prevent spurious reconnection attempts
