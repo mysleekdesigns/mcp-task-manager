@@ -123,14 +123,14 @@ export function KanbanColumn({
             {/* Empty State */}
             {columnTasks.length === 0 && (
               <div className="flex flex-col items-center justify-center h-[200px] text-center text-muted-foreground">
-                <p className="text-sm">No tasks</p>
+                <p className="text-sm mb-3">No tasks</p>
                 {onAddTask && (
                   <Button
-                    variant="link"
                     size="sm"
                     onClick={() => onAddTask(column.status)}
-                    className="mt-2"
+                    className="gap-2 bg-sidebar-primary hover:bg-sidebar-primary/90 text-slate-900"
                   >
+                    <Plus className="h-4 w-4" />
                     Add a task
                   </Button>
                 )}

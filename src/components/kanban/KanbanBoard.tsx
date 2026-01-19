@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useId } from 'react';
 import {
   DndContext,
   DragOverlay,
@@ -52,6 +52,7 @@ const COLUMNS = [
 ];
 
 export function KanbanBoard({ initialTasks, projectId }: KanbanBoardProps) {
+  const dndContextId = useId();
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [activeTask, setActiveTask] = useState<Task | null>(null);
   const [isCompletedCollapsed, setIsCompletedCollapsed] = useState(true);
@@ -232,6 +233,7 @@ export function KanbanBoard({ initialTasks, projectId }: KanbanBoardProps) {
 
       {/* Board */}
       <DndContext
+        id={dndContextId}
         sensors={sensors}
         collisionDetection={closestCorners}
         onDragStart={handleDragStart}

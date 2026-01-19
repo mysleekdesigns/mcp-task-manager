@@ -3,6 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { signOut } from "next-auth/react";
 import {
   LayoutGrid,
   Terminal,
@@ -16,7 +17,7 @@ import {
   CircleDot,
   GitPullRequest,
   Settings,
-  Plus,
+  LogOut,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -45,11 +46,10 @@ const navItems: NavItem[] = [
 ];
 
 interface SidebarProps {
-  onNewTask?: () => void;
   className?: string;
 }
 
-function Sidebar({ onNewTask, className }: SidebarProps) {
+function Sidebar({ className }: SidebarProps) {
   const pathname = usePathname();
   // TODO: Add mobile collapse functionality with setIsCollapsed
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -194,22 +194,18 @@ function Sidebar({ onNewTask, className }: SidebarProps) {
         </Link>
       </nav>
 
-      {/* New Task Button */}
+      {/* Logout Button */}
       <div className="border-t border-sidebar-border p-4">
         <Button
-          onClick={onNewTask}
+          onClick={() => signOut({ callbackUrl: "/login" })}
           className={cn(
-            "w-full gap-2 shadow-lg transition-all",
-            "bg-sidebar-primary text-sidebar-primary-foreground",
-            "hover:bg-sidebar-primary/90 hover:shadow-xl hover:scale-[1.02]",
-            "focus-visible:ring-sidebar-primary/50",
-            "active:scale-[0.98]",
+            "w-full gap-2 bg-sidebar-primary hover:bg-sidebar-primary/90 text-slate-900",
             isCollapsed && "px-2"
           )}
           size={isCollapsed ? "icon" : "default"}
         >
-          <Plus className="h-4 w-4 shrink-0" />
-          {!isCollapsed && <span className="font-semibold">New Task</span>}
+          <LogOut className="h-4 w-4 shrink-0" />
+          {!isCollapsed && <span className="font-medium">Log Out</span>}
         </Button>
       </div>
     </aside>
