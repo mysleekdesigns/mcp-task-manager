@@ -174,15 +174,19 @@ export function ProjectsSection() {
                                 <AlertTriangle className="h-5 w-5 text-destructive" />
                                 Delete Project
                               </AlertDialogTitle>
-                              <AlertDialogDescription>
-                                Are you sure you want to delete <strong>&quot;{project.name}&quot;</strong>?
-                                This action cannot be undone and will permanently delete:
-                                <ul className="mt-2 ml-4 list-disc space-y-1">
-                                  <li>{project._count.tasks} tasks</li>
-                                  <li>{project._count.terminals} terminal sessions</li>
-                                  <li>{project._count.worktrees} worktrees</li>
-                                  <li>All associated data including memories, features, phases, and MCP configs</li>
-                                </ul>
+                              <AlertDialogDescription asChild>
+                                <div className="text-muted-foreground text-sm">
+                                  <p>
+                                    Are you sure you want to delete <strong>&quot;{project.name}&quot;</strong>?
+                                    This action cannot be undone and will permanently delete:
+                                  </p>
+                                  <ul className="mt-2 ml-4 list-disc space-y-1">
+                                    <li>{project._count.tasks} tasks</li>
+                                    <li>{project._count.terminals} terminal sessions</li>
+                                    <li>{project._count.worktrees} worktrees</li>
+                                    <li>All associated data including memories, features, phases, and MCP configs</li>
+                                  </ul>
+                                </div>
                               </AlertDialogDescription>
                             </AlertDialogHeader>
                             <AlertDialogFooter>
