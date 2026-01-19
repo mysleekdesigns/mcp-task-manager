@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import {
   getWorktrees,
   getBranches,
@@ -8,9 +8,14 @@ import {
   GitError,
 } from '../git';
 import { resolve } from 'path';
+import { mkdtempSync, rmSync } from 'fs';
+import { tmpdir } from 'os';
 
 // Use the current project directory for testing
 const TEST_REPO_PATH = resolve(__dirname, '../../..');
+
+// Create a temporary directory for testing non-git paths
+let TEMP_DIR: string;
 
 describe('Git Operations', () => {
   beforeAll(async () => {
@@ -18,6 +23,16 @@ describe('Git Operations', () => {
     const isRepo = await isGitRepository(TEST_REPO_PATH);
     if (!isRepo) {
       throw new Error('Test must be run in a git repository');
+    }
+
+    // Create a temporary directory that definitely won't be a git repository
+    TEMP_DIR = mkdtempSync(resolve(tmpdir(), 'git-test-'));
+  });
+
+  afterAll(() => {
+    // Clean up temporary directory
+    if (TEMP_DIR) {
+      rmSync(TEMP_DIR, { recursive: true, force: true });
     }
   });
 
@@ -33,7 +48,7 @@ describe('Git Operations', () => {
     });
 
     it('should return false for non-git directory', async () => {
-      const result = await isGitRepository('/tmp');
+      const result = await isGitRepository(TEMP_DIR);
       expect(result).toBe(false);
     });
   });

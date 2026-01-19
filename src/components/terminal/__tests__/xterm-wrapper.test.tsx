@@ -1,29 +1,35 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, act } from '@testing-library/react';
 import { XTermWrapper } from '../xterm-wrapper';
 import { Terminal } from '@xterm/xterm';
 
 // Mock xterm and addons
-vi.mock('@xterm/xterm', () => ({
-  Terminal: vi.fn(() => ({
-    open: vi.fn(),
-    write: vi.fn(),
-    dispose: vi.fn(),
-    focus: vi.fn(),
-    loadAddon: vi.fn(),
-    onData: vi.fn(() => ({ dispose: vi.fn() })),
-    options: {},
-    cols: 80,
-    rows: 24,
-  })),
-}));
+vi.mock('@xterm/xterm', () => {
+  const TerminalMock = vi.fn(function (options?: any) {
+    this.open = vi.fn();
+    this.write = vi.fn();
+    this.dispose = vi.fn();
+    this.focus = vi.fn();
+    this.loadAddon = vi.fn();
+    this.onData = vi.fn(() => ({ dispose: vi.fn() }));
+    this.options = options || {};
+    this.cols = 80;
+    this.rows = 24;
+  });
+  return {
+    Terminal: TerminalMock,
+  };
+});
 
-vi.mock('@xterm/addon-fit', () => ({
-  FitAddon: vi.fn(() => ({
-    fit: vi.fn(),
-    dispose: vi.fn(),
-  })),
-}));
+vi.mock('@xterm/addon-fit', () => {
+  const FitAddonMock = vi.fn(function () {
+    this.fit = vi.fn();
+    this.dispose = vi.fn();
+  });
+  return {
+    FitAddon: FitAddonMock,
+  };
+});
 
 vi.mock('next-themes', () => ({
   useTheme: () => ({
@@ -34,6 +40,8 @@ vi.mock('next-themes', () => ({
 
 describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
   let mockWebSocket: any;
+  let lastWebSocketInstance: any;
+
   const defaultProps = {
     terminalId: 'test-terminal-1',
     name: 'Test Terminal',
@@ -43,22 +51,80 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
   };
 
   beforeEach(() => {
-    // Mock WebSocket
-    mockWebSocket = {
-      send: vi.fn(),
-      close: vi.fn(),
-      readyState: WebSocket.OPEN,
-      onopen: null as any,
-      onmessage: null as any,
-      onerror: null as any,
-      onclose: null as any,
-    };
+    // Mock WebSocket - using a constructor function so `new WebSocket()` works
+    const WebSocketMock = vi.fn(function (this: any) {
+      mockWebSocket = {
+        send: vi.fn(),
+        close: vi.fn(),
+        readyState: (WebSocket as any).OPEN,
+        onopen: null as any,
+        onmessage: null as any,
+        onerror: null as any,
+        onclose: null as any,
+      };
 
-    (global as any).WebSocket = vi.fn(() => mockWebSocket);
-    (global as any).ResizeObserver = vi.fn(() => ({
-      observe: vi.fn(),
-      disconnect: vi.fn(),
-    }));
+      // Add getter/setter for readyState
+      Object.defineProperty(this, 'readyState', {
+        get: () => mockWebSocket.readyState,
+        set: (val: number) => {
+          mockWebSocket.readyState = val;
+        },
+        configurable: true,
+      });
+
+      // Add getter/setter for event handlers
+      Object.defineProperty(this, 'onopen', {
+        get: () => mockWebSocket.onopen,
+        set: (val: any) => {
+          mockWebSocket.onopen = val;
+        },
+        configurable: true,
+      });
+      Object.defineProperty(this, 'onmessage', {
+        get: () => mockWebSocket.onmessage,
+        set: (val: any) => {
+          mockWebSocket.onmessage = val;
+        },
+        configurable: true,
+      });
+      Object.defineProperty(this, 'onerror', {
+        get: () => mockWebSocket.onerror,
+        set: (val: any) => {
+          mockWebSocket.onerror = val;
+        },
+        configurable: true,
+      });
+      Object.defineProperty(this, 'onclose', {
+        get: () => mockWebSocket.onclose,
+        set: (val: any) => {
+          mockWebSocket.onclose = val;
+        },
+        configurable: true,
+      });
+
+      // Assign methods to this instance
+      this.send = mockWebSocket.send;
+      this.close = mockWebSocket.close;
+
+      // Store the instance for test access
+      lastWebSocketInstance = this;
+    });
+
+    (global as any).WebSocket = WebSocketMock;
+
+    // Add WebSocket constants
+    (global as any).WebSocket.CONNECTING = 0;
+    (global as any).WebSocket.OPEN = 1;
+    (global as any).WebSocket.CLOSING = 2;
+    (global as any).WebSocket.CLOSED = 3;
+
+    // Mock ResizeObserver - also needs to be a constructor
+    const ResizeObserverMock = vi.fn(function (this: any) {
+      this.observe = vi.fn();
+      this.disconnect = vi.fn();
+    });
+
+    (global as any).ResizeObserver = ResizeObserverMock;
   });
 
   afterEach(() => {
@@ -75,8 +141,8 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       render(<XTermWrapper {...defaultProps} />);
 
       // Simulate WebSocket connection
-      if (mockWebSocket.onopen) {
-        mockWebSocket.onopen();
+      if (lastWebSocketInstance?.onopen) {
+        lastWebSocketInstance.onopen();
       }
 
       await waitFor(() => {
@@ -89,13 +155,13 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       render(<XTermWrapper {...defaultProps} onReady={onReady} />);
 
       // Simulate WebSocket connection
-      if (mockWebSocket.onopen) {
-        mockWebSocket.onopen();
+      if (lastWebSocketInstance?.onopen) {
+        lastWebSocketInstance.onopen();
       }
 
       // Simulate terminal creation response
-      if (mockWebSocket.onmessage) {
-        mockWebSocket.onmessage({
+      if (lastWebSocketInstance?.onmessage) {
+        lastWebSocketInstance.onmessage({
           data: JSON.stringify({ type: 'created', id: defaultProps.terminalId }),
         });
       }
@@ -109,13 +175,20 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       render(<XTermWrapper {...defaultProps} />);
 
       // Simulate WebSocket error
-      if (mockWebSocket.onerror) {
-        mockWebSocket.onerror(new Event('error'));
-      }
-
-      await waitFor(() => {
-        expect(screen.getByText(/Connection Error/i)).toBeInTheDocument();
+      act(() => {
+        if (lastWebSocketInstance?.onerror) {
+          lastWebSocketInstance.onerror(new Event('error'));
+        }
       });
+
+      await waitFor(
+        () => {
+          // Check for error heading and retry button
+          expect(screen.getByText('Connection Error')).toBeInTheDocument();
+          expect(screen.getByText('Retry Connection')).toBeInTheDocument();
+        },
+        { timeout: 3000 }
+      );
     });
   });
 
@@ -128,7 +201,7 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       const onDataCallback = terminalInstance?.onData.mock.calls[0]?.[0];
 
       // Before connection is ready, WebSocket.OPEN should not be set
-      mockWebSocket.readyState = WebSocket.CONNECTING;
+      lastWebSocketInstance.readyState = (WebSocket as any).CONNECTING;
 
       // Simulate user typing
       if (onDataCallback) {
@@ -136,7 +209,7 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       }
 
       // Should NOT send immediately when not connected
-      expect(mockWebSocket.send).not.toHaveBeenCalled();
+      expect(lastWebSocketInstance.send).not.toHaveBeenCalled();
     });
 
     it('should process queued input after connection is ready', async () => {
@@ -145,28 +218,28 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       const onDataCallback = terminalInstance?.onData.mock.calls[0]?.[0];
 
       // Queue input while connecting
-      mockWebSocket.readyState = WebSocket.CONNECTING;
+      lastWebSocketInstance.readyState = (WebSocket as any).CONNECTING;
       if (onDataCallback) {
         onDataCallback('queued input 1');
         onDataCallback('queued input 2');
       }
 
       // Now connect
-      mockWebSocket.readyState = WebSocket.OPEN;
-      if (mockWebSocket.onopen) {
-        mockWebSocket.onopen();
+      lastWebSocketInstance.readyState = (WebSocket as any).OPEN;
+      if (lastWebSocketInstance?.onopen) {
+        lastWebSocketInstance.onopen();
       }
 
       // Simulate terminal creation
-      if (mockWebSocket.onmessage) {
-        mockWebSocket.onmessage({
+      if (lastWebSocketInstance?.onmessage) {
+        lastWebSocketInstance.onmessage({
           data: JSON.stringify({ type: 'created', id: defaultProps.terminalId }),
         });
       }
 
       await waitFor(() => {
         // Should have sent create message + queued inputs
-        expect(mockWebSocket.send).toHaveBeenCalled();
+        expect(lastWebSocketInstance.send).toHaveBeenCalled();
       });
     });
   });
@@ -176,26 +249,34 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       render(<XTermWrapper {...defaultProps} />);
 
       // Simulate WebSocket error
-      if (mockWebSocket.onerror) {
-        mockWebSocket.onerror(new Event('error'));
+      if (lastWebSocketInstance?.onerror) {
+        lastWebSocketInstance.onerror(new Event('error'));
       }
 
-      await waitFor(() => {
-        expect(screen.getByText(/Retry Connection/i)).toBeInTheDocument();
-      });
+      await waitFor(
+        () => {
+          expect(screen.getByText(/Retry Connection/i)).toBeInTheDocument();
+        },
+        { timeout: 3000 }
+      );
     });
 
     it('should attempt reconnection on unexpected close', async () => {
       render(<XTermWrapper {...defaultProps} />);
 
-      // Simulate WebSocket close with non-normal code
-      if (mockWebSocket.onclose) {
-        mockWebSocket.onclose({ code: 1006, reason: 'Abnormal closure' });
-      }
-
-      await waitFor(() => {
-        expect(screen.getByText(/Reconnecting/i)).toBeInTheDocument();
+      // Simulate WebSocket close with non-normal code (use 1011 which is not an auth error)
+      act(() => {
+        if (lastWebSocketInstance?.onclose) {
+          lastWebSocketInstance.onclose({ code: 1011, reason: 'Server error' });
+        }
       });
+
+      await waitFor(
+        () => {
+          expect(screen.getByText(/Reconnecting/i)).toBeInTheDocument();
+        },
+        { timeout: 3000 }
+      );
     });
 
     it('should show max reconnect message after max attempts', async () => {
@@ -203,8 +284,8 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
 
       // Simulate multiple connection failures
       for (let i = 0; i < 4; i++) {
-        if (mockWebSocket.onclose) {
-          mockWebSocket.onclose({ code: 1006, reason: 'Connection failed' });
+        if (lastWebSocketInstance?.onclose) {
+          lastWebSocketInstance.onclose({ code: 1006, reason: 'Connection failed' });
         }
         await new Promise((resolve) => setTimeout(resolve, 100));
       }
@@ -221,8 +302,8 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       render(<XTermWrapper {...defaultProps} />);
 
       // Simulate server error message
-      if (mockWebSocket.onmessage) {
-        mockWebSocket.onmessage({
+      if (lastWebSocketInstance?.onmessage) {
+        lastWebSocketInstance.onmessage({
           data: JSON.stringify({
             type: 'error',
             message: 'Failed to spawn terminal',
@@ -242,19 +323,19 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       const terminalInstance = (Terminal as any).mock.results[0]?.value;
 
       // Connect and create terminal
-      if (mockWebSocket.onopen) {
-        mockWebSocket.onopen();
+      if (lastWebSocketInstance?.onopen) {
+        lastWebSocketInstance.onopen();
       }
 
-      if (mockWebSocket.onmessage) {
-        mockWebSocket.onmessage({
+      if (lastWebSocketInstance?.onmessage) {
+        lastWebSocketInstance.onmessage({
           data: JSON.stringify({ type: 'created', id: defaultProps.terminalId }),
         });
       }
 
       // Simulate output message
-      if (mockWebSocket.onmessage) {
-        mockWebSocket.onmessage({
+      if (lastWebSocketInstance?.onmessage) {
+        lastWebSocketInstance.onmessage({
           data: JSON.stringify({
             type: 'output',
             id: defaultProps.terminalId,
@@ -274,8 +355,8 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       const writeCallCount = terminalInstance.write.mock.calls.length;
 
       // Simulate claude_status message
-      if (mockWebSocket.onmessage) {
-        mockWebSocket.onmessage({
+      if (lastWebSocketInstance?.onmessage) {
+        lastWebSocketInstance.onmessage({
           data: JSON.stringify({
             type: 'claude_status',
             status: 'working',
@@ -293,8 +374,8 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       render(<XTermWrapper {...defaultProps} />);
 
       // Simulate unknown message type
-      if (mockWebSocket.onmessage) {
-        mockWebSocket.onmessage({
+      if (lastWebSocketInstance?.onmessage) {
+        lastWebSocketInstance.onmessage({
           data: JSON.stringify({
             type: 'unknown_type',
             data: 'some data',
@@ -322,7 +403,7 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       unmount();
 
       expect(terminalInstance.dispose).toHaveBeenCalled();
-      expect(mockWebSocket.close).toHaveBeenCalled();
+      expect(lastWebSocketInstance.close).toHaveBeenCalled();
     });
 
     it('should clear all timeouts on cleanup', async () => {
@@ -330,8 +411,8 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       const { unmount } = render(<XTermWrapper {...defaultProps} />);
 
       // Trigger a reconnect timeout
-      if (mockWebSocket.onclose) {
-        mockWebSocket.onclose({ code: 1006, reason: 'Test' });
+      if (lastWebSocketInstance?.onclose) {
+        lastWebSocketInstance.onclose({ code: 1006, reason: 'Test' });
       }
 
       await new Promise((resolve) => setTimeout(resolve, 100));
@@ -355,8 +436,8 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       render(<XTermWrapper {...defaultProps} onExit={onExit} />);
 
       // Simulate terminal exit
-      if (mockWebSocket.onmessage) {
-        mockWebSocket.onmessage({
+      if (lastWebSocketInstance?.onmessage) {
+        lastWebSocketInstance.onmessage({
           data: JSON.stringify({
             type: 'exit',
             id: defaultProps.terminalId,
@@ -374,8 +455,8 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       render(<XTermWrapper {...defaultProps} />);
 
       // Simulate connection timeout
-      if (mockWebSocket.onmessage) {
-        mockWebSocket.onmessage({
+      if (lastWebSocketInstance?.onmessage) {
+        lastWebSocketInstance.onmessage({
           data: JSON.stringify({
             type: 'error',
             message: 'Connection timeout - server not responding',

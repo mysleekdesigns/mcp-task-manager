@@ -25,19 +25,29 @@ vi.mock('@/lib/auth', () => ({
   auth: vi.fn(),
 }));
 
+// Helper function to generate a valid CUID
+function generateCUID(): string {
+  return 'c' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+}
+
 describe('Changelog API Routes', () => {
+  const userId = generateCUID();
+  const projectId = generateCUID();
+  const memberId = generateCUID();
+  const taskId = generateCUID();
+
   const mockSession = {
     user: {
-      id: 'user1',
+      id: userId,
       email: 'test@example.com',
     },
     expires: new Date(Date.now() + 86400000).toISOString(),
   };
 
   const mockMembership = {
-    id: 'member1',
-    userId: 'user1',
-    projectId: 'project1',
+    id: memberId,
+    userId,
+    projectId,
     role: 'OWNER',
     createdAt: new Date(),
   };
@@ -61,24 +71,26 @@ describe('Changelog API Routes', () => {
     it('fetches changelog entries for a project', async () => {
       vi.spyOn(authModule, 'auth').mockResolvedValueOnce(mockSession as any);
 
+      const entryId = generateCUID();
+
       const mockEntries = [
         {
-          id: '1',
+          id: entryId,
           title: 'Add feature',
           description: 'Feature description',
           version: '1.0.0',
           type: 'FEATURE',
-          taskId: 'task1',
-          projectId: 'project1',
+          taskId,
+          projectId,
           createdAt: new Date('2024-01-01'),
           updatedAt: new Date('2024-01-01'),
           task: {
-            id: 'task1',
+            id: taskId,
             title: 'Task 1',
             status: 'COMPLETED',
           },
           project: {
-            id: 'project1',
+            id: projectId,
             name: 'Project 1',
           },
         },
@@ -86,7 +98,7 @@ describe('Changelog API Routes', () => {
 
       vi.mocked(prisma.changelogEntry.findMany).mockResolvedValueOnce(mockEntries as any);
 
-      const request = new NextRequest('http://localhost/api/changelog?projectId=project1');
+      const request = new NextRequest(`http://localhost/api/changelog?projectId=${projectId}`);
       const response = await GET(request);
 
       expect(response.status).toBe(200);
@@ -101,22 +113,22 @@ describe('Changelog API Routes', () => {
 
       const mockEntries = [
         {
-          id: '1',
+          id: generateCUID(),
           title: 'Entry 1',
           createdAt: new Date('2024-01-01'),
-          project: { id: 'project1', name: 'Project 1' },
+          project: { id: projectId, name: 'Project 1' },
         },
         {
-          id: '2',
+          id: generateCUID(),
           title: 'Entry 2',
           createdAt: new Date('2024-01-01'),
-          project: { id: 'project1', name: 'Project 1' },
+          project: { id: projectId, name: 'Project 1' },
         },
       ];
 
       vi.mocked(prisma.changelogEntry.findMany).mockResolvedValueOnce(mockEntries as any);
 
-      const request = new NextRequest('http://localhost/api/changelog?projectId=project1&groupBy=date');
+      const request = new NextRequest(`http://localhost/api/changelog?projectId=${projectId}&groupBy=date`);
       const response = await GET(request);
 
       expect(response.status).toBe(200);
@@ -152,7 +164,7 @@ describe('Changelog API Routes', () => {
         },
         body: JSON.stringify({
           title: 'New Entry',
-          projectId: 'project1',
+          projectId,
           type: 'FEATURE',
         }),
       });
@@ -166,18 +178,18 @@ describe('Changelog API Routes', () => {
       vi.mocked(prisma.projectMember.findUnique).mockResolvedValueOnce(mockMembership as any);
 
       const newEntry = {
-        id: '1',
+        id: generateCUID(),
         title: 'New Feature',
         description: 'Feature description',
         version: '1.0.0',
         type: 'FEATURE',
         taskId: null,
-        projectId: 'project1',
+        projectId,
         createdAt: new Date(),
         updatedAt: new Date(),
         task: null,
         project: {
-          id: 'project1',
+          id: projectId,
           name: 'Project 1',
         },
       };
@@ -194,7 +206,7 @@ describe('Changelog API Routes', () => {
           description: 'Feature description',
           version: '1.0.0',
           type: 'FEATURE',
-          projectId: 'project1',
+          projectId,
         }),
       });
       const response = await POST(request);

@@ -1,5 +1,6 @@
 import simpleGit, { SimpleGit, SimpleGitOptions } from 'simple-git';
 import { existsSync } from 'fs';
+import { join } from 'path';
 
 /**
  * Git utility functions for managing worktrees and branches
@@ -482,10 +483,21 @@ export async function isGitRepository(repoPath: string): Promise<boolean> {
     return false;
   }
 
-  try {
-    const git = simpleGit(repoPath);
-    await git.checkIsRepo();
+  // Check if .git exists in this specific directory
+  const gitDir = join(repoPath, '.git');
+  if (existsSync(gitDir)) {
     return true;
+  }
+
+  try {
+    const git = simpleGit({
+      baseDir: repoPath,
+      binary: 'git',
+    });
+    // Check if git thinks this is a repository (searches parent directories)
+    const result = await git.rev(['parse', '--git-dir']);
+    // If the git-dir is .git (relative) or points to this directory, it's a direct repo
+    return result.trim() === '.git' || result.trim() === gitDir;
   } catch {
     return false;
   }

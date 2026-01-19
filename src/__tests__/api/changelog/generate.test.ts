@@ -24,19 +24,28 @@ vi.mock('@/lib/auth', () => ({
   auth: vi.fn(),
 }));
 
+// Helper function to generate a valid CUID
+function generateCUID(): string {
+  return 'c' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+}
+
 describe('Generate Changelog API Route', () => {
+  const userId = generateCUID();
+  const projectId = generateCUID();
+  const memberId = generateCUID();
+
   const mockSession = {
     user: {
-      id: 'user1',
+      id: userId,
       email: 'test@example.com',
     },
     expires: new Date(Date.now() + 86400000).toISOString(),
   };
 
   const mockMembership = {
-    id: 'member1',
-    userId: 'user1',
-    projectId: 'project1',
+    id: memberId,
+    userId,
+    projectId,
     role: 'OWNER',
     createdAt: new Date(),
   };
@@ -62,16 +71,19 @@ describe('Generate Changelog API Route', () => {
       vi.spyOn(authModule, 'auth').mockResolvedValueOnce(mockSession as any);
       vi.mocked(prisma.projectMember.findUnique).mockResolvedValueOnce(mockMembership as any);
 
+      const task1Id = generateCUID();
+      const task2Id = generateCUID();
+
       const completedTasks = [
         {
-          id: 'task1',
+          id: task1Id,
           title: 'Add new feature',
           description: 'Feature description',
           tags: ['feature'],
           updatedAt: new Date(),
         },
         {
-          id: 'task2',
+          id: task2Id,
           title: 'Fix critical bug',
           description: 'Bug fix description',
           tags: ['bug'],
@@ -82,22 +94,22 @@ describe('Generate Changelog API Route', () => {
       vi.mocked(prisma.task.findMany).mockResolvedValueOnce(completedTasks as any);
 
       const mockCreatedEntry = {
-        id: '1',
+        id: generateCUID(),
         title: 'Add new feature',
         description: 'Feature description',
         version: '1.0.0',
         type: 'FEATURE',
-        taskId: 'task1',
-        projectId: 'project1',
+        taskId: task1Id,
+        projectId,
         createdAt: new Date(),
         updatedAt: new Date(),
         task: {
-          id: 'task1',
+          id: task1Id,
           title: 'Add new feature',
           status: 'COMPLETED',
         },
         project: {
-          id: 'project1',
+          id: projectId,
           name: 'Project 1',
         },
       };
@@ -110,7 +122,7 @@ describe('Generate Changelog API Route', () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          projectId: 'project1',
+          projectId,
           version: '1.0.0',
         }),
       });
@@ -133,7 +145,7 @@ describe('Generate Changelog API Route', () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ projectId: 'project1' }),
+        body: JSON.stringify({ projectId }),
       });
       const response = await POST(request);
 

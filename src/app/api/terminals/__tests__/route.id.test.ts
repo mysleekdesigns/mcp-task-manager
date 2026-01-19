@@ -1,12 +1,27 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { NextRequest } from 'next/server';
 import { GET, DELETE } from '../[id]/route';
-import { auth } from '@/lib/auth';
+import * as authModule from '@/lib/auth';
 import { prisma } from '@/lib/db';
 
 // Mock dependencies
-vi.mock('@/lib/auth');
-vi.mock('@/lib/db');
+vi.mock('@/lib/auth', () => ({
+  auth: vi.fn(),
+}));
+vi.mock('@/lib/db', () => ({
+  prisma: {
+    projectMember: {
+      findUnique: vi.fn(),
+    },
+    terminal: {
+      findUnique: vi.fn(),
+      delete: vi.fn(),
+    },
+    worktree: {
+      findUnique: vi.fn(),
+    },
+  },
+}));
 
 const mockSession = {
   user: {
@@ -57,7 +72,7 @@ describe('GET /api/terminals/[id]', () => {
   });
 
   it('returns 401 when user is not authenticated', async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(null);
 
     const request = new NextRequest('http://localhost/api/terminals/terminal-1');
     const response = await GET(request, {
@@ -70,7 +85,7 @@ describe('GET /api/terminals/[id]', () => {
   });
 
   it('returns 404 when terminal does not exist', async () => {
-    vi.mocked(auth).mockResolvedValue(mockSession);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
     vi.mocked(prisma.terminal.findUnique).mockResolvedValue(null);
 
     const request = new NextRequest('http://localhost/api/terminals/nonexistent-1');
@@ -84,7 +99,7 @@ describe('GET /api/terminals/[id]', () => {
   });
 
   it('returns 403 when user is not a project member', async () => {
-    vi.mocked(auth).mockResolvedValue(mockSession);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
     vi.mocked(prisma.terminal.findUnique).mockResolvedValue(mockTerminal);
     vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(null);
 
@@ -99,7 +114,7 @@ describe('GET /api/terminals/[id]', () => {
   });
 
   it('returns terminal with project details', async () => {
-    vi.mocked(auth).mockResolvedValue(mockSession);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
     vi.mocked(prisma.terminal.findUnique).mockResolvedValue(mockTerminal);
     vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMembership);
 
@@ -117,7 +132,7 @@ describe('GET /api/terminals/[id]', () => {
   });
 
   it('returns terminal with worktree details when available', async () => {
-    vi.mocked(auth).mockResolvedValue(mockSession);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
     vi.mocked(prisma.terminal.findUnique).mockResolvedValue(mockTerminalWithWorktree);
     vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMembership);
 
@@ -134,7 +149,7 @@ describe('GET /api/terminals/[id]', () => {
   });
 
   it('includes all required project fields in response', async () => {
-    vi.mocked(auth).mockResolvedValue(mockSession);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
     vi.mocked(prisma.terminal.findUnique).mockResolvedValue(mockTerminal);
     vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMembership);
 
@@ -155,7 +170,7 @@ describe('GET /api/terminals/[id]', () => {
   });
 
   it('includes all required worktree fields when present', async () => {
-    vi.mocked(auth).mockResolvedValue(mockSession);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
     vi.mocked(prisma.terminal.findUnique).mockResolvedValue(mockTerminalWithWorktree);
     vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMembership);
 
@@ -176,7 +191,7 @@ describe('GET /api/terminals/[id]', () => {
   });
 
   it('returns 500 on database error', async () => {
-    vi.mocked(auth).mockResolvedValue(mockSession);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
     vi.mocked(prisma.terminal.findUnique).mockRejectedValue(new Error('DB Error'));
 
     const request = new NextRequest('http://localhost/api/terminals/terminal-1');
@@ -196,7 +211,7 @@ describe('DELETE /api/terminals/[id]', () => {
   });
 
   it('returns 401 when user is not authenticated', async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(null);
 
     const request = new NextRequest('http://localhost/api/terminals/terminal-1', {
       method: 'DELETE',
@@ -211,7 +226,7 @@ describe('DELETE /api/terminals/[id]', () => {
   });
 
   it('returns 404 when terminal does not exist', async () => {
-    vi.mocked(auth).mockResolvedValue(mockSession);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
     vi.mocked(prisma.terminal.findUnique).mockResolvedValue(null);
 
     const request = new NextRequest('http://localhost/api/terminals/nonexistent-1', {
@@ -227,7 +242,7 @@ describe('DELETE /api/terminals/[id]', () => {
   });
 
   it('returns 403 when user is not a project member', async () => {
-    vi.mocked(auth).mockResolvedValue(mockSession);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
     vi.mocked(prisma.terminal.findUnique).mockResolvedValue({
       id: 'terminal-1',
       projectId: 'project-1',
@@ -248,7 +263,7 @@ describe('DELETE /api/terminals/[id]', () => {
 
   it('returns 403 when user has VIEWER role', async () => {
     const viewerMembership = { ...mockProjectMembership, role: 'VIEWER' };
-    vi.mocked(auth).mockResolvedValue(mockSession);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
     vi.mocked(prisma.terminal.findUnique).mockResolvedValue({
       id: 'terminal-1',
       projectId: 'project-1',
@@ -269,7 +284,7 @@ describe('DELETE /api/terminals/[id]', () => {
 
   it('allows ADMIN role to delete terminal', async () => {
     const adminMembership = { ...mockProjectMembership, role: 'ADMIN' };
-    vi.mocked(auth).mockResolvedValue(mockSession);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
     vi.mocked(prisma.terminal.findUnique).mockResolvedValue({
       id: 'terminal-1',
       projectId: 'project-1',
@@ -291,7 +306,7 @@ describe('DELETE /api/terminals/[id]', () => {
   });
 
   it('allows MEMBER role to delete terminal', async () => {
-    vi.mocked(auth).mockResolvedValue(mockSession);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
     vi.mocked(prisma.terminal.findUnique).mockResolvedValue({
       id: 'terminal-1',
       projectId: 'project-1',
@@ -314,7 +329,7 @@ describe('DELETE /api/terminals/[id]', () => {
 
   it('allows OWNER role to delete terminal', async () => {
     const ownerMembership = { ...mockProjectMembership, role: 'OWNER' };
-    vi.mocked(auth).mockResolvedValue(mockSession);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
     vi.mocked(prisma.terminal.findUnique).mockResolvedValue({
       id: 'terminal-1',
       projectId: 'project-1',
@@ -336,7 +351,7 @@ describe('DELETE /api/terminals/[id]', () => {
   });
 
   it('deletes terminal successfully', async () => {
-    vi.mocked(auth).mockResolvedValue(mockSession);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
     vi.mocked(prisma.terminal.findUnique).mockResolvedValue({
       id: 'terminal-1',
       projectId: 'project-1',
@@ -360,7 +375,7 @@ describe('DELETE /api/terminals/[id]', () => {
   });
 
   it('calls prisma.terminal.delete with correct ID', async () => {
-    vi.mocked(auth).mockResolvedValue(mockSession);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
     vi.mocked(prisma.terminal.findUnique).mockResolvedValue({
       id: 'terminal-1',
       projectId: 'project-1',
@@ -378,13 +393,13 @@ describe('DELETE /api/terminals/[id]', () => {
       params: Promise.resolve({ id: 'terminal-1' }),
     });
 
-    expect(prisma.terminal.delete).toHaveBeenCalledWith({
+    expect(vi.mocked(prisma.terminal.delete)).toHaveBeenCalledWith({
       where: { id: 'terminal-1' },
     });
   });
 
   it('returns 500 on database error', async () => {
-    vi.mocked(auth).mockResolvedValue(mockSession);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
     vi.mocked(prisma.terminal.findUnique).mockRejectedValue(new Error('DB Error'));
 
     const request = new NextRequest('http://localhost/api/terminals/terminal-1', {
