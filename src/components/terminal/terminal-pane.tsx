@@ -48,7 +48,7 @@ export function TerminalPane({
   onCollapse,
   onWorktreeChange,
 }: TerminalPaneProps) {
-  const [status, setStatus] = useState<'idle' | 'running' | 'exited'>('idle');
+  const [status, setStatus] = useState<'connecting' | 'launching' | 'running' | 'exited' | 'error'>('connecting');
   const [selectedWorktree, setSelectedWorktree] = useState<string | undefined>(
     worktreeId
   );
@@ -62,6 +62,39 @@ export function TerminalPane({
     ? worktrees.find((w) => w.id === selectedWorktree)?.path || cwd
     : cwd;
 
+  const getStatusColor = () => {
+    switch (status) {
+      case 'connecting':
+      case 'launching':
+        return 'bg-yellow-500 animate-pulse';
+      case 'running':
+        return 'bg-green-500';
+      case 'exited':
+        return 'bg-gray-500';
+      case 'error':
+        return 'bg-red-500';
+      default:
+        return 'bg-yellow-500';
+    }
+  };
+
+  const getStatusTitle = () => {
+    switch (status) {
+      case 'connecting':
+        return 'Connecting to server...';
+      case 'launching':
+        return 'Launching terminal...';
+      case 'running':
+        return 'Running';
+      case 'exited':
+        return 'Process exited';
+      case 'error':
+        return 'Connection error';
+      default:
+        return status;
+    }
+  };
+
   return (
     <div className="flex h-full flex-col rounded-lg border bg-card">
       {/* Header */}
@@ -69,14 +102,8 @@ export function TerminalPane({
         <div className="flex items-center gap-2">
           {/* Status indicator */}
           <div
-            className={`h-2 w-2 rounded-full ${
-              status === 'running'
-                ? 'bg-green-500'
-                : status === 'exited'
-                  ? 'bg-red-500'
-                  : 'bg-yellow-500'
-            }`}
-            title={status}
+            className={`h-2 w-2 rounded-full ${getStatusColor()}`}
+            title={getStatusTitle()}
           />
           <span className="text-sm font-medium">{name}</span>
         </div>
@@ -138,6 +165,7 @@ export function TerminalPane({
           sessionToken={sessionToken}
           onReady={() => setStatus('running')}
           onExit={() => setStatus('exited')}
+          autoFocus={isExpanded}
         />
       </div>
     </div>

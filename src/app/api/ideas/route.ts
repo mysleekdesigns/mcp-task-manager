@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Build orderBy clause
-    let orderBy: any = {};
+    const orderBy: any = {};
     if (sortBy === 'votes') {
       orderBy.votes = sortDirection;
     } else if (sortBy === 'date') {

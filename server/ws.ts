@@ -1,11 +1,12 @@
 import { WebSocketServer, WebSocket } from 'ws';
 import { Server as HTTPServer } from 'http';
 import { TerminalManager } from './terminal-manager';
+import { validateSessionToken } from './auth-validator';
 import { parse } from 'url';
 import fetch from 'node-fetch';
 
 interface TerminalMessage {
-  type: 'create' | 'input' | 'resize' | 'close' | 'broadcast';
+  type: 'create' | 'input' | 'resize' | 'close' | 'broadcast' | 'launch_claude' | 'get_claude_status';
   id?: string;
   cwd?: string;
   projectId?: string;
@@ -15,6 +16,7 @@ interface TerminalMessage {
   rows?: number;
   sessionToken?: string;
   name?: string;
+  autoLaunchClaude?: boolean;
 }
 
 /**
@@ -88,7 +90,7 @@ export function setupWebSocket(server: HTTPServer) {
   });
 
   // Handle HTTP upgrade events manually
-  server.on('upgrade', (request, socket, head) => {
+  server.on('upgrade', async (request, socket, head) => {
     const { pathname } = parse(request.url || '');
 
     // Only handle our terminal WebSocket path
@@ -97,15 +99,27 @@ export function setupWebSocket(server: HTTPServer) {
       const params = new URLSearchParams(parse(request.url || '').query || '');
       const sessionToken = params.get('token');
 
-      // In production, verify the session token against your auth system
-      // For now, we require a token to be present
       if (!sessionToken) {
+        console.log('WebSocket upgrade rejected: No token provided');
         socket.write('HTTP/1.1 401 Unauthorized\r\n\r\n');
         socket.destroy();
         return;
       }
 
+      // Validate the session token
+      const validation = await validateSessionToken(sessionToken);
+      if (!validation.valid) {
+        console.log('WebSocket upgrade rejected:', validation.error);
+        socket.write(`HTTP/1.1 401 Unauthorized\r\nX-Auth-Error: ${validation.error}\r\n\r\n`);
+        socket.destroy();
+        return;
+      }
+
+      console.log(`WebSocket upgrade authorized for user ${validation.userId}`);
       wss.handleUpgrade(request, socket, head, (ws) => {
+        // Pass the validated userId to the connection handler
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (ws as any).userId = validation.userId;
         wss.emit('connection', ws, request);
       });
     }
@@ -114,23 +128,39 @@ export function setupWebSocket(server: HTTPServer) {
 
   const terminalManager = new TerminalManager();
 
-  // Track session tokens and terminal names per WebSocket connection
+  // Track session tokens, user IDs, terminal names, and auto-launch timeouts per WebSocket connection
   const connectionData = new WeakMap<WebSocket, {
     sessionToken: string;
+    userId: string;
     terminals: Map<string, string>; // terminalId -> terminalName
+    autoLaunchTimeouts: Map<string, NodeJS.Timeout>; // terminalId -> timeout
+    keepaliveInterval?: NodeJS.Timeout;
   }>();
 
   wss.on('connection', (ws: WebSocket, req) => {
-    console.log('WebSocket client connected');
+    // Get the authenticated userId that was attached during upgrade
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const userId = (ws as any).userId as string;
+    console.log('[WebSocket] Client connected:', userId);
 
     // Extract session token from query params
     const params = new URLSearchParams(parse(req.url || '').query || '');
     const sessionToken = params.get('token') || '';
 
+    // Set up WebSocket keepalive to prevent premature disconnection
+    const keepaliveInterval = setInterval(() => {
+      if (ws.readyState === WebSocket.OPEN) {
+        ws.ping();
+      }
+    }, 30000); // Ping every 30 seconds
+
     // Initialize connection data
     connectionData.set(ws, {
       sessionToken,
+      userId,
       terminals: new Map(),
+      autoLaunchTimeouts: new Map(),
+      keepaliveInterval,
     });
 
     ws.on('message', (data: Buffer) => {
@@ -168,24 +198,55 @@ export function setupWebSocket(server: HTTPServer) {
                 worktreeId
               );
 
+              // Track previous Claude status to detect changes
+              let previousClaudeStatus = terminalManager.getClaudeStatus(terminalId);
+
               pty.onData((data) => {
-                ws.send(JSON.stringify({
-                  type: 'output',
-                  id: terminalId,
-                  data
-                }));
+                // Only send if WebSocket is still open
+                if (ws.readyState === WebSocket.OPEN) {
+                  ws.send(JSON.stringify({
+                    type: 'output',
+                    id: terminalId,
+                    data
+                  }));
+
+                  // Check if Claude status changed
+                  const currentStatus = terminalManager.getClaudeStatus(terminalId);
+                  if (currentStatus !== previousClaudeStatus) {
+                    previousClaudeStatus = currentStatus;
+                    ws.send(JSON.stringify({
+                      type: 'claude_status',
+                      id: terminalId,
+                      status: currentStatus,
+                      success: true
+                    }));
+                  }
+                }
               });
 
               pty.onExit(({ exitCode, signal }) => {
-                ws.send(JSON.stringify({
-                  type: 'exit',
-                  id: terminalId,
-                  exitCode,
-                  signal
-                }));
+                // Clear any pending auto-launch timeout
+                const connData = connectionData.get(ws);
+                if (connData) {
+                  const timeout = connData.autoLaunchTimeouts.get(terminalId);
+                  if (timeout) {
+                    clearTimeout(timeout);
+                    connData.autoLaunchTimeouts.delete(terminalId);
+                    console.log(`[WebSocket] Cleared auto-launch timeout for terminal ${terminalId}`);
+                  }
+                }
+
+                // Notify client of exit
+                if (ws.readyState === WebSocket.OPEN) {
+                  ws.send(JSON.stringify({
+                    type: 'exit',
+                    id: terminalId,
+                    exitCode,
+                    signal
+                  }));
+                }
 
                 // Capture session insights before killing the terminal
-                const connData = connectionData.get(ws);
                 if (connData) {
                   const name = connData.terminals.get(terminalId) || 'Terminal';
                   captureSessionInsights(
@@ -193,16 +254,56 @@ export function setupWebSocket(server: HTTPServer) {
                     terminalId,
                     name,
                     connData.sessionToken
-                  ).catch(err => console.error('Failed to capture insights on exit:', err));
+                  ).catch(err => console.error('[WebSocket] Failed to capture insights on exit:', err));
                 }
 
                 terminalManager.kill(terminalId);
               });
 
-              ws.send(JSON.stringify({
-                type: 'created',
-                id: terminalId
-              }));
+              // Give the PTY a moment to stabilize before notifying client
+              // This prevents race conditions where the client might disconnect before the shell is ready
+              setTimeout(() => {
+                if (ws.readyState === WebSocket.OPEN && terminalManager.get(terminalId)) {
+                  ws.send(JSON.stringify({
+                    type: 'created',
+                    id: terminalId
+                  }));
+                  console.log(`[WebSocket] Terminal ${terminalId} ready and client notified`);
+                } else {
+                  console.log(`[WebSocket] Terminal ${terminalId} created but WebSocket no longer open`);
+                }
+              }, 100); // 100ms delay to ensure PTY is stable
+
+              // Auto-launch Claude after terminal is created (with delay for shell prompt)
+              if (message.autoLaunchClaude !== false) {
+                const connData = connectionData.get(ws);
+                const timeout = setTimeout(() => {
+                  // Remove timeout from tracking once it fires
+                  if (connData) {
+                    connData.autoLaunchTimeouts.delete(terminalId);
+                  }
+
+                  // Check if terminal session still exists before launching
+                  if (!terminalManager.get(terminalId)) {
+                    console.log(`[WebSocket] Skipping Claude auto-launch: terminal ${terminalId} no longer exists`);
+                    return;
+                  }
+
+                  const success = terminalManager.launchClaude(terminalId);
+                  const status = terminalManager.getClaudeStatus(terminalId);
+                  ws.send(JSON.stringify({
+                    type: 'claude_status',
+                    id: terminalId,
+                    status,
+                    success
+                  }));
+                }, 500); // Wait 500ms for shell prompt
+
+                // Track timeout so it can be cancelled if terminal exits early
+                if (connData) {
+                  connData.autoLaunchTimeouts.set(terminalId, timeout);
+                }
+              }
             } catch (error) {
               ws.send(JSON.stringify({
                 type: 'error',
@@ -251,9 +352,17 @@ export function setupWebSocket(server: HTTPServer) {
             // Store value to narrow TypeScript type
             const closeTerminalId = message.id;
 
-            // Capture session insights before killing the terminal
+            // Clear any pending auto-launch timeout
             const closeConnData = connectionData.get(ws);
             if (closeConnData) {
+              const timeout = closeConnData.autoLaunchTimeouts.get(closeTerminalId);
+              if (timeout) {
+                clearTimeout(timeout);
+                closeConnData.autoLaunchTimeouts.delete(closeTerminalId);
+                console.log(`[WebSocket] Cleared auto-launch timeout for closing terminal ${closeTerminalId}`);
+              }
+
+              // Capture session insights before killing the terminal
               const terminalName = closeConnData.terminals.get(closeTerminalId) || 'Terminal';
               captureSessionInsights(
                 terminalManager,
@@ -292,6 +401,45 @@ export function setupWebSocket(server: HTTPServer) {
             }));
             break;
 
+          case 'launch_claude':
+            if (!message.id) {
+              ws.send(JSON.stringify({
+                type: 'error',
+                message: 'Missing id for launch_claude'
+              }));
+              return;
+            }
+            // Store value to narrow TypeScript type
+            const launchTerminalId = message.id;
+            const success = terminalManager.launchClaude(launchTerminalId);
+            const status = terminalManager.getClaudeStatus(launchTerminalId);
+            ws.send(JSON.stringify({
+              type: 'claude_status',
+              id: launchTerminalId,
+              status,
+              success
+            }));
+            break;
+
+          case 'get_claude_status':
+            if (!message.id) {
+              ws.send(JSON.stringify({
+                type: 'error',
+                message: 'Missing id for get_claude_status'
+              }));
+              return;
+            }
+            // Store value to narrow TypeScript type
+            const statusTerminalId = message.id;
+            const claudeStatus = terminalManager.getClaudeStatus(statusTerminalId);
+            ws.send(JSON.stringify({
+              type: 'claude_status',
+              id: statusTerminalId,
+              status: claudeStatus,
+              success: claudeStatus !== null
+            }));
+            break;
+
           default:
             ws.send(JSON.stringify({
               type: 'error',
@@ -308,11 +456,33 @@ export function setupWebSocket(server: HTTPServer) {
     });
 
     ws.on('close', () => {
-      console.log('WebSocket client disconnected');
+      console.log('[WebSocket] Client disconnected:', userId);
+
+      // Clean up keepalive interval
+      const connData = connectionData.get(ws);
+      if (connData) {
+        if (connData.keepaliveInterval) {
+          clearInterval(connData.keepaliveInterval);
+        }
+
+        // Clear all auto-launch timeouts
+        connData.autoLaunchTimeouts.forEach((timeout) => {
+          clearTimeout(timeout);
+        });
+        connData.autoLaunchTimeouts.clear();
+
+        console.log(`[WebSocket] Cleaned up ${connData.terminals.size} terminal(s) for user ${userId}`);
+      }
     });
 
     ws.on('error', (error) => {
-      console.error('WebSocket error:', error);
+      console.error('[WebSocket] Error for user', userId, ':', error);
+    });
+
+    // Handle pong responses (keepalive)
+    ws.on('pong', () => {
+      // Optional: log periodic pong responses for debugging
+      // console.log('[WebSocket] Received pong from', userId);
     });
   });
 

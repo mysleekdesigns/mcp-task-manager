@@ -2,6 +2,8 @@ import * as pty from 'node-pty';
 import * as fs from 'fs';
 import * as os from 'os';
 
+export type ClaudeStatus = 'launching' | 'active' | 'exited' | 'failed' | null;
+
 interface TerminalSession {
   id: string;
   pty: pty.IPty;
@@ -11,6 +13,8 @@ interface TerminalSession {
   outputBuffer: string[];
   startTime: Date;
   commandCount: number;
+  claudeStatus: ClaudeStatus;
+  claudeLaunchAttempts: number;
 }
 
 export class TerminalManager {
@@ -155,12 +159,15 @@ export class TerminalManager {
     const env = this.createSanitizedEnv();
 
     try {
+      // Spawn the PTY process with better error handling
       const ptyProcess = pty.spawn(shell, [], {
         name: 'xterm-256color',
         cols: 80,
         rows: 24,
         cwd: validCwd,
         env,
+        // Add handleFlowControl to prevent hanging on large output
+        handleFlowControl: true,
       });
 
       const session: TerminalSession = {
@@ -172,7 +179,12 @@ export class TerminalManager {
         outputBuffer: [],
         startTime: new Date(),
         commandCount: 0,
+        claudeStatus: null,
+        claudeLaunchAttempts: 0,
       };
+
+      // Store session BEFORE setting up handlers to prevent race conditions
+      this.sessions.set(id, session);
 
       // Capture output for session insights
       ptyProcess.onData((data) => {
@@ -181,12 +193,18 @@ export class TerminalManager {
 
       // Handle PTY exit
       ptyProcess.onExit(({ exitCode, signal }) => {
-        console.log(`[TerminalManager] Terminal ${id} exited with code ${exitCode}, signal ${signal}`);
+        const session = this.sessions.get(id);
+        if (session) {
+          const duration = Date.now() - session.startTime.getTime();
+          console.log(
+            `[TerminalManager] Terminal ${id} exited after ${duration}ms with code ${exitCode}, signal ${signal}`
+          );
+        }
         this.sessions.delete(id);
       });
 
-      this.sessions.set(id, session);
-      console.log(`[TerminalManager] Successfully spawned terminal ${id}`);
+      // Log successful spawn with timing
+      console.log(`[TerminalManager] Successfully spawned terminal ${id} (pid: ${ptyProcess.pid})`);
       return ptyProcess;
     } catch (error) {
       console.error(`[TerminalManager] Failed to spawn terminal ${id}:`, {
@@ -219,6 +237,9 @@ export class TerminalManager {
     if (session.outputBuffer.length > this.MAX_BUFFER_SIZE) {
       session.outputBuffer = session.outputBuffer.slice(-this.MAX_BUFFER_SIZE);
     }
+
+    // Detect Claude exit
+    this.detectClaudeExit(id, data);
   }
 
   write(id: string, data: string): void {
@@ -307,5 +328,118 @@ export class TerminalManager {
       worktreeId: session.worktreeId,
       cwd: session.cwd,
     };
+  }
+
+  /**
+   * Launch Claude Code in a terminal
+   */
+  launchClaude(id: string): boolean {
+    const session = this.sessions.get(id);
+    if (!session) {
+      console.error(`[TerminalManager] Cannot launch Claude: session ${id} not found`);
+      return false;
+    }
+
+    // Prevent multiple concurrent launches
+    if (session.claudeStatus === 'launching') {
+      console.log(`[TerminalManager] Claude already launching for terminal ${id}`);
+      return false;
+    }
+
+    // Increment launch attempts
+    session.claudeLaunchAttempts++;
+
+    // Limit launch attempts
+    if (session.claudeLaunchAttempts > 3) {
+      console.error(`[TerminalManager] Maximum Claude launch attempts (3) reached for terminal ${id}`);
+      session.claudeStatus = 'failed';
+      return false;
+    }
+
+    try {
+      // Verify PTY is still alive before writing
+      // Check if the PTY process has been killed
+      try {
+        session.pty.write('');
+      } catch (writeError) {
+        console.error(`[TerminalManager] Cannot launch Claude: PTY for session ${id} is not writable:`, writeError);
+        return false;
+      }
+
+      session.claudeStatus = 'launching';
+      console.log(`[TerminalManager] Launching Claude Code for terminal ${id} (attempt ${session.claudeLaunchAttempts})`);
+
+      // Send the claude command
+      session.pty.write('claude\r');
+
+      // Wait 2 seconds to detect if Claude launched successfully
+      setTimeout(() => {
+        // Re-check that session still exists before updating status
+        const currentSession = this.sessions.get(id);
+        if (!currentSession) {
+          console.log(`[TerminalManager] Session ${id} no longer exists, skipping Claude status update`);
+          return;
+        }
+
+        if (currentSession.claudeStatus === 'launching') {
+          // If still launching after 2s, assume it's active
+          currentSession.claudeStatus = 'active';
+          console.log(`[TerminalManager] Claude Code active for terminal ${id}`);
+        }
+      }, 2000);
+
+      return true;
+    } catch (error) {
+      console.error(`[TerminalManager] Failed to launch Claude for terminal ${id}:`, error);
+      // Re-check session exists before updating status
+      const currentSession = this.sessions.get(id);
+      if (currentSession) {
+        currentSession.claudeStatus = 'failed';
+      }
+      return false;
+    }
+  }
+
+  /**
+   * Update Claude status for a terminal
+   */
+  updateClaudeStatus(id: string, status: ClaudeStatus): void {
+    const session = this.sessions.get(id);
+    if (session) {
+      session.claudeStatus = status;
+      console.log(`[TerminalManager] Claude status for terminal ${id}: ${status}`);
+    }
+  }
+
+  /**
+   * Get Claude status for a terminal
+   */
+  getClaudeStatus(id: string): ClaudeStatus {
+    const session = this.sessions.get(id);
+    return session?.claudeStatus || null;
+  }
+
+  /**
+   * Detect Claude exit in output
+   */
+  private detectClaudeExit(id: string, data: string): void {
+    const session = this.sessions.get(id);
+    if (!session || session.claudeStatus !== 'active') return;
+
+    // Look for Claude exit patterns in output
+    // This is a simple heuristic - may need refinement
+    const exitPatterns = [
+      /Claude Code session ended/i,
+      /Goodbye!/i,
+      /\[Process completed\]/i,
+    ];
+
+    for (const pattern of exitPatterns) {
+      if (pattern.test(data)) {
+        console.log(`[TerminalManager] Detected Claude exit for terminal ${id}`);
+        session.claudeStatus = 'exited';
+        break;
+      }
+    }
   }
 }

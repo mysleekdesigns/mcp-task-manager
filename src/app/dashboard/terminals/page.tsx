@@ -55,9 +55,8 @@ export default function TerminalsPage() {
       fetchWorktrees(projectId);
     }
 
-    // Get session token (simplified - in production, get from auth session)
-    const token = Math.random().toString(36).substring(7);
-    setSessionToken(token);
+    // Get session token from Auth.js
+    fetchSessionToken();
 
     return () => {
       if (ws) {
@@ -66,6 +65,23 @@ export default function TerminalsPage() {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const fetchSessionToken = async () => {
+    try {
+      const response = await fetch('/api/auth/session-token');
+      if (response.ok) {
+        const data = await response.json();
+        setSessionToken(data.token);
+      } else {
+        toast.error('Failed to authenticate - please refresh the page');
+        setSessionToken('');
+      }
+    } catch (error) {
+      console.error('Failed to fetch session token:', error);
+      toast.error('Failed to authenticate - please refresh the page');
+      setSessionToken('');
+    }
+  };
 
   const fetchProject = async (projectId: string) => {
     try {
@@ -230,19 +246,24 @@ export default function TerminalsPage() {
           <div className="text-sm text-muted-foreground">
             {terminals.length} / {maxTerminals} terminals
           </div>
+          {!sessionToken && (
+            <div className="text-sm text-yellow-600 dark:text-yellow-400">
+              Authenticating...
+            </div>
+          )}
         </div>
 
         <div className="flex items-center gap-2">
           <Button
             variant="outline"
             onClick={() => setInvokeModalOpen(true)}
-            disabled={terminals.length === 0}
+            disabled={terminals.length === 0 || !sessionToken}
           >
             Invoke Claude All
           </Button>
           <Button
             onClick={handleCreateTerminal}
-            disabled={terminals.length >= maxTerminals}
+            disabled={terminals.length >= maxTerminals || !sessionToken}
           >
             <Plus className="mr-2 h-4 w-4" />
             New Terminal
@@ -264,6 +285,15 @@ export default function TerminalsPage() {
                 <Plus className="mr-2 h-4 w-4" />
                 New Terminal
               </Button>
+            </div>
+          </div>
+        ) : !sessionToken ? (
+          <div className="flex h-full items-center justify-center">
+            <div className="text-center">
+              <div className="text-muted-foreground">Authenticating session...</div>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Please wait while we verify your credentials
+              </p>
             </div>
           </div>
         ) : (
