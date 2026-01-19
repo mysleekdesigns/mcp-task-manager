@@ -69,7 +69,8 @@ export function IdeationBoard({ projectId, userRole, userId }: IdeationBoardProp
     } finally {
       setIsLoading(false);
     }
-  }, [projectId, sortBy, sortDirection, activeTab, toast]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- toast is stable but causes infinite loop if included
+  }, [projectId, sortBy, sortDirection, activeTab]);
 
   useEffect(() => {
     fetchIdeas();
