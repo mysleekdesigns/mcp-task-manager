@@ -143,15 +143,15 @@ function ProjectSelector({ className }: ProjectSelectorProps) {
           <Button
             variant="outline"
             className={cn(
-              "h-10 justify-start gap-2 border-border/50 bg-card/50 hover:bg-card hover:border-border transition-colors",
+              "group h-10 justify-start gap-2 border-border/50 bg-card/50 hover:bg-card hover:border-border transition-colors",
               className
             )}
           >
-            <FolderIcon className="size-4 text-muted-foreground" />
-            <span className="font-medium">
+            <FolderIcon className="size-4 text-muted-foreground transition-colors group-hover:text-cyan-400 group-data-[state=open]:text-cyan-400" />
+            <span className="font-medium transition-colors group-hover:text-cyan-400 group-data-[state=open]:text-cyan-400">
               {selectedProject?.name || "Select Project"}
             </span>
-            <ChevronDownIcon className="ml-auto size-4 text-muted-foreground" />
+            <ChevronDownIcon className="ml-auto size-4 text-muted-foreground transition-colors group-hover:text-cyan-400 group-data-[state=open]:text-cyan-400" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start" className="w-[240px]">
