@@ -18,10 +18,15 @@
 | 9 | GitHub Integration | **Complete** |
 | 10 | Polish & Additional Features | **Complete** |
 | 11 | Interactive Terminals & Claude Code | **Complete** |
+| 12 | GitHub OAuth & Authentication Improvements | **Complete** |
 
-**Current Status:** Phase 11 complete. All planned phases implemented.
+**Current Status:** Phase 12 complete. All planned phases implemented.
 
 **Recent Updates:**
+- Completed Phase 12: GitHub OAuth improvements with token refresh, repo scope, and cyan hover states on login
+- Improved GitHub PR page with project selection from localStorage and better error handling
+- Added terminal theme matching website's blue-tinted color palette
+- Fixed various test cases and hydration errors
 - Completed Phase 11: Interactive Terminals with WebSocket auth, Claude Code auto-launch, and terminal polish
 - Completed Phase 10: Insights Dashboard, Ideation Board, Changelog, Settings, and Theme Support
 - Completed Phase 9: GitHub Integration with Issues and PRs UI, API routes, and Octokit integration
@@ -596,6 +601,34 @@
 
 ---
 
+## Phase 12: GitHub OAuth & Authentication Improvements
+
+### 12.1 GitHub OAuth Enhancement
+- [x] Add `repo` scope to GitHub OAuth for repository access
+- [x] Add `read:user` and `user:email` scopes for profile access
+- [x] Implement automatic OAuth token refresh for expired tokens
+- [x] Add fallback to manual GitHub token from UserSettings
+
+### 12.2 Authentication Flow Fixes
+- [x] Fix NEXT_REDIRECT error flash during OAuth sign-in
+- [x] Add cyan hover states to GitHub and Google login buttons
+- [x] Improve error handling for invalid/expired tokens
+
+### 12.3 GitHub PR Page Improvements
+- [x] Use selected project from localStorage (set by ProjectSelector)
+- [x] Show project name and repository in PR page header
+- [x] Convert null to undefined for Zod optional field validation
+- [x] Improve error messages for missing projects or repos
+
+### 12.4 UI Polish
+- [x] Match terminal theme to website's blue-tinted color palette
+- [x] Add cyan hover states throughout the application
+- [x] Fix hydration errors in settings page
+
+**Phase 12 Complete** - GitHub OAuth & Authentication Improvements fully implemented.
+
+---
+
 ## File Structure
 
 ```
@@ -646,22 +679,69 @@ mcp-task-manager/
 │   │       │       ├── route.ts
 │   │       │       ├── members/route.ts
 │   │       │       └── tasks/route.ts
-│   │       ├── terminals/route.ts
-│   │       ├── worktrees/route.ts
-│   │       ├── phases/route.ts
-│   │       ├── features/route.ts
-│   │       ├── memories/route.ts
-│   │       └── mcp/route.ts
+│   │       ├── terminals/
+│   │       │   ├── route.ts
+│   │       │   └── [id]/route.ts
+│   │       ├── worktrees/
+│   │       │   ├── route.ts
+│   │       │   └── [id]/route.ts
+│   │       ├── phases/
+│   │       │   ├── route.ts
+│   │       │   └── [id]/route.ts
+│   │       ├── features/
+│   │       │   ├── route.ts
+│   │       │   └── [id]/route.ts
+│   │       ├── milestones/
+│   │       │   ├── route.ts
+│   │       │   └── [id]/route.ts
+│   │       ├── memories/
+│   │       │   ├── route.ts
+│   │       │   ├── search/route.ts
+│   │       │   ├── capture-session/route.ts
+│   │       │   └── [id]/route.ts
+│   │       ├── mcp/
+│   │       │   ├── route.ts
+│   │       │   └── [id]/route.ts
+│   │       ├── changelog/
+│   │       │   ├── route.ts
+│   │       │   ├── generate/route.ts
+│   │       │   └── [id]/route.ts
+│   │       ├── ideas/
+│   │       │   ├── route.ts
+│   │       │   └── [id]/
+│   │       │       ├── route.ts
+│   │       │       ├── vote/route.ts
+│   │       │       └── convert/route.ts
+│   │       ├── insights/route.ts
+│   │       ├── settings/
+│   │       │   ├── route.ts
+│   │       │   ├── profile/route.ts
+│   │       │   └── api-keys/route.ts
+│   │       └── github/
+│   │           ├── issues/
+│   │           │   ├── route.ts
+│   │           │   └── [number]/route.ts
+│   │           └── prs/
+│   │               ├── route.ts
+│   │               └── [number]/route.ts
 │   ├── components/
 │   │   ├── ui/                  # shadcn/ui components (button, card, dialog, etc.)
 │   │   ├── layout/              # Sidebar, Header, ProjectSelector, UserMenu
 │   │   ├── kanban/              # KanbanBoard, KanbanColumn, TaskCard
 │   │   ├── task/                # TaskModal, NewTaskModal, tabs/*
+│   │   ├── terminal/            # TerminalGrid, TerminalPane, XtermWrapper
+│   │   ├── settings/            # ProfileSection, ApiKeysSection, PreferencesSection
+│   │   ├── github/              # IssueCard, PRCard, IssueDetail, PRDetail
+│   │   ├── ideation/            # IdeaCard, IdeaForm
+│   │   ├── changelog/           # ChangelogEntry, ChangelogForm
+│   │   ├── insights/            # MetricsCards, Charts
 │   │   └── providers/           # AuthProvider, ThemeProvider
 │   ├── lib/
 │   │   ├── auth.ts              # Auth.js configuration with providers
 │   │   ├── auth.config.ts       # Edge-compatible auth config
 │   │   ├── db.ts                # Prisma client instance
+│   │   ├── github.ts            # GitHub API utilities (Octokit)
+│   │   ├── git.ts               # Git operations (simple-git)
 │   │   └── utils.ts             # Utility functions (cn, etc.)
 │   ├── hooks/
 │   │   ├── index.ts
@@ -687,18 +767,20 @@ mcp-task-manager/
 ```prisma
 // Authentication
 model User {
-  id            String    @id @default(cuid())
+  id            String          @id @default(cuid())
   name          String?
-  email         String    @unique
+  email         String          @unique
   emailVerified DateTime?
   image         String?
   password      String?
   accounts      Account[]
   sessions      Session[]
   projects      ProjectMember[]
-  assignedTasks Task[]    @relation("AssignedTasks")
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  assignedTasks Task[]          @relation("AssignedTasks")
+  settings      UserSettings?
+  ideas         Idea[]          @relation("CreatedIdeas")
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
 }
 
 model Account {
@@ -735,21 +817,23 @@ model VerificationToken {
 
 // Projects
 model Project {
-  id          String          @id @default(cuid())
-  name        String
-  description String?
-  targetPath  String?
-  githubRepo  String?
-  members     ProjectMember[]
-  tasks       Task[]
-  features    Feature[]
-  phases      Phase[]
-  terminals   Terminal[]
-  memories    Memory[]
-  mcpConfigs  McpConfig[]
-  worktrees   Worktree[]
-  createdAt   DateTime        @default(now())
-  updatedAt   DateTime        @updatedAt
+  id               String            @id @default(cuid())
+  name             String
+  description      String?
+  targetPath       String?
+  githubRepo       String?
+  members          ProjectMember[]
+  tasks            Task[]
+  features         Feature[]
+  phases           Phase[]
+  terminals        Terminal[]
+  memories         Memory[]
+  mcpConfigs       McpConfig[]
+  worktrees        Worktree[]
+  changelogEntries ChangelogEntry[]
+  ideas            Idea[]
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
 }
 
 model ProjectMember {
@@ -902,13 +986,64 @@ model Memory {
 
 // MCP
 model McpConfig {
-  id        String  @id @default(cuid())
+  id        String   @id @default(cuid())
   name      String
   type      String
-  enabled   Boolean @default(false)
+  enabled   Boolean  @default(false)
   config    Json?
   projectId String
-  project   Project @relation(fields: [projectId], references: [id])
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+// Changelog
+enum ChangelogType { FEATURE FIX IMPROVEMENT BREAKING }
+
+model ChangelogEntry {
+  id          String        @id @default(cuid())
+  title       String
+  description String?
+  version     String?
+  type        ChangelogType @default(FEATURE)
+  taskId      String?
+  task        Task?         @relation(fields: [taskId], references: [id], onDelete: SetNull)
+  projectId   String
+  project     Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+// User Settings
+enum Theme { LIGHT DARK SYSTEM }
+
+model UserSettings {
+  id                   String   @id @default(cuid())
+  userId               String   @unique
+  user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  claudeApiKey         String?
+  githubToken          String?
+  defaultTerminalCount Int      @default(2)
+  theme                Theme    @default(SYSTEM)
+  keyboardShortcuts    Json?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+}
+
+// Ideation
+enum IdeaStatus { PENDING UNDER_REVIEW APPROVED REJECTED CONVERTED }
+
+model Idea {
+  id          String     @id @default(cuid())
+  title       String
+  description String?
+  votes       Int        @default(0)
+  status      IdeaStatus @default(PENDING)
+  projectId   String
+  project     Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  createdById String
+  createdBy   User       @relation("CreatedIdeas", fields: [createdById], references: [id], onDelete: Cascade)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
 }
 ```
 
@@ -985,5 +1120,13 @@ model McpConfig {
 - [x] PR cards show state, branches, reviews
 - [x] PR detail modal shows full content
 
+### Phase 12 - GitHub OAuth & Auth (Complete)
+- [x] GitHub OAuth login works with repo access
+- [x] Token refresh works for expired tokens
+- [x] Manual GitHub token fallback works
+- [x] OAuth error flash fixed on login
+- [x] Cyan hover states on login buttons
+- [x] PR page shows correct project/repo
+
 ### End-to-End
-- [ ] Full workflow: Login → Project → Task → Terminal → Claude → Complete → Review
+- [x] Full workflow: Login → Project → Task → Terminal → Claude → Complete → Review
