@@ -218,6 +218,10 @@ export default function ProjectSettingsPage() {
 
       toast.success("Project deleted successfully")
       localStorage.removeItem("currentProjectId")
+
+      // Notify other components (like the header) to refresh their project list
+      window.dispatchEvent(new CustomEvent('projects-changed'))
+
       router.push("/dashboard")
     } catch (error) {
       console.error("Error deleting project:", error)

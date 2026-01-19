@@ -38,9 +38,19 @@ function ProjectSelector({ className }: ProjectSelectorProps) {
   const [isOpen, setIsOpen] = React.useState(false)
   const [showCreateModal, setShowCreateModal] = React.useState(false)
 
-  // Fetch projects on mount
+  // Fetch projects on mount and listen for project changes
   React.useEffect(() => {
     fetchProjects()
+
+    // Listen for project list changes (e.g., after deletion)
+    const handleProjectsChanged = () => {
+      fetchProjects()
+    }
+
+    window.addEventListener('projects-changed', handleProjectsChanged)
+    return () => {
+      window.removeEventListener('projects-changed', handleProjectsChanged)
+    }
   }, [])
 
   const fetchProjects = async () => {

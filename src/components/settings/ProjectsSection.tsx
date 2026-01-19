@@ -83,6 +83,16 @@ export function ProjectsSection() {
 
       // Remove the deleted project from the list
       setProjects(prev => prev.filter(p => p.id !== projectId))
+
+      // Clear localStorage if this was the current project
+      const currentProjectId = localStorage.getItem('currentProjectId')
+      if (currentProjectId === projectId) {
+        localStorage.removeItem('currentProjectId')
+      }
+
+      // Notify other components (like the header) to refresh their project list
+      window.dispatchEvent(new CustomEvent('projects-changed'))
+
       toast.success(`Project "${projectName}" has been deleted`)
     } catch (error) {
       console.error('Error deleting project:', error)
