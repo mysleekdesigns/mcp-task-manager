@@ -53,7 +53,7 @@ export function KanbanColumn({
   onEditTask,
   onDeleteTask,
 }: KanbanColumnProps) {
-  const { setNodeRef } = useDroppable({
+  const { setNodeRef, isOver } = useDroppable({
     id: column.id,
     data: {
       type: 'column',
@@ -64,13 +64,13 @@ export function KanbanColumn({
   const columnTasks = tasks.filter((task) => task.status === column.status);
 
   return (
-    <div className="flex-shrink-0 w-80">
-      <Card className="p-4">
+    <div className="w-full min-w-[250px] h-full">
+      <Card className="p-2 md:p-3 h-full">
         {/* Column Header */}
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between mb-3 md:mb-4">
           <div className="flex items-center gap-2">
-            <h3 className="font-semibold text-sm">{column.title}</h3>
-            <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
+            <h3 className="text-sm md:text-base font-semibold">{column.title}</h3>
+            <span className="text-xs text-muted-foreground bg-muted px-1.5 sm:px-2 py-0.5 rounded-full min-w-[20px] text-center">
               {columnTasks.length}
             </span>
           </div>
@@ -80,7 +80,7 @@ export function KanbanColumn({
                 variant="ghost"
                 size="sm"
                 onClick={onToggleCollapse}
-                className="h-7 px-2 text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
+                className="h-8 md:h-7 px-2 md:px-3 text-xs md:text-sm text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
               >
                 {isCollapsed ? 'Expand' : 'Collapse'}
               </Button>
@@ -90,7 +90,8 @@ export function KanbanColumn({
                 variant="ghost"
                 size="sm"
                 onClick={() => onAddTask(column.status)}
-                className="h-7 px-2 text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
+                className="h-8 w-8 md:h-7 md:w-auto md:px-2 p-0 md:p-2 text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
+                aria-label="Add task"
               >
                 <Plus className="h-4 w-4" />
               </Button>
@@ -102,7 +103,9 @@ export function KanbanColumn({
         {!isCollapsed && (
           <div
             ref={setNodeRef}
-            className="space-y-2 min-h-[400px]"
+            className={`space-y-2 md:space-y-3 min-h-[250px] md:min-h-[400px] rounded-lg transition-colors ${
+              isOver ? 'bg-accent/20 ring-2 ring-accent/50' : ''
+            }`}
           >
             <SortableContext
               items={columnTasks.map((task) => task.id)}
@@ -122,13 +125,13 @@ export function KanbanColumn({
 
             {/* Empty State */}
             {columnTasks.length === 0 && (
-              <div className="flex flex-col items-center justify-center h-[200px] text-center text-muted-foreground">
-                <p className="text-sm mb-3">No tasks</p>
+              <div className="flex flex-col items-center justify-center h-[100px] md:h-[200px] text-center text-muted-foreground">
+                <p className="text-xs md:text-sm mb-2 md:mb-3">No tasks</p>
                 {onAddTask && (
                   <Button
                     size="sm"
                     onClick={() => onAddTask(column.status)}
-                    className="gap-2 bg-sidebar-primary hover:bg-sidebar-primary/90 text-slate-900"
+                    className="gap-2 h-9 md:h-8 px-3 md:px-4 text-sm bg-sidebar-primary hover:bg-sidebar-primary/90 text-slate-900"
                   >
                     <Plus className="h-4 w-4" />
                     Add a task
@@ -141,7 +144,7 @@ export function KanbanColumn({
 
         {/* Collapsed State */}
         {isCollapsed && (
-          <div className="text-center text-sm text-muted-foreground py-2">
+          <div className="text-center text-xs md:text-sm text-muted-foreground py-2">
             {columnTasks.length} completed tasks
           </div>
         )}

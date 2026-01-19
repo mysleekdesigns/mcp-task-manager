@@ -51,7 +51,7 @@ export function TaskCard({ task, onStart, onStop, onEdit, onDelete }: TaskCardPr
 
   const style = {
     transform: CSS.Transform.toString(transform),
-    transition,
+    transition: isDragging ? undefined : transition,
     opacity: isDragging ? 0.5 : 1,
   };
 
@@ -64,16 +64,16 @@ export function TaskCard({ task, onStart, onStop, onEdit, onDelete }: TaskCardPr
       style={style}
       {...attributes}
       {...listeners}
-      className="p-4 cursor-grab active:cursor-grabbing hover:shadow-md transition-shadow"
+      className={`w-full p-3 md:p-4 cursor-grab active:cursor-grabbing hover:shadow-md ${!isDragging ? 'transition-shadow' : ''}`}
     >
-      <div className="space-y-3">
+      <div className="w-full space-y-2 md:space-y-3">
         {/* Header */}
         <div className="flex items-start justify-between gap-2">
-          <h4 className="font-medium text-sm line-clamp-2">{task.title}</h4>
+          <h4 className="text-sm md:text-base font-semibold line-clamp-2 break-words flex-1 min-w-0">{task.title}</h4>
           <DropdownMenu>
             <DropdownMenuTrigger asChild onClick={(e) => e.stopPropagation()}>
-              <Button variant="ghost" size="icon" className="h-6 w-6 flex-shrink-0 text-muted-foreground hover:text-cyan-400 active:text-cyan-400">
-                <MoreVertical className="h-4 w-4" />
+              <Button variant="ghost" size="icon" className="h-8 w-8 md:h-6 md:w-6 flex-shrink-0 text-muted-foreground hover:text-cyan-400 active:text-cyan-400">
+                <MoreVertical className="h-3.5 w-3.5 md:h-4 md:w-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -99,19 +99,19 @@ export function TaskCard({ task, onStart, onStop, onEdit, onDelete }: TaskCardPr
 
         {/* Description Preview */}
         {task.description && (
-          <p className="text-xs text-muted-foreground line-clamp-2">
+          <p className="text-xs md:text-sm text-muted-foreground line-clamp-2 break-words">
             {task.description}
           </p>
         )}
 
         {/* Tags */}
         {task.tags.length > 0 && (
-          <div className="flex flex-wrap gap-1">
+          <div className="flex flex-wrap gap-1 md:gap-2">
             {task.tags.map((tag) => (
               <Badge
                 key={tag}
                 variant={getTagVariant(tag)}
-                className="text-xs px-2 py-0"
+                className="text-[10px] md:text-xs px-1.5 md:px-2 py-0"
               >
                 {tag}
               </Badge>
@@ -121,7 +121,7 @@ export function TaskCard({ task, onStart, onStop, onEdit, onDelete }: TaskCardPr
 
         {/* Phase Progress */}
         <div className="space-y-1">
-          <div className="flex items-center justify-between text-xs">
+          <div className="flex items-center justify-between text-[10px] md:text-xs">
             <span className="text-muted-foreground">Progress</span>
             <span className="font-medium">{phaseProgress.completed}/{phaseProgress.total}</span>
           </div>
@@ -129,7 +129,7 @@ export function TaskCard({ task, onStart, onStop, onEdit, onDelete }: TaskCardPr
             {task.phases.map((phase) => (
               <div
                 key={phase.id}
-                className="flex-1 h-1.5 rounded-full bg-muted overflow-hidden"
+                className="flex-1 h-1 md:h-1.5 rounded-full bg-muted overflow-hidden"
               >
                 <div
                   className={`h-full ${getPhaseColor(phase.status)}`}
@@ -145,7 +145,7 @@ export function TaskCard({ task, onStart, onStop, onEdit, onDelete }: TaskCardPr
               </div>
             ))}
           </div>
-          <div className="flex justify-between text-xs text-muted-foreground">
+          <div className="hidden md:flex justify-between text-xs text-muted-foreground">
             {task.phases.map((phase) => (
               <span key={phase.id} className="capitalize">
                 {phase.name.toLowerCase()}
@@ -155,12 +155,12 @@ export function TaskCard({ task, onStart, onStop, onEdit, onDelete }: TaskCardPr
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between pt-2 border-t">
-          <div className="flex items-center gap-2">
-            <Badge variant={isRunning ? 'default' : 'secondary'} className="text-xs">
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t">
+          <div className="flex items-center gap-1 md:gap-2 flex-wrap">
+            <Badge variant={isRunning ? 'default' : 'secondary'} className="text-[10px] md:text-xs px-1.5 md:px-2 whitespace-nowrap">
               {isRunning ? 'Running' : 'Pending'}
             </Badge>
-            <span className="text-xs text-muted-foreground">
+            <span className="text-[10px] md:text-xs text-muted-foreground hidden sm:inline whitespace-nowrap">
               {formatDistanceToNow(new Date(task.createdAt))}
             </span>
           </div>
@@ -177,17 +177,17 @@ export function TaskCard({ task, onStart, onStop, onEdit, onDelete }: TaskCardPr
                 onStart(task.id);
               }
             }}
-            className="h-7 px-2"
+            className="h-8 md:h-7 px-2 md:px-3 min-w-[44px] flex-shrink-0"
           >
             {isRunning ? (
               <>
-                <Pause className="h-3 w-3 mr-1" />
-                Stop
+                <Pause className="h-3.5 w-3.5 md:h-3 md:w-3 md:mr-1" />
+                <span className="hidden md:inline">Stop</span>
               </>
             ) : (
               <>
-                <Play className="h-3 w-3 mr-1" />
-                Start
+                <Play className="h-3.5 w-3.5 md:h-3 md:w-3 md:mr-1" />
+                <span className="hidden md:inline">Start</span>
               </>
             )}
           </Button>

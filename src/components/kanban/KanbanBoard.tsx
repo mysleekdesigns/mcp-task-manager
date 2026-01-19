@@ -11,6 +11,7 @@ import {
   useSensors,
   DragStartEvent,
   DragEndEvent,
+  defaultDropAnimationSideEffects,
 } from '@dnd-kit/core';
 import { sortableKeyboardCoordinates } from '@dnd-kit/sortable';
 import { KanbanColumn } from './KanbanColumn';
@@ -75,6 +76,16 @@ export function KanbanBoard({ initialTasks, projectId }: KanbanBoardProps) {
     })
   );
 
+  const dropAnimation = {
+    sideEffects: defaultDropAnimationSideEffects({
+      styles: {
+        active: {
+          opacity: '0.5',
+        },
+      },
+    }),
+  };
+
   const handleDragStart = (event: DragStartEvent) => {
     const { active } = event;
     const task = tasks.find((t) => t.id === active.id);
@@ -97,7 +108,16 @@ export function KanbanBoard({ initialTasks, projectId }: KanbanBoardProps) {
     const newStatus = overColumn?.status;
 
     if (newStatus && activeTask.status !== newStatus) {
-      // Update task status
+      const previousStatus = activeTask.status;
+
+      // Optimistic update - update local state immediately
+      setTasks((prevTasks) =>
+        prevTasks.map((task) =>
+          task.id === activeTask.id ? { ...task, status: newStatus } : task
+        )
+      );
+
+      // Update task status on server
       try {
         const response = await fetch(`/api/tasks/${activeTask.id}`, {
           method: 'PATCH',
@@ -109,17 +129,17 @@ export function KanbanBoard({ initialTasks, projectId }: KanbanBoardProps) {
           throw new Error('Failed to update task status');
         }
 
-        // Update local state
-        setTasks((prevTasks) =>
-          prevTasks.map((task) =>
-            task.id === activeTask.id ? { ...task, status: newStatus } : task
-          )
-        );
-
         toast.success('Task status updated');
       } catch (error) {
         console.error('Error updating task:', error);
         toast.error('Failed to update task status');
+
+        // Revert optimistic update on error
+        setTasks((prevTasks) =>
+          prevTasks.map((task) =>
+            task.id === activeTask.id ? { ...task, status: previousStatus } : task
+          )
+        );
       }
     }
   };
@@ -211,12 +231,12 @@ export function KanbanBoard({ initialTasks, projectId }: KanbanBoardProps) {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 md:space-y-4 px-2 md:px-4 lg:px-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-2xl font-bold">Kanban Board</h2>
-          <p className="text-sm text-muted-foreground">
+      <div className="flex items-center justify-between gap-2">
+        <div className="min-w-0 flex-1">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold truncate">Kanban Board</h2>
+          <p className="text-xs md:text-sm text-muted-foreground hidden sm:block">
             Drag and drop tasks between columns to update their status
           </p>
         </div>
@@ -225,10 +245,10 @@ export function KanbanBoard({ initialTasks, projectId }: KanbanBoardProps) {
           size="sm"
           onClick={handleRefresh}
           disabled={isRefreshing}
-          className="text-muted-foreground hover:text-cyan-400 active:text-cyan-400"
+          className="h-9 md:h-10 text-muted-foreground hover:text-cyan-400 active:text-cyan-400 shrink-0"
         >
-          <RefreshCw className={`h-4 w-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
-          Refresh
+          <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''} md:mr-2`} />
+          <span className="hidden md:inline">Refresh</span>
         </Button>
       </div>
 
@@ -240,7 +260,7 @@ export function KanbanBoard({ initialTasks, projectId }: KanbanBoardProps) {
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
       >
-        <div className="flex gap-4 overflow-x-auto pb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3 md:gap-4 lg:gap-6">
           {COLUMNS.map((column) => (
             <KanbanColumn
               key={column.id}
@@ -261,7 +281,7 @@ export function KanbanBoard({ initialTasks, projectId }: KanbanBoardProps) {
           ))}
         </div>
 
-        <DragOverlay>
+        <DragOverlay dropAnimation={dropAnimation}>
           {activeTask && (
             <div className="cursor-grabbing rotate-3">
               <TaskCard task={activeTask} />
