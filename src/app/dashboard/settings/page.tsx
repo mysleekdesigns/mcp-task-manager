@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { ProfileSection } from '@/components/settings/ProfileSection'
@@ -11,20 +10,12 @@ import { Skeleton } from '@/components/ui/skeleton'
 
 export default function SettingsPage() {
   const { data: session, update } = useSession()
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    if (session) {
-      setIsLoading(false)
-    }
-  }, [session])
-
   const handleProfileUpdate = async () => {
     // Trigger session update to reflect changes
     await update()
   }
 
-  if (isLoading || !session?.user) {
+  if (!session?.user) {
     return (
       <div className="p-6 space-y-6">
         <div className="space-y-2">

@@ -128,7 +128,7 @@ export function ApiKeysSection() {
 
       if (!response.ok) throw new Error('Failed to remove key')
 
-      const data = await response.json()
+      await response.json()
       setApiKeys(prev => ({
         ...prev,
         ...(keyType === 'claude'

@@ -3,6 +3,8 @@ import { NextRequest } from 'next/server';
 import { GET as GET_LIST, POST } from '../route';
 import * as authModule from '@/lib/auth';
 import { prisma } from '@/lib/db';
+import type { Session } from 'next-auth';
+import type { Worktree } from '@prisma/client';
 
 // Mock dependencies
 vi.mock('@/lib/auth', () => ({
@@ -33,18 +35,12 @@ const userId = generateCUID();
 const projectId = generateCUID();
 const terminalId = generateCUID();
 const memberId = generateCUID();
-const worktreeId = generateCUID();
 
 const mockSession = {
   user: {
     id: userId,
     email: 'test@example.com',
   },
-};
-
-const mockUser = {
-  id: userId,
-  email: 'test@example.com',
 };
 
 const mockProjectMembership = {
@@ -69,14 +65,6 @@ const mockTerminal = {
   },
 };
 
-const mockWorktree = {
-  id: worktreeId,
-  name: 'Feature Branch',
-  path: '/path/to/worktree',
-  branch: 'feature/test',
-  projectId,
-};
-
 describe('GET /api/terminals', () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -94,7 +82,7 @@ describe('GET /api/terminals', () => {
   });
 
   it('returns 400 when projectId query parameter is missing', async () => {
-    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as Session);
 
     const request = new NextRequest('http://localhost/api/terminals');
     const response = await GET_LIST(request);
@@ -105,7 +93,7 @@ describe('GET /api/terminals', () => {
   });
 
   it('returns 403 when user is not a project member', async () => {
-    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as Session);
     vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(null);
 
     const request = new NextRequest(`http://localhost/api/terminals?projectId=${projectId}`);
@@ -117,7 +105,7 @@ describe('GET /api/terminals', () => {
   });
 
   it('returns list of terminals for a project', async () => {
-    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as Session);
     vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMembership);
     vi.mocked(prisma.terminal.findMany).mockResolvedValue([mockTerminal]);
 
@@ -132,7 +120,7 @@ describe('GET /api/terminals', () => {
   });
 
   it('filters terminals by projectId', async () => {
-    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as Session);
     vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMembership);
     vi.mocked(prisma.terminal.findMany).mockResolvedValue([]);
 
@@ -147,7 +135,7 @@ describe('GET /api/terminals', () => {
   });
 
   it('includes project details in the response', async () => {
-    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as Session);
     vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMembership);
     vi.mocked(prisma.terminal.findMany).mockResolvedValue([mockTerminal]);
 
@@ -164,7 +152,7 @@ describe('GET /api/terminals', () => {
   });
 
   it('returns 500 on database error', async () => {
-    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as Session);
     vi.mocked(prisma.projectMember.findUnique).mockRejectedValue(new Error('DB Error'));
 
     const request = new NextRequest(`http://localhost/api/terminals?projectId=${projectId}`);
@@ -206,7 +194,7 @@ describe('POST /api/terminals', () => {
   });
 
   it('returns 400 when validation fails', async () => {
-    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as Session);
 
     const body = {
       name: '', // Invalid: empty name
@@ -226,7 +214,7 @@ describe('POST /api/terminals', () => {
   });
 
   it('returns 400 when projectId is not a valid CUID', async () => {
-    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as Session);
 
     const body = {
       name: 'New Terminal',
@@ -239,13 +227,12 @@ describe('POST /api/terminals', () => {
     });
 
     const response = await POST(request);
-    const data = await response.json();
 
     expect(response.status).toBe(400);
   });
 
   it('returns 403 when user is not a project member', async () => {
-    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as Session);
     vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(null);
 
     const body = {
@@ -267,7 +254,7 @@ describe('POST /api/terminals', () => {
 
   it('returns 403 when user has VIEWER role', async () => {
     const viewerMembership = { ...mockProjectMembership, role: 'VIEWER' };
-    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as Session);
     vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(viewerMembership);
 
     const body = {
@@ -288,7 +275,7 @@ describe('POST /api/terminals', () => {
   });
 
   it('returns 404 when worktreeId is provided but worktree does not exist', async () => {
-    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as Session);
     vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMembership);
     vi.mocked(prisma.worktree.findUnique).mockResolvedValue(null);
 
@@ -312,9 +299,9 @@ describe('POST /api/terminals', () => {
 
   it('returns 400 when worktree belongs to different project', async () => {
     const differentProjectWorktree = { projectId: generateCUID() };
-    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as Session);
     vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMembership);
-    vi.mocked(prisma.worktree.findUnique).mockResolvedValue(differentProjectWorktree as any);
+    vi.mocked(prisma.worktree.findUnique).mockResolvedValue(differentProjectWorktree as Partial<Worktree>);
 
     const body = {
       name: 'New Terminal',
@@ -335,7 +322,7 @@ describe('POST /api/terminals', () => {
   });
 
   it('creates a terminal successfully', async () => {
-    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as Session);
     vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMembership);
     vi.mocked(prisma.terminal.create).mockResolvedValue(mockTerminal);
 
@@ -359,9 +346,9 @@ describe('POST /api/terminals', () => {
 
   it('creates terminal with worktreeId when provided', async () => {
     const testWorktreeId = generateCUID();
-    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as Session);
     vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMembership);
-    vi.mocked(prisma.worktree.findUnique).mockResolvedValue({ projectId } as any);
+    vi.mocked(prisma.worktree.findUnique).mockResolvedValue({ projectId } as Partial<Worktree>);
     vi.mocked(prisma.terminal.create).mockResolvedValue(mockTerminal);
 
     const body = {
@@ -383,7 +370,7 @@ describe('POST /api/terminals', () => {
   });
 
   it('includes project details in created terminal response', async () => {
-    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as Session);
     vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMembership);
     vi.mocked(prisma.terminal.create).mockResolvedValue(mockTerminal);
 
@@ -409,7 +396,7 @@ describe('POST /api/terminals', () => {
   });
 
   it('returns 500 on database error during creation', async () => {
-    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as any);
+    vi.spyOn(authModule, 'auth').mockResolvedValue(mockSession as Session);
     vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMembership);
     vi.mocked(prisma.terminal.create).mockRejectedValue(new Error('DB Error'));
 

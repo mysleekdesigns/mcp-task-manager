@@ -46,14 +46,14 @@ export function AgentProfileSelect({
   disabled = false,
 }: AgentProfileSelectProps) {
   const selectedProfile = AGENT_PROFILES[value]
-  const SelectedIcon = getIconComponent(selectedProfile.icon)
+  const selectedIconComponent = React.useMemo(() => getIconComponent(selectedProfile.icon), [selectedProfile.icon])
 
   return (
     <Select value={value} onValueChange={onChange} disabled={disabled}>
       <SelectTrigger className="w-full">
         <SelectValue>
           <div className="flex items-center gap-2">
-            <SelectedIcon className="size-4 text-cyan-500" />
+            {React.createElement(selectedIconComponent, { className: "size-4 text-cyan-500" })}
             <span>{selectedProfile.name}</span>
           </div>
         </SelectValue>

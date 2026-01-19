@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { generateTaskTitle } from '../generate-title';
 
 // Mock fetch
-global.fetch = vi.fn();
+global.fetch = vi.fn() as vi.Mock;
 
 describe('generateTaskTitle', () => {
   beforeEach(() => {
@@ -31,7 +31,7 @@ describe('generateTaskTitle', () => {
 
   it('should call API with description and return title', async () => {
     const mockTitle = 'Implement user authentication';
-    (fetch as any).mockResolvedValueOnce({
+    (fetch as vi.Mock).mockResolvedValueOnce({
       ok: true,
       json: async () => ({ title: mockTitle }),
     });
@@ -55,7 +55,7 @@ describe('generateTaskTitle', () => {
   });
 
   it('should pass API key if provided', async () => {
-    (fetch as any).mockResolvedValueOnce({
+    (fetch as vi.Mock).mockResolvedValueOnce({
       ok: true,
       json: async () => ({ title: 'Test Title' }),
     });
@@ -75,7 +75,7 @@ describe('generateTaskTitle', () => {
   });
 
   it('should handle 401 unauthorized error', async () => {
-    (fetch as any).mockResolvedValueOnce({
+    (fetch as vi.Mock).mockResolvedValueOnce({
       ok: false,
       status: 401,
       json: async () => ({ error: 'Unauthorized' }),
@@ -90,7 +90,7 @@ describe('generateTaskTitle', () => {
   });
 
   it('should handle 403 forbidden error (no API key)', async () => {
-    (fetch as any).mockResolvedValueOnce({
+    (fetch as vi.Mock).mockResolvedValueOnce({
       ok: false,
       status: 403,
       json: async () => ({ error: 'No API key' }),
@@ -105,7 +105,7 @@ describe('generateTaskTitle', () => {
   });
 
   it('should handle API errors gracefully', async () => {
-    (fetch as any).mockResolvedValueOnce({
+    (fetch as vi.Mock).mockResolvedValueOnce({
       ok: false,
       status: 500,
       json: async () => ({ error: 'Internal server error' }),
@@ -120,7 +120,7 @@ describe('generateTaskTitle', () => {
   });
 
   it('should handle network errors', async () => {
-    (fetch as any).mockRejectedValueOnce(new Error('Network error'));
+    (fetch as vi.Mock).mockRejectedValueOnce(new Error('Network error'));
 
     const result = await generateTaskTitle('Test description');
 
@@ -131,7 +131,7 @@ describe('generateTaskTitle', () => {
   });
 
   it('should trim description before sending', async () => {
-    (fetch as any).mockResolvedValueOnce({
+    (fetch as vi.Mock).mockResolvedValueOnce({
       ok: true,
       json: async () => ({ title: 'Test Title' }),
     });

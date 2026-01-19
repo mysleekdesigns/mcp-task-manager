@@ -1,20 +1,10 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { GET, POST } from '@/app/api/mcp/route';
 import { GET as GET_BY_ID, PUT, DELETE } from '@/app/api/mcp/[id]/route';
 import { NextRequest } from 'next/server';
 import { prisma } from '@/lib/db';
 import * as authModule from '@/lib/auth';
-
-// Helper function to create request with JSON body
-function createPostRequest(body: any): NextRequest {
-  return new NextRequest('http://localhost/api/mcp', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-  });
-}
+import type { Session } from 'next-auth';
 
 // Mock the database and auth modules
 vi.mock('@/lib/db', () => ({
@@ -104,7 +94,7 @@ describe('MCP API Routes', () => {
     it('should return MCP configs for authenticated user', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       vi.mocked(prisma.mcpConfig.findMany).mockResolvedValue([mockMcpConfig]);
 
@@ -122,13 +112,13 @@ describe('MCP API Routes', () => {
     it('should filter configs by projectId when provided', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       vi.mocked(prisma.mcpConfig.findMany).mockResolvedValue([mockMcpConfig]);
 
       const request = new NextRequest('http://localhost/api/mcp?projectId=project-1');
       const response = await GET(request);
-      const data = await response.json();
+      await response.json();
 
       expect(response.status).toBe(200);
       expect(vi.mocked(prisma.mcpConfig.findMany)).toHaveBeenCalledWith(
@@ -143,7 +133,7 @@ describe('MCP API Routes', () => {
     it('should return empty array when no configs found', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       vi.mocked(prisma.mcpConfig.findMany).mockResolvedValue([]);
 
@@ -159,7 +149,7 @@ describe('MCP API Routes', () => {
     it('should return 500 on database error', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       vi.mocked(prisma.mcpConfig.findMany).mockRejectedValue(
         new Error('Database error')
@@ -197,7 +187,7 @@ describe('MCP API Routes', () => {
     it('should return 400 when required fields are missing', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       const request = new NextRequest('http://localhost/api/mcp', {
         method: 'POST',
@@ -217,7 +207,7 @@ describe('MCP API Routes', () => {
     it('should return 400 when name is empty', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       const request = new NextRequest('http://localhost/api/mcp', {
         method: 'POST',
@@ -229,7 +219,7 @@ describe('MCP API Routes', () => {
       });
 
       const response = await POST(request);
-      const data = await response.json();
+      await response.json();
 
       expect(response.status).toBe(400);
     });
@@ -237,7 +227,7 @@ describe('MCP API Routes', () => {
     it('should return 400 when type is invalid', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       const request = new NextRequest('http://localhost/api/mcp', {
         method: 'POST',
@@ -249,7 +239,7 @@ describe('MCP API Routes', () => {
       });
 
       const response = await POST(request);
-      const data = await response.json();
+      await response.json();
 
       expect(response.status).toBe(400);
     });
@@ -273,7 +263,7 @@ describe('MCP API Routes', () => {
     it('should return 404 when config not found', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       vi.mocked(prisma.mcpConfig.findUnique).mockResolvedValue(null);
 
@@ -290,7 +280,7 @@ describe('MCP API Routes', () => {
     it('should return 403 when user is not project member', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       vi.mocked(prisma.mcpConfig.findUnique).mockResolvedValue({
         ...mockMcpConfig,
@@ -313,7 +303,7 @@ describe('MCP API Routes', () => {
     it('should return MCP config when user is project member', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       vi.mocked(prisma.mcpConfig.findUnique).mockResolvedValue({
         ...mockMcpConfig,
@@ -356,7 +346,7 @@ describe('MCP API Routes', () => {
     it('should return 404 when config not found', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       vi.mocked(prisma.mcpConfig.findUnique).mockResolvedValue(null);
 
@@ -377,7 +367,7 @@ describe('MCP API Routes', () => {
     it('should return 403 when user is not project member', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       vi.mocked(prisma.mcpConfig.findUnique).mockResolvedValue({
         ...mockMcpConfig,
@@ -404,7 +394,7 @@ describe('MCP API Routes', () => {
     it('should return 403 when user has VIEWER role', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       vi.mocked(prisma.mcpConfig.findUnique).mockResolvedValue({
         ...mockMcpConfig,
@@ -431,7 +421,7 @@ describe('MCP API Routes', () => {
     it('should update config name with OWNER role', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       vi.mocked(prisma.mcpConfig.findUnique).mockResolvedValue({
         ...mockMcpConfig,
@@ -473,7 +463,7 @@ describe('MCP API Routes', () => {
     it('should update config enabled status', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       vi.mocked(prisma.mcpConfig.findUnique).mockResolvedValue({
         ...mockMcpConfig,
@@ -507,7 +497,7 @@ describe('MCP API Routes', () => {
     it('should update config type', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       vi.mocked(prisma.mcpConfig.findUnique).mockResolvedValue({
         ...mockMcpConfig,
@@ -541,7 +531,7 @@ describe('MCP API Routes', () => {
     it('should return 400 for invalid type in update', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       const request = new NextRequest('http://localhost/api/mcp/mcp-1', {
         method: 'PUT',
@@ -551,7 +541,7 @@ describe('MCP API Routes', () => {
       const response = await PUT(request, {
         params: Promise.resolve({ id: 'mcp-1' }),
       });
-      const data = await response.json();
+      await response.json();
 
       expect(response.status).toBe(400);
     });
@@ -559,7 +549,7 @@ describe('MCP API Routes', () => {
     it('should update config with MEMBER role', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       vi.mocked(prisma.mcpConfig.findUnique).mockResolvedValue({
         ...mockMcpConfig,
@@ -607,7 +597,7 @@ describe('MCP API Routes', () => {
     it('should return 404 when config not found', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       vi.mocked(prisma.mcpConfig.findUnique).mockResolvedValue(null);
 
@@ -627,7 +617,7 @@ describe('MCP API Routes', () => {
     it('should return 403 when user is not project member', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       vi.mocked(prisma.mcpConfig.findUnique).mockResolvedValue({
         ...mockMcpConfig,
@@ -653,7 +643,7 @@ describe('MCP API Routes', () => {
     it('should return 403 when user has VIEWER role', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       vi.mocked(prisma.mcpConfig.findUnique).mockResolvedValue({
         ...mockMcpConfig,
@@ -679,7 +669,7 @@ describe('MCP API Routes', () => {
     it('should delete config with OWNER role', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       vi.mocked(prisma.mcpConfig.findUnique).mockResolvedValue({
         ...mockMcpConfig,
@@ -710,7 +700,7 @@ describe('MCP API Routes', () => {
     it('should delete config with MEMBER role', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       vi.mocked(prisma.mcpConfig.findUnique).mockResolvedValue({
         ...mockMcpConfig,
@@ -736,7 +726,7 @@ describe('MCP API Routes', () => {
     it('should return 403 for ADMIN role in edge case', async () => {
       vi.mocked(authModule.auth).mockResolvedValue({
         user: mockUser,
-      } as any);
+      } as Session);
 
       const mockMemberAdmin = {
         ...mockMemberOwner,

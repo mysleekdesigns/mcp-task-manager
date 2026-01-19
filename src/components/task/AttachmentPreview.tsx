@@ -54,6 +54,7 @@ export function AttachmentPreview({
           >
             <div className="aspect-square flex items-center justify-center p-3">
               {isImage(attachment.mimeType) ? (
+                // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={attachment.content}
                   alt={attachment.name}

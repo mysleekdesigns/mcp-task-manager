@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import {
   Card,
   CardContent,
@@ -117,11 +117,7 @@ export function InsightsDashboard({ projectId }: { projectId?: string }) {
   const [error, setError] = useState<string | null>(null);
   const [timeRange, setTimeRange] = useState('30d');
 
-  useEffect(() => {
-    fetchInsights();
-  }, [projectId, timeRange]);
-
-  async function fetchInsights() {
+  const fetchInsights = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -142,7 +138,11 @@ export function InsightsDashboard({ projectId }: { projectId?: string }) {
     } finally {
       setLoading(false);
     }
-  }
+  }, [projectId, timeRange]);
+
+  useEffect(() => {
+    fetchInsights();
+  }, [fetchInsights]);
 
   if (loading) {
     return (
@@ -513,14 +513,23 @@ function mergeTimeSeries(
 }
 
 // Custom label renderer for pie charts
+interface CustomLabelProps {
+  cx?: number
+  cy?: number
+  midAngle?: number
+  innerRadius?: number
+  outerRadius?: number
+  percent?: number
+}
+
 function renderCustomizedLabel({
-  cx,
-  cy,
-  midAngle,
-  innerRadius,
-  outerRadius,
-  percent,
-}: any) {
+  cx = 0,
+  cy = 0,
+  midAngle = 0,
+  innerRadius = 0,
+  outerRadius = 0,
+  percent = 0,
+}: CustomLabelProps) {
   const RADIAN = Math.PI / 180;
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);

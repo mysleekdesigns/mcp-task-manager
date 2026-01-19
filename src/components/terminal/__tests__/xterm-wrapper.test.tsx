@@ -5,7 +5,7 @@ import { Terminal } from '@xterm/xterm';
 
 // Mock xterm and addons
 vi.mock('@xterm/xterm', () => {
-  const TerminalMock = vi.fn(function (options?: any) {
+  const TerminalMock = vi.fn(function (this: Record<string, unknown>, options?: Record<string, unknown>) {
     this.open = vi.fn();
     this.write = vi.fn();
     this.dispose = vi.fn();
@@ -22,7 +22,7 @@ vi.mock('@xterm/xterm', () => {
 });
 
 vi.mock('@xterm/addon-fit', () => {
-  const FitAddonMock = vi.fn(function () {
+  const FitAddonMock = vi.fn(function (this: Record<string, unknown>) {
     this.fit = vi.fn();
     this.dispose = vi.fn();
   });
@@ -38,9 +38,29 @@ vi.mock('next-themes', () => ({
   }),
 }));
 
+interface MockWebSocketData {
+  send: vi.Mock;
+  close: vi.Mock;
+  readyState: number;
+  onopen: (() => void) | null;
+  onmessage: ((event: { data: string }) => void) | null;
+  onerror: ((event: Event) => void) | null;
+  onclose: ((event: { code: number; reason: string }) => void) | null;
+  instance?: MockWebSocketInstance;
+}
+
+interface MockWebSocketInstance extends Record<string, unknown> {
+  readyState: number;
+  send: vi.Mock;
+  close: vi.Mock;
+  onopen: (() => void) | null;
+  onmessage: ((event: { data: string }) => void) | null;
+  onerror: ((event: Event) => void) | null;
+  onclose: ((event: { code: number; reason: string }) => void) | null;
+}
+
 describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
-  let mockWebSocket: any;
-  let lastWebSocketInstance: any;
+  let mockWebSocket: MockWebSocketData;
 
   const defaultProps = {
     terminalId: 'test-terminal-1',
@@ -52,15 +72,15 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
 
   beforeEach(() => {
     // Mock WebSocket - using a constructor function so `new WebSocket()` works
-    const WebSocketMock = vi.fn(function (this: any) {
+    const WebSocketMock = vi.fn(function (this: MockWebSocketInstance) {
       mockWebSocket = {
         send: vi.fn(),
         close: vi.fn(),
-        readyState: (WebSocket as any).OPEN,
-        onopen: null as any,
-        onmessage: null as any,
-        onerror: null as any,
-        onclose: null as any,
+        readyState: (WebSocket as unknown as Record<string, number>).OPEN,
+        onopen: null,
+        onmessage: null,
+        onerror: null,
+        onclose: null,
       };
 
       // Add getter/setter for readyState
@@ -75,28 +95,28 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       // Add getter/setter for event handlers
       Object.defineProperty(this, 'onopen', {
         get: () => mockWebSocket.onopen,
-        set: (val: any) => {
+        set: (val: (() => void) | null) => {
           mockWebSocket.onopen = val;
         },
         configurable: true,
       });
       Object.defineProperty(this, 'onmessage', {
         get: () => mockWebSocket.onmessage,
-        set: (val: any) => {
+        set: (val: ((event: { data: string }) => void) | null) => {
           mockWebSocket.onmessage = val;
         },
         configurable: true,
       });
       Object.defineProperty(this, 'onerror', {
         get: () => mockWebSocket.onerror,
-        set: (val: any) => {
+        set: (val: ((event: Event) => void) | null) => {
           mockWebSocket.onerror = val;
         },
         configurable: true,
       });
       Object.defineProperty(this, 'onclose', {
         get: () => mockWebSocket.onclose,
-        set: (val: any) => {
+        set: (val: ((event: { code: number; reason: string }) => void) | null) => {
           mockWebSocket.onclose = val;
         },
         configurable: true,
@@ -106,25 +126,25 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       this.send = mockWebSocket.send;
       this.close = mockWebSocket.close;
 
-      // Store the instance for test access
-      lastWebSocketInstance = this;
+      // Store the instance for test access through mockWebSocket reference
+      mockWebSocket.instance = this;
     });
 
-    (global as any).WebSocket = WebSocketMock;
+    (global as unknown as Record<string, unknown>).WebSocket = WebSocketMock;
 
     // Add WebSocket constants
-    (global as any).WebSocket.CONNECTING = 0;
-    (global as any).WebSocket.OPEN = 1;
-    (global as any).WebSocket.CLOSING = 2;
-    (global as any).WebSocket.CLOSED = 3;
+    (global as unknown as Record<string, Record<string, number>>).WebSocket.CONNECTING = 0;
+    (global as unknown as Record<string, Record<string, number>>).WebSocket.OPEN = 1;
+    (global as unknown as Record<string, Record<string, number>>).WebSocket.CLOSING = 2;
+    (global as unknown as Record<string, Record<string, number>>).WebSocket.CLOSED = 3;
 
     // Mock ResizeObserver - also needs to be a constructor
-    const ResizeObserverMock = vi.fn(function (this: any) {
+    const ResizeObserverMock = vi.fn(function (this: Record<string, unknown>) {
       this.observe = vi.fn();
       this.disconnect = vi.fn();
     });
 
-    (global as any).ResizeObserver = ResizeObserverMock;
+    (global as unknown as Record<string, unknown>).ResizeObserver = ResizeObserverMock;
   });
 
   afterEach(() => {
@@ -141,8 +161,8 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       render(<XTermWrapper {...defaultProps} />);
 
       // Simulate WebSocket connection
-      if (lastWebSocketInstance?.onopen) {
-        lastWebSocketInstance.onopen();
+      if (mockWebSocket.instance?.onopen) {
+        mockWebSocket.instance.onopen();
       }
 
       await waitFor(() => {
@@ -155,13 +175,13 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       render(<XTermWrapper {...defaultProps} onReady={onReady} />);
 
       // Simulate WebSocket connection
-      if (lastWebSocketInstance?.onopen) {
-        lastWebSocketInstance.onopen();
+      if (mockWebSocket.instance?.onopen) {
+        mockWebSocket.instance.onopen();
       }
 
       // Simulate terminal creation response
-      if (lastWebSocketInstance?.onmessage) {
-        lastWebSocketInstance.onmessage({
+      if (mockWebSocket.instance?.onmessage) {
+        mockWebSocket.instance.onmessage({
           data: JSON.stringify({ type: 'created', id: defaultProps.terminalId }),
         });
       }
@@ -176,8 +196,8 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
 
       // Simulate WebSocket error
       act(() => {
-        if (lastWebSocketInstance?.onerror) {
-          lastWebSocketInstance.onerror(new Event('error'));
+        if (mockWebSocket.instance?.onerror) {
+          mockWebSocket.instance.onerror(new Event('error'));
         }
       });
 
@@ -194,14 +214,14 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
 
   describe('Input Queue', () => {
     it('should queue input during connection phase', () => {
-      const { container } = render(<XTermWrapper {...defaultProps} />);
-      const terminalInstance = (Terminal as any).mock.results[0]?.value;
+      render(<XTermWrapper {...defaultProps} />);
+      const terminalInstance = (Terminal as unknown as vi.Mock).mock.results[0]?.value;
 
       // Get the onData callback
-      const onDataCallback = terminalInstance?.onData.mock.calls[0]?.[0];
+      const onDataCallback = terminalInstance?.onData.mock.calls[0]?.[0] as ((input: string) => void) | undefined;
 
       // Before connection is ready, WebSocket.OPEN should not be set
-      lastWebSocketInstance.readyState = (WebSocket as any).CONNECTING;
+      mockWebSocket.instance.readyState = (WebSocket as unknown as Record<string, number>).CONNECTING;
 
       // Simulate user typing
       if (onDataCallback) {
@@ -209,37 +229,37 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       }
 
       // Should NOT send immediately when not connected
-      expect(lastWebSocketInstance.send).not.toHaveBeenCalled();
+      expect(mockWebSocket.instance.send).not.toHaveBeenCalled();
     });
 
     it('should process queued input after connection is ready', async () => {
       render(<XTermWrapper {...defaultProps} />);
-      const terminalInstance = (Terminal as any).mock.results[0]?.value;
-      const onDataCallback = terminalInstance?.onData.mock.calls[0]?.[0];
+      const terminalInstance = (Terminal as unknown as vi.Mock).mock.results[0]?.value;
+      const onDataCallback = terminalInstance?.onData.mock.calls[0]?.[0] as ((input: string) => void) | undefined;
 
       // Queue input while connecting
-      lastWebSocketInstance.readyState = (WebSocket as any).CONNECTING;
+      mockWebSocket.instance.readyState = (WebSocket as unknown as Record<string, number>).CONNECTING;
       if (onDataCallback) {
         onDataCallback('queued input 1');
         onDataCallback('queued input 2');
       }
 
       // Now connect
-      lastWebSocketInstance.readyState = (WebSocket as any).OPEN;
-      if (lastWebSocketInstance?.onopen) {
-        lastWebSocketInstance.onopen();
+      mockWebSocket.instance.readyState = (WebSocket as unknown as Record<string, number>).OPEN;
+      if (mockWebSocket.instance?.onopen) {
+        mockWebSocket.instance.onopen();
       }
 
       // Simulate terminal creation
-      if (lastWebSocketInstance?.onmessage) {
-        lastWebSocketInstance.onmessage({
+      if (mockWebSocket.instance?.onmessage) {
+        mockWebSocket.instance.onmessage({
           data: JSON.stringify({ type: 'created', id: defaultProps.terminalId }),
         });
       }
 
       await waitFor(() => {
         // Should have sent create message + queued inputs
-        expect(lastWebSocketInstance.send).toHaveBeenCalled();
+        expect(mockWebSocket.instance.send).toHaveBeenCalled();
       });
     });
   });
@@ -249,8 +269,8 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       render(<XTermWrapper {...defaultProps} />);
 
       // Simulate WebSocket error
-      if (lastWebSocketInstance?.onerror) {
-        lastWebSocketInstance.onerror(new Event('error'));
+      if (mockWebSocket.instance?.onerror) {
+        mockWebSocket.instance.onerror(new Event('error'));
       }
 
       await waitFor(
@@ -266,8 +286,8 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
 
       // Simulate WebSocket close with non-normal code (use 1011 which is not an auth error)
       act(() => {
-        if (lastWebSocketInstance?.onclose) {
-          lastWebSocketInstance.onclose({ code: 1011, reason: 'Server error' });
+        if (mockWebSocket.instance?.onclose) {
+          mockWebSocket.instance.onclose({ code: 1011, reason: 'Server error' });
         }
       });
 
@@ -284,8 +304,8 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
 
       // Simulate multiple connection failures
       for (let i = 0; i < 4; i++) {
-        if (lastWebSocketInstance?.onclose) {
-          lastWebSocketInstance.onclose({ code: 1006, reason: 'Connection failed' });
+        if (mockWebSocket.instance?.onclose) {
+          mockWebSocket.instance.onclose({ code: 1006, reason: 'Connection failed' });
         }
         await new Promise((resolve) => setTimeout(resolve, 100));
       }
@@ -302,8 +322,8 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       render(<XTermWrapper {...defaultProps} />);
 
       // Simulate server error message
-      if (lastWebSocketInstance?.onmessage) {
-        lastWebSocketInstance.onmessage({
+      if (mockWebSocket.instance?.onmessage) {
+        mockWebSocket.instance.onmessage({
           data: JSON.stringify({
             type: 'error',
             message: 'Failed to spawn terminal',
@@ -320,22 +340,22 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
   describe('Message Routing', () => {
     it('should handle output messages and write to terminal', async () => {
       render(<XTermWrapper {...defaultProps} />);
-      const terminalInstance = (Terminal as any).mock.results[0]?.value;
+      const terminalInstance = (Terminal as unknown as vi.Mock).mock.results[0]?.value;
 
       // Connect and create terminal
-      if (lastWebSocketInstance?.onopen) {
-        lastWebSocketInstance.onopen();
+      if (mockWebSocket.instance?.onopen) {
+        mockWebSocket.instance.onopen();
       }
 
-      if (lastWebSocketInstance?.onmessage) {
-        lastWebSocketInstance.onmessage({
+      if (mockWebSocket.instance?.onmessage) {
+        mockWebSocket.instance.onmessage({
           data: JSON.stringify({ type: 'created', id: defaultProps.terminalId }),
         });
       }
 
       // Simulate output message
-      if (lastWebSocketInstance?.onmessage) {
-        lastWebSocketInstance.onmessage({
+      if (mockWebSocket.instance?.onmessage) {
+        mockWebSocket.instance.onmessage({
           data: JSON.stringify({
             type: 'output',
             id: defaultProps.terminalId,
@@ -351,12 +371,12 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
 
     it('should handle claude_status messages silently', async () => {
       render(<XTermWrapper {...defaultProps} />);
-      const terminalInstance = (Terminal as any).mock.results[0]?.value;
+      const terminalInstance = (Terminal as unknown as vi.Mock).mock.results[0]?.value;
       const writeCallCount = terminalInstance.write.mock.calls.length;
 
       // Simulate claude_status message
-      if (lastWebSocketInstance?.onmessage) {
-        lastWebSocketInstance.onmessage({
+      if (mockWebSocket.instance?.onmessage) {
+        mockWebSocket.instance.onmessage({
           data: JSON.stringify({
             type: 'claude_status',
             status: 'working',
@@ -374,8 +394,8 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       render(<XTermWrapper {...defaultProps} />);
 
       // Simulate unknown message type
-      if (lastWebSocketInstance?.onmessage) {
-        lastWebSocketInstance.onmessage({
+      if (mockWebSocket.instance?.onmessage) {
+        mockWebSocket.instance.onmessage({
           data: JSON.stringify({
             type: 'unknown_type',
             data: 'some data',
@@ -398,12 +418,12 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
   describe('Cleanup', () => {
     it('should cleanup resources on unmount', () => {
       const { unmount } = render(<XTermWrapper {...defaultProps} />);
-      const terminalInstance = (Terminal as any).mock.results[0]?.value;
+      const terminalInstance = (Terminal as unknown as vi.Mock).mock.results[0]?.value;
 
       unmount();
 
       expect(terminalInstance.dispose).toHaveBeenCalled();
-      expect(lastWebSocketInstance.close).toHaveBeenCalled();
+      expect(mockWebSocket.instance.close).toHaveBeenCalled();
     });
 
     it('should clear all timeouts on cleanup', async () => {
@@ -411,8 +431,8 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       const { unmount } = render(<XTermWrapper {...defaultProps} />);
 
       // Trigger a reconnect timeout
-      if (lastWebSocketInstance?.onclose) {
-        lastWebSocketInstance.onclose({ code: 1006, reason: 'Test' });
+      if (mockWebSocket.instance?.onclose) {
+        mockWebSocket.instance.onclose({ code: 1006, reason: 'Test' });
       }
 
       await new Promise((resolve) => setTimeout(resolve, 100));
@@ -436,8 +456,8 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       render(<XTermWrapper {...defaultProps} onExit={onExit} />);
 
       // Simulate terminal exit
-      if (lastWebSocketInstance?.onmessage) {
-        lastWebSocketInstance.onmessage({
+      if (mockWebSocket.instance?.onmessage) {
+        mockWebSocket.instance.onmessage({
           data: JSON.stringify({
             type: 'exit',
             id: defaultProps.terminalId,
@@ -455,8 +475,8 @@ describe('XTermWrapper - Phase 11.4 Terminal Polish', () => {
       render(<XTermWrapper {...defaultProps} />);
 
       // Simulate connection timeout
-      if (lastWebSocketInstance?.onmessage) {
-        lastWebSocketInstance.onmessage({
+      if (mockWebSocket.instance?.onmessage) {
+        mockWebSocket.instance.onmessage({
           data: JSON.stringify({
             type: 'error',
             message: 'Connection timeout - server not responding',

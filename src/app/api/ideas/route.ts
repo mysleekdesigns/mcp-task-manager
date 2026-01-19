@@ -19,7 +19,8 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const projectId = searchParams.get('projectId');
     const sortBy = searchParams.get('sortBy') || 'votes';
-    const sortDirection = searchParams.get('sortDirection') || 'desc';
+    const sortDirectionParam = searchParams.get('sortDirection') || 'desc';
+    const sortDirection = (sortDirectionParam === 'asc' || sortDirectionParam === 'desc' ? sortDirectionParam : 'desc') as 'asc' | 'desc';
     const status = searchParams.get('status');
 
     if (!projectId) {
@@ -47,7 +48,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Build orderBy clause
-    const orderBy: any = {};
+    const orderBy: Record<string, 'asc' | 'desc'> = {};
     if (sortBy === 'votes') {
       orderBy.votes = sortDirection;
     } else if (sortBy === 'date') {
@@ -57,7 +58,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Build where clause
-    const where: any = { projectId };
+    const where: Record<string, unknown> = { projectId };
     if (status) {
       where.status = status;
     }

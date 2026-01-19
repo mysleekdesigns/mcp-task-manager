@@ -109,11 +109,11 @@ describe('McpServerItem', () => {
       icon: 'Brain',
     };
 
-    const { container: container1 } = render(
+    render(
       <McpServerItem server={mockServer} enabled={false} onToggle={onToggle1} />
     );
 
-    const { container: container2 } = render(
+    render(
       <McpServerItem server={server2} enabled={true} onToggle={onToggle2} />
     );
 

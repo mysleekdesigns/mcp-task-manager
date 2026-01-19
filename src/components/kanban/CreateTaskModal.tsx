@@ -192,7 +192,8 @@ export function CreateTaskModal({
     })
 
     return () => subscription.unsubscribe()
-  }, [open, form.watch, saveDraft])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, saveDraft])
 
   // Update phaseConfig when profileId changes (but skip during restoration)
   React.useEffect(() => {
@@ -332,7 +333,7 @@ export function CreateTaskModal({
         throw new Error(error.error || "Failed to create task")
       }
 
-      const task = await response.json()
+      await response.json()
 
       toast.success("Task created successfully")
       form.reset()

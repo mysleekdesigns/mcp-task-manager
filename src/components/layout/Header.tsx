@@ -1,17 +1,22 @@
-import { auth } from '@/lib/auth';
-import { redirect } from 'next/navigation';
-import { SettingsIcon, PlusIcon } from 'lucide-react';
+"use client";
+
+import { useSession } from 'next-auth/react';
+import { SettingsIcon, PlusIcon, MenuIcon } from 'lucide-react';
 import { ProjectSelector } from './ProjectSelector';
 import { ThemeToggle } from './ThemeToggle';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
 
-export async function Header() {
-  const session = await auth();
+interface HeaderProps {
+  onMenuClick?: () => void;
+}
+
+export function Header({ onMenuClick }: HeaderProps) {
+  const { data: session } = useSession();
 
   if (!session?.user) {
-    redirect('/login');
+    return null;
   }
 
   // Generate initials from user name or email
@@ -32,10 +37,21 @@ export async function Header() {
 
   return (
     <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-6">
-      {/* Left side - Project Selector */}
-      <div className="flex items-center gap-4">
-        <ProjectSelector className="min-w-[200px]" />
-      </div>
+      {/* Mobile Menu Button */}
+      <Button
+        variant="ghost"
+        size="icon"
+        className="md:hidden text-muted-foreground hover:text-cyan-400"
+        onClick={onMenuClick}
+        aria-label="Open menu"
+      >
+        <MenuIcon className="size-5" />
+      </Button>
+
+        {/* Left side - Project Selector */}
+        <div className="flex items-center gap-4">
+          <ProjectSelector className="min-w-[200px]" />
+        </div>
 
       {/* Spacer */}
       <div className="flex-1" />

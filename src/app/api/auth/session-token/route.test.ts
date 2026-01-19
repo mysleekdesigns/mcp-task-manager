@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { GET } from './route';
+import type { Session } from 'next-auth';
 
 // Mock auth
 vi.mock('@/lib/auth', () => ({
@@ -32,7 +33,7 @@ describe('GET /api/auth/session-token', () => {
     vi.mocked(auth).mockResolvedValue({
       user: { email: 'test@example.com' },
       expires: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
-    } as any);
+    } as Session);
 
     const response = await GET();
 

@@ -137,7 +137,7 @@ describe('InsightsDashboard', () => {
       json: async () => mockInsightsData,
     } as Response);
 
-    const { rerender } = render(<InsightsDashboard />);
+    render(<InsightsDashboard />);
 
     await waitFor(() => {
       expect(screen.getByText('Total Tasks')).toBeInTheDocument();

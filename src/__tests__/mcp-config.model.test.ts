@@ -430,7 +430,6 @@ describe('McpConfig Model', () => {
       // This test verifies the schema constraint
       // In practice, Prisma will handle cascade deletes automatically
       // We're just documenting the expected behavior
-      const mcpConfigsToDelete = [mockMcpConfig, mockMcpConfigWithoutConfig];
 
       // When a project is deleted, all its McpConfigs should be deleted too
       // This is defined in the schema as: onDelete: Cascade

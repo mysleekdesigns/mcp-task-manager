@@ -2,7 +2,7 @@
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Bot, CircleDot, CircleX, Loader2, RotateCw } from 'lucide-react';
+import { CircleDot, CircleX, Loader2, RotateCw } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export type ClaudeStatus = 'launching' | 'active' | 'exited' | 'failed' | null;

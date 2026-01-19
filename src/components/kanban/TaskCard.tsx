@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { MoreVertical, Play, Pause } from 'lucide-react';
 import { formatDistanceToNow } from '@/lib/utils';
+import type { TaskStatus, Priority } from '@/types';
 
 interface TaskPhase {
   id: string;
@@ -23,12 +24,13 @@ interface TaskPhase {
 interface Task {
   id: string;
   title: string;
-  description?: string | null;
-  status: string;
-  priority: string;
+  description: string | null;
+  status: TaskStatus;
+  priority: Priority;
   tags: string[];
   phases: TaskPhase[];
   createdAt: Date;
+  branchName: string | null;
 }
 
 interface TaskCardProps {

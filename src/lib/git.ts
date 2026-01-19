@@ -495,7 +495,7 @@ export async function isGitRepository(repoPath: string): Promise<boolean> {
       binary: 'git',
     });
     // Check if git thinks this is a repository (searches parent directories)
-    const result = await git.rev(['parse', '--git-dir']);
+    const result = await git.revparse(['--git-dir']);
     // If the git-dir is .git (relative) or points to this directory, it's a direct repo
     return result.trim() === '.git' || result.trim() === gitDir;
   } catch {

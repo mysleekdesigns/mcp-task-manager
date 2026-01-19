@@ -1,9 +1,11 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { NextRequest } from 'next/server';
 import { GET as getIdeas, POST as createIdea } from '@/app/api/ideas/route';
-import { GET as getIdea, PUT as updateIdea, DELETE as deleteIdea } from '@/app/api/ideas/[id]/route';
+import { PUT as updateIdea, DELETE as deleteIdea } from '@/app/api/ideas/[id]/route';
 import { POST as voteOnIdea } from '@/app/api/ideas/[id]/vote/route';
 import { POST as convertIdea } from '@/app/api/ideas/[id]/convert/route';
+import type { Idea, ProjectMember, Feature, User } from '@prisma/client';
+import type { Session } from 'next-auth';
 
 // Mock dependencies
 vi.mock('@/lib/auth', () => ({
@@ -36,7 +38,7 @@ import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 
 describe('Ideas API', () => {
-  const mockSession = {
+  const mockSession: Session = {
     user: {
       id: 'clh1234567890abcdefghib',
       email: 'test@example.com',
@@ -44,19 +46,26 @@ describe('Ideas API', () => {
     },
   };
 
-  const mockProject = {
-    id: 'clh1234567890abcdefghij',
-    name: 'Test Project',
-  };
-
-  const mockProjectMember = {
+  const mockProjectMember: ProjectMember = {
     id: 'clh1234567890abcdefghia',
     userId: 'clh1234567890abcdefghib',
     projectId: 'clh1234567890abcdefghij',
     role: 'MEMBER',
+    createdAt: new Date(),
   };
 
-  const mockIdea = {
+  const mockUser: User = {
+    id: 'clh1234567890abcdefghib',
+    name: 'Test User',
+    email: 'test@example.com',
+    emailVerified: null,
+    image: null,
+    password: null,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
+
+  const mockIdea: Idea = {
     id: 'clh1234567890abcdefghik',
     title: 'Test Idea',
     description: 'Test Description',
@@ -66,12 +75,11 @@ describe('Ideas API', () => {
     createdById: 'clh1234567890abcdefghib',
     createdAt: new Date(),
     updatedAt: new Date(),
-    createdBy: {
-      id: 'clh1234567890abcdefghib',
-      name: 'Test User',
-      email: 'test@example.com',
-      image: null,
-    },
+  };
+
+  const mockIdeaWithUser = {
+    ...mockIdea,
+    createdBy: mockUser,
   };
 
   beforeEach(() => {
@@ -80,9 +88,9 @@ describe('Ideas API', () => {
 
   describe('GET /api/ideas', () => {
     it('should return ideas for a project', async () => {
-      vi.mocked(auth).mockResolvedValue(mockSession as any);
-      vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMember as any);
-      vi.mocked(prisma.idea.findMany).mockResolvedValue([mockIdea] as any);
+      vi.mocked(auth as vi.Mock).mockResolvedValue(mockSession);
+      vi.mocked(prisma.projectMember.findUnique as vi.Mock).mockResolvedValue(mockProjectMember);
+      vi.mocked(prisma.idea.findMany as vi.Mock).mockResolvedValue([mockIdeaWithUser]);
 
       const request = new NextRequest(
         new URL('http://localhost:3000/api/ideas?projectId=clh1234567890abcdefghij')
@@ -105,7 +113,7 @@ describe('Ideas API', () => {
     });
 
     it('should return 401 if not authenticated', async () => {
-      vi.mocked(auth).mockResolvedValue(null);
+      vi.mocked(auth as vi.Mock).mockResolvedValue(null);
 
       const request = new NextRequest(
         new URL('http://localhost:3000/api/ideas?projectId=clh1234567890abcdefghij')
@@ -117,8 +125,8 @@ describe('Ideas API', () => {
     });
 
     it('should return 403 if user is not a project member', async () => {
-      vi.mocked(auth).mockResolvedValue(mockSession as any);
-      vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(null);
+      vi.mocked(auth as vi.Mock).mockResolvedValue(mockSession);
+      vi.mocked(prisma.projectMember.findUnique as vi.Mock).mockResolvedValue(null);
 
       const request = new NextRequest(
         new URL('http://localhost:3000/api/ideas?projectId=clh1234567890abcdefghij')
@@ -130,9 +138,9 @@ describe('Ideas API', () => {
     });
 
     it('should filter by status', async () => {
-      vi.mocked(auth).mockResolvedValue(mockSession as any);
-      vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMember as any);
-      vi.mocked(prisma.idea.findMany).mockResolvedValue([mockIdea] as any);
+      vi.mocked(auth as vi.Mock).mockResolvedValue(mockSession);
+      vi.mocked(prisma.projectMember.findUnique as vi.Mock).mockResolvedValue(mockProjectMember);
+      vi.mocked(prisma.idea.findMany as vi.Mock).mockResolvedValue([mockIdeaWithUser]);
 
       const request = new NextRequest(
         new URL('http://localhost:3000/api/ideas?projectId=clh1234567890abcdefghij&status=PENDING')
@@ -150,9 +158,9 @@ describe('Ideas API', () => {
 
   describe('POST /api/ideas', () => {
     it('should create a new idea', async () => {
-      vi.mocked(auth).mockResolvedValue(mockSession as any);
-      vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMember as any);
-      vi.mocked(prisma.idea.create).mockResolvedValue(mockIdea as any);
+      vi.mocked(auth as vi.Mock).mockResolvedValue(mockSession);
+      vi.mocked(prisma.projectMember.findUnique as vi.Mock).mockResolvedValue(mockProjectMember);
+      vi.mocked(prisma.idea.create as vi.Mock).mockResolvedValue(mockIdeaWithUser);
 
       const request = new NextRequest('http://localhost:3000/api/ideas', {
         method: 'POST',
@@ -189,7 +197,7 @@ describe('Ideas API', () => {
     });
 
     it('should return 400 for invalid data', async () => {
-      vi.mocked(auth).mockResolvedValue(mockSession as any);
+      vi.mocked(auth as vi.Mock).mockResolvedValue(mockSession);
 
       const request = new NextRequest('http://localhost:3000/api/ideas', {
         method: 'POST',
@@ -207,11 +215,11 @@ describe('Ideas API', () => {
 
   describe('PUT /api/ideas/[id]', () => {
     it('should update an idea', async () => {
-      const updatedIdea = { ...mockIdea, title: 'Updated Title' };
-      vi.mocked(auth).mockResolvedValue(mockSession as any);
-      vi.mocked(prisma.idea.findUnique).mockResolvedValue(mockIdea as any);
-      vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMember as any);
-      vi.mocked(prisma.idea.update).mockResolvedValue(updatedIdea as any);
+      const updatedIdea: Idea = { ...mockIdea, title: 'Updated Title' };
+      vi.mocked(auth as vi.Mock).mockResolvedValue(mockSession);
+      vi.mocked(prisma.idea.findUnique as vi.Mock).mockResolvedValue(mockIdea);
+      vi.mocked(prisma.projectMember.findUnique as vi.Mock).mockResolvedValue(mockProjectMember);
+      vi.mocked(prisma.idea.update as vi.Mock).mockResolvedValue(updatedIdea);
 
       const request = new NextRequest('http://localhost:3000/api/ideas/idea-1', {
         method: 'PUT',
@@ -226,10 +234,10 @@ describe('Ideas API', () => {
     });
 
     it('should return 403 if user is not creator or admin', async () => {
-      const otherUserIdea = { ...mockIdea, createdById: 'other-user' };
-      vi.mocked(auth).mockResolvedValue(mockSession as any);
-      vi.mocked(prisma.idea.findUnique).mockResolvedValue(otherUserIdea as any);
-      vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMember as any);
+      const otherUserIdea: Idea = { ...mockIdea, createdById: 'other-user' };
+      vi.mocked(auth as vi.Mock).mockResolvedValue(mockSession);
+      vi.mocked(prisma.idea.findUnique as vi.Mock).mockResolvedValue(otherUserIdea);
+      vi.mocked(prisma.projectMember.findUnique as vi.Mock).mockResolvedValue(mockProjectMember);
 
       const request = new NextRequest('http://localhost:3000/api/ideas/idea-1', {
         method: 'PUT',
@@ -244,10 +252,10 @@ describe('Ideas API', () => {
 
   describe('DELETE /api/ideas/[id]', () => {
     it('should delete an idea', async () => {
-      vi.mocked(auth).mockResolvedValue(mockSession as any);
-      vi.mocked(prisma.idea.findUnique).mockResolvedValue(mockIdea as any);
-      vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMember as any);
-      vi.mocked(prisma.idea.delete).mockResolvedValue(mockIdea as any);
+      vi.mocked(auth as vi.Mock).mockResolvedValue(mockSession);
+      vi.mocked(prisma.idea.findUnique as vi.Mock).mockResolvedValue(mockIdea);
+      vi.mocked(prisma.projectMember.findUnique as vi.Mock).mockResolvedValue(mockProjectMember);
+      vi.mocked(prisma.idea.delete as vi.Mock).mockResolvedValue(mockIdea);
 
       const request = new NextRequest('http://localhost:3000/api/ideas/idea-1', {
         method: 'DELETE',
@@ -263,11 +271,11 @@ describe('Ideas API', () => {
 
   describe('POST /api/ideas/[id]/vote', () => {
     it('should upvote an idea', async () => {
-      const upvotedIdea = { ...mockIdea, votes: 6 };
-      vi.mocked(auth).mockResolvedValue(mockSession as any);
-      vi.mocked(prisma.idea.findUnique).mockResolvedValue(mockIdea as any);
-      vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMember as any);
-      vi.mocked(prisma.idea.update).mockResolvedValue(upvotedIdea as any);
+      const upvotedIdea: Idea = { ...mockIdea, votes: 6 };
+      vi.mocked(auth as vi.Mock).mockResolvedValue(mockSession);
+      vi.mocked(prisma.idea.findUnique as vi.Mock).mockResolvedValue(mockIdea);
+      vi.mocked(prisma.projectMember.findUnique as vi.Mock).mockResolvedValue(mockProjectMember);
+      vi.mocked(prisma.idea.update as vi.Mock).mockResolvedValue(upvotedIdea);
 
       const request = new NextRequest('http://localhost:3000/api/ideas/idea-1/vote', {
         method: 'POST',
@@ -282,11 +290,11 @@ describe('Ideas API', () => {
     });
 
     it('should downvote an idea', async () => {
-      const downvotedIdea = { ...mockIdea, votes: 4 };
-      vi.mocked(auth).mockResolvedValue(mockSession as any);
-      vi.mocked(prisma.idea.findUnique).mockResolvedValue(mockIdea as any);
-      vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMember as any);
-      vi.mocked(prisma.idea.update).mockResolvedValue(downvotedIdea as any);
+      const downvotedIdea: Idea = { ...mockIdea, votes: 4 };
+      vi.mocked(auth as vi.Mock).mockResolvedValue(mockSession);
+      vi.mocked(prisma.idea.findUnique as vi.Mock).mockResolvedValue(mockIdea);
+      vi.mocked(prisma.projectMember.findUnique as vi.Mock).mockResolvedValue(mockProjectMember);
+      vi.mocked(prisma.idea.update as vi.Mock).mockResolvedValue(downvotedIdea);
 
       const request = new NextRequest('http://localhost:3000/api/ideas/idea-1/vote', {
         method: 'POST',
@@ -303,24 +311,24 @@ describe('Ideas API', () => {
 
   describe('POST /api/ideas/[id]/convert', () => {
     it('should convert an idea to a feature', async () => {
-      const convertedIdea = { ...mockIdea, status: 'CONVERTED' };
-      const mockFeature = {
+      const convertedIdea: Idea = { ...mockIdea, status: 'CONVERTED' };
+      const mockFeature: Feature = {
         id: 'feature-1',
         title: 'Test Idea',
         description: 'Test Description',
         priority: 'SHOULD',
         status: 'planned',
         projectId: 'clh1234567890abcdefghij',
+        phaseId: null,
         createdAt: new Date(),
       };
 
-      vi.mocked(auth).mockResolvedValue(mockSession as any);
-      vi.mocked(prisma.idea.findUnique).mockResolvedValue(mockIdea as any);
-      vi.mocked(prisma.projectMember.findUnique).mockResolvedValue({
-        ...mockProjectMember,
-        role: 'ADMIN',
-      } as any);
-      vi.mocked(prisma.$transaction).mockResolvedValue([mockFeature, convertedIdea] as any);
+      const adminProjectMember: ProjectMember = { ...mockProjectMember, role: 'ADMIN' };
+
+      vi.mocked(auth as vi.Mock).mockResolvedValue(mockSession);
+      vi.mocked(prisma.idea.findUnique as vi.Mock).mockResolvedValue(mockIdea);
+      vi.mocked(prisma.projectMember.findUnique as vi.Mock).mockResolvedValue(adminProjectMember);
+      vi.mocked(prisma.$transaction as vi.Mock).mockResolvedValue([mockFeature, convertedIdea]);
 
       const request = new NextRequest('http://localhost:3000/api/ideas/idea-1/convert', {
         method: 'POST',
@@ -336,9 +344,9 @@ describe('Ideas API', () => {
     });
 
     it('should return 403 if user is not admin or owner', async () => {
-      vi.mocked(auth).mockResolvedValue(mockSession as any);
-      vi.mocked(prisma.idea.findUnique).mockResolvedValue(mockIdea as any);
-      vi.mocked(prisma.projectMember.findUnique).mockResolvedValue(mockProjectMember as any);
+      vi.mocked(auth as vi.Mock).mockResolvedValue(mockSession);
+      vi.mocked(prisma.idea.findUnique as vi.Mock).mockResolvedValue(mockIdea);
+      vi.mocked(prisma.projectMember.findUnique as vi.Mock).mockResolvedValue(mockProjectMember);
 
       const request = new NextRequest('http://localhost:3000/api/ideas/idea-1/convert', {
         method: 'POST',
@@ -351,13 +359,12 @@ describe('Ideas API', () => {
     });
 
     it('should return 400 if idea is already converted', async () => {
-      const convertedIdea = { ...mockIdea, status: 'CONVERTED' };
-      vi.mocked(auth).mockResolvedValue(mockSession as any);
-      vi.mocked(prisma.idea.findUnique).mockResolvedValue(convertedIdea as any);
-      vi.mocked(prisma.projectMember.findUnique).mockResolvedValue({
-        ...mockProjectMember,
-        role: 'ADMIN',
-      } as any);
+      const convertedIdea: Idea = { ...mockIdea, status: 'CONVERTED' };
+      const adminProjectMember: ProjectMember = { ...mockProjectMember, role: 'ADMIN' };
+
+      vi.mocked(auth as vi.Mock).mockResolvedValue(mockSession);
+      vi.mocked(prisma.idea.findUnique as vi.Mock).mockResolvedValue(convertedIdea);
+      vi.mocked(prisma.projectMember.findUnique as vi.Mock).mockResolvedValue(adminProjectMember);
 
       const request = new NextRequest('http://localhost:3000/api/ideas/idea-1/convert', {
         method: 'POST',

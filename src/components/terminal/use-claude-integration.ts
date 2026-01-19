@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 
 export type ClaudeStatus = 'launching' | 'active' | 'exited' | 'failed' | null;
 
@@ -25,7 +25,7 @@ export function useClaudeIntegration({
   const hasAutoLaunched = useRef(false);
 
   // Function to manually launch Claude
-  const launchClaude = () => {
+  const launchClaude = useCallback(() => {
     if (ws?.readyState === WebSocket.OPEN) {
       console.log(`[Claude] Launching Claude for terminal ${terminalId}`);
       ws.send(
@@ -37,7 +37,7 @@ export function useClaudeIntegration({
     } else {
       console.warn('[Claude] Cannot launch Claude: WebSocket not connected');
     }
-  };
+  }, [ws, terminalId]);
 
   // Listen for Claude status messages from the WebSocket
   useEffect(() => {
@@ -76,7 +76,7 @@ export function useClaudeIntegration({
       // Small delay to ensure terminal is fully initialized
       setTimeout(launchClaude, 100);
     }
-  }, [autoLaunch, ws, status, terminalId]);
+  }, [autoLaunch, ws, status, terminalId, launchClaude]);
 
   return {
     status,

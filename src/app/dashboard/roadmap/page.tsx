@@ -136,13 +136,14 @@ export default function RoadmapPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [projectId]);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleAddPhase = async (_data: { name: string; description: string }) => {
     try {
       // TODO: Replace with actual API call
       // await fetch(`/api/projects/${projectId}/phases`, {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(_data),
+      //   body: JSON.stringify(data),
       // });
 
       toast.success('Phase added successfully');
@@ -153,6 +154,7 @@ export default function RoadmapPage() {
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleAddFeature = async (_data: {
     title: string;
     description: string;

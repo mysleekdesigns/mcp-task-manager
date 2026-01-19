@@ -5,6 +5,23 @@ import { TaskStatus, PhaseStatus, Priority } from '@prisma/client';
 import { prisma } from '@/lib/db';
 import * as authModule from '@/lib/auth';
 
+interface StatusBreakdown {
+  status: string;
+  count: number;
+  percentage: number;
+}
+
+interface ModelUsage {
+  model: string;
+  count: number;
+}
+
+interface PhaseStats {
+  phase: string;
+  avgDuration: number;
+  count: number;
+}
+
 // Mock dependencies
 vi.mock('@/lib/db', () => ({
   prisma: {
@@ -106,7 +123,7 @@ describe('GET /api/insights', () => {
 
   it('should return insights data for authenticated user', async () => {
     vi.mocked(authModule.auth).mockResolvedValue(mockSession);
-    vi.mocked(prisma.task.findMany).mockResolvedValue(mockTasks as any);
+    (vi.mocked(prisma.task.findMany) as vi.Mock).mockResolvedValue(mockTasks);
 
     const request = new NextRequest('http://localhost:3000/api/insights?timeRange=30d');
     const response = await GET(request);
@@ -126,18 +143,18 @@ describe('GET /api/insights', () => {
 
   it('should calculate status breakdown correctly', async () => {
     vi.mocked(authModule.auth).mockResolvedValue(mockSession);
-    vi.mocked(prisma.task.findMany).mockResolvedValue(mockTasks as any);
+    (vi.mocked(prisma.task.findMany) as vi.Mock).mockResolvedValue(mockTasks);
 
     const request = new NextRequest('http://localhost:3000/api/insights');
     const response = await GET(request);
 
     const data = await response.json();
-    const statusBreakdown = data.statusBreakdown;
+    const statusBreakdown = data.statusBreakdown as StatusBreakdown[];
 
     expect(statusBreakdown).toBeDefined();
     expect(statusBreakdown.length).toBeGreaterThan(0);
 
-    const completedStatus = statusBreakdown.find((s: any) => s.status === 'COMPLETED');
+    const completedStatus = statusBreakdown.find((s: StatusBreakdown) => s.status === 'COMPLETED');
     expect(completedStatus).toBeDefined();
     expect(completedStatus.count).toBe(1);
     expect(completedStatus.percentage).toBeCloseTo(33.33, 1);
@@ -145,40 +162,40 @@ describe('GET /api/insights', () => {
 
   it('should track model usage correctly', async () => {
     vi.mocked(authModule.auth).mockResolvedValue(mockSession);
-    vi.mocked(prisma.task.findMany).mockResolvedValue(mockTasks as any);
+    (vi.mocked(prisma.task.findMany) as vi.Mock).mockResolvedValue(mockTasks);
 
     const request = new NextRequest('http://localhost:3000/api/insights');
     const response = await GET(request);
 
     const data = await response.json();
-    const modelUsage = data.modelUsage;
+    const modelUsage = data.modelUsage as ModelUsage[];
 
     expect(modelUsage).toBeDefined();
     expect(modelUsage.length).toBe(2);
 
-    const sonnetUsage = modelUsage.find((m: any) => m.model === 'claude-sonnet-4-5');
+    const sonnetUsage = modelUsage.find((m: ModelUsage) => m.model === 'claude-sonnet-4-5');
     expect(sonnetUsage).toBeDefined();
     expect(sonnetUsage.count).toBe(1);
 
-    const opusUsage = modelUsage.find((m: any) => m.model === 'claude-opus-4-5');
+    const opusUsage = modelUsage.find((m: ModelUsage) => m.model === 'claude-opus-4-5');
     expect(opusUsage).toBeDefined();
     expect(opusUsage.count).toBe(1);
   });
 
   it('should calculate phase durations correctly', async () => {
     vi.mocked(authModule.auth).mockResolvedValue(mockSession);
-    vi.mocked(prisma.task.findMany).mockResolvedValue(mockTasks as any);
+    (vi.mocked(prisma.task.findMany) as vi.Mock).mockResolvedValue(mockTasks);
 
     const request = new NextRequest('http://localhost:3000/api/insights');
     const response = await GET(request);
 
     const data = await response.json();
-    const phaseStats = data.phaseStats;
+    const phaseStats = data.phaseStats as PhaseStats[];
 
     expect(phaseStats).toBeDefined();
     expect(phaseStats.length).toBeGreaterThan(0);
 
-    const planningPhase = phaseStats.find((p: any) => p.phase === 'Planning');
+    const planningPhase = phaseStats.find((p: PhaseStats) => p.phase === 'Planning');
     expect(planningPhase).toBeDefined();
     expect(planningPhase.avgDuration).toBeGreaterThan(0);
     expect(planningPhase.count).toBe(1);
@@ -186,7 +203,7 @@ describe('GET /api/insights', () => {
 
   it('should filter by projectId when provided', async () => {
     vi.mocked(authModule.auth).mockResolvedValue(mockSession);
-    vi.mocked(prisma.task.findMany).mockResolvedValue(mockTasks as any);
+    (vi.mocked(prisma.task.findMany) as vi.Mock).mockResolvedValue(mockTasks);
 
     const request = new NextRequest('http://localhost:3000/api/insights?projectId=project-1');
     await GET(request);
@@ -202,7 +219,7 @@ describe('GET /api/insights', () => {
 
   it('should respect time range parameter', async () => {
     vi.mocked(authModule.auth).mockResolvedValue(mockSession);
-    vi.mocked(prisma.task.findMany).mockResolvedValue(mockTasks as any);
+    (vi.mocked(prisma.task.findMany) as vi.Mock).mockResolvedValue(mockTasks);
 
     const request = new NextRequest('http://localhost:3000/api/insights?timeRange=7d');
     await GET(request);
@@ -236,7 +253,7 @@ describe('GET /api/insights', () => {
 
   it('should calculate productivity trends correctly', async () => {
     vi.mocked(authModule.auth).mockResolvedValue(mockSession);
-    vi.mocked(prisma.task.findMany).mockResolvedValue(mockTasks as any);
+    (vi.mocked(prisma.task.findMany) as vi.Mock).mockResolvedValue(mockTasks);
 
     const request = new NextRequest('http://localhost:3000/api/insights');
     const response = await GET(request);
@@ -250,7 +267,7 @@ describe('GET /api/insights', () => {
 
   it('should calculate priority distribution correctly', async () => {
     vi.mocked(authModule.auth).mockResolvedValue(mockSession);
-    vi.mocked(prisma.task.findMany).mockResolvedValue(mockTasks as any);
+    (vi.mocked(prisma.task.findMany) as vi.Mock).mockResolvedValue(mockTasks);
 
     const request = new NextRequest('http://localhost:3000/api/insights');
     const response = await GET(request);

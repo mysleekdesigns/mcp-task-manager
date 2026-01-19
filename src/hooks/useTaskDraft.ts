@@ -32,10 +32,31 @@ interface UseTaskDraftReturn {
 const DEBOUNCE_DELAY = 500; // ms
 
 export function useTaskDraft(projectId: string): UseTaskDraftReturn {
-  const [draft, setDraft] = useState<TaskDraft | null>(null);
-  const [lastSaved, setLastSaved] = useState<Date | null>(null);
-  const debounceTimerRef = useRef<NodeJS.Timeout>(undefined);
   const storageKey = `task-draft-${projectId}`;
+  const debounceTimerRef = useRef<NodeJS.Timeout>(undefined);
+
+  // Lazy initialization: restore draft from localStorage only once on mount
+  const [draft, setDraft] = useState<TaskDraft | null>(() => {
+    try {
+      const stored = localStorage.getItem(storageKey);
+      if (!stored) return null;
+      return JSON.parse(stored) as TaskDraft;
+    } catch (error) {
+      console.error('Failed to restore draft from localStorage:', error);
+      return null;
+    }
+  });
+
+  const [lastSaved, setLastSaved] = useState<Date | null>(() => {
+    try {
+      const stored = localStorage.getItem(storageKey);
+      if (!stored) return null;
+      const parsed = JSON.parse(stored) as TaskDraft;
+      return new Date(parsed.savedAt);
+    } catch {
+      return null;
+    }
+  });
 
   // Restore draft from localStorage
   const restoreDraft = useCallback((): TaskDraft | null => {
@@ -60,15 +81,6 @@ export function useTaskDraft(projectId: string): UseTaskDraftReturn {
       console.error('Failed to save draft to localStorage:', error);
     }
   }, [storageKey]);
-
-  // Restore draft on mount
-  useEffect(() => {
-    const storedDraft = restoreDraft();
-    if (storedDraft) {
-      setDraft(storedDraft);
-      setLastSaved(new Date(storedDraft.savedAt));
-    }
-  }, [restoreDraft]); // restoreDraft is stable and only changes when projectId changes
 
   // Save draft with debouncing
   const saveDraft = useCallback((data: Partial<TaskDraft>) => {

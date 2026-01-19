@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useId } from 'react';
+import type { TaskStatus, Priority } from '@/types';
 import {
   DndContext,
   DragOverlay,
@@ -31,12 +32,13 @@ interface TaskPhase {
 interface Task {
   id: string;
   title: string;
-  description?: string | null;
-  status: string;
-  priority: string;
+  description: string | null;
+  status: TaskStatus;
+  priority: Priority;
   tags: string[];
   phases: TaskPhase[];
   createdAt: Date;
+  branchName: string | null;
 }
 
 interface KanbanBoardProps {
@@ -44,7 +46,7 @@ interface KanbanBoardProps {
   projectId: string;
 }
 
-const COLUMNS = [
+const COLUMNS: Array<{ id: string; title: string; status: TaskStatus }> = [
   { id: 'planning', title: 'Planning', status: 'PLANNING' },
   { id: 'in-progress', title: 'In Progress', status: 'IN_PROGRESS' },
   { id: 'ai-review', title: 'AI Review', status: 'AI_REVIEW' },
@@ -61,7 +63,7 @@ export function KanbanBoard({ initialTasks, projectId }: KanbanBoardProps) {
 
   // Modal state
   const [createModalOpen, setCreateModalOpen] = useState(false);
-  const [createModalDefaultStatus, setCreateModalDefaultStatus] = useState<string | undefined>();
+  const [createModalDefaultStatus, setCreateModalDefaultStatus] = useState<TaskStatus | undefined>();
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
 
@@ -162,7 +164,7 @@ export function KanbanBoard({ initialTasks, projectId }: KanbanBoardProps) {
     }
   };
 
-  const handleAddTask = (status?: string) => {
+  const handleAddTask = (status?: TaskStatus) => {
     setCreateModalDefaultStatus(status);
     setCreateModalOpen(true);
   };
@@ -295,14 +297,14 @@ export function KanbanBoard({ initialTasks, projectId }: KanbanBoardProps) {
         open={createModalOpen}
         onOpenChange={setCreateModalOpen}
         projectId={projectId}
-        defaultStatus={createModalDefaultStatus as any}
+        defaultStatus={createModalDefaultStatus}
         onSuccess={handleRefresh}
       />
       {editingTask && (
         <EditTaskModal
           open={editModalOpen}
           onOpenChange={setEditModalOpen}
-          task={editingTask as any}
+          task={editingTask}
           onSuccess={handleRefresh}
         />
       )}

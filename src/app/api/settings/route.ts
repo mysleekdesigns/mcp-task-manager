@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/db'
 import { z } from 'zod'
-import { encrypt, decrypt } from '@/lib/encryption'
 
 const updateSettingsSchema = z.object({
   defaultTerminalCount: z.number().min(1).max(10).optional(),

@@ -73,7 +73,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Build base where clause
-    const baseWhere: any = {
+    const baseWhere: Record<string, unknown> = {
       project: {
         members: {
           some: {

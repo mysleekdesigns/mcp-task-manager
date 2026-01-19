@@ -133,7 +133,7 @@ export function IdeationBoard({ projectId, userRole, userId }: IdeationBoardProp
         throw new Error(error.error || 'Failed to convert idea');
       }
 
-      const { idea, feature } = await response.json();
+      const { idea } = await response.json();
 
       setIdeas((prev) =>
         prev.map((i) => (i.id === selectedIdeaId ? idea : i))

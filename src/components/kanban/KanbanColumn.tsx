@@ -1,5 +1,6 @@
 'use client';
 
+import type { TaskStatus, Priority } from '@/types';
 import { useDroppable } from '@dnd-kit/core';
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { Card } from '@/components/ui/card';
@@ -16,18 +17,19 @@ interface TaskPhase {
 interface Task {
   id: string;
   title: string;
-  description?: string | null;
-  status: string;
-  priority: string;
+  description: string | null;
+  status: TaskStatus;
+  priority: Priority;
   tags: string[];
   phases: TaskPhase[];
   createdAt: Date;
+  branchName: string | null;
 }
 
 interface Column {
   id: string;
   title: string;
-  status: string;
+  status: TaskStatus;
 }
 
 interface KanbanColumnProps {
@@ -35,7 +37,7 @@ interface KanbanColumnProps {
   tasks: Task[];
   isCollapsed?: boolean;
   onToggleCollapse?: () => void;
-  onAddTask?: (status: string) => void;
+  onAddTask?: (status: TaskStatus) => void;
   onStartTask?: (taskId: string) => void;
   onStopTask?: (taskId: string) => void;
   onEditTask?: (task: Task) => void;
