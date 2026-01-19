@@ -131,6 +131,7 @@ export function TerminalPane({
       <div className="flex-1 overflow-hidden p-2">
         <XTermWrapper
           terminalId={id}
+          name={name}
           cwd={currentCwd}
           projectId={projectId}
           worktreeId={selectedWorktree}

@@ -17,9 +17,9 @@ export function Providers({ children }: ProvidersProps) {
     <AuthProvider>
       <ThemeProvider
         attribute="class"
-        defaultTheme="dark"
+        defaultTheme="system"
         enableSystem
-        disableTransitionOnChange
+        storageKey="auto-claude-theme"
       >
         {children}
         <Toaster />

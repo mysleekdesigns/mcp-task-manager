@@ -208,13 +208,13 @@ function getTagVariant(tag: string): 'default' | 'secondary' | 'destructive' | '
 function getPhaseColor(status: string): string {
   switch (status) {
     case 'COMPLETED':
-      return 'bg-green-500';
+      return 'bg-green-500 dark:bg-green-600';
     case 'RUNNING':
-      return 'bg-blue-500';
+      return 'bg-primary dark:bg-primary/80';
     case 'FAILED':
-      return 'bg-red-500';
+      return 'bg-destructive dark:bg-destructive/80';
     default:
-      return 'bg-gray-300';
+      return 'bg-muted-foreground/20 dark:bg-muted-foreground/30';
   }
 }
 

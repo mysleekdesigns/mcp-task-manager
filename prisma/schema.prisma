@@ -23,6 +23,8 @@ model User {
   sessions      Session[]
   projects      ProjectMember[]
   assignedTasks Task[]          @relation("AssignedTasks")
+  settings      UserSettings?
+  ideas         Idea[]          @relation("CreatedIdeas")
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
 }
@@ -66,21 +68,23 @@ model VerificationToken {
 
 // Project Management
 model Project {
-  id          String          @id @default(cuid())
-  name        String
-  description String?
-  targetPath  String?
-  githubRepo  String?
-  members     ProjectMember[]
-  tasks       Task[]
-  features    Feature[]
-  phases      Phase[]
-  terminals   Terminal[]
-  memories    Memory[]
-  mcpConfigs  McpConfig[]
-  worktrees   Worktree[]
-  createdAt   DateTime        @default(now())
-  updatedAt   DateTime        @updatedAt
+  id              String            @id @default(cuid())
+  name            String
+  description     String?
+  targetPath      String?
+  githubRepo      String?
+  members         ProjectMember[]
+  tasks           Task[]
+  features        Feature[]
+  phases          Phase[]
+  terminals       Terminal[]
+  memories        Memory[]
+  mcpConfigs      McpConfig[]
+  worktrees        Worktree[]
+  changelogEntries ChangelogEntry[]
+  ideas            Idea[]
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
 }
 
 model ProjectMember {
@@ -137,25 +141,26 @@ enum MoscowPriority {
 
 // Task Management Core
 model Task {
-  id          String      @id @default(cuid())
-  title       String
-  description String?
-  branchName  String?
-  status      TaskStatus  @default(PENDING)
-  priority    Priority    @default(MEDIUM)
-  tags        String[]
-  projectId   String
-  project     Project     @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  assigneeId  String?
-  assignee    User?       @relation("AssignedTasks", fields: [assigneeId], references: [id], onDelete: SetNull)
-  phases      TaskPhase[]
-  logs        TaskLog[]
-  files       TaskFile[]
-  subtasks    Task[]      @relation("TaskSubtasks")
-  parentId    String?
-  parent      Task?       @relation("TaskSubtasks", fields: [parentId], references: [id], onDelete: Cascade)
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
+  id              String           @id @default(cuid())
+  title           String
+  description     String?
+  branchName      String?
+  status          TaskStatus       @default(PENDING)
+  priority        Priority         @default(MEDIUM)
+  tags            String[]
+  projectId       String
+  project         Project          @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  assigneeId      String?
+  assignee        User?            @relation("AssignedTasks", fields: [assigneeId], references: [id], onDelete: SetNull)
+  phases          TaskPhase[]
+  logs            TaskLog[]
+  files           TaskFile[]
+  subtasks        Task[]           @relation("TaskSubtasks")
+  parentId        String?
+  parent          Task?            @relation("TaskSubtasks", fields: [parentId], references: [id], onDelete: Cascade)
+  changelogEntries ChangelogEntry[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
 
   @@index([projectId])
   @@index([assigneeId])
@@ -299,4 +304,78 @@ model Worktree {
   createdAt DateTime   @default(now())
 
   @@index([projectId])
+}
+
+enum ChangelogType {
+  FEATURE
+  FIX
+  IMPROVEMENT
+  BREAKING
+}
+
+model ChangelogEntry {
+  id          String        @id @default(cuid())
+  title       String
+  description String?       @db.Text
+  version     String?
+  type        ChangelogType @default(FEATURE)
+  taskId      String?
+  task        Task?         @relation(fields: [taskId], references: [id], onDelete: SetNull)
+  projectId   String
+  project     Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([projectId])
+  @@index([taskId])
+  @@index([type])
+  @@index([createdAt])
+}
+
+enum Theme {
+  LIGHT
+  DARK
+  SYSTEM
+}
+
+model UserSettings {
+  id                   String   @id @default(cuid())
+  userId               String   @unique
+  user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  claudeApiKey         String?  @db.Text
+  githubToken          String?  @db.Text
+  defaultTerminalCount Int      @default(2)
+  theme                Theme    @default(SYSTEM)
+  keyboardShortcuts    Json?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  @@index([userId])
+}
+
+enum IdeaStatus {
+  PENDING
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+  CONVERTED
+}
+
+model Idea {
+  id          String     @id @default(cuid())
+  title       String
+  description String?    @db.Text
+  votes       Int        @default(0)
+  status      IdeaStatus @default(PENDING)
+  projectId   String
+  project     Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  createdById String
+  createdBy   User       @relation("CreatedIdeas", fields: [createdById], references: [id], onDelete: Cascade)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  @@index([projectId])
+  @@index([createdById])
+  @@index([status])
+  @@index([votes(sort: Desc)])
 }

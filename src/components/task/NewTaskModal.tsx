@@ -57,6 +57,11 @@ interface NewTaskModalProps {
   onSuccess?: (taskId: string, shouldStart: boolean) => void
   projectId?: string
   availableProjects?: Array<{ id: string; name: string }>
+  initialData?: {
+    title?: string
+    description?: string
+    tags?: string[]
+  }
 }
 
 export function NewTaskModal({
@@ -65,23 +70,33 @@ export function NewTaskModal({
   onSuccess,
   projectId,
   availableProjects = [],
+  initialData,
 }: NewTaskModalProps) {
   const router = useRouter()
   const [isCreating, setIsCreating] = React.useState(false)
   const [isCreatingAndStarting, setIsCreatingAndStarting] =
     React.useState(false)
-  const [tags, setTags] = React.useState<string[]>([])
+  const [tags, setTags] = React.useState<string[]>(initialData?.tags || [])
   const [newTag, setNewTag] = React.useState("")
 
   const form = useForm<CreateTaskFormData>({
     resolver: zodResolver(createTaskSchema),
     defaultValues: {
-      title: "",
-      description: "",
+      title: initialData?.title || "",
+      description: initialData?.description || "",
       priority: "MEDIUM",
       projectId: projectId || (availableProjects[0]?.id ?? ""),
     },
   })
+
+  // Update form when initialData changes
+  React.useEffect(() => {
+    if (initialData) {
+      if (initialData.title) form.setValue("title", initialData.title)
+      if (initialData.description) form.setValue("description", initialData.description)
+      if (initialData.tags) setTags(initialData.tags)
+    }
+  }, [initialData, form])
 
   const handleAddTag = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && newTag.trim()) {

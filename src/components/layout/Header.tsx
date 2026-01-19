@@ -2,6 +2,7 @@ import { auth } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import { SettingsIcon, PlusIcon } from 'lucide-react';
 import { ProjectSelector } from './ProjectSelector';
+import { ThemeToggle } from './ThemeToggle';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
@@ -50,6 +51,9 @@ export async function Header() {
         >
           <PlusIcon className="size-5" />
         </Button>
+
+        {/* Theme Toggle */}
+        <ThemeToggle />
 
         {/* Settings Button */}
         <Button

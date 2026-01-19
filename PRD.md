@@ -15,12 +15,14 @@
 | 6 | Roadmap & Planning | **Complete** |
 | 7 | Context & Memory | **Complete** |
 | 8 | MCP Integration | **Complete** |
-| 9 | GitHub Integration | Pending |
+| 9 | GitHub Integration | **Complete** |
 | 10 | Polish & Additional Features | Pending |
+| 11 | Interactive Terminals & Claude Code | Pending |
 
-**Current Status:** Phase 8 complete. Ready to begin Phase 9 (GitHub Integration).
+**Current Status:** Phase 10 in progress. Phase 11 (Interactive Terminals & Claude Code) is next.
 
 **Recent Updates:**
+- Completed Phase 9: GitHub Integration with Issues and PRs UI, API routes, and Octokit integration
 - Completed Phase 8: MCP Integration with server management UI, API routes, and database model
 - Fixed sidebar layout: Changed sidebar to fixed positioning to eliminate excessive right-side spacing in dashboard
 
@@ -485,36 +487,38 @@
 ## Phase 9: GitHub Integration
 
 ### 9.1 GitHub API Setup
-- [ ] Create `lib/github.ts` utility
-- [ ] Use GitHub OAuth token from NextAuth
-- [ ] Implement issues fetch
-- [ ] Implement PRs fetch
-- [ ] Implement issue/PR detail fetch
+- [x] Create `lib/github.ts` utility
+- [x] Use GitHub OAuth token from NextAuth
+- [x] Implement issues fetch
+- [x] Implement PRs fetch
+- [x] Implement issue/PR detail fetch
 
 ### 9.2 GitHub Issues UI
-- [ ] Create `/github/issues` page
-- [ ] Build IssuesList component
-- [ ] Build IssueCard component:
-  - [ ] Title
-  - [ ] Issue number
-  - [ ] State (open/closed)
-  - [ ] Labels
-  - [ ] Assignees
-  - [ ] Created date
-- [ ] Add "Create Task from Issue" action
-- [ ] Build IssueDetail modal/page
+- [x] Create `/github/issues` page
+- [x] Build IssuesList component
+- [x] Build IssueCard component:
+  - [x] Title
+  - [x] Issue number
+  - [x] State (open/closed)
+  - [x] Labels
+  - [x] Assignees
+  - [x] Created date
+- [x] Add "Create Task from Issue" action
+- [x] Build IssueDetail modal/page
 
 ### 9.3 GitHub PRs UI
-- [ ] Create `/github/prs` page
-- [ ] Build PrList component
-- [ ] Build PrCard component:
-  - [ ] Title
-  - [ ] PR number
-  - [ ] State (open/merged/closed)
-  - [ ] Branch info
-  - [ ] Review status
-  - [ ] Created date
-- [ ] Build PrDetail modal/page
+- [x] Create `/github/prs` page
+- [x] Build PrList component
+- [x] Build PrCard component:
+  - [x] Title
+  - [x] PR number
+  - [x] State (open/merged/closed)
+  - [x] Branch info
+  - [x] Review status
+  - [x] Created date
+- [x] Build PrDetail modal/page
+
+**Phase 9 Complete** - GitHub Integration fully implemented.
 
 ---
 
@@ -558,6 +562,32 @@
 - [ ] Persist theme preference
 - [ ] Apply theme to all components
 - [ ] Ensure proper contrast ratios
+
+---
+
+## Phase 11: Interactive Terminals & Claude Code
+
+### 11.1 Terminal Input Fix
+- [ ] Add terminal.focus() after xterm initialization
+- [ ] Add click-to-focus handler on terminal container
+- [ ] Add focus on terminal expand
+
+### 11.2 Session Integration
+- [ ] Use Auth.js session token for WebSocket authentication
+- [ ] Validate session token on WebSocket server
+- [ ] Handle authentication errors gracefully
+
+### 11.3 Claude Code Integration
+- [ ] Auto-launch Claude Code when terminal is created
+- [ ] Show Claude status indicator (Launching/Active/Exited)
+- [ ] Add re-launch button when Claude exits
+- [ ] Wait for shell prompt before auto-launching (~500ms delay)
+
+### 11.4 Terminal Polish
+- [ ] Add ready/connecting/launching state management
+- [ ] Add input queue during connection phase
+- [ ] Install and use @xterm/addon-attach for WebSocket handling
+- [ ] Improve error handling and recovery
 
 ---
 
@@ -940,6 +970,15 @@ model McpConfig {
 - [x] Toggle enables/disables servers
 - [x] Custom server can be added
 - [x] Config persists to database
+
+### Phase 9 - GitHub Integration (Complete)
+- [x] GitHub issues list displays
+- [x] Issue cards show state, labels, assignees
+- [x] Issue detail modal shows full content
+- [x] Create Task from Issue works
+- [x] GitHub PRs list displays
+- [x] PR cards show state, branches, reviews
+- [x] PR detail modal shows full content
 
 ### End-to-End
 - [ ] Full workflow: Login → Project → Task → Terminal → Claude → Complete → Review

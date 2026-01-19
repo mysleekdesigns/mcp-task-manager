@@ -48,7 +48,7 @@ export default function TerminalsPage() {
 
   useEffect(() => {
     // Get current project from localStorage or context
-    const projectId = localStorage.getItem('selectedProjectId');
+    const projectId = localStorage.getItem('currentProjectId');
     if (projectId) {
       fetchProject(projectId);
       fetchTerminals(projectId);
@@ -133,7 +133,9 @@ export default function TerminalsPage() {
         setTerminals([...terminals, newTerminal]);
         toast.success('Terminal created');
       } else {
-        toast.error('Failed to create terminal');
+        const errorData = await response.json().catch(() => ({}));
+        const errorMessage = errorData.error || errorData.details || 'Failed to create terminal';
+        toast.error(typeof errorMessage === 'string' ? errorMessage : JSON.stringify(errorMessage));
       }
     } catch (error) {
       console.error('Failed to create terminal:', error);

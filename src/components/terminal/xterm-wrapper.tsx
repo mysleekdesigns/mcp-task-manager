@@ -3,10 +3,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { Terminal } from '@xterm/xterm';
 import { FitAddon } from '@xterm/addon-fit';
+import { useTheme } from 'next-themes';
 import '@xterm/xterm/css/xterm.css';
 
 interface XTermWrapperProps {
   terminalId: string;
+  name: string;
   cwd: string;
   projectId: string;
   worktreeId?: string;
@@ -15,8 +17,59 @@ interface XTermWrapperProps {
   onExit?: () => void;
 }
 
+const getTerminalTheme = (isDark: boolean) => {
+  if (isDark) {
+    // Dark theme
+    return {
+      background: '#1a1a1a',
+      foreground: '#d4d4d4',
+      cursor: '#d4d4d4',
+      black: '#000000',
+      red: '#cd3131',
+      green: '#0dbc79',
+      yellow: '#e5e510',
+      blue: '#2472c8',
+      magenta: '#bc3fbc',
+      cyan: '#11a8cd',
+      white: '#e5e5e5',
+      brightBlack: '#666666',
+      brightRed: '#f14c4c',
+      brightGreen: '#23d18b',
+      brightYellow: '#f5f543',
+      brightBlue: '#3b8eea',
+      brightMagenta: '#d670d6',
+      brightCyan: '#29b8db',
+      brightWhite: '#e5e5e5',
+    };
+  } else {
+    // Light theme
+    return {
+      background: '#ffffff',
+      foreground: '#383a42',
+      cursor: '#383a42',
+      black: '#000000',
+      red: '#e45649',
+      green: '#50a14f',
+      yellow: '#c18401',
+      blue: '#0184bc',
+      magenta: '#a626a4',
+      cyan: '#0997b3',
+      white: '#fafafa',
+      brightBlack: '#4f525e',
+      brightRed: '#e06c75',
+      brightGreen: '#98c379',
+      brightYellow: '#e5c07b',
+      brightBlue: '#61afef',
+      brightMagenta: '#c678dd',
+      brightCyan: '#56b6c2',
+      brightWhite: '#ffffff',
+    };
+  }
+};
+
 export function XTermWrapper({
   terminalId,
+  name,
   cwd,
   projectId,
   worktreeId,
@@ -29,6 +82,10 @@ export function XTermWrapper({
   const wsRef = useRef<WebSocket | null>(null);
   const fitAddonRef = useRef<FitAddon | null>(null);
   const [isConnected, setIsConnected] = useState(false);
+  const { theme, resolvedTheme } = useTheme();
+
+  // Determine if dark mode is active
+  const isDark = resolvedTheme === 'dark' || (theme === 'system' && resolvedTheme === 'dark');
 
   useEffect(() => {
     if (!terminalRef.current) return;
@@ -38,27 +95,7 @@ export function XTermWrapper({
       cursorBlink: true,
       fontSize: 14,
       fontFamily: 'Menlo, Monaco, "Courier New", monospace',
-      theme: {
-        background: '#1a1a1a',
-        foreground: '#d4d4d4',
-        cursor: '#d4d4d4',
-        black: '#000000',
-        red: '#cd3131',
-        green: '#0dbc79',
-        yellow: '#e5e510',
-        blue: '#2472c8',
-        magenta: '#bc3fbc',
-        cyan: '#11a8cd',
-        white: '#e5e5e5',
-        brightBlack: '#666666',
-        brightRed: '#f14c4c',
-        brightGreen: '#23d18b',
-        brightYellow: '#f5f543',
-        brightBlue: '#3b8eea',
-        brightMagenta: '#d670d6',
-        brightCyan: '#29b8db',
-        brightWhite: '#e5e5e5',
-      },
+      theme: getTerminalTheme(isDark),
       cols: 80,
       rows: 24,
     });
@@ -86,6 +123,7 @@ export function XTermWrapper({
         JSON.stringify({
           type: 'create',
           id: terminalId,
+          name,
           cwd,
           projectId,
           worktreeId,
@@ -174,14 +212,21 @@ export function XTermWrapper({
       }
       terminal.dispose();
     };
-  }, [terminalId, cwd, projectId, worktreeId, sessionToken, onReady, onExit]);
+  }, [terminalId, name, cwd, projectId, worktreeId, sessionToken, onReady, onExit, isDark]);
+
+  // Update theme when it changes
+  useEffect(() => {
+    if (xtermRef.current) {
+      xtermRef.current.options.theme = getTerminalTheme(isDark);
+    }
+  }, [isDark]);
 
   return (
     <div className="relative h-full w-full">
       <div ref={terminalRef} className="h-full w-full" />
       {!isConnected && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/50">
-          <div className="text-white">Connecting...</div>
+        <div className="absolute inset-0 flex items-center justify-center bg-background/80 backdrop-blur-sm">
+          <div className="text-foreground">Connecting...</div>
         </div>
       )}
     </div>
