@@ -19,18 +19,22 @@
 | 10 | Polish & Additional Features | **Complete** |
 | 11 | Interactive Terminals & Claude Code | **Complete** |
 | 12 | GitHub OAuth & Authentication Improvements | **Complete** |
+| 13 | UI/UX Polish & Mobile Responsiveness | **Complete** |
 
-**Current Status:** Phase 12 complete. All planned phases implemented.
+**Current Status:** Phase 13 complete. All planned phases implemented.
 
 **Recent Updates:**
-- Completed Phase 12: GitHub OAuth improvements with token refresh, repo scope, and cyan hover states on login
-- Improved GitHub PR page with project selection from localStorage and better error handling
-- Added terminal theme matching website's blue-tinted color palette
-- Fixed various test cases and hydration errors
-- Completed Phase 11: Interactive Terminals with WebSocket auth, Claude Code auto-launch, and terminal polish
-- Completed Phase 10: Insights Dashboard, Ideation Board, Changelog, Settings, and Theme Support
-- Completed Phase 9: GitHub Integration with Issues and PRs UI, API routes, and Octokit integration
-- Completed Phase 8: MCP Integration with server management UI, API routes, and database model
+- Completed Phase 13: Mobile responsiveness, task modals, drag-and-drop fixes, and UI polish
+- Fixed Kanban drag-and-drop snap-back animation with optimistic updates
+- Added CreateTaskModal and EditTaskModal components with full form validation
+- Implemented mobile-responsive sidebar with overlay and DashboardLayoutClient
+- Added responsive grid layout for Kanban board (1-5 columns based on viewport)
+- Added project deletion functionality with confirmation and stats display
+- Implemented project list refresh sync via custom events
+- Added cyan hover states throughout the application (33+ files)
+- Terminal theme improvements with blue-tinted color palette
+- Completed Phase 12: GitHub OAuth improvements with token refresh and repo scope
+- Completed Phase 11: Interactive Terminals with WebSocket auth and Claude Code auto-launch
 
 **Branches:**
 - `main` - Production-ready code
@@ -629,6 +633,106 @@
 
 ---
 
+## Phase 13: UI/UX Polish & Mobile Responsiveness
+
+### 13.1 Task Modal Components
+- [x] Create CreateTaskModal component with Zod validation
+  - [x] Title input with length validation
+  - [x] Description textarea
+  - [x] Priority selector (LOW, MEDIUM, HIGH, URGENT)
+  - [x] Tags input (comma-separated)
+  - [x] Branch name input
+  - [x] Toast notifications for success/failure
+- [x] Create EditTaskModal component
+  - [x] Pre-populated form fields from task data
+  - [x] Status selector (all 7 statuses)
+  - [x] Form reset on modal open to prevent stale data
+  - [x] Integration with KanbanBoard
+
+### 13.2 Drag-and-Drop Improvements
+- [x] Implement optimistic state updates on drag end
+- [x] Add rollback on API failure with previous status restore
+- [x] Configure defaultDropAnimationSideEffects for DragOverlay
+- [x] Add drop zone visual feedback (isOver state)
+  - [x] Background color change with ring effect
+  - [x] Smooth transition on drop zone
+- [x] Fix CSS transition conflicts during drag
+- [x] Add stable DndContext ID with useId() hook
+
+### 13.3 Mobile Responsive Layout
+- [x] Create DashboardLayoutClient component
+  - [x] Mobile menu button for sidebar toggle
+  - [x] Sidebar state management (open/close)
+  - [x] Mobile overlay with z-50 positioning
+- [x] Update Sidebar for mobile
+  - [x] Sliding drawer animation
+  - [x] Backdrop overlay on mobile
+  - [x] Close on route change
+- [x] Update Header for mobile
+  - [x] Mobile menu button (hidden on desktop)
+  - [x] Responsive padding and spacing
+
+### 13.4 Kanban Responsive Grid
+- [x] Implement responsive grid columns
+  - [x] 1 column on mobile
+  - [x] 2 columns on sm breakpoint
+  - [x] 3 columns on lg breakpoint
+  - [x] 4 columns on xl breakpoint
+  - [x] 5 columns on 2xl breakpoint
+- [x] Add responsive gaps and padding
+- [x] Update TaskCard with responsive typography
+  - [x] Responsive font sizes
+  - [x] Responsive icon sizing
+  - [x] Hidden content on mobile
+
+### 13.5 Project Management Improvements
+- [x] Create ProjectsSection component in settings
+  - [x] Display all user projects with stats
+  - [x] Delete confirmation dialog
+  - [x] Owner-only access control
+  - [x] Danger zone explanation
+- [x] Implement project list refresh via custom events
+  - [x] Event listener in ProjectSelector
+  - [x] Event dispatch after deletion
+- [x] Add localStorage integration for ProjectSelector
+  - [x] Persist selected project ID
+  - [x] Restore on page load
+  - [x] Toast notification on project switch
+
+### 13.6 Cyan Hover States
+- [x] Apply consistent hover styling across components
+  - [x] Ghost and outline buttons
+  - [x] Project selector dropdown
+  - [x] Task cards and menus
+  - [x] Settings page buttons
+- [x] Pattern: hover:text-cyan-400 active:text-cyan-400
+
+### 13.7 Terminal Enhancements
+- [x] Implement blue-tinted terminal color palette
+  - [x] Dark mode background matching website theme
+  - [x] ANSI color mapping to design system
+  - [x] Light theme support
+- [x] Add WebSocket message filtering
+  - [x] Filter to only display 'output' type messages
+  - [x] Silent handling of control messages
+- [x] Implement terminal input queue
+  - [x] Queue input during connection phase
+  - [x] Process queue when connection is ready
+- [x] Add connection state management
+  - [x] States: connecting, launching, ready, error, closed
+  - [x] Reconnection logic with max attempts
+  - [x] Connection timeout handling
+
+### 13.8 Bug Fixes
+- [x] Fix settings hydration error (invalid HTML nesting)
+- [x] Fix ideation page infinite API fetch loop
+- [x] Fix terminal POSIX spawn error on macOS
+- [x] Refactor git utility with better error handling
+
+**Phase 13 Complete** - UI/UX Polish & Mobile Responsiveness fully implemented.
+
+---
+
 ## File Structure
 
 ```
@@ -726,11 +830,11 @@ mcp-task-manager/
 │   │               └── [number]/route.ts
 │   ├── components/
 │   │   ├── ui/                  # shadcn/ui components (button, card, dialog, etc.)
-│   │   ├── layout/              # Sidebar, Header, ProjectSelector, UserMenu
-│   │   ├── kanban/              # KanbanBoard, KanbanColumn, TaskCard
+│   │   ├── layout/              # Sidebar, Header, ProjectSelector, UserMenu, DashboardLayoutClient
+│   │   ├── kanban/              # KanbanBoard, KanbanColumn, TaskCard, CreateTaskModal, EditTaskModal
 │   │   ├── task/                # TaskModal, NewTaskModal, tabs/*
 │   │   ├── terminal/            # TerminalGrid, TerminalPane, XtermWrapper
-│   │   ├── settings/            # ProfileSection, ApiKeysSection, PreferencesSection
+│   │   ├── settings/            # ProfileSection, ApiKeysSection, PreferencesSection, ProjectsSection
 │   │   ├── github/              # IssueCard, PRCard, IssueDetail, PRDetail
 │   │   ├── ideation/            # IdeaCard, IdeaForm
 │   │   ├── changelog/           # ChangelogEntry, ChangelogForm
@@ -1128,5 +1232,23 @@ model Idea {
 - [x] Cyan hover states on login buttons
 - [x] PR page shows correct project/repo
 
+### Phase 13 - UI/UX Polish & Mobile (Complete)
+- [x] CreateTaskModal opens from Kanban column add button
+- [x] CreateTaskModal validates and creates tasks
+- [x] EditTaskModal opens from task card menu
+- [x] EditTaskModal updates tasks with all fields
+- [x] Drag-and-drop updates status smoothly (no snap-back)
+- [x] Drop zone shows visual feedback when hovering
+- [x] Kanban board is responsive on mobile (1-5 columns)
+- [x] Sidebar slides in/out on mobile with overlay
+- [x] Header shows menu button on mobile
+- [x] TaskCard displays correctly on all screen sizes
+- [x] Project deletion works with confirmation
+- [x] Project list refreshes after deletion
+- [x] Selected project persists in localStorage
+- [x] Cyan hover states visible on buttons
+- [x] Terminal uses website color theme
+
 ### End-to-End
 - [x] Full workflow: Login → Project → Task → Terminal → Claude → Complete → Review
+- [x] Mobile workflow: Sidebar toggle → Navigate → Create Task → Drag to column
