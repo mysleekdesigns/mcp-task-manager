@@ -6,7 +6,7 @@ import { prisma } from '@/lib/db';
 
 // Validation schema for creating a task
 const createTaskSchema = z.object({
-  title: z.string().min(1).max(255),
+  title: z.string().min(1).max(255).optional(),
   description: z.string().optional(),
   branchName: z.string().optional(),
   projectId: z.string().cuid(),
@@ -15,6 +15,18 @@ const createTaskSchema = z.object({
   status: z.enum(['PENDING', 'PLANNING', 'IN_PROGRESS', 'AI_REVIEW', 'HUMAN_REVIEW', 'COMPLETED', 'CANCELLED']).default('PENDING'),
   tags: z.array(z.string()).default([]),
   parentId: z.string().cuid().optional(),
+  agentProfile: z.string().optional(),
+  phaseConfig: z.record(z.string(), z.object({
+    model: z.string(),
+    thinkingLevel: z.string(),
+  })).optional(),
+  attachments: z.array(z.object({
+    type: z.string(),
+    name: z.string(),
+    content: z.string(),
+    mimeType: z.string().optional(),
+    size: z.number().optional(),
+  })).optional(),
 });
 
 /**
@@ -186,10 +198,38 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    // Separate attachments from task data
+    const { attachments, ...taskData } = data;
+
+    // Ensure title exists (client should have auto-generated, but provide fallback)
+    const title = taskData.title || 'Untitled Task';
+
+    // Create task with agentProfile and phaseConfig
     const task = await prisma.task.create({
       data: {
-        ...data,
-        assigneeId: data.assigneeId || session.user.id,
+        title,
+        description: taskData.description,
+        branchName: taskData.branchName,
+        projectId: taskData.projectId,
+        priority: taskData.priority,
+        status: taskData.status,
+        tags: taskData.tags,
+        parentId: taskData.parentId,
+        assigneeId: taskData.assigneeId || session.user.id,
+        agentProfile: taskData.agentProfile,
+        phaseConfig: taskData.phaseConfig as Prisma.InputJsonValue,
+        // Create attachments if provided
+        ...(attachments && attachments.length > 0 && {
+          attachments: {
+            create: attachments.map((attachment) => ({
+              type: attachment.type,
+              name: attachment.name,
+              content: attachment.content,
+              mimeType: attachment.mimeType,
+              size: attachment.size,
+            })),
+          },
+        }),
       },
       include: {
         assignee: {
@@ -207,6 +247,7 @@ export async function POST(request: NextRequest) {
           },
         },
         phases: true,
+        attachments: true,
       },
     });
 

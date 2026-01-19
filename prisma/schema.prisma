@@ -68,23 +68,23 @@ model VerificationToken {
 
 // Project Management
 model Project {
-  id              String            @id @default(cuid())
-  name            String
-  description     String?
-  targetPath      String?
-  githubRepo      String?
-  members         ProjectMember[]
-  tasks           Task[]
-  features        Feature[]
-  phases          Phase[]
-  terminals       Terminal[]
-  memories        Memory[]
-  mcpConfigs      McpConfig[]
+  id               String           @id @default(cuid())
+  name             String
+  description      String?
+  targetPath       String?
+  githubRepo       String?
+  members          ProjectMember[]
+  tasks            Task[]
+  features         Feature[]
+  phases           Phase[]
+  terminals        Terminal[]
+  memories         Memory[]
+  mcpConfigs       McpConfig[]
   worktrees        Worktree[]
   changelogEntries ChangelogEntry[]
   ideas            Idea[]
-  createdAt        DateTime          @default(now())
-  updatedAt        DateTime          @updatedAt
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
 }
 
 model ProjectMember {
@@ -141,26 +141,29 @@ enum MoscowPriority {
 
 // Task Management Core
 model Task {
-  id              String           @id @default(cuid())
-  title           String
-  description     String?
-  branchName      String?
-  status          TaskStatus       @default(PENDING)
-  priority        Priority         @default(MEDIUM)
-  tags            String[]
-  projectId       String
-  project         Project          @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  assigneeId      String?
-  assignee        User?            @relation("AssignedTasks", fields: [assigneeId], references: [id], onDelete: SetNull)
-  phases          TaskPhase[]
-  logs            TaskLog[]
-  files           TaskFile[]
-  subtasks        Task[]           @relation("TaskSubtasks")
-  parentId        String?
-  parent          Task?            @relation("TaskSubtasks", fields: [parentId], references: [id], onDelete: Cascade)
+  id               String           @id @default(cuid())
+  title            String
+  description      String?
+  branchName       String?
+  status           TaskStatus       @default(PENDING)
+  priority         Priority         @default(MEDIUM)
+  tags             String[]
+  agentProfile     String?
+  phaseConfig      Json?
+  projectId        String
+  project          Project          @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  assigneeId       String?
+  assignee         User?            @relation("AssignedTasks", fields: [assigneeId], references: [id], onDelete: SetNull)
+  phases           TaskPhase[]
+  logs             TaskLog[]
+  files            TaskFile[]
+  attachments      TaskAttachment[]
+  subtasks         Task[]           @relation("TaskSubtasks")
+  parentId         String?
+  parent           Task?            @relation("TaskSubtasks", fields: [parentId], references: [id], onDelete: Cascade)
   changelogEntries ChangelogEntry[]
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
 
   @@index([projectId])
   @@index([assigneeId])
@@ -209,17 +212,31 @@ model TaskFile {
   @@index([taskId])
 }
 
+model TaskAttachment {
+  id        String   @id @default(cuid())
+  taskId    String
+  task      Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  type      String
+  name      String
+  content   String   @db.Text
+  mimeType  String?
+  size      Int?
+  createdAt DateTime @default(now())
+
+  @@index([taskId])
+}
+
 model Feature {
-  id          String          @id @default(cuid())
+  id          String         @id @default(cuid())
   title       String
   description String?
   priority    MoscowPriority
-  status      String          @default("planned")
+  status      String         @default("planned")
   projectId   String
-  project     Project         @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  project     Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
   phaseId     String?
-  phase       Phase?          @relation(fields: [phaseId], references: [id], onDelete: SetNull)
-  createdAt   DateTime        @default(now())
+  phase       Phase?         @relation(fields: [phaseId], references: [id], onDelete: SetNull)
+  createdAt   DateTime       @default(now())
 
   @@index([projectId])
   @@index([phaseId])
